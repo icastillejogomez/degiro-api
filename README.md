@@ -29,8 +29,6 @@ const degiro = new DeGiro({
 degiro.login().then(console.log).catch(console.error)
 ```
 
-You can see the examples [here](https://www.google.com).
-
 ### License
 
 MIT
