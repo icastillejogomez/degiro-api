@@ -16,7 +16,9 @@ npm install --save degiro-api
 yarn add degiro-api
 ```
 
-### Basic example
+### Basic examples
+
+Basic log in DeGiro Platform. All endpoint needs a session key before those can be call.
 
 ```js
 import * as DeGiro from 'degiro-api'
@@ -26,8 +28,25 @@ const degiro = new DeGiro({
   pwd: '*****'
 })
 
-degiro.login().then(console.log).catch(console.error)
+degiro.login()
+  .then(() => console.log('Log in success'))
+  .catch(console.error)
 ```
+
+Get account info:
+
+```js
+const degiro = new DeGiro({
+  username: 'username',
+  pwd: '*****'
+})
+
+await degiro.login()
+
+const accountData = await degiro.getAccountData()
+// console.log(accountData)
+```
+
 
 ### License
 
