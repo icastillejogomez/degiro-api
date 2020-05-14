@@ -1,0 +1,26 @@
+{
+  "name": "degiro-api",
+  "version": "0.0.2",
+  "public": true,
+  "description": "Degiro test scripts",
+  "main": "lib/main.js",
+  "types": "lib",
+  "scripts": {
+    "start": "node dist/main",
+    "compile": "rm -fr dist && tsc"
+  },
+  "keywords": [
+    "degiro",
+    "invesment",
+    "stock",
+    "api"
+  ],
+  "author": "Ignacio F. Castillejo Gómez",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/node": "^13.13.5"
+  }
+}
