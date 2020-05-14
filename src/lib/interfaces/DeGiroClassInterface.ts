@@ -1,17 +1,16 @@
-import { CashFoundType, DeGiroSettupType } from "../types";
-import { PortfolioPositionType } from "../types";
-import { DeGiro } from "../DeGiro";
+import { CashFoundType, DeGiroSettupType, PortfolioPositionType } from '../types'
+import { DeGiro } from '../DeGiro'
 
 /**
  * @interface DeGiroClassInterface
  */
 export interface DeGiroClassInterface {
-  
+
   login(): never
 
-  getCashFunds(): Array<CashFoundType>
+  getCashFunds(): CashFoundType[]
 
-  getPortfolio(): Array<PortfolioPositionType>
+  getPortfolio(): PortfolioPositionType[]
 
   // setOrder
 

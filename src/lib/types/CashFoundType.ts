@@ -8,9 +8,9 @@
 // }
 
 export type CashFoundType = {
-  id: string, 
-  name: string, 
-  value: number, 
-  valueBaseCurr: number, 
-  rate: number
+  id: string,
+  name: string,
+  value: number,
+  valueBaseCurr: number,
+  rate: number,
 }

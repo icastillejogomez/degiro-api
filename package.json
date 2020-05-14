@@ -7,7 +7,8 @@
   "types": "lib",
   "scripts": {
     "start": "node dist/main",
-    "compile": "rm -fr dist && tsc"
+    "compile": "rm -fr dist && tsc",
+    "lint": "tslint --project tsconfig.json 'src/**/*.ts'"
   },
   "keywords": [
     "degiro",
@@ -18,6 +19,8 @@
   "author": "Ignacio F. Castillejo Gómez",
   "license": "MIT",
   "devDependencies": {
+    "tslint": "^6.1.2",
+    "tslint-config-airbnb": "^5.11.2",
     "typescript": "^3.8.3"
   },
   "dependencies": {

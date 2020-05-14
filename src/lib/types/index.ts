@@ -5,5 +5,5 @@ import { PortfolioPositionType } from './PortfolioPositionType'
 export {
   CashFoundType,
   DeGiroSettupType,
-  PortfolioPositionType
+  PortfolioPositionType,
 }
