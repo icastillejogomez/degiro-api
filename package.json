@@ -1,6 +1,6 @@
 {
   "name": "degiro-api",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "public": true,
   "description": "Degiro test scripts",
   "main": "lib/main.js",
@@ -19,11 +19,16 @@
   "author": "Ignacio F. Castillejo Gómez",
   "license": "MIT",
   "devDependencies": {
+    "@types/cookie": "^0.4.0",
+    "@types/node": "^13.13.5",
+    "@types/node-fetch": "^2.5.7",
+    "install": "^0.13.0",
+    "npm": "^6.14.5",
     "tslint": "^6.1.2",
     "tslint-config-airbnb": "^5.11.2",
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@types/node": "^13.13.5"
+    "node-fetch": "^2.6.0"
   }
 }
