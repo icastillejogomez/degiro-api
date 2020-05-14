@@ -21,7 +21,7 @@ yarn add degiro-api
 Basic log in DeGiro Platform. All endpoint needs a session key before those can be call.
 
 ```js
-import * as DeGiro from 'degiro-api'
+const DeGiro = require('degiro-api')
 
 const degiro = new DeGiro({
   username: 'username',
@@ -36,6 +36,8 @@ degiro.login()
 Get account info using `await`:
 
 ```js
+import DeGiro from 'degiro-api'
+
 const degiro = new DeGiro({
   username: 'username',
   pwd: '*****'
