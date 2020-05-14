@@ -33,7 +33,7 @@ degiro.login()
   .catch(console.error)
 ```
 
-Get account info:
+Get account info using `await`:
 
 ```js
 const degiro = new DeGiro({
