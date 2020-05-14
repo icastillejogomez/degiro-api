@@ -5,7 +5,16 @@
     "rules": {
         "eofline": false,
         "semicolon":false,
-        "import-name": [false, "ignore-modules"]
+        "import-name": [false, "ignore-modules"],
+        "max-line-length": [
+            true,
+            {
+              "limit": 150,
+              "ignore-pattern": "^import |^export {(.*?)}",
+              "check-strings": true,
+              "check-regex": true
+            }
+          ]
     },
     "rulesDirectory": []
 }
