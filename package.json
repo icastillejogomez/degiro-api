@@ -1,6 +1,6 @@
 {
   "name": "degiro-api",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "public": true,
   "description": "Degiro test scripts",
   "main": "dist/main.js",
@@ -21,6 +21,10 @@
   ],
   "author": "Ignacio F. Castillejo Gómez",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/icastillejogomez/degiro-api.git"
+  },
   "devDependencies": {
     "@types/async": "^3.2.3",
     "@types/cookie": "^0.4.0",
