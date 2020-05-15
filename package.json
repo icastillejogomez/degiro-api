@@ -1,6 +1,6 @@
 {
   "name": "degiro-api",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "public": true,
   "description": "Degiro test scripts",
   "main": "dist/main.js",
@@ -14,7 +14,10 @@
     "degiro",
     "invesment",
     "stock",
-    "api"
+    "api",
+    "degiro-api",
+    "stock-api",
+    "broker-api"
   ],
   "author": "Ignacio F. Castillejo Gómez",
   "license": "MIT",
