@@ -62,7 +62,7 @@ const accountData = await degiro.getAccountData()
 * OPEN: Gets only opened positions. 
 * CLOSED: Gets only the closed positions in your portfolio.
 
-2. **getProductDetails** if is set to true the positions results will have a `productData` field with all the product details.
+2. **getProductDetails**: if is set to true the positions results will have a `productData` field with all the product details.
 
 Get all **open** positions:
 
