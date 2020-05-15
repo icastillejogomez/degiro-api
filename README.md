@@ -42,15 +42,17 @@ Get account info using `await`:
 ```js
 import DeGiro from 'degiro-api'
 
-const degiro = new DeGiro({
-  username: 'username',
-  pwd: '*****'
-})
+(async () => {
+  const degiro = new DeGiro({
+    username: 'username',
+    pwd: '*****'
+  })
 
-await degiro.login()
+  await degiro.login()
 
-const accountData = await degiro.getAccountData()
-// console.log(accountData)
+  const accountData = await degiro.getAccountData()
+  // console.log(accountData)
+})()
 ```
 
 ### Get portfolio
