@@ -54,7 +54,6 @@ var DeGiroEnums_1 = require("../lib/enums/DeGiroEnums");
             case 2:
                 portfolio = _a.sent();
                 console.log(JSON.stringify(portfolio, null, 2));
-                console.log("Total positions: " + portfolio.length);
                 return [2 /*return*/];
         }
     });

@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "async": "^3.2.0",
-    "node-fetch": "^2.6.0",
-    "query-string": "^6.12.1"
+    "node-fetch": "^2.6.0"
   }
 }
