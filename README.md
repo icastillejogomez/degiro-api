@@ -56,13 +56,13 @@ const accountData = await degiro.getAccountData()
 ### Get portfolio
 
 `getPortfolio`params are:
-1. **type**: set the types or positions you want to fetch. Could be:
+* **type**: set the types or positions you want to fetch. Could be:
   * ALL: Gets the response without filter it
   * ALL_POSITIONS: Gets only positions in products. Exclude positions like 'CASH', etc.
   * OPEN: Gets only opened positions. 
   * CLOSED: Gets only the closed positions in your portfolio.
 
-2. **getProductDetails**: if is set to true the positions results will have a `productData` field with all the product details.
+* **getProductDetails**: if is set to true the positions results will have a `productData` field with all the product details.
 
 Get all **open** positions:
 
