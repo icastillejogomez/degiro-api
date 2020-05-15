@@ -55,6 +55,15 @@ const accountData = await degiro.getAccountData()
 
 ### Get portfolio
 
+`getPortfolio`params are:
+* **type**: set the types or positions you want to fetch. Could be:
+1. ALL: Gets the response without filter it
+2. ALL_POSITIONS: Gets only positions in products. Exclude positions like 'CASH', etc.
+3. OPEN: Gets only opened positions. 
+4. CLOSED: Gets only the closed positions in your portfolio.
+
+* **getProductDetails** if is set to true the positions results will have a `productData` field with all the product details.
+
 Get all **open** positions:
 
 ```js
@@ -120,15 +129,6 @@ import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
   console.log(JSON.stringify(portfolio, null, 2))
 })()
 ```
-
-`getPortfolio`params are:
-* **type**: set the types or positions you want to fetch. Could be:
-1. ALL: Gets the response without filter it
-2. ALL_POSITIONS: Gets only positions in products. Exclude positions like 'CASH', etc.
-3. OPEN: Gets only opened positions. 
-4. CLOSED: Gets only the closed positions in your portfolio.
-
-* **getProductDetails** if is set to true the positions results will have a `productData` field with all the product details.
 
 ## License
 
