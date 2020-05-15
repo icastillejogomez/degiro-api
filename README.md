@@ -6,7 +6,7 @@ DeGiro is Europe's fastest growing online stockbroker. DeGiro distinguishes itse
 
 ⚠️  DeGiro could change their API at any moment, if something is not working, please open an issue.
 
-### Install 
+## Install 
 
 ```sh
 # using npm
