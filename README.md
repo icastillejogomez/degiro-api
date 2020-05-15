@@ -16,7 +16,9 @@ npm install --save degiro-api
 yarn add degiro-api
 ```
 
-### Basic examples
+## Basic examples
+
+### Create an instance of DeGiro
 
 Basic log in DeGiro Platform. All endpoint needs a session key before those can be call.
 
@@ -32,6 +34,8 @@ degiro.login()
   .then(() => console.log('Log in success'))
   .catch(console.error)
 ```
+
+### Get account details
 
 Get account info using `await`:
 
@@ -49,8 +53,84 @@ const accountData = await degiro.getAccountData()
 // console.log(accountData)
 ```
 
+### Get portfolio
 
-### License
+Also you can fetch your portfolio data this way:
+
+```js
+import DeGiro from 'degiro-api'
+import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '**********',
+  })
+
+  await degiro.login()
+
+  const portfolio = await degiro.getPortfolio({ type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL })
+  console.log(JSON.stringify(portfolio, null, 2))
+})()
+```
+
+And getting product details too
+
+```js
+import DeGiro from 'degiro-api'
+import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '**********',
+  })
+
+  await degiro.login()
+
+  const portfolio = await degiro.getPortfolio({ 
+    type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL, 
+    getProductDetails: true,
+  })
+  console.log(JSON.stringify(portfolio, null, 2))
+})()
+```
+
+Get all **open** positions:
+
+```js
+import DeGiro from 'degiro-api'
+import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '**********',
+  })
+
+  await degiro.login()
+
+  const portfolio = await degiro.getPortfolio({ 
+    type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL, 
+    getProductDetails: true,
+  })
+  console.log(JSON.stringify(portfolio, null, 2))
+})()
+```
+
+`getPortfolio`params are:
+* **type**: set the types or positions you want to fetch. Could be:
+1. ALL: Gets the response without filter it
+2. ALL_POSITIONS: Gets only positions in products. Exclude positions like 'CASH', etc.
+3. OPEN: Gets only opened positions. 
+4. CLOSED: Gets only the closed positions in your portfolio.
+
+* **getProductDetails** if is set to true the positions results will have a `productData` field with all the product details.
+
+## License
 
 MIT
 
