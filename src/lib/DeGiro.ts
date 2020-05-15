@@ -1,11 +1,14 @@
+// Import modules
+import * as async from 'async'
+
 // Import interfaces
 import { DeGiroClassInterface } from './interfaces'
 
 // Import types
-import { DeGiroSettupType, LoginResponseType, AccountConfigType, AccountDataType } from './types'
+import { DeGiroSettupType, LoginResponseType, AccountConfigType, AccountDataType, CashFoundType, PortfolioPositionType, GetPorfolioConfigType } from './types'
 
 // Import requests
-import { loginRequest, getAccountConfigRequest, getAccountDataRequest } from './requests'
+import { loginRequest, getAccountConfigRequest, getAccountDataRequest, getPortfolioRequest, getProductsByIdsRequest } from './requests'
 
 // Import debug console log
 import { debug } from './utils'
@@ -83,12 +86,46 @@ export class DeGiro implements DeGiroClassInterface{
     return this.loginResponse !== undefined
   }
 
-  getCashFunds(): import('./types/CashFoundType').CashFoundType[] {
+  getCashFunds(): CashFoundType[] {
     throw new Error('Method not implemented.')
   }
 
-  getPortfolio(): import('./types/PortfolioPositionType').PortfolioPositionType[] {
-    throw new Error('Method not implemented.')
+  getPortfolio(config: GetPorfolioConfigType): Promise<any[]> {
+    return new Promise((resolve, reject) => {
+      if (!this.loginResponse || !this.loginResponse.sessionId || !this.accountData || !this.accountConfig) {
+        return reject('No session id found.')
+      }
+      getPortfolioRequest(this.loginResponse.sessionId, this.accountData, this.accountConfig, config)
+        .then(portfolio => this.completePortfolioDetails(portfolio, config.getProductDetails || false))
+        .then(resolve)
+        .catch(reject)
+    })
+  }
+
+  completePortfolioDetails(portfolio: any[], getProductDetails: boolean): Promise<any[]> {
+    if (!getProductDetails) return Promise.resolve(portfolio)
+    return new Promise((resolve, reject) => {
+      async.map(portfolio, (position, next) => {
+        if (position.positionType !== 'PRODUCT') return next(null, position)
+        this.getProductsByIds([(position.id)])
+          .then((product) => {
+            position.productData = product[position.id]
+            next(null, position)
+          })
+          .catch(error => next(error))
+      // tslint:disable-next-line: align
+      }, (error, portfolio) => {
+        if (error) return reject(error)
+        resolve(portfolio)
+      })
+    })
+  }
+
+  getProductsByIds(ids: string[]): Promise<any[]> {
+    if (!this.loginResponse || !this.loginResponse.sessionId || !this.accountConfig || !this.accountData) {
+      return Promise.reject('No session id found.')
+    }
+    return getProductsByIdsRequest(ids, this.loginResponse.sessionId, this.accountData, this.accountConfig)
   }
 
   printConfig(): void {

@@ -32,4 +32,10 @@ export declare enum DeGiroSort {
     ASC = "asc",
     DESC = "desc"
 }
+export declare enum PORTFOLIO_POSITIONS_TYPE_ENUM {
+    ALL = "all",
+    ALL_POSITIONS = "allPositions",
+    OPEN = "open",
+    CLOSED = "closed"
+}
 //# sourceMappingURL=DeGiroEnums.d.ts.map

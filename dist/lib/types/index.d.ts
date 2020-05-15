@@ -6,5 +6,6 @@ import { LoginRequestParamsType } from './LoginRequestParamsType';
 import { LoginRequestBodyType } from './LoginRequestBodyType';
 import { AccountConfigType } from './AccountConfigType';
 import { AccountDataType } from './AccountDataType';
-export { CashFoundType, DeGiroSettupType, PortfolioPositionType, LoginResponseType, LoginRequestParamsType, LoginRequestBodyType, AccountConfigType, AccountDataType, };
+import { GetPorfolioConfigType } from './GetPorfolioConfigType';
+export { CashFoundType, DeGiroSettupType, PortfolioPositionType, LoginResponseType, LoginRequestParamsType, LoginRequestBodyType, AccountConfigType, AccountDataType, GetPorfolioConfigType, };
 //# sourceMappingURL=index.d.ts.map

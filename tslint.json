@@ -6,6 +6,7 @@
         "eofline": false,
         "semicolon":false,
         "import-name": [false, "ignore-modules"],
+        "no-increment-decrement": false,
         "max-line-length": [
             true,
             {

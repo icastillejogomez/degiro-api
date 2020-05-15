@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeGiroSort = exports.DeGiroProducTypes = exports.DeGiroTimeTypes = exports.DeGiroOrderTypes = exports.DeGiroActions = exports.MainDeGiroConsts = void 0;
+exports.PORTFOLIO_POSITIONS_TYPE_ENUM = exports.DeGiroSort = exports.DeGiroProducTypes = exports.DeGiroTimeTypes = exports.DeGiroOrderTypes = exports.DeGiroActions = exports.MainDeGiroConsts = void 0;
 var MainDeGiroConsts;
 (function (MainDeGiroConsts) {
     MainDeGiroConsts["BASE_API_URL"] = "https://trader.degiro.nl/";
@@ -42,4 +42,11 @@ var DeGiroSort;
     DeGiroSort["ASC"] = "asc";
     DeGiroSort["DESC"] = "desc";
 })(DeGiroSort = exports.DeGiroSort || (exports.DeGiroSort = {}));
+var PORTFOLIO_POSITIONS_TYPE_ENUM;
+(function (PORTFOLIO_POSITIONS_TYPE_ENUM) {
+    PORTFOLIO_POSITIONS_TYPE_ENUM["ALL"] = "all";
+    PORTFOLIO_POSITIONS_TYPE_ENUM["ALL_POSITIONS"] = "allPositions";
+    PORTFOLIO_POSITIONS_TYPE_ENUM["OPEN"] = "open";
+    PORTFOLIO_POSITIONS_TYPE_ENUM["CLOSED"] = "closed";
+})(PORTFOLIO_POSITIONS_TYPE_ENUM = exports.PORTFOLIO_POSITIONS_TYPE_ENUM || (exports.PORTFOLIO_POSITIONS_TYPE_ENUM = {}));
 //# sourceMappingURL=DeGiroEnums.js.map

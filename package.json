@@ -19,6 +19,7 @@
   "author": "Ignacio F. Castillejo Gómez",
   "license": "MIT",
   "devDependencies": {
+    "@types/async": "^3.2.3",
     "@types/cookie": "^0.4.0",
     "@types/node": "^13.13.5",
     "@types/node-fetch": "^2.5.7",
@@ -29,6 +30,8 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "async": "^3.2.0",
+    "node-fetch": "^2.6.0",
+    "query-string": "^6.12.1"
   }
 }

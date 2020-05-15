@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var main_1 = require("./../main");
 var degiro = new main_1.default({
-    username: 'arganzana',
+    username: 'nachoogoomezomg',
     pwd: process.env.DEGIRO_PWD,
 });
 degiro.login()

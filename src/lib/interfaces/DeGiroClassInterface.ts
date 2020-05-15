@@ -1,4 +1,4 @@
-import { CashFoundType, AccountConfigType, PortfolioPositionType, AccountDataType } from '../types'
+import { CashFoundType, AccountConfigType, GetPorfolioConfigType, AccountDataType } from '../types'
 
 /**
  * @interface DeGiroClassInterface
@@ -15,7 +15,9 @@ export interface DeGiroClassInterface {
 
   getCashFunds(): CashFoundType[]
 
-  getPortfolio(): PortfolioPositionType[]
+  getPortfolio(config: GetPorfolioConfigType): Promise<any[]>
+
+  getProductsByIds (ids: string[]): Promise<any[]>
 
   // setOrder
 

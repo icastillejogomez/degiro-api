@@ -6,6 +6,7 @@ import { LoginRequestParamsType } from './LoginRequestParamsType'
 import { LoginRequestBodyType } from './LoginRequestBodyType'
 import { AccountConfigType } from './AccountConfigType'
 import { AccountDataType } from './AccountDataType'
+import { GetPorfolioConfigType } from './GetPorfolioConfigType'
 
 export {
   CashFoundType,
@@ -16,4 +17,5 @@ export {
   LoginRequestBodyType,
   AccountConfigType,
   AccountDataType,
+  GetPorfolioConfigType,
 }

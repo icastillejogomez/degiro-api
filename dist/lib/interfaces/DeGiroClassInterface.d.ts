@@ -1,4 +1,4 @@
-import { CashFoundType, AccountConfigType, PortfolioPositionType, AccountDataType } from '../types';
+import { CashFoundType, AccountConfigType, GetPorfolioConfigType, AccountDataType } from '../types';
 /**
  * @interface DeGiroClassInterface
  */
@@ -8,7 +8,8 @@ export interface DeGiroClassInterface {
     getAccountConfig(): Promise<AccountConfigType>;
     getAccountData(): Promise<AccountDataType>;
     getCashFunds(): CashFoundType[];
-    getPortfolio(): PortfolioPositionType[];
+    getPortfolio(config: GetPorfolioConfigType): Promise<any[]>;
+    getProductsByIds(ids: string[]): Promise<any[]>;
     printConfig(): void;
     printConfig(): void;
 }

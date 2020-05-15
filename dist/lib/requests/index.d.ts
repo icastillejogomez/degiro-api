@@ -1,5 +1,7 @@
 import { loginRequest } from './login';
 import { getAccountConfigRequest } from './getAccountConfig';
 import { getAccountDataRequest } from './getAccountData';
-export { loginRequest, getAccountConfigRequest, getAccountDataRequest, };
+import { getPortfolioRequest } from './getPortfolioRequest';
+import { getProductsByIdsRequest } from './getProductsByIdsRequest';
+export { loginRequest, getAccountConfigRequest, getAccountDataRequest, getPortfolioRequest, getProductsByIdsRequest, };
 //# sourceMappingURL=index.d.ts.map

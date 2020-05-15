@@ -18,5 +18,5 @@
 //         ...
 
 export type PortfolioPositionType = {
-  foo: string,
+  foo?: string,
 }

@@ -1,3 +1,4 @@
 import { debug } from './debug';
-export { debug, };
+import { processPortfolio } from './processPortfolio';
+export { debug, processPortfolio, };
 //# sourceMappingURL=index.d.ts.map

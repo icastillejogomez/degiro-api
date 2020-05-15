@@ -1,7 +1,7 @@
 import DeGiro from './../main'
 
 const degiro: DeGiro = new DeGiro({
-  username: 'arganzana',
+  username: 'nachoogoomezomg',
   pwd: <string>process.env.DEGIRO_PWD,
 })
 
