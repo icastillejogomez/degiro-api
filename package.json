@@ -1,9 +1,9 @@
 {
   "name": "degiro-api",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "public": true,
   "description": "Degiro test scripts",
-  "main": "lib/main.js",
+  "main": "dist/main.js",
   "types": "lib",
   "scripts": {
     "start": "node dist/main",
