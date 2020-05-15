@@ -12,5 +12,4 @@ import { PORTFOLIO_POSITIONS_TYPE_ENUM } from '../lib/enums/DeGiroEnums'
 
   const portfolio = await degiro.getPortfolio({ type: PORTFOLIO_POSITIONS_TYPE_ENUM.OPEN, getProductDetails: true })
   console.log(JSON.stringify(portfolio, null, 2))
-  console.log(`Total positions: ${portfolio.length}`)
 })()
