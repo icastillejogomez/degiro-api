@@ -55,27 +55,7 @@ const accountData = await degiro.getAccountData()
 
 ### Get portfolio
 
-Also you can fetch your portfolio data this way:
-
-```js
-import DeGiro from 'degiro-api'
-import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
-
-(async () => {
-
-  const degiro: DeGiro = new DeGiro({
-    username: 'your_username_here',
-    pwd: '**********',
-  })
-
-  await degiro.login()
-
-  const portfolio = await degiro.getPortfolio({ type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL })
-  console.log(JSON.stringify(portfolio, null, 2))
-})()
-```
-
-And getting product details too
+Get all **open** positions:
 
 ```js
 import DeGiro from 'degiro-api'
@@ -98,7 +78,27 @@ import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
 })()
 ```
 
-Get all **open** positions:
+Also you can fetch your portfolio data this way:
+
+```js
+import DeGiro from 'degiro-api'
+import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '**********',
+  })
+
+  await degiro.login()
+
+  const portfolio = await degiro.getPortfolio({ type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL })
+  console.log(JSON.stringify(portfolio, null, 2))
+})()
+```
+
+And getting product details too
 
 ```js
 import DeGiro from 'degiro-api'
