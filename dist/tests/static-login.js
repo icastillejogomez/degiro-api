@@ -5,5 +5,4 @@ var degiro = main_1.default.create({
     username: 'nachoogoomezomg',
     pwd: '**********',
 });
-degiro.printConfig();
 //# sourceMappingURL=static-login.js.map
