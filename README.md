@@ -134,6 +134,70 @@ import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
 })()
 ```
 
+### Search product, stock and much more in broker
+
+`degiro.searchProduct(options): Promise<SearchProductResultType[]>`
+
+* **options**: 
+  * **text**: *required* string,
+  * **type**: *optional* DeGiroProducTypes
+  * **limit**: *optional* number default=10,
+  * **offset**: *optional* number default=0,
+
+`DeGiroProducTypes`
+
+* *shares*: 1,
+* *bonds*: 2,
+* *futures*: 7,
+* *options*: 8,
+* *investmendFunds*: 13,
+* *leveragedProducts*: 14,
+* *etfs*: 131,
+* *cfds*: 535,
+* *warrants*: 536,
+
+Search the text "AAPL" without any limitation
+
+```js
+import DeGiro from './../main'
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '***********',
+  })
+
+  await degiro.login()
+
+  const result = await degiro.searchProduct({ text: 'AAPL' })
+  console.log(JSON.stringify(result, null, 2))
+})()
+```
+
+Search TSLA stock
+
+```js
+import DeGiro from './../main'
+import { DeGiroProducTypes } from '../lib/enums/DeGiroEnums'
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '***********',
+  })
+
+  await degiro.login()
+
+  const result = await degiro.searchProduct({ 
+    text: 'AAPL',
+    type: DeGiroProducTypes.shares,
+  })
+  console.log(JSON.stringify(result, null, 2))
+})()
+```
+
 ## License
 
 MIT
