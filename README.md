@@ -1,6 +1,8 @@
 # Unofficial DeGiro API
 
-![Degiro Logo](https://github.com/icastillejogomez/degiro-api/blob/master/.assets/degiro.png)
+<div style="text-align:center">
+  <img src="https://github.com/icastillejogomez/degiro-api/blob/master/.assets/degiro.png" alt='DeGiro Logo' />
+</div>
 
 This is an unofficial Node.js API client for DeGiro's trading platform. Using this module you can easily automate your orders (buy and sell) and get information about orders, funds or products.
 
