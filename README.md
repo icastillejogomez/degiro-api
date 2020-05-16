@@ -179,7 +179,7 @@ Search TSLA stock
 
 ```js
 import DeGiro from './../main'
-import { DeGiroProducTypes } from '../lib/enums/DeGiroEnums'
+import { DeGiroProducTypes } from 'degiro-api/enums'
 
 (async () => {
 
@@ -190,9 +190,10 @@ import { DeGiroProducTypes } from '../lib/enums/DeGiroEnums'
 
   await degiro.login()
 
-  const result = await degiro.searchProduct({ 
-    text: 'AAPL',
+  const result = await degiro.searchProduct({
+    text: 'TSLA',
     type: DeGiroProducTypes.shares,
+    limit: 1,
   })
   console.log(JSON.stringify(result, null, 2))
 })()
