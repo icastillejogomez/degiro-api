@@ -199,6 +199,12 @@ import { DeGiroProducTypes } from 'degiro-api/enums'
 })()
 ```
 
+## TO DO List
+
+1. Two factor
+2. Set orders
+3. Get prices
+
 ## License
 
 MIT

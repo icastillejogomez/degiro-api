@@ -1,4 +1,5 @@
 import DeGiro from './../main'
+import { DeGiroProducTypes } from '../lib/enums/DeGiroEnums'
 
 (async () => {
 
@@ -9,6 +10,10 @@ import DeGiro from './../main'
 
   await degiro.login()
 
-  const result = await degiro.searchProduct({ text: 'DDOG' })
+  const result = await degiro.searchProduct({
+    text: 'TSLA',
+    type: DeGiroProducTypes.shares,
+    limit: 1,
+  })
   console.log(JSON.stringify(result, null, 2))
 })()

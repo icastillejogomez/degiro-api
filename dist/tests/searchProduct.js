@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var main_1 = require("./../main");
+var DeGiroEnums_1 = require("../lib/enums/DeGiroEnums");
 (function () { return __awaiter(void 0, void 0, void 0, function () {
     var degiro, result;
     return __generator(this, function (_a) {
@@ -49,7 +50,11 @@ var main_1 = require("./../main");
                 return [4 /*yield*/, degiro.login()];
             case 1:
                 _a.sent();
-                return [4 /*yield*/, degiro.searchProduct({ text: 'DDOG' })];
+                return [4 /*yield*/, degiro.searchProduct({
+                        text: 'TSLA',
+                        type: DeGiroEnums_1.DeGiroProducTypes.shares,
+                        limit: 1,
+                    })];
             case 2:
                 result = _a.sent();
                 console.log(JSON.stringify(result, null, 2));
