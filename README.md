@@ -146,15 +146,15 @@ import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
 
 `DeGiroProducTypes`
 
-* *shares*: 1,
-* *bonds*: 2,
-* *futures*: 7,
-* *options*: 8,
-* *investmendFunds*: 13,
-* *leveragedProducts*: 14,
-* *etfs*: 131,
-* *cfds*: 535,
-* *warrants*: 536,
+* *shares*: 1
+* *bonds*: 2
+* *futures*: 7
+* *options*: 8
+* *investmendFunds*: 13
+* *leveragedProducts*: 14
+* *etfs*: 131
+* *cfds*: 535
+* *warrants*: 536
 
 Search the text "AAPL" without any limitation
 
