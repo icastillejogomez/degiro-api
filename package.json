@@ -1,10 +1,10 @@
 {
   "name": "degiro-api",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "public": true,
   "description": "Unofficial DeGiro API for Javascript. Buy and sell in the stock market. See your portfolio and much more",
   "main": "dist/main.js",
-  "types": "lib",
+  "types": "dist",
   "scripts": {
     "start": "node dist/main",
     "compile": "rm -fr dist && tsc",
