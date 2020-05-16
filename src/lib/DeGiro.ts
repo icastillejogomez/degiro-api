@@ -5,10 +5,19 @@ import * as async from 'async'
 import { DeGiroClassInterface } from './interfaces'
 
 // Import types
-import { DeGiroSettupType, LoginResponseType, AccountConfigType, AccountDataType, CashFoundType, PortfolioPositionType, GetPorfolioConfigType } from './types'
+import {
+  DeGiroSettupType,
+  LoginResponseType,
+  AccountConfigType,
+  AccountDataType,
+  CashFoundType,
+  SearchProductResultType,
+  GetPorfolioConfigType,
+  SearchProductOptionsType,
+} from './types'
 
 // Import requests
-import { loginRequest, getAccountConfigRequest, getAccountDataRequest, getPortfolioRequest, getProductsByIdsRequest } from './requests'
+import { loginRequest, getAccountConfigRequest, getAccountDataRequest, getPortfolioRequest, getProductsByIdsRequest, searchProductRequest } from './requests'
 
 // Import debug console log
 import { debug } from './utils'
@@ -128,11 +137,11 @@ export class DeGiro implements DeGiroClassInterface{
     return getProductsByIdsRequest(ids, this.loginResponse.sessionId, this.accountData, this.accountConfig)
   }
 
-  printConfig(): void {
-    console.log({
-      username: this.username,
-      pwd: this.pwd,
-    })
+  searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]> {
+    if (!this.accountConfig || !this.accountData) {
+      return Promise.reject('No session id found.')
+    }
+    return searchProductRequest(options, this.accountConfig, this.accountData)
   }
 
 }

@@ -1,4 +1,4 @@
-import { CashFoundType, AccountConfigType, GetPorfolioConfigType, AccountDataType } from '../types'
+import { CashFoundType, AccountConfigType, GetPorfolioConfigType, AccountDataType, SearchProductOptionsType, SearchProductResultType } from '../types'
 
 /**
  * @interface DeGiroClassInterface
@@ -19,18 +19,6 @@ export interface DeGiroClassInterface {
 
   getProductsByIds (ids: string[]): Promise<any[]>
 
-  // setOrder
-
-  // searchProduct
-
-  // askBidPrice
-
-  // getProductsById
-
-  // getClientInfo
-
-  printConfig(): void
-
-  printConfig(): void
+  searchProduct (options: SearchProductOptionsType): Promise<SearchProductResultType[]>
 
 }

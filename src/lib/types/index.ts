@@ -7,6 +7,8 @@ import { LoginRequestBodyType } from './LoginRequestBodyType'
 import { AccountConfigType } from './AccountConfigType'
 import { AccountDataType } from './AccountDataType'
 import { GetPorfolioConfigType } from './GetPorfolioConfigType'
+import { SearchProductOptionsType } from './SearchProductOptionsType'
+import { SearchProductResultType } from './SearchProductResultType'
 
 export {
   CashFoundType,
@@ -18,4 +20,6 @@ export {
   AccountConfigType,
   AccountDataType,
   GetPorfolioConfigType,
+  SearchProductOptionsType,
+  SearchProductResultType,
 }

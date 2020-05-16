@@ -111,11 +111,11 @@ var DeGiro = /** @class */ (function () {
         }
         return requests_1.getProductsByIdsRequest(ids, this.loginResponse.sessionId, this.accountData, this.accountConfig);
     };
-    DeGiro.prototype.printConfig = function () {
-        console.log({
-            username: this.username,
-            pwd: this.pwd,
-        });
+    DeGiro.prototype.searchProduct = function (options) {
+        if (!this.accountConfig || !this.accountData) {
+            return Promise.reject('No session id found.');
+        }
+        return requests_1.searchProductRequest(options, this.accountConfig, this.accountData);
     };
     return DeGiro;
 }());

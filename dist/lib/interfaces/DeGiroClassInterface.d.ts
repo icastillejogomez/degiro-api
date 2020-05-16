@@ -1,4 +1,4 @@
-import { CashFoundType, AccountConfigType, GetPorfolioConfigType, AccountDataType } from '../types';
+import { CashFoundType, AccountConfigType, GetPorfolioConfigType, AccountDataType, SearchProductOptionsType, SearchProductResultType } from '../types';
 /**
  * @interface DeGiroClassInterface
  */
@@ -10,7 +10,6 @@ export interface DeGiroClassInterface {
     getCashFunds(): CashFoundType[];
     getPortfolio(config: GetPorfolioConfigType): Promise<any[]>;
     getProductsByIds(ids: string[]): Promise<any[]>;
-    printConfig(): void;
-    printConfig(): void;
+    searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>;
 }
 //# sourceMappingURL=DeGiroClassInterface.d.ts.map

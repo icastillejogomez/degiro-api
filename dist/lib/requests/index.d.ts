@@ -3,5 +3,6 @@ import { getAccountConfigRequest } from './getAccountConfig';
 import { getAccountDataRequest } from './getAccountData';
 import { getPortfolioRequest } from './getPortfolioRequest';
 import { getProductsByIdsRequest } from './getProductsByIdsRequest';
-export { loginRequest, getAccountConfigRequest, getAccountDataRequest, getPortfolioRequest, getProductsByIdsRequest, };
+import { searchProductRequest } from './searchProductRequest';
+export { loginRequest, getAccountConfigRequest, getAccountDataRequest, getPortfolioRequest, getProductsByIdsRequest, searchProductRequest, };
 //# sourceMappingURL=index.d.ts.map

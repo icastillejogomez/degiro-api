@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getProductsByIdsRequest = exports.getPortfolioRequest = exports.getAccountDataRequest = exports.getAccountConfigRequest = exports.loginRequest = void 0;
+exports.searchProductRequest = exports.getProductsByIdsRequest = exports.getPortfolioRequest = exports.getAccountDataRequest = exports.getAccountConfigRequest = exports.loginRequest = void 0;
 var login_1 = require("./login");
 Object.defineProperty(exports, "loginRequest", { enumerable: true, get: function () { return login_1.loginRequest; } });
 var getAccountConfig_1 = require("./getAccountConfig");
@@ -11,4 +11,6 @@ var getPortfolioRequest_1 = require("./getPortfolioRequest");
 Object.defineProperty(exports, "getPortfolioRequest", { enumerable: true, get: function () { return getPortfolioRequest_1.getPortfolioRequest; } });
 var getProductsByIdsRequest_1 = require("./getProductsByIdsRequest");
 Object.defineProperty(exports, "getProductsByIdsRequest", { enumerable: true, get: function () { return getProductsByIdsRequest_1.getProductsByIdsRequest; } });
+var searchProductRequest_1 = require("./searchProductRequest");
+Object.defineProperty(exports, "searchProductRequest", { enumerable: true, get: function () { return searchProductRequest_1.searchProductRequest; } });
 //# sourceMappingURL=index.js.map
