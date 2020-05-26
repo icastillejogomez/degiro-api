@@ -37,8 +37,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var main_1 = require("./../main");
+var DeGiroEnums_1 = require("../lib/enums/DeGiroEnums");
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var degiro, result;
+    var degiro, order, executeId;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -49,17 +50,21 @@ var main_1 = require("./../main");
                 return [4 /*yield*/, degiro.login()];
             case 1:
                 _a.sent();
-                console.log('dasdaa');
-                return [4 /*yield*/, degiro.searchProduct({
-                        text: 'DDOG',
-                        // type: DeGiroProducTypes.shares,
-                        limit: 1,
-                    })];
+                order = {
+                    buySell: DeGiroEnums_1.DeGiroActions.BUY,
+                    orderType: DeGiroEnums_1.DeGiroOrderTypes.MARKET,
+                    productId: '16452536',
+                    size: 1,
+                    timeType: DeGiroEnums_1.DeGiroTimeTypes.DAY,
+                    limitedPrice: 100,
+                    stopPrice: 99,
+                };
+                return [4 /*yield*/, degiro.createOrder(order)];
             case 2:
-                result = _a.sent();
-                console.log(JSON.stringify(result, null, 2));
+                executeId = _a.sent();
+                console.log(JSON.stringify({ order: order, executeId: executeId }, null, 2));
                 return [2 /*return*/];
         }
     });
 }); })();
-//# sourceMappingURL=searchProduct.js.map
+//# sourceMappingURL=createOrder.js.map

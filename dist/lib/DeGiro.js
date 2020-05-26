@@ -117,6 +117,15 @@ var DeGiro = /** @class */ (function () {
         }
         return requests_1.searchProductRequest(options, this.accountConfig, this.accountData);
     };
+    DeGiro.prototype.createOrder = function (order) {
+        if (!this.accountConfig || !this.accountData) {
+            return Promise.reject('No session id found.');
+        }
+        return requests_1.createOrderRequest(order, this.accountData, this.accountConfig);
+    };
+    DeGiro.prototype.executeOrder = function (order, executeId) {
+        throw new Error('Method not implemented.');
+    };
     return DeGiro;
 }());
 exports.DeGiro = DeGiro;

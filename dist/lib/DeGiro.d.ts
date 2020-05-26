@@ -1,5 +1,5 @@
 import { DeGiroClassInterface } from './interfaces';
-import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType } from './types';
+import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType } from './types';
 /**
  * @class DeGiro
  * @description Main class of DeGiro Unofficial API.
@@ -21,5 +21,7 @@ export declare class DeGiro implements DeGiroClassInterface {
     completePortfolioDetails(portfolio: any[], getProductDetails: boolean): Promise<any[]>;
     getProductsByIds(ids: string[]): Promise<any[]>;
     searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>;
+    createOrder(order: OrderType): Promise<string>;
+    executeOrder(order: OrderType, executeId: string): Promise<string>;
 }
 //# sourceMappingURL=DeGiro.d.ts.map

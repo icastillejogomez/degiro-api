@@ -10,9 +10,10 @@ import { DeGiroProducTypes } from '../lib/enums/DeGiroEnums'
 
   await degiro.login()
 
+  console.log('dasdaa')
   const result = await degiro.searchProduct({
-    text: 'TSLA',
-    type: DeGiroProducTypes.shares,
+    text: 'DDOG',
+    // type: DeGiroProducTypes.shares,
     limit: 1,
   })
   console.log(JSON.stringify(result, null, 2))

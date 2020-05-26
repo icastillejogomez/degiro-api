@@ -12,12 +12,11 @@ const createURLQuery = (options: SearchProductOptionsType): string => {
   const { text, type = undefined, sortColumn = undefined, sortType = undefined, limit = 10, offset = 0 } = options
 
   // Create the query
-  let res = `&text=${encodeURIComponent(text)}`
+  let res = `&searchText=${encodeURIComponent(text)}`
 
   if (type) res += `&type=${encodeURIComponent(type)}`
   if (sortColumn) res += `&sortColumn=${encodeURIComponent(sortColumn)}`
   if (sortType) res += `&sortType=${encodeURIComponent(sortType)}`
-  if (limit) res += `&limit=${encodeURIComponent(limit)}`
   if (limit) res += `&limit=${encodeURIComponent(limit)}`
   if (offset) res += `&offset=${encodeURIComponent(offset)}`
 

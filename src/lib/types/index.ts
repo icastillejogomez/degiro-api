@@ -9,6 +9,7 @@ import { AccountDataType } from './AccountDataType'
 import { GetPorfolioConfigType } from './GetPorfolioConfigType'
 import { SearchProductOptionsType } from './SearchProductOptionsType'
 import { SearchProductResultType } from './SearchProductResultType'
+import { OrderType } from './OrderType'
 
 export {
   CashFoundType,
@@ -22,4 +23,5 @@ export {
   GetPorfolioConfigType,
   SearchProductOptionsType,
   SearchProductResultType,
+  OrderType,
 }
