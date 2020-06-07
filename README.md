@@ -205,6 +205,10 @@ import { DeGiroProducTypes } from 'degiro-api/enums'
 2. Set orders
 3. Get prices
 
+## Degiro Command Line Interface (CLI)
+
+See the repo [degiro-cli](https://github.com/icastillejogomez/degiro-cli).
+
 ## License
 
 MIT
