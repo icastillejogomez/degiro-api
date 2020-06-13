@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PORTFOLIO_POSITIONS_TYPE_ENUM = exports.DeGiroSort = exports.DeGiroProducTypes = exports.DeGiroTimeTypes = exports.DeGiroOrderTypes = exports.DeGiroActions = exports.MainDeGiroConsts = void 0;
+exports.PORTFOLIO_POSITIONS_TYPE_ENUM = exports.DeGiroSort = exports.DeGiroProducTypes = exports.DeGiroTimeTypes = exports.DeGiroMarketOrderTypes = exports.DeGiroActions = exports.MainDeGiroConsts = void 0;
 var MainDeGiroConsts;
 (function (MainDeGiroConsts) {
     MainDeGiroConsts["BASE_API_URL"] = "https://trader.degiro.nl/";
@@ -12,13 +12,13 @@ var DeGiroActions;
     DeGiroActions["BUY"] = "BUY";
     DeGiroActions["SELL"] = "SELL";
 })(DeGiroActions = exports.DeGiroActions || (exports.DeGiroActions = {}));
-var DeGiroOrderTypes;
-(function (DeGiroOrderTypes) {
-    DeGiroOrderTypes[DeGiroOrderTypes["LIMITED"] = 0] = "LIMITED";
-    DeGiroOrderTypes[DeGiroOrderTypes["MARKET"] = 2] = "MARKET";
-    DeGiroOrderTypes[DeGiroOrderTypes["STOP_LOSS"] = 3] = "STOP_LOSS";
-    DeGiroOrderTypes[DeGiroOrderTypes["STOP_LOSS_LIMIT"] = 1] = "STOP_LOSS_LIMIT";
-})(DeGiroOrderTypes = exports.DeGiroOrderTypes || (exports.DeGiroOrderTypes = {}));
+var DeGiroMarketOrderTypes;
+(function (DeGiroMarketOrderTypes) {
+    DeGiroMarketOrderTypes[DeGiroMarketOrderTypes["LIMITED"] = 0] = "LIMITED";
+    DeGiroMarketOrderTypes[DeGiroMarketOrderTypes["MARKET"] = 2] = "MARKET";
+    DeGiroMarketOrderTypes[DeGiroMarketOrderTypes["STOP_LOSS"] = 3] = "STOP_LOSS";
+    DeGiroMarketOrderTypes[DeGiroMarketOrderTypes["STOP_LOSS_LIMIT"] = 1] = "STOP_LOSS_LIMIT";
+})(DeGiroMarketOrderTypes = exports.DeGiroMarketOrderTypes || (exports.DeGiroMarketOrderTypes = {}));
 var DeGiroTimeTypes;
 (function (DeGiroTimeTypes) {
     DeGiroTimeTypes[DeGiroTimeTypes["DAY"] = 1] = "DAY";

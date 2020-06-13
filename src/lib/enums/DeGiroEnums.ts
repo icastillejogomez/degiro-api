@@ -9,7 +9,7 @@ export enum DeGiroActions {
   SELL = 'SELL',
 }
 
-export enum DeGiroOrderTypes {
+export enum DeGiroMarketOrderTypes {
   LIMITED = 0,
   MARKET = 2,
   STOP_LOSS = 3,

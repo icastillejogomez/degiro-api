@@ -39,9 +39,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var main_1 = require("./../main");
 var DeGiroEnums_1 = require("../lib/enums/DeGiroEnums");
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var degiro, order, executeId;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var degiro, order, _a, confirmationId, freeSpaceNew, transactionFees;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
                 degiro = new main_1.default({
                     username: 'nachoogoomezomg',
@@ -49,20 +49,19 @@ var DeGiroEnums_1 = require("../lib/enums/DeGiroEnums");
                 });
                 return [4 /*yield*/, degiro.login()];
             case 1:
-                _a.sent();
+                _b.sent();
                 order = {
                     buySell: DeGiroEnums_1.DeGiroActions.BUY,
-                    orderType: DeGiroEnums_1.DeGiroOrderTypes.MARKET,
-                    productId: '16452536',
+                    orderType: DeGiroEnums_1.DeGiroMarketOrderTypes.LIMITED,
+                    productId: '331868',
                     size: 1,
                     timeType: DeGiroEnums_1.DeGiroTimeTypes.DAY,
-                    limitedPrice: 100,
-                    stopPrice: 99,
+                    price: 272,
                 };
                 return [4 /*yield*/, degiro.createOrder(order)];
             case 2:
-                executeId = _a.sent();
-                console.log(JSON.stringify({ order: order, executeId: executeId }, null, 2));
+                _a = _b.sent(), confirmationId = _a.confirmationId, freeSpaceNew = _a.freeSpaceNew, transactionFees = _a.transactionFees;
+                console.log(JSON.stringify({ confirmationId: confirmationId, freeSpaceNew: freeSpaceNew, transactionFees: transactionFees }, null, 2));
                 return [2 /*return*/];
         }
     });

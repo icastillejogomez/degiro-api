@@ -15,6 +15,7 @@ import {
   GetPorfolioConfigType,
   SearchProductOptionsType,
   OrderType,
+  CreateOrderResultType,
 } from './types'
 
 // Import requests
@@ -26,6 +27,8 @@ import {
   getProductsByIdsRequest,
   searchProductRequest,
   createOrderRequest,
+  executeOrderRequest,
+  deleteOrderRequest,
 } from './requests'
 
 /**
@@ -150,15 +153,25 @@ export class DeGiro implements DeGiroClassInterface{
     return searchProductRequest(options, this.accountConfig, this.accountData)
   }
 
-  createOrder(order: OrderType): Promise<string> {
+  createOrder(order: OrderType): Promise<CreateOrderResultType> {
     if (!this.accountConfig || !this.accountData) {
       return Promise.reject('No session id found.')
     }
     return createOrderRequest(order, this.accountData, this.accountConfig)
   }
 
-  executeOrder(order: OrderType, executeId: string): Promise<string> {
-    throw new Error('Method not implemented.')
+  executeOrder(order: OrderType, executeId: String): Promise<String> {
+    if (!this.accountConfig || !this.accountData) {
+      return Promise.reject('No session id found.')
+    }
+    return executeOrderRequest(order, executeId, this.accountData, this.accountConfig)
+  }
+
+  deleteOrder(orderId: String): Promise<void> {
+    if (!this.accountConfig || !this.accountData) {
+      return Promise.reject('No session id found.')
+    }
+    return deleteOrderRequest(orderId, this.accountData, this.accountConfig)
   }
 
 }

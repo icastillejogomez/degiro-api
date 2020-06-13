@@ -17,12 +17,11 @@ function createOrderRequest(order, accountData, accountConfig) {
         var uri = accountConfig.data.tradingUrl + "v5/checkOrder;jsessionid=" + accountConfig.data.sessionId + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;
         utils_1.debug(uri, requestOptions);
         node_fetch_1.default(uri, requestOptions)
+            .then(function (res) { return res.json(); })
             .then(function (res) {
-            console.log(res);
-            return res.json();
-        })
-            .then(function (res) {
-            console.log(res);
+            if (res.errors)
+                return reject(res.errors);
+            resolve(res.data);
         })
             .catch(reject);
     });

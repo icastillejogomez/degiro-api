@@ -10,5 +10,7 @@ import { GetPorfolioConfigType } from './GetPorfolioConfigType';
 import { SearchProductOptionsType } from './SearchProductOptionsType';
 import { SearchProductResultType } from './SearchProductResultType';
 import { OrderType } from './OrderType';
-export { CashFoundType, DeGiroSettupType, PortfolioPositionType, LoginResponseType, LoginRequestParamsType, LoginRequestBodyType, AccountConfigType, AccountDataType, GetPorfolioConfigType, SearchProductOptionsType, SearchProductResultType, OrderType, };
+import { CreateOrderResultType } from './CreateOrderResultType';
+import { TransactionFeeType } from './TransactionFeeType';
+export { CashFoundType, DeGiroSettupType, PortfolioPositionType, LoginResponseType, LoginRequestParamsType, LoginRequestBodyType, AccountConfigType, AccountDataType, GetPorfolioConfigType, SearchProductOptionsType, SearchProductResultType, OrderType, CreateOrderResultType, TransactionFeeType, };
 //# sourceMappingURL=index.d.ts.map

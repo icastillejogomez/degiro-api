@@ -6,6 +6,7 @@ import {
   SearchProductOptionsType,
   SearchProductResultType,
   OrderType,
+  CreateOrderResultType,
 } from '../types'
 
 /**
@@ -29,8 +30,10 @@ export interface DeGiroClassInterface {
 
   searchProduct (options: SearchProductOptionsType): Promise<SearchProductResultType[]>
 
-  createOrder (order: OrderType): Promise<string>
+  createOrder (order: OrderType): Promise<CreateOrderResultType>
 
-  executeOrder (order: OrderType, executeId: string): Promise<string>
+  executeOrder (order: OrderType, executeId: string): Promise<String>
+
+  deleteOrder(orderId: String): Promise<void>
 
 }

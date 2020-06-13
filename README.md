@@ -159,7 +159,7 @@ import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
 Search the text "AAPL" without any limitation
 
 ```js
-import DeGiro from './../main'
+import DeGiro from 'degiro-api'
 
 (async () => {
 
@@ -178,7 +178,7 @@ import DeGiro from './../main'
 Search TSLA stock
 
 ```js
-import DeGiro from './../main'
+import DeGiro from 'degiro-api'
 import { DeGiroProducTypes } from 'degiro-api/enums'
 
 (async () => {
@@ -199,11 +199,42 @@ import { DeGiroProducTypes } from 'degiro-api/enums'
 })()
 ```
 
+### Create Orders
+
+```js
+import DeGiro from 'degiro-api'
+import { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } from 'degiro-api/enums'
+import { OrderType } from 'degiro-api/types' // should not work?? 
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '************'
+  })
+
+  await degiro.login()
+
+  const order: OrderType = {
+    buySell: DeGiroActions.BUY,
+    orderType: DeGiroMarketOrderTypes.LIMITED,
+    productId: '331868', // $AAPL - Apple Inc
+    size: 1,
+    timeType: DeGiroTimeTypes.DAY,
+    price: 272, // limit price [Degiro could reject this value]
+    // stopPrice: 2,
+  }
+
+  const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
+  console.log(JSON.stringify({ confirmationId, freeSpaceNew, transactionFees }, null, 2))
+})()
+
+```
+
 ## TO DO List
 
 1. Two factor
-2. Set orders
-3. Get prices
+2. Get prices
 
 ## Degiro Command Line Interface (CLI)
 

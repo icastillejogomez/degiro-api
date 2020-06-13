@@ -1,5 +1,5 @@
 import DeGiro from './../main'
-import { PORTFOLIO_POSITIONS_TYPE_ENUM, DeGiroActions, DeGiroOrderTypes, DeGiroTimeTypes } from '../lib/enums/DeGiroEnums'
+import { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } from '../lib/enums/DeGiroEnums'
 import { OrderType } from '../lib/types'
 
 (async () => {
@@ -13,13 +13,14 @@ import { OrderType } from '../lib/types'
 
   const order: OrderType = {
     buySell: DeGiroActions.BUY,
-    orderType: DeGiroOrderTypes.MARKET,
-    productId: '16452536', // $DDOG - Datadog
+    orderType: DeGiroMarketOrderTypes.LIMITED,
+    productId: '331868', // $AAPL - Apple Inc
     size: 1,
     timeType: DeGiroTimeTypes.DAY,
-    limitedPrice: 100,
-    stopPrice: 99,
+    price: 272, // limit price
+    // stopPrice: 2,
   }
-  const executeId = await degiro.createOrder(order)
-  console.log(JSON.stringify({ order, executeId }, null, 2))
+
+  const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
+  console.log(JSON.stringify({ confirmationId, freeSpaceNew, transactionFees }, null, 2))
 })()

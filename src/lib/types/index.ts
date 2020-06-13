@@ -10,6 +10,8 @@ import { GetPorfolioConfigType } from './GetPorfolioConfigType'
 import { SearchProductOptionsType } from './SearchProductOptionsType'
 import { SearchProductResultType } from './SearchProductResultType'
 import { OrderType } from './OrderType'
+import { CreateOrderResultType } from './CreateOrderResultType'
+import { TransactionFeeType } from './TransactionFeeType'
 
 export {
   CashFoundType,
@@ -24,4 +26,6 @@ export {
   SearchProductOptionsType,
   SearchProductResultType,
   OrderType,
+  CreateOrderResultType,
+  TransactionFeeType,
 }

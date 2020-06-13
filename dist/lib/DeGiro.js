@@ -124,7 +124,16 @@ var DeGiro = /** @class */ (function () {
         return requests_1.createOrderRequest(order, this.accountData, this.accountConfig);
     };
     DeGiro.prototype.executeOrder = function (order, executeId) {
-        throw new Error('Method not implemented.');
+        if (!this.accountConfig || !this.accountData) {
+            return Promise.reject('No session id found.');
+        }
+        return requests_1.executeOrderRequest(order, executeId, this.accountData, this.accountConfig);
+    };
+    DeGiro.prototype.deleteOrder = function (orderId) {
+        if (!this.accountConfig || !this.accountData) {
+            return Promise.reject('No session id found.');
+        }
+        return requests_1.deleteOrderRequest(orderId, this.accountData, this.accountConfig);
     };
     return DeGiro;
 }());

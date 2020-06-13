@@ -49,9 +49,8 @@ var main_1 = require("./../main");
                 return [4 /*yield*/, degiro.login()];
             case 1:
                 _a.sent();
-                console.log('dasdaa');
                 return [4 /*yield*/, degiro.searchProduct({
-                        text: 'DDOG',
+                        text: 'AAPL',
                         // type: DeGiroProducTypes.shares,
                         limit: 1,
                     })];

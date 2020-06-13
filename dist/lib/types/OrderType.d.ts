@@ -1,11 +1,11 @@
-import { DeGiroActions, DeGiroOrderTypes, DeGiroTimeTypes } from '../enums/DeGiroEnums';
+import { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } from '../enums/DeGiroEnums';
 export declare type OrderType = {
     buySell: DeGiroActions;
-    orderType: DeGiroOrderTypes;
+    orderType: DeGiroMarketOrderTypes;
+    price?: Number;
     productId: string;
     size: number;
+    stopPrice?: number;
     timeType: DeGiroTimeTypes;
-    limitedPrice: number;
-    stopPrice: number;
 };
 //# sourceMappingURL=OrderType.d.ts.map

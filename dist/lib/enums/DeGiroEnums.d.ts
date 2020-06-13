@@ -7,7 +7,7 @@ export declare enum DeGiroActions {
     BUY = "BUY",
     SELL = "SELL"
 }
-export declare enum DeGiroOrderTypes {
+export declare enum DeGiroMarketOrderTypes {
     LIMITED = 0,
     MARKET = 2,
     STOP_LOSS = 3,

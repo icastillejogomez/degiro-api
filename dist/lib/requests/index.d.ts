@@ -5,5 +5,7 @@ import { getPortfolioRequest } from './getPortfolioRequest';
 import { getProductsByIdsRequest } from './getProductsByIdsRequest';
 import { searchProductRequest } from './searchProductRequest';
 import { createOrderRequest } from './createOrderRequest';
-export { loginRequest, getAccountConfigRequest, getAccountDataRequest, getPortfolioRequest, getProductsByIdsRequest, searchProductRequest, createOrderRequest, };
+import { executeOrderRequest } from './executeOrderRequest';
+import { deleteOrderRequest } from './deleteOrderRequest';
+export { loginRequest, getAccountConfigRequest, getAccountDataRequest, getPortfolioRequest, getProductsByIdsRequest, searchProductRequest, createOrderRequest, executeOrderRequest, deleteOrderRequest, };
 //# sourceMappingURL=index.d.ts.map
