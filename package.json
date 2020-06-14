@@ -1,6 +1,6 @@
 {
   "name": "degiro-api",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "public": true,
   "description": "Unofficial DeGiro API for Javascript. Buy and sell in the stock market. See your portfolio and much more",
   "main": "dist/main.js",
@@ -8,7 +8,9 @@
   "scripts": {
     "start": "node dist/main",
     "compile": "rm -fr dist && tsc",
-    "lint": "tslint --project tsconfig.json 'src/**/*.ts'"
+    "lint": "tslint --project tsconfig.json 'src/**/*.ts'",
+    "npm:publish": "yarn lint && yarn compile && yarn publish",
+    "push": "yarn lint && yarn compile && git push"
   },
   "keywords": [
     "degiro",
