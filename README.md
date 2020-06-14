@@ -199,7 +199,45 @@ import { DeGiroProducTypes } from 'degiro-api/enums'
 })()
 ```
 
-### Create Orders
+### DeGiro Orders
+
+## Create a new order
+
+`degiro.createOrder(order: OrderType): Promise<CreateOrderResultType>`
+
+OrderType = {
+  buySell: DeGiroActions,
+  orderType: DeGiroMarketOrderTypes,
+  price?: Number,
+  productId: string,
+  size: number,
+  stopPrice?: number,
+  timeType: DeGiroTimeTypes,
+}
+
+DeGiroActions {
+  BUY = 'BUY',
+  SELL = 'SELL',
+}
+
+DeGiroMarketOrderTypes {
+  LIMITED = 0,
+  MARKET = 2,
+  STOP_LOSS = 3,
+  STOP_LOSS_LIMIT = 1,
+}
+
+CreateOrderResultType = {
+  confirmationId: String,
+  freeSpaceNew: Number,
+  transactionFees: [TransactionFeeType],
+}
+
+TransactionFeeType = {
+  amount: Number,
+  currency: String,
+  id: Number,
+}
 
 ```js
 import DeGiro from 'degiro-api'
@@ -228,8 +266,9 @@ import { OrderType } from 'degiro-api/types' // should not work??
   const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
   console.log(JSON.stringify({ confirmationId, freeSpaceNew, transactionFees }, null, 2))
 })()
-
 ```
+
+
 
 ## TO DO List
 
