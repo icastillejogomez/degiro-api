@@ -271,7 +271,7 @@ const { OrderType } = DeGiroTypes
 })()
 ```
 
-## Execute an order
+## Execute an order
 
 ```js
 import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
