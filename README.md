@@ -71,8 +71,8 @@ import DeGiro from 'degiro-api'
 Get all **open** positions:
 
 ```js
-import DeGiro from 'degiro-api'
-import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { PORTFOLIO_POSITIONS_TYPE_ENUM } = DeGiroEnums
 
 (async () => {
 
@@ -94,8 +94,8 @@ import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
 Also you can fetch your portfolio data this way:
 
 ```js
-import DeGiro from 'degiro-api'
-import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { PORTFOLIO_POSITIONS_TYPE_ENUM } = DeGiroEnums
 
 (async () => {
 
@@ -114,8 +114,8 @@ import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
 And getting product details too
 
 ```js
-import DeGiro from 'degiro-api'
-import { PORTFOLIO_POSITIONS_TYPE_ENUM } from 'degiro-api/enums'
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { PORTFOLIO_POSITIONS_TYPE_ENUM } = DeGiroEnums
 
 (async () => {
 
@@ -178,8 +178,8 @@ import DeGiro from 'degiro-api'
 Search TSLA stock
 
 ```js
-import DeGiro from 'degiro-api'
-import { DeGiroProducTypes } from 'degiro-api/enums'
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { DeGiroProducTypes } = DeGiroEnums
 
 (async () => {
 
@@ -243,9 +243,9 @@ import { DeGiroProducTypes } from 'degiro-api/enums'
 
 
 ```js
-import DeGiro from 'degiro-api'
-import { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } from 'degiro-api/enums'
-import { OrderType } from 'degiro-api/types' // should not work?? 
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } = DeGiroEnums
+const { OrderType } = DeGiroTypes
 
 (async () => {
 
@@ -271,6 +271,41 @@ import { OrderType } from 'degiro-api/types' // should not work??
 })()
 ```
 
+## Execute an order
+
+```js
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } = DeGiroEnums
+const { OrderType } = DeGiroTypes
+
+(async () => {
+
+  try {
+    const degiro: DeGiro = new DeGiro({
+      username: 'nachoogoomezomg',
+      pwd: <string>process.env.DEGIRO_PWD,
+    })
+
+    await degiro.login()
+
+    const order: OrderType = {
+      buySell: DeGiroActions.BUY,
+      orderType: DeGiroMarketOrderTypes.LIMITED,
+      productId: '331868', // $AAPL - Apple Inc
+      size: 1,
+      timeType: DeGiroTimeTypes.DAY,
+      price: 270, // limit price
+      // stopPrice: 2,
+    }
+
+    const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
+    const orderId = await degiro.executeOrder(order, confirmationId)
+    console.log(`Order executed with id: ${orderId}`)
+  } catch (error) {
+    console.error(error)
+  }
+})()
+```
 
 
 ## TO DO List
