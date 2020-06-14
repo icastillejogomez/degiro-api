@@ -1,7 +1,9 @@
 import { DeGiro } from './lib/DeGiro'
-import * as enums from './lib/enums/index'
+import * as DeGiroEnums from './lib/enums/index'
+import * as DeGiroTypes from './lib/types'
 
 export {
-  enums,
+  DeGiroEnums,
+  DeGiroTypes,
 }
 export default DeGiro
