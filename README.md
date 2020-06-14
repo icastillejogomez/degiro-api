@@ -205,15 +205,15 @@ import { DeGiroProducTypes } from 'degiro-api/enums'
 
 `degiro.createOrder(order: OrderType): Promise<CreateOrderResultType>`
 
-OrderType = {
-  buySell: DeGiroActions,
-  orderType: DeGiroMarketOrderTypes,
-  price?: Number,
-  productId: string,
-  size: number,
-  stopPrice?: number,
-  timeType: DeGiroTimeTypes,
-}
+* **OrderType**
+  * **buySell**: DeGiroActions,
+  * **orderType**: DeGiroMarketOrderTypes,
+  * **price**?: Number,
+  * **productId**: string,
+  * **size**: number,
+  * **stopPrice**?: number,
+  * **timeType**: DeGiroTimeTypes,
+
 
 DeGiroActions {
   BUY = 'BUY',
