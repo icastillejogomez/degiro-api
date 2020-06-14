@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MainDeGiroConsts = void 0;
+exports.PORTFOLIO_POSITIONS_TYPE_ENUM = exports.DeGiroSort = exports.DeGiroProducTypes = exports.DeGiroTimeTypes = exports.DeGiroMarketOrderTypes = exports.DeGiroActions = exports.MainDeGiroConsts = void 0;
 var DeGiroEnums_1 = require("./DeGiroEnums");
 Object.defineProperty(exports, "MainDeGiroConsts", { enumerable: true, get: function () { return DeGiroEnums_1.MainDeGiroConsts; } });
+Object.defineProperty(exports, "DeGiroActions", { enumerable: true, get: function () { return DeGiroEnums_1.DeGiroActions; } });
+Object.defineProperty(exports, "DeGiroMarketOrderTypes", { enumerable: true, get: function () { return DeGiroEnums_1.DeGiroMarketOrderTypes; } });
+Object.defineProperty(exports, "DeGiroTimeTypes", { enumerable: true, get: function () { return DeGiroEnums_1.DeGiroTimeTypes; } });
+Object.defineProperty(exports, "DeGiroProducTypes", { enumerable: true, get: function () { return DeGiroEnums_1.DeGiroProducTypes; } });
+Object.defineProperty(exports, "DeGiroSort", { enumerable: true, get: function () { return DeGiroEnums_1.DeGiroSort; } });
+Object.defineProperty(exports, "PORTFOLIO_POSITIONS_TYPE_ENUM", { enumerable: true, get: function () { return DeGiroEnums_1.PORTFOLIO_POSITIONS_TYPE_ENUM; } });
 //# sourceMappingURL=index.js.map
