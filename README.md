@@ -199,9 +199,9 @@ import { DeGiroProducTypes } from 'degiro-api/enums'
 })()
 ```
 
-### DeGiro Orders
+## DeGiro Orders
 
-## Create a new order
+### Create a new order
 
 `degiro.createOrder(order: OrderType): Promise<CreateOrderResultType>`
 
