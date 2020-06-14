@@ -24,7 +24,7 @@ import { OrderType } from '../lib/types'
 
     const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
     const orderId = await degiro.executeOrder(order, confirmationId)
-    console.log(`Order executed with id: ${orderId}`) 
+    console.log(`Order executed with id: ${orderId}`)
   } catch (error) {
     console.error(error)
   }
