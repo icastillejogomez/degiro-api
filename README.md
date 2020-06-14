@@ -208,36 +208,39 @@ import { DeGiroProducTypes } from 'degiro-api/enums'
 * **OrderType**
   * **buySell**: DeGiroActions,
   * **orderType**: DeGiroMarketOrderTypes,
-  * **price**?: Number,
+  * **price**: *optional* Number,
   * **productId**: string,
   * **size**: number,
-  * **stopPrice**?: number,
+  * **stopPrice**: *optional* number,
   * **timeType**: DeGiroTimeTypes,
 
 
-DeGiroActions {
-  BUY = 'BUY',
-  SELL = 'SELL',
-}
+* **DeGiroActions**
+  * **BUY**: 'BUY',
+  * **SELL**: 'SELL',
 
-DeGiroMarketOrderTypes {
-  LIMITED = 0,
-  MARKET = 2,
-  STOP_LOSS = 3,
-  STOP_LOSS_LIMIT = 1,
-}
 
-CreateOrderResultType = {
-  confirmationId: String,
-  freeSpaceNew: Number,
-  transactionFees: [TransactionFeeType],
-}
+* **DeGiroMarketOrderTypes**
+  * **LIMITED**: 0,
+  * **MARKET**: 2,
+  * **STOP_LOSS**: 3,
+  * **STOP_LOSS_LIMIT**: 1,
 
-TransactionFeeType = {
-  amount: Number,
-  currency: String,
-  id: Number,
-}
+* **DeGiroTimeTypes**
+  * **DAY**: 1,
+  * **PERMANENT**: 3,
+
+* **CreateOrderResultType**
+  * **confirmationId**: String,
+  * **freeSpaceNew**: Number,
+  * **transactionFees**: [TransactionFeeType],
+
+
+* **TransactionFeeType**
+  * **amount**: Number,
+  * **currency**: String,
+  * **id**: Number,
+
 
 ```js
 import DeGiro from 'degiro-api'
