@@ -337,7 +337,7 @@ const { OrderType } = DeGiroTypes
   const orderId = await degiro.executeOrder(order, confirmationId)
   console.log(`Order executed with id: ${orderId}`)
 
-  // Wait few seconds to void "Rate limit for the given request exceeded" error
+  // Wait few seconds to avoid "Rate limit for the given request exceeded" error
   const TIMEOUT_SECONDS = 2 * 1000
   const deleteOrderFunction = async () => {
     try {
