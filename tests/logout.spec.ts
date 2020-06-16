@@ -31,5 +31,4 @@ describe('DeGiro logout process', () => {
     })
   })
 
-
 })
