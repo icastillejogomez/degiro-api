@@ -1,0 +1,591 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>degiro-api</title>
+	<meta name="description" content="Documentation for degiro-api">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">degiro-api</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>degiro-api</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#unofficial-degiro-api" id="unofficial-degiro-api" style="color: inherit; text-decoration: none;">
+					<h1>Unofficial DeGiro API</h1>
+				</a>
+				<p><img src="https://raw.githubusercontent.com/icastillejogomez/degiro-api/master/.assets/degiro.png" alt="DeGiro Logo"></p>
+				<p>This is an unofficial Node.js API client for DeGiro&#39;s trading platform. Using this module you can easily automate your orders (buy and sell) and get information about orders, funds or products.</p>
+				<p>DeGiro is Europe&#39;s fastest growing online stockbroker. DeGiro distinguishes itself by offering institutional fees to retail investors.</p>
+				<p>⚠️  DeGiro could change their API at any moment, if something is not working, please open an issue.</p>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
+				<pre><code class="language-sh"><span class="hljs-comment"># using npm</span>
+npm install --save degiro-api
+
+<span class="hljs-comment"># using yarn</span>
+yarn add degiro-api</code></pre>
+				<a href="#basic-examples" id="basic-examples" style="color: inherit; text-decoration: none;">
+					<h2>Basic examples</h2>
+				</a>
+				<a href="#create-an-instance-of-degiro" id="create-an-instance-of-degiro" style="color: inherit; text-decoration: none;">
+					<h3>Create an instance of DeGiro</h3>
+				</a>
+				<p>Basic log in DeGiro Platform. All endpoint needs a session key before those can be call.</p>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> DeGiro = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;degiro-api&#x27;</span>)
+
+<span class="hljs-keyword">const</span> degiro = <span class="hljs-keyword">new</span> DeGiro({
+  <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;username&#x27;</span>,
+  <span class="hljs-attr">pwd</span>: <span class="hljs-string">&#x27;*****&#x27;</span>
+})
+
+degiro.login()
+  .then(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Log in success&#x27;</span>))
+  .catch(<span class="hljs-built_in">console</span>.error)</code></pre>
+				<a href="#get-account-details" id="get-account-details" style="color: inherit; text-decoration: none;">
+					<h3>Get account details</h3>
+				</a>
+				<p>Get account info using <code>await</code>:</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> degiro = <span class="hljs-keyword">new</span> DeGiro({
+    <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;username&#x27;</span>,
+    <span class="hljs-attr">pwd</span>: <span class="hljs-string">&#x27;*****&#x27;</span>
+  })
+
+  <span class="hljs-keyword">await</span> degiro.login()
+
+  <span class="hljs-keyword">const</span> accountData = <span class="hljs-keyword">await</span> degiro.getAccountData()
+  <span class="hljs-comment">// console.log(accountData)</span>
+})()</code></pre>
+				<a href="#get-portfolio" id="get-portfolio" style="color: inherit; text-decoration: none;">
+					<h3>Get portfolio</h3>
+				</a>
+				<p><code>getPortfolio</code>params are:</p>
+				<ul>
+					<li><p><strong>type</strong>: set the types or positions you want to fetch. Could be:</p>
+						<ul>
+							<li>ALL: Gets the response without filter it</li>
+							<li>ALL_POSITIONS: Gets only positions in products. Exclude positions like &#39;CASH&#39;, etc.</li>
+							<li>OPEN: Gets only opened positions. </li>
+							<li>CLOSED: Gets only the closed positions in your portfolio.</li>
+						</ul>
+					</li>
+					<li><p><strong>getProductDetails</strong>: if is set to true the positions results will have a <code>productData</code> field with all the product details.</p>
+					</li>
+				</ul>
+				<p>Get all <strong>open</strong> positions:</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro, { DeGiroEnums, DeGiroTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+<span class="hljs-keyword">const</span> { PORTFOLIO_POSITIONS_TYPE_ENUM } = DeGiroEnums
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+
+  <span class="hljs-keyword">const</span> degiro: DeGiro = <span class="hljs-keyword">new</span> DeGiro({
+    <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;your_username_here&#x27;</span>,
+    <span class="hljs-attr">pwd</span>: <span class="hljs-string">&#x27;**********&#x27;</span>,
+  })
+
+  <span class="hljs-keyword">await</span> degiro.login()
+
+  <span class="hljs-keyword">const</span> portfolio = <span class="hljs-keyword">await</span> degiro.getPortfolio({ 
+    <span class="hljs-attr">type</span>: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL, 
+    <span class="hljs-attr">getProductDetails</span>: <span class="hljs-literal">true</span>,
+  })
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(portfolio, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>))
+})()</code></pre>
+				<p>Also you can fetch your portfolio data this way:</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro, { DeGiroEnums, DeGiroTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+<span class="hljs-keyword">const</span> { PORTFOLIO_POSITIONS_TYPE_ENUM } = DeGiroEnums
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+
+  <span class="hljs-keyword">const</span> degiro: DeGiro = <span class="hljs-keyword">new</span> DeGiro({
+    <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;your_username_here&#x27;</span>,
+    <span class="hljs-attr">pwd</span>: <span class="hljs-string">&#x27;**********&#x27;</span>,
+  })
+
+  <span class="hljs-keyword">await</span> degiro.login()
+
+  <span class="hljs-keyword">const</span> portfolio = <span class="hljs-keyword">await</span> degiro.getPortfolio({ <span class="hljs-attr">type</span>: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL })
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(portfolio, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>))
+})()</code></pre>
+				<p>And getting product details too</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro, { DeGiroEnums, DeGiroTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+<span class="hljs-keyword">const</span> { PORTFOLIO_POSITIONS_TYPE_ENUM } = DeGiroEnums
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+
+  <span class="hljs-keyword">const</span> degiro: DeGiro = <span class="hljs-keyword">new</span> DeGiro({
+    <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;your_username_here&#x27;</span>,
+    <span class="hljs-attr">pwd</span>: <span class="hljs-string">&#x27;**********&#x27;</span>,
+  })
+
+  <span class="hljs-keyword">await</span> degiro.login()
+
+  <span class="hljs-keyword">const</span> portfolio = <span class="hljs-keyword">await</span> degiro.getPortfolio({ 
+    <span class="hljs-attr">type</span>: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL, 
+    <span class="hljs-attr">getProductDetails</span>: <span class="hljs-literal">true</span>,
+  })
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(portfolio, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>))
+})()</code></pre>
+				<a href="#search-product-stock-and-much-more-in-broker" id="search-product-stock-and-much-more-in-broker" style="color: inherit; text-decoration: none;">
+					<h3>Search product, stock and much more in broker</h3>
+				</a>
+				<p><code>degiro.searchProduct(options): Promise&lt;SearchProductResultType[]&gt;</code></p>
+				<ul>
+					<li><strong>options</strong>: <ul>
+							<li><strong>text</strong>: <em>required</em> string,</li>
+							<li><strong>type</strong>: <em>optional</em> DeGiroProducTypes</li>
+							<li><strong>limit</strong>: <em>optional</em> number default=10,</li>
+							<li><strong>offset</strong>: <em>optional</em> number default=0,</li>
+						</ul>
+					</li>
+				</ul>
+				<p><code>DeGiroProducTypes</code></p>
+				<ul>
+					<li><em>shares</em>: 1</li>
+					<li><em>bonds</em>: 2</li>
+					<li><em>futures</em>: 7</li>
+					<li><em>options</em>: 8</li>
+					<li><em>investmendFunds</em>: 13</li>
+					<li><em>leveragedProducts</em>: 14</li>
+					<li><em>etfs</em>: 131</li>
+					<li><em>cfds</em>: 535</li>
+					<li><em>warrants</em>: 536</li>
+				</ul>
+				<p>Search the text &quot;AAPL&quot; without any limitation</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+
+  <span class="hljs-keyword">const</span> degiro: DeGiro = <span class="hljs-keyword">new</span> DeGiro({
+    <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;your_username_here&#x27;</span>,
+    <span class="hljs-attr">pwd</span>: <span class="hljs-string">&#x27;***********&#x27;</span>,
+  })
+
+  <span class="hljs-keyword">await</span> degiro.login()
+
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> degiro.searchProduct({ <span class="hljs-attr">text</span>: <span class="hljs-string">&#x27;AAPL&#x27;</span> })
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(result, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>))
+})()</code></pre>
+				<p>Search TSLA stock</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro, { DeGiroEnums, DeGiroTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+<span class="hljs-keyword">const</span> { DeGiroProducTypes } = DeGiroEnums
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+
+  <span class="hljs-keyword">const</span> degiro: DeGiro = <span class="hljs-keyword">new</span> DeGiro({
+    <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;your_username_here&#x27;</span>,
+    <span class="hljs-attr">pwd</span>: <span class="hljs-string">&#x27;***********&#x27;</span>,
+  })
+
+  <span class="hljs-keyword">await</span> degiro.login()
+
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> degiro.searchProduct({
+    <span class="hljs-attr">text</span>: <span class="hljs-string">&#x27;TSLA&#x27;</span>,
+    <span class="hljs-attr">type</span>: DeGiroProducTypes.shares,
+    <span class="hljs-attr">limit</span>: <span class="hljs-number">1</span>,
+  })
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(result, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>))
+})()</code></pre>
+				<a href="#degiro-orders" id="degiro-orders" style="color: inherit; text-decoration: none;">
+					<h2>DeGiro Orders</h2>
+				</a>
+				<a href="#create-a-new-order" id="create-a-new-order" style="color: inherit; text-decoration: none;">
+					<h3>Create a new order</h3>
+				</a>
+				<p><code>degiro.createOrder(order: OrderType): Promise&lt;CreateOrderResultType&gt;</code></p>
+				<ul>
+					<li><strong>OrderType</strong><ul>
+							<li><strong>buySell</strong>: DeGiroActions,</li>
+							<li><strong>orderType</strong>: DeGiroMarketOrderTypes,</li>
+							<li><strong>price</strong>: <em>optional</em> Number,</li>
+							<li><strong>productId</strong>: string,</li>
+							<li><strong>size</strong>: number,</li>
+							<li><strong>stopPrice</strong>: <em>optional</em> number,</li>
+							<li><strong>timeType</strong>: DeGiroTimeTypes,</li>
+						</ul>
+					</li>
+				</ul>
+				<ul>
+					<li><strong>DeGiroActions</strong><ul>
+							<li><strong>BUY</strong>: &#39;BUY&#39;,</li>
+							<li><strong>SELL</strong>: &#39;SELL&#39;,</li>
+						</ul>
+					</li>
+				</ul>
+				<ul>
+					<li><p><strong>DeGiroMarketOrderTypes</strong></p>
+						<ul>
+							<li><strong>LIMITED</strong>: 0,</li>
+							<li><strong>MARKET</strong>: 2,</li>
+							<li><strong>STOP_LOSS</strong>: 3,</li>
+							<li><strong>STOP_LOSS_LIMIT</strong>: 1,</li>
+						</ul>
+					</li>
+					<li><p><strong>DeGiroTimeTypes</strong></p>
+						<ul>
+							<li><strong>DAY</strong>: 1,</li>
+							<li><strong>PERMANENT</strong>: 3,</li>
+						</ul>
+					</li>
+					<li><p><strong>CreateOrderResultType</strong></p>
+						<ul>
+							<li><strong>confirmationId</strong>: String,</li>
+							<li><strong>freeSpaceNew</strong>: Number,</li>
+							<li><strong>transactionFees</strong>: [TransactionFeeType],</li>
+						</ul>
+					</li>
+				</ul>
+				<ul>
+					<li><strong>TransactionFeeType</strong><ul>
+							<li><strong>amount</strong>: Number,</li>
+							<li><strong>currency</strong>: String,</li>
+							<li><strong>id</strong>: Number,</li>
+						</ul>
+					</li>
+				</ul>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro, { DeGiroEnums, DeGiroTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+<span class="hljs-keyword">const</span> { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } = DeGiroEnums
+<span class="hljs-keyword">const</span> { OrderType } = DeGiroTypes
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+
+  <span class="hljs-keyword">const</span> degiro: DeGiro = <span class="hljs-keyword">new</span> DeGiro({
+    <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;your_username_here&#x27;</span>,
+    <span class="hljs-attr">pwd</span>: <span class="hljs-string">&#x27;************&#x27;</span>
+  })
+
+  <span class="hljs-keyword">await</span> degiro.login()
+
+  <span class="hljs-keyword">const</span> order: OrderType = {
+    <span class="hljs-attr">buySell</span>: DeGiroActions.BUY,
+    <span class="hljs-attr">orderType</span>: DeGiroMarketOrderTypes.LIMITED,
+    <span class="hljs-attr">productId</span>: <span class="hljs-string">&#x27;331868&#x27;</span>, <span class="hljs-comment">// $AAPL - Apple Inc</span>
+    <span class="hljs-attr">size</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">timeType</span>: DeGiroTimeTypes.DAY,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">272</span>, <span class="hljs-comment">// limit price [Degiro could reject this value]</span>
+    <span class="hljs-comment">// stopPrice: 2,</span>
+  }
+
+  <span class="hljs-keyword">const</span> { confirmationId, freeSpaceNew, transactionFees } = <span class="hljs-keyword">await</span> degiro.createOrder(order)
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify({ confirmationId, freeSpaceNew, transactionFees }, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>))
+})()</code></pre>
+				<a href="#execute-an-order" id="execute-an-order" style="color: inherit; text-decoration: none;">
+					<h3>Execute an order</h3>
+				</a>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro, { DeGiroEnums, DeGiroTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+<span class="hljs-keyword">const</span> { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } = DeGiroEnums
+<span class="hljs-keyword">const</span> { OrderType } = DeGiroTypes
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> degiro: DeGiro = <span class="hljs-keyword">new</span> DeGiro({
+      <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;nachoogoomezomg&#x27;</span>,
+      <span class="hljs-attr">pwd</span>: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>process.env.DEGIRO_PWD,
+    })
+
+    await degiro.login()
+
+    const order: OrderType = {
+      buySell: DeGiroActions.BUY,
+      orderType: DeGiroMarketOrderTypes.LIMITED,
+      productId: &#x27;331868&#x27;, // $AAPL - Apple Inc
+      size: 1,
+      timeType: DeGiroTimeTypes.DAY,
+      price: 270, // limit price
+      // stopPrice: 2,
+    }
+
+    const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
+    const orderId = await degiro.executeOrder(order, confirmationId)
+    console.log(`Order executed with id: ${orderId}`)
+  } catch (error) {
+    console.error(error)
+  }
+})()</span></code></pre>
+				<a href="#remove-an-order" id="remove-an-order" style="color: inherit; text-decoration: none;">
+					<h3>Remove an order</h3>
+				</a>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro, { DeGiroEnums, DeGiroTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+<span class="hljs-keyword">const</span> { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } = DeGiroEnums
+<span class="hljs-keyword">const</span> { OrderType } = DeGiroTypes
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+
+  <span class="hljs-keyword">const</span> degiro: DeGiro = <span class="hljs-keyword">new</span> DeGiro({
+    <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;nachoogoomezomg&#x27;</span>,
+    <span class="hljs-attr">pwd</span>: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>process.env.DEGIRO_PWD,
+  })
+
+  await degiro.login()
+
+  const order: OrderType = {
+    buySell: DeGiroActions.BUY,
+    orderType: DeGiroMarketOrderTypes.LIMITED,
+    productId: &#x27;331868&#x27;, // $AAPL - Apple Inc
+    size: 1,
+    timeType: DeGiroTimeTypes.DAY,
+    price: 272, // limit price
+    // stopPrice: 2,
+  }
+
+  const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
+  const orderId = await degiro.executeOrder(order, confirmationId)
+  console.log(`Order executed with id: ${orderId}`)
+
+  // Wait few seconds to avoid &quot;Rate limit for the given request exceeded&quot; error
+  const TIMEOUT_SECONDS = 2 * 1000
+  const deleteOrderFunction = async () =&gt; {
+    try {
+      await degiro.deleteOrder(orderId)
+      console.log(&#x27;Order removed&#x27;)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  setTimeout(deleteOrderFunction, TIMEOUT_SECONDS)
+})()</span></code></pre>
+				<a href="#to-do-list" id="to-do-list" style="color: inherit; text-decoration: none;">
+					<h2>TO DO List</h2>
+				</a>
+				<ol>
+					<li>Two factor</li>
+					<li>Get prices</li>
+				</ol>
+				<a href="#degiro-command-line-interface-cli" id="degiro-command-line-interface-cli" style="color: inherit; text-decoration: none;">
+					<h2>Degiro Command Line Interface (CLI)</h2>
+				</a>
+				<p>See the repo <a href="https://github.com/icastillejogomez/degiro-cli">degiro-cli</a>.</p>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<p>MIT</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_degiro_.html">&quot;lib/<wbr>DeGiro&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_enums_degiroenums_.html">&quot;lib/enums/<wbr>DeGiro<wbr>Enums&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_enums_index_.html">&quot;lib/enums/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_interfaces_degiroclassinterface_.html">&quot;lib/interfaces/<wbr>DeGiro<wbr>Class<wbr>Interface&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_interfaces_index_.html">&quot;lib/interfaces/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_requests_createorderrequest_.html">&quot;lib/requests/create<wbr>Order<wbr>Request&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_requests_deleteorderrequest_.html">&quot;lib/requests/delete<wbr>Order<wbr>Request&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_requests_executeorderrequest_.html">&quot;lib/requests/execute<wbr>Order<wbr>Request&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_requests_getaccountconfig_.html">&quot;lib/requests/get<wbr>Account<wbr>Config&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_requests_getaccountdata_.html">&quot;lib/requests/get<wbr>Account<wbr>Data&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_requests_getportfoliorequest_.html">&quot;lib/requests/get<wbr>Portfolio<wbr>Request&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_requests_getproductsbyidsrequest_.html">&quot;lib/requests/get<wbr>Products<wbr>ByIds<wbr>Request&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_requests_index_.html">&quot;lib/requests/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_requests_login_.html">&quot;lib/requests/login&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_requests_logout_.html">&quot;lib/requests/logout&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_requests_searchproductrequest_.html">&quot;lib/requests/search<wbr>Product<wbr>Request&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_accountconfigtype_.html">&quot;lib/types/<wbr>Account<wbr>Config<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_accountdatatype_.html">&quot;lib/types/<wbr>Account<wbr>Data<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_cashfoundtype_.html">&quot;lib/types/<wbr>Cash<wbr>Found<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_createorderresulttype_.html">&quot;lib/types/<wbr>Create<wbr>Order<wbr>Result<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_degirosettuptype_.html">&quot;lib/types/<wbr>DeGiro<wbr>Settup<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_getporfolioconfigtype_.html">&quot;lib/types/<wbr>Get<wbr>Porfolio<wbr>Config<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_loginrequestbodytype_.html">&quot;lib/types/<wbr>Login<wbr>Request<wbr>Body<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_loginrequestparamstype_.html">&quot;lib/types/<wbr>Login<wbr>Request<wbr>Params<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_loginresponsetype_.html">&quot;lib/types/<wbr>Login<wbr>Response<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_ordertype_.html">&quot;lib/types/<wbr>Order<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_portfoliopositiontype_.html">&quot;lib/types/<wbr>Portfolio<wbr>Position<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_searchproductoptionstype_.html">&quot;lib/types/<wbr>Search<wbr>Product<wbr>Options<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_searchproductresulttype_.html">&quot;lib/types/<wbr>Search<wbr>Product<wbr>Result<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_transactionfeetype_.html">&quot;lib/types/<wbr>Transaction<wbr>Fee<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_index_.html">&quot;lib/types/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_utils_debug_.html">&quot;lib/utils/debug&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_utils_index_.html">&quot;lib/utils/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_utils_processportfolio_.html">&quot;lib/utils/process<wbr>Portfolio&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_main_.html">&quot;main&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_tests_createorder_.html">&quot;tests/create<wbr>Order&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_tests_deleteorder_.html">&quot;tests/delete<wbr>Order&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_tests_executeorder_.html">&quot;tests/execute<wbr>Order&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_tests_getportfolio_.html">&quot;tests/get<wbr>Portfolio&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_tests_login_.html">&quot;tests/login&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_tests_searchproduct_.html">&quot;tests/search<wbr>Product&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_tests_static_login_.html">&quot;tests/static-<wbr>login&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

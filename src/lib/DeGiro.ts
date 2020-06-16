@@ -36,7 +36,7 @@ import {
  * @class DeGiro
  * @description Main class of DeGiro Unofficial API.
  */
-export class DeGiro implements DeGiroClassInterface{
+export class DeGiro implements DeGiroClassInterface {
 
   private readonly username: string
   private readonly pwd: string
