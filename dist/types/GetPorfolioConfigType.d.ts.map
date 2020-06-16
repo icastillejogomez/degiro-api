@@ -1,0 +1,1 @@
+{"version":3,"file":"GetPorfolioConfigType.d.ts","sourceRoot":"","sources":["../../src/types/GetPorfolioConfigType.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,6BAA6B,EAAE,MAAM,sBAAsB,CAAA;AAEpE,oBAAY,qBAAqB,GAAG;IAClC,IAAI,EAAE,6BAA6B,CAAC;IACpC,iBAAiB,CAAC,EAAE,OAAO,CAAC;CAC7B,CAAA"}

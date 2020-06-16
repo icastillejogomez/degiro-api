@@ -20,10 +20,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeGiroTypes = exports.DeGiroEnums = void 0;
-var DeGiro_1 = require("./lib/DeGiro");
-var DeGiroEnums = __importStar(require("./lib/enums/index"));
+var DeGiro_1 = require("./DeGiro");
+var DeGiroEnums = __importStar(require("./enums/"));
 exports.DeGiroEnums = DeGiroEnums;
-var DeGiroTypes = __importStar(require("./lib/types"));
+var DeGiroTypes = __importStar(require("./types/"));
 exports.DeGiroTypes = DeGiroTypes;
 exports.default = DeGiro_1.DeGiro;
 //# sourceMappingURL=main.js.map

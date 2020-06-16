@@ -1,6 +1,6 @@
-import { DeGiro } from './lib/DeGiro'
-import * as DeGiroEnums from './lib/enums/index'
-import * as DeGiroTypes from './lib/types'
+import { DeGiro } from './DeGiro'
+import * as DeGiroEnums from './enums/'
+import * as DeGiroTypes from './types/'
 
 export {
   DeGiroEnums,

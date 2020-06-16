@@ -1,0 +1,1 @@
+{"version":3,"file":"CreateOrderResultType.d.ts","sourceRoot":"","sources":["../../src/types/CreateOrderResultType.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,kBAAkB,EAAE,MAAM,GAAG,CAAA;AAEtC,oBAAY,qBAAqB,GAAG;IAClC,cAAc,EAAE,MAAM,CAAC;IACvB,YAAY,EAAE,MAAM,CAAC;IACrB,eAAe,EAAE,CAAC,kBAAkB,CAAC,CAAC;CACvC,CAAA"}
