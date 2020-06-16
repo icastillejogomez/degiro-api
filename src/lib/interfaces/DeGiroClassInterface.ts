@@ -16,7 +16,9 @@ export interface DeGiroClassInterface {
 
   login(): Promise<void>
 
-  hasLogin(): boolean
+  logout(): Promise<void>
+
+  isLogin(): boolean
 
   getAccountConfig(): Promise<AccountConfigType>
 

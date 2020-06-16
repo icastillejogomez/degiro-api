@@ -29,6 +29,7 @@ import {
   createOrderRequest,
   executeOrderRequest,
   deleteOrderRequest,
+  logoutRequest,
 } from './requests'
 
 /**
@@ -43,8 +44,11 @@ export class DeGiro implements DeGiroClassInterface{
   private accountConfig: AccountConfigType | undefined
   private accountData: AccountDataType | undefined
 
-  constructor(params: DeGiroSettupType) {
-    const { username, pwd } = params
+  constructor(params: DeGiroSettupType = {}) {
+    let { username, pwd } = params
+
+    username = username || process.env['DEGIRO_USER']
+    pwd = pwd || process.env['DEGIRO_PWD']
 
     if (!username) throw new Error('DeGiro api needs an username to access')
     if (!pwd) throw new Error('DeGiro api needs an password to access')
@@ -72,10 +76,26 @@ export class DeGiro implements DeGiroClassInterface{
     })
   }
 
+  logout(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      if (!this.accountData || !this.accountConfig) {
+        return reject('You must log in first')
+      }
+      logoutRequest(this.accountData, this.accountConfig)
+        .then(() => {
+          delete this.accountData
+          delete this.accountConfig
+          delete this.loginResponse
+          resolve()
+        })
+        .catch(reject)
+    })
+  }
+
   getAccountConfig(): Promise<AccountConfigType> {
     return new Promise((resolve, reject) => {
       if (!this.loginResponse || !this.loginResponse.sessionId) {
-        return reject('No session id found.')
+        return reject('You must log in first')
       }
       getAccountConfigRequest(this.loginResponse.sessionId)
         .then((accountConfig: AccountConfigType) => {
@@ -89,7 +109,7 @@ export class DeGiro implements DeGiroClassInterface{
   getAccountData(): Promise<AccountDataType> {
     return new Promise((resolve, reject) => {
       if (!this.loginResponse || !this.loginResponse.sessionId || !this.accountConfig) {
-        return reject('No session id found.')
+        return reject('You must log in first')
       }
       getAccountDataRequest(this.loginResponse.sessionId, this.accountConfig)
         .then((accountData: AccountDataType) => {
@@ -100,8 +120,8 @@ export class DeGiro implements DeGiroClassInterface{
     })
   }
 
-  hasLogin(): boolean {
-    return this.loginResponse !== undefined
+  isLogin(): boolean {
+    return this.loginResponse !== undefined && this.accountData !== undefined && this.accountConfig !== undefined
   }
 
   getCashFunds(): CashFoundType[] {
@@ -111,7 +131,7 @@ export class DeGiro implements DeGiroClassInterface{
   getPortfolio(config: GetPorfolioConfigType): Promise<any[]> {
     return new Promise((resolve, reject) => {
       if (!this.loginResponse || !this.loginResponse.sessionId || !this.accountData || !this.accountConfig) {
-        return reject('No session id found.')
+        return reject('You must log in first')
       }
       getPortfolioRequest(this.loginResponse.sessionId, this.accountData, this.accountConfig, config)
         .then(portfolio => this.completePortfolioDetails(portfolio, config.getProductDetails || false))
@@ -141,35 +161,35 @@ export class DeGiro implements DeGiroClassInterface{
 
   getProductsByIds(ids: string[]): Promise<any[]> {
     if (!this.loginResponse || !this.loginResponse.sessionId || !this.accountConfig || !this.accountData) {
-      return Promise.reject('No session id found.')
+      return Promise.reject('You must log in first')
     }
     return getProductsByIdsRequest(ids, this.loginResponse.sessionId, this.accountData, this.accountConfig)
   }
 
   searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]> {
     if (!this.accountConfig || !this.accountData) {
-      return Promise.reject('No session id found.')
+      return Promise.reject('You must log in first')
     }
     return searchProductRequest(options, this.accountConfig, this.accountData)
   }
 
   createOrder(order: OrderType): Promise<CreateOrderResultType> {
     if (!this.accountConfig || !this.accountData) {
-      return Promise.reject('No session id found.')
+      return Promise.reject('You must log in first')
     }
     return createOrderRequest(order, this.accountData, this.accountConfig)
   }
 
   executeOrder(order: OrderType, executeId: String): Promise<String> {
     if (!this.accountConfig || !this.accountData) {
-      return Promise.reject('No session id found.')
+      return Promise.reject('You must log in first')
     }
     return executeOrderRequest(order, executeId, this.accountData, this.accountConfig)
   }
 
   deleteOrder(orderId: String): Promise<void> {
     if (!this.accountConfig || !this.accountData) {
-      return Promise.reject('No session id found.')
+      return Promise.reject('You must log in first')
     }
     return deleteOrderRequest(orderId, this.accountData, this.accountConfig)
   }

@@ -4,7 +4,8 @@ import { CashFoundType, AccountConfigType, GetPorfolioConfigType, AccountDataTyp
  */
 export interface DeGiroClassInterface {
     login(): Promise<void>;
-    hasLogin(): boolean;
+    logout(): Promise<void>;
+    isLogin(): boolean;
     getAccountConfig(): Promise<AccountConfigType>;
     getAccountData(): Promise<AccountDataType>;
     getCashFunds(): CashFoundType[];

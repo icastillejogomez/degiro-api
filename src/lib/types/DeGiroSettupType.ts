@@ -1,4 +1,4 @@
 export type DeGiroSettupType = {
-  username: string,
-  pwd: string,
+  username?: string,
+  pwd?: string,
 }

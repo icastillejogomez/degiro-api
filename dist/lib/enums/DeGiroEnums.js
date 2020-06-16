@@ -5,6 +5,7 @@ var MainDeGiroConsts;
 (function (MainDeGiroConsts) {
     MainDeGiroConsts["BASE_API_URL"] = "https://trader.degiro.nl/";
     MainDeGiroConsts["LOGIN_URL_PATH"] = "login/secure/login";
+    MainDeGiroConsts["LOGOUT_URL_PATH"] = "trading/secure/logout";
     MainDeGiroConsts["GET_ACCOUNT_CONFIG_PATH"] = "login/secure/config";
 })(MainDeGiroConsts = exports.MainDeGiroConsts || (exports.MainDeGiroConsts = {}));
 var DeGiroActions;

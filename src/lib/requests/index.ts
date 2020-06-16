@@ -1,4 +1,5 @@
 import { loginRequest } from './login'
+import { logoutRequest } from './logout'
 import { getAccountConfigRequest } from './getAccountConfig'
 import { getAccountDataRequest } from './getAccountData'
 import { getPortfolioRequest } from './getPortfolioRequest'
@@ -10,6 +11,7 @@ import { deleteOrderRequest } from './deleteOrderRequest'
 
 export {
   loginRequest,
+  logoutRequest,
   getAccountConfigRequest,
   getAccountDataRequest,
   getPortfolioRequest,

@@ -1,8 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginRequest = void 0;
 // Import modules
-var node_fetch_1 = require("node-fetch");
+var node_fetch_1 = __importDefault(require("node-fetch"));
 // Import enums
 var enums_1 = require("../enums");
 var BASE_API_URL = enums_1.MainDeGiroConsts.BASE_API_URL, LOGIN_URL_PATH = enums_1.MainDeGiroConsts.LOGIN_URL_PATH;

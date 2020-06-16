@@ -18,7 +18,7 @@ import { OrderType } from '../lib/types'
       productId: '331868', // $AAPL - Apple Inc
       size: 1,
       timeType: DeGiroTimeTypes.DAY,
-      price: 270, // limit price
+      price: 272, // limit price
       // stopPrice: 2,
     }
 

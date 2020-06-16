@@ -10,12 +10,13 @@ export declare class DeGiro implements DeGiroClassInterface {
     private loginResponse;
     private accountConfig;
     private accountData;
-    constructor(params: DeGiroSettupType);
+    constructor(params?: DeGiroSettupType);
     static create(params: DeGiroSettupType): DeGiro;
     login(): Promise<void>;
+    logout(): Promise<void>;
     getAccountConfig(): Promise<AccountConfigType>;
     getAccountData(): Promise<AccountDataType>;
-    hasLogin(): boolean;
+    isLogin(): boolean;
     getCashFunds(): CashFoundType[];
     getPortfolio(config: GetPorfolioConfigType): Promise<any[]>;
     completePortfolioDetails(portfolio: any[], getProductDetails: boolean): Promise<any[]>;

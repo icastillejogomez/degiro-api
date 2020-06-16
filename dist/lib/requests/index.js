@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteOrderRequest = exports.executeOrderRequest = exports.createOrderRequest = exports.searchProductRequest = exports.getProductsByIdsRequest = exports.getPortfolioRequest = exports.getAccountDataRequest = exports.getAccountConfigRequest = exports.loginRequest = void 0;
+exports.deleteOrderRequest = exports.executeOrderRequest = exports.createOrderRequest = exports.searchProductRequest = exports.getProductsByIdsRequest = exports.getPortfolioRequest = exports.getAccountDataRequest = exports.getAccountConfigRequest = exports.logoutRequest = exports.loginRequest = void 0;
 var login_1 = require("./login");
 Object.defineProperty(exports, "loginRequest", { enumerable: true, get: function () { return login_1.loginRequest; } });
+var logout_1 = require("./logout");
+Object.defineProperty(exports, "logoutRequest", { enumerable: true, get: function () { return logout_1.logoutRequest; } });
 var getAccountConfig_1 = require("./getAccountConfig");
 Object.defineProperty(exports, "getAccountConfigRequest", { enumerable: true, get: function () { return getAccountConfig_1.getAccountConfigRequest; } });
 var getAccountData_1 = require("./getAccountData");

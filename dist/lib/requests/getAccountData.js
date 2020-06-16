@@ -1,8 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAccountDataRequest = void 0;
 // Import modules
-var node_fetch_1 = require("node-fetch");
+var node_fetch_1 = __importDefault(require("node-fetch"));
 // Import debug console log
 var utils_1 = require("../utils");
 function getAccountDataRequest(sessionId, accountConfig) {
