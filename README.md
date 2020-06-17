@@ -26,7 +26,7 @@ yarn add degiro-api
 
 ### Create an instance of DeGiro
 
-Basic log into DeGiro Platform. All endpoint needs a session key before those can be call them. You can pass credentials to DeGiro constructor or export in your terminal prompt sesion as `DEGIRO_USER` y `DEGIRO_PWD`
+Basic log into DeGiro Platform. All endpoint needs a session key before those can be call them. You can pass credentials to DeGiro constructor or export in your terminal prompt sesion as `DEGIRO_USER` and `DEGIRO_PWD`
 
 ```js
 const DeGiro = require('degiro-api')
