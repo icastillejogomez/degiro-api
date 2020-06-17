@@ -1,4 +1,4 @@
-# Unofficial DeGiro API
+# DeGiro Trading Broker API
 
 ![stars](https://badgen.net/github/stars/icastillejogomez/degiro-api)
 ![stars](https://badgen.net/github/open-issues/icastillejogomez/degiro-api)
