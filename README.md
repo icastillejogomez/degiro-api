@@ -29,7 +29,7 @@ yarn add degiro-api
 
 ### Create an instance of DeGiro
 
-Basic log in DeGiro Platform. All endpoint needs a session key before those can be call.
+Basic log in DeGiro Platform. All endpoint needs a session key before those can be call them. You can pass credentials to DeGiro constructor or export in your terminal prompt sesion as `DEGIRO_USER` y `DEGIRO_PWD`
 
 ```js
 const DeGiro = require('degiro-api')
@@ -42,6 +42,53 @@ const degiro = new DeGiro({
 degiro.login()
   .then(() => console.log('Log in success'))
   .catch(console.error)
+
+// or creating with the static create method
+
+const degiro = DeGiro.create({ username: '*****', pwd: '*****' })
+await degiro.login()
+
+// or create with env credentials
+
+const degiro = new DeGiro() // <-- Use DEGIRO_USER & DEGIRO_PWD
+await degiro.login()
+```
+
+### Active Debug mode
+
+```js
+$ export DEGIRO_DEBUG=1
+$ yarn start
+```
+
+### Running tests set
+
+```js
+$ yarn install && yarn test
+yarn run v1.22.4
+$ mocha -r ts-node/register tests/**/*.spec.ts
+
+
+  Environment variables
+    ✓ DEGIRO_USER env var should exists
+    ✓ DEGIRO_PWD env var should exists
+
+  Create DeGiro instance
+    ✓ should create an instance of DeGiro class from env vars
+    ✓ should create an instance of DeGiro class from constructor params
+
+  DeGiro login process
+    ✓ should successfully log in with environment credentials (641ms)
+    ✓ should return a valid account config from server (635ms)
+    ✓ should return a valid account data from server (700ms)
+
+  DeGiro logout process
+    ✓ should successfully log out after sign in (724ms)
+
+
+  8 passing (3s)
+
+✨  Done in 4.69s.
 ```
 
 ### Get account details
