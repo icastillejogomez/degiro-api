@@ -421,16 +421,33 @@ const { OrderType } = DeGiroTypes
 })()
 ```
 
+## Degiro Command Line Interface (CLI)
+
+[degiro-cli](https://github.com/icastillejogomez/degiro-cli) is an usefull command line interface that help us dealing with DeGiro platform through the terminal. You can see your portfolio status, create and execute orders and much more (may in the future)
+
+```sh
+$ degiro
+Usage: DeGiro Command Line Interface [options] [command]
+
+DeGiro CLI provide you access to DeGiro Broker across the terminal
+
+Options:
+  -V, --version   output the version number
+  -h, --help      display help for command
+
+Commands:
+  login           validate credentials with DeGiro platform
+  search          Search products in DeGiro
+  portfolio       show account portfolio in real-time
+  help [command]  display help for command
+```
+## License
+
+MIT
+
+
 ## TO DO List
 
 1. Two factor
 2. Get prices
-
-## Degiro Command Line Interface (CLI)
-
-See the repo [degiro-cli](https://github.com/icastillejogomez/degiro-cli).
-
-## License
-
-MIT
 
