@@ -6,6 +6,7 @@ export interface DeGiroClassInterface {
     login(): Promise<AccountDataType>;
     logout(): Promise<void>;
     isLogin(): boolean;
+    getJSESSIONID(): string | undefined;
     getAccountConfig(sessionId: string): Promise<AccountConfigType>;
     getAccountData(): Promise<AccountDataType>;
     getCashFunds(): CashFoundType[];

@@ -97,18 +97,18 @@ yarn add degiro-api</code></pre>
 })
 
 degiro.login()
-  .then(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Log in success&#x27;</span>))
+  .then(<span class="hljs-function">(<span class="hljs-params">accountData</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Log in success\n&#x27;</span>, accountData))
   .catch(<span class="hljs-built_in">console</span>.error)
 
 <span class="hljs-comment">// or creating with the static create method</span>
 
 <span class="hljs-keyword">const</span> degiro = DeGiro.create({ <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;*****&#x27;</span>, <span class="hljs-attr">pwd</span>: <span class="hljs-string">&#x27;*****&#x27;</span> })
-<span class="hljs-keyword">await</span> degiro.login()
+<span class="hljs-keyword">const</span> accountData = <span class="hljs-keyword">await</span> degiro.login()
 
 <span class="hljs-comment">// or create with env credentials</span>
 
 <span class="hljs-keyword">const</span> degiro = <span class="hljs-keyword">new</span> DeGiro() <span class="hljs-comment">// &lt;-- Use DEGIRO_USER &amp; DEGIRO_PWD</span>
-<span class="hljs-keyword">await</span> degiro.login()</code></pre>
+<span class="hljs-keyword">const</span> accountData = <span class="hljs-keyword">await</span> degiro.login()</code></pre>
 				<a href="#active-debug-mode" id="active-debug-mode" style="color: inherit; text-decoration: none;">
 					<h3>Active Debug mode</h3>
 				</a>
@@ -146,19 +146,54 @@ $ mocha -r ts-node/register tests<span class="hljs-comment">/**/*.spec.ts
     ✓ should create an instance of DeGiro class from constructor params
 
   DeGiro login process
-    ✓ should successfully log in with environment credentials (641ms)
-    ✓ should return a valid account config from server (635ms)
-    ✓ should return a valid account data from server (700ms)
+    ✓ should successfully log in with environment credentials (619ms)
+    ✓ should return a valid account config from server (738ms)
+    ✓ should return a valid account data from server (727ms)
+    ✓ getJSESSIONID should return a valid jsessionId
+    ✓ should login with previous jsessionId
 
   DeGiro logout process
-    ✓ should successfully log out after sign in (724ms)
+    ✓ should successfully log out after sign in (685ms)
 
 
-  8 passing (3s)
+  10 passing (3s)
 
-✨  Done in 4.69s.</span></code></pre>
-				<a href="#get-account-details" id="get-account-details" style="color: inherit; text-decoration: none;">
-					<h3>Get account details</h3>
+✨  Done in 5.21s.</span></code></pre>
+				<a href="#get-jsessionid-and-reuse-sessions" id="get-jsessionid-and-reuse-sessions" style="color: inherit; text-decoration: none;">
+					<h3>Get JSESSIONID and reuse sessions</h3>
+				</a>
+				<p>The JSessionId is the session browser cookie that DeGiro use to authenticate requests. You could prevent masive login/logout requests reusing a valid jsessionid from previous DeGiro instance. The way to do that is:</p>
+				<p><code>getJSESSIONID(): string</code></p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> degiro = <span class="hljs-keyword">new</span> DeGiro({}) <span class="hljs-comment">// &lt;-- Using ENV variables</span>
+
+  <span class="hljs-keyword">await</span> degiro.login() <span class="hljs-comment">// Login also returns accountData</span>
+
+  <span class="hljs-comment">// Get the jsessionId (LOOK, is not a promise)</span>
+  <span class="hljs-keyword">const</span> jsessionId = degiro.getJSESSIONID()
+})()</code></pre>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+
+  <span class="hljs-comment">// Create an instance from a previous session</span>
+  <span class="hljs-keyword">const</span> degiro = <span class="hljs-keyword">new</span> DeGiro({
+    <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&lt;your_username_here&gt;&#x27;</span>,
+    <span class="hljs-attr">pwd</span>: <span class="hljs-string">&#x27;*******&#x27;</span>,
+    <span class="hljs-attr">jsessionId</span>: previousJSESSIONID
+  })
+
+  <span class="hljs-comment">// Hydrate</span>
+  <span class="hljs-comment">// Re-use sessions need to re-hydrate the account config data and could use as a session expiration checker</span>
+  <span class="hljs-keyword">await</span> degiro.login() <span class="hljs-comment">// Login also returns accountData</span>
+
+  <span class="hljs-comment">// Do your stuff here...</span>
+
+})()</code></pre>
+				<a href="#get-account-details-explicitly" id="get-account-details-explicitly" style="color: inherit; text-decoration: none;">
+					<h3>Get account details explicitly</h3>
 				</a>
 				<p>Get account info using <code>await</code>:</p>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
@@ -169,7 +204,7 @@ $ mocha -r ts-node/register tests<span class="hljs-comment">/**/*.spec.ts
     <span class="hljs-attr">pwd</span>: <span class="hljs-string">&#x27;*****&#x27;</span>
   })
 
-  <span class="hljs-keyword">await</span> degiro.login()
+  <span class="hljs-keyword">await</span> degiro.login() <span class="hljs-comment">// Login also returns accountData</span>
 
   <span class="hljs-keyword">const</span> accountData = <span class="hljs-keyword">await</span> degiro.getAccountData()
   <span class="hljs-comment">// console.log(accountData)</span>

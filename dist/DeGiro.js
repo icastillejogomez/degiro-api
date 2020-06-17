@@ -33,10 +33,11 @@ var DeGiro = /** @class */ (function () {
         var _this = this;
         if (params === void 0) { params = {}; }
         this.hasSessionId = function () { return _this.accountConfig && _this.accountConfig.data && _this.accountConfig.data.sessionId; };
-        var username = params.username, pwd = params.pwd;
-        var _a = params.jsessionId, jsessionId = _a === void 0 ? '' : _a;
+        this.getJSESSIONID = function () { return _this.hasSessionId() ? _this.accountConfig.data.sessionId : undefined; };
+        var username = params.username, pwd = params.pwd, jsessionId = params.jsessionId;
         username = username || process.env['DEGIRO_USER'];
         pwd = pwd || process.env['DEGIRO_PWD'];
+        jsessionId = jsessionId || process.env['DEGIRO_JSESSIONID'];
         if (!username)
             throw new Error('DeGiro api needs an username to access');
         if (!pwd)
@@ -50,6 +51,8 @@ var DeGiro = /** @class */ (function () {
     };
     DeGiro.prototype.login = function () {
         var _this = this;
+        if (this.jsessionId)
+            return this.loginWithJSESSIONID(this.jsessionId);
         return new Promise(function (resolve, reject) {
             requests_1.loginRequest({ username: _this.username, pwd: _this.pwd })
                 .then(function (loginResponse) {
@@ -60,6 +63,18 @@ var DeGiro = /** @class */ (function () {
             })
                 .then(function () { return _this.getAccountData(); })
                 .then(resolve)
+                .catch(reject);
+        });
+    };
+    DeGiro.prototype.loginWithJSESSIONID = function (jsessionId) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.getAccountConfig(jsessionId)
+                .then(function () { return _this.getAccountData(); })
+                .then(function (accountData) {
+                _this.jsessionId = undefined; // Remove the jsessionId to prevent reuse
+                resolve(accountData);
+            })
                 .catch(reject);
         });
     };

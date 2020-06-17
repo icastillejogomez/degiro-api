@@ -13,8 +13,10 @@ export declare class DeGiro implements DeGiroClassInterface {
     constructor(params?: DeGiroSettupType);
     static create(params: DeGiroSettupType): DeGiro;
     login(): Promise<AccountDataType>;
+    private loginWithJSESSIONID;
     logout(): Promise<void>;
     private hasSessionId;
+    getJSESSIONID: () => string | undefined;
     getAccountConfig(sessionId?: string): Promise<AccountConfigType>;
     getAccountData(): Promise<AccountDataType>;
     isLogin(): boolean;
