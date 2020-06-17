@@ -25,11 +25,11 @@ npm install --save degiro-api
 yarn add degiro-api
 ```
 
-## Basic examples
+## How to use?
 
 ### Create an instance of DeGiro
 
-Basic log in DeGiro Platform. All endpoint needs a session key before those can be call them. You can pass credentials to DeGiro constructor or export in your terminal prompt sesion as `DEGIRO_USER` y `DEGIRO_PWD`
+Basic log into DeGiro Platform. All endpoint needs a session key before those can be call them. You can pass credentials to DeGiro constructor or export in your terminal prompt sesion as `DEGIRO_USER` y `DEGIRO_PWD`
 
 ```js
 const DeGiro = require('degiro-api')
@@ -59,6 +59,23 @@ await degiro.login()
 ```js
 $ export DEGIRO_DEBUG=1
 $ yarn start
+```
+
+### Generating docs
+
+Run the next command and open index.html file inside doc folder.
+
+```sh
+$ yarn doc
+yarn run v1.22.4
+$ typedoc --out docs src
+
+Using TypeScript 3.9.2 from ....../degiro-api/node_modules/typescript/lib
+Rendering [========================================] 100%
+
+Documentation generated at ....../degiro-api/docs
+
+✨  Done in 3.94s.
 ```
 
 ### Running tests set
@@ -113,7 +130,9 @@ import DeGiro from 'degiro-api'
 
 ### Get portfolio
 
-`getPortfolio`params are:
+`getPortfolio(config: GetPorfolioConfigType): Promise<any[]>`
+
+`getPortfolio` config parameter could have:
 * **type**: set the types or positions you want to fetch. Could be:
   * ALL: Gets the response without filter it
   * ALL_POSITIONS: Gets only positions in products. Exclude positions like 'CASH', etc.
