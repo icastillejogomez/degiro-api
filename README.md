@@ -2,10 +2,7 @@
 
 ![stars](https://badgen.net/github/stars/icastillejogomez/degiro-api)
 ![stars](https://badgen.net/github/open-issues/icastillejogomez/degiro-api)
-![stars](https://badgen.net/github/commits/icastillejogomez/degiro-api)
-![stars](https://badgen.net/github/last-commit/icastillejogomez/degiro-api)
 ![stars](https://badgen.net/github/license/icastillejogomez/degiro-api)
-![stars](https://badgen.net/packagephobia/install/degiro-api)
 
 ![DeGiro Logo](https://raw.githubusercontent.com/icastillejogomez/degiro-api/master/.assets/degiro.png)
 
