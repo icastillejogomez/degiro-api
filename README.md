@@ -77,6 +77,8 @@ Documentation generated at ....../degiro-api/docs
 
 ### Running tests set
 
+Before run the test set you must set DEGIRO_USER & DEGIRO_PWD env export variables to attach an account to the test sets.
+
 ```js
 $ yarn install && yarn test
 yarn run v1.22.4
