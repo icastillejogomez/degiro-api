@@ -8,7 +8,7 @@ import { AccountConfigType, AccountDataType } from '../types'
 import { debug } from '../utils'
 
 // tslint:disable-next-line: max-line-length
-export function getProductsByIdsRequest(ids: string[], sessionId: string, accountData: AccountDataType, accountConfig: AccountConfigType): Promise<any[]> {
+export function getProductsByIdsRequest(ids: string[], accountData: AccountDataType, accountConfig: AccountConfigType): Promise<any[]> {
   return new Promise((resolve, reject) => {
 
     const requestOptions: RequestInit = {
@@ -19,7 +19,7 @@ export function getProductsByIdsRequest(ids: string[], sessionId: string, accoun
       },
     }
 
-    fetch(`${accountConfig.data.productSearchUrl}v5/products/info?intAccount=${accountData.data.intAccount}&sessionId=${sessionId}`, requestOptions)
+    fetch(`${accountConfig.data.productSearchUrl}v5/products/info?intAccount=${accountData.data.intAccount}&sessionId=${accountConfig.data.sessionId}`, requestOptions)
       .then(res => res.json())
       .then(res => resolve(res.data))
       .catch(reject)

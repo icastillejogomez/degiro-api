@@ -14,13 +14,13 @@ import {
  */
 export interface DeGiroClassInterface {
 
-  login(): Promise<void>
+  login(): Promise<AccountDataType>
 
   logout(): Promise<void>
 
   isLogin(): boolean
 
-  getAccountConfig(): Promise<AccountConfigType>
+  getAccountConfig(sessionId: string): Promise<AccountConfigType>
 
   getAccountData(): Promise<AccountDataType>
 

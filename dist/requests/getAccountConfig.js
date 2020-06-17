@@ -8,7 +8,7 @@ exports.getAccountConfigRequest = void 0;
 var node_fetch_1 = __importDefault(require("node-fetch"));
 // Import enums
 var enums_1 = require("../enums");
-var BASE_API_URL = enums_1.MainDeGiroConsts.BASE_API_URL, GET_ACCOUNT_CONFIG_PATH = enums_1.MainDeGiroConsts.GET_ACCOUNT_CONFIG_PATH;
+var BASE_API_URL = enums_1.DEGIRO_API_PATHS.BASE_API_URL, GET_ACCOUNT_CONFIG_PATH = enums_1.DEGIRO_API_PATHS.GET_ACCOUNT_CONFIG_PATH;
 // Import debug console log
 var utils_1 = require("../utils");
 function getAccountConfigRequest(sessionId) {

@@ -1,1 +1,1 @@
-{"version":3,"file":"DeGiroSettupType.d.ts","sourceRoot":"","sources":["../../src/types/DeGiroSettupType.ts"],"names":[],"mappings":"AAAA,oBAAY,gBAAgB,GAAG;IAC7B,QAAQ,CAAC,EAAE,MAAM,CAAC;IAClB,GAAG,CAAC,EAAE,MAAM,CAAC;CACd,CAAA"}
+{"version":3,"file":"DeGiroSettupType.d.ts","sourceRoot":"","sources":["../../src/types/DeGiroSettupType.ts"],"names":[],"mappings":"AAAA,oBAAY,gBAAgB,GAAG;IAC7B,QAAQ,CAAC,EAAE,MAAM,CAAC;IAClB,GAAG,CAAC,EAAE,MAAM,CAAC;IACb,UAAU,CAAC,EAAE,MAAM,CAAC;CACrB,CAAA"}

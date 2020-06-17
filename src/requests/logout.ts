@@ -5,8 +5,8 @@ import fetch from 'node-fetch'
 import { AccountDataType, AccountConfigType } from '../types'
 
 // Import enums
-import { MainDeGiroConsts } from '../enums'
-const { BASE_API_URL, LOGOUT_URL_PATH } = MainDeGiroConsts
+import { DEGIRO_API_PATHS } from '../enums'
+const { BASE_API_URL, LOGOUT_URL_PATH } = DEGIRO_API_PATHS
 
 // Import debug console log
 import { debug } from '../utils'

@@ -7,14 +7,15 @@ import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, Se
 export declare class DeGiro implements DeGiroClassInterface {
     private readonly username;
     private readonly pwd;
-    private loginResponse;
+    private jsessionId;
     private accountConfig;
     private accountData;
     constructor(params?: DeGiroSettupType);
     static create(params: DeGiroSettupType): DeGiro;
-    login(): Promise<void>;
+    login(): Promise<AccountDataType>;
     logout(): Promise<void>;
-    getAccountConfig(): Promise<AccountConfigType>;
+    private hasSessionId;
+    getAccountConfig(sessionId?: string): Promise<AccountConfigType>;
     getAccountData(): Promise<AccountDataType>;
     isLogin(): boolean;
     getCashFunds(): CashFoundType[];

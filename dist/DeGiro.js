@@ -30,8 +30,11 @@ var requests_1 = require("./requests");
  */
 var DeGiro = /** @class */ (function () {
     function DeGiro(params) {
+        var _this = this;
         if (params === void 0) { params = {}; }
+        this.hasSessionId = function () { return _this.accountConfig && _this.accountConfig.data && _this.accountConfig.data.sessionId; };
         var username = params.username, pwd = params.pwd;
+        var _a = params.jsessionId, jsessionId = _a === void 0 ? '' : _a;
         username = username || process.env['DEGIRO_USER'];
         pwd = pwd || process.env['DEGIRO_PWD'];
         if (!username)
@@ -40,6 +43,7 @@ var DeGiro = /** @class */ (function () {
             throw new Error('DeGiro api needs an password to access');
         this.username = username;
         this.pwd = pwd;
+        this.jsessionId = jsessionId;
     }
     DeGiro.create = function (params) {
         return new DeGiro(params);
@@ -49,13 +53,13 @@ var DeGiro = /** @class */ (function () {
         return new Promise(function (resolve, reject) {
             requests_1.loginRequest({ username: _this.username, pwd: _this.pwd })
                 .then(function (loginResponse) {
-                _this.loginResponse = loginResponse;
-                return _this.getAccountConfig();
+                if (!loginResponse.sessionId)
+                    reject('Login response have not a sessionId field');
+                else
+                    return _this.getAccountConfig(loginResponse.sessionId);
             })
                 .then(function () { return _this.getAccountData(); })
-                .then(function (accountData) {
-                resolve();
-            })
+                .then(resolve)
                 .catch(reject);
         });
     };
@@ -69,19 +73,18 @@ var DeGiro = /** @class */ (function () {
                 .then(function () {
                 delete _this.accountData;
                 delete _this.accountConfig;
-                delete _this.loginResponse;
                 resolve();
             })
                 .catch(reject);
         });
     };
-    DeGiro.prototype.getAccountConfig = function () {
+    DeGiro.prototype.getAccountConfig = function (sessionId) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            if (!_this.loginResponse || !_this.loginResponse.sessionId) {
-                return reject('You must log in first');
+            if (!sessionId && !_this.hasSessionId()) {
+                return reject('You must log in first or provide a JSESSIONID');
             }
-            requests_1.getAccountConfigRequest(_this.loginResponse.sessionId)
+            requests_1.getAccountConfigRequest(sessionId || _this.accountConfig.data.sessionId)
                 .then(function (accountConfig) {
                 _this.accountConfig = accountConfig;
                 resolve(accountConfig);
@@ -92,10 +95,10 @@ var DeGiro = /** @class */ (function () {
     DeGiro.prototype.getAccountData = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            if (!_this.loginResponse || !_this.loginResponse.sessionId || !_this.accountConfig) {
+            if (!_this.hasSessionId()) {
                 return reject('You must log in first');
             }
-            requests_1.getAccountDataRequest(_this.loginResponse.sessionId, _this.accountConfig)
+            requests_1.getAccountDataRequest(_this.accountConfig)
                 .then(function (accountData) {
                 _this.accountData = accountData;
                 resolve(accountData);
@@ -104,7 +107,7 @@ var DeGiro = /** @class */ (function () {
         });
     };
     DeGiro.prototype.isLogin = function () {
-        return this.loginResponse !== undefined && this.accountData !== undefined && this.accountConfig !== undefined;
+        return this.accountData !== undefined && this.accountConfig !== undefined;
     };
     DeGiro.prototype.getCashFunds = function () {
         throw new Error('Method not implemented.');
@@ -112,10 +115,10 @@ var DeGiro = /** @class */ (function () {
     DeGiro.prototype.getPortfolio = function (config) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            if (!_this.loginResponse || !_this.loginResponse.sessionId || !_this.accountData || !_this.accountConfig) {
+            if (!_this.hasSessionId()) {
                 return reject('You must log in first');
             }
-            requests_1.getPortfolioRequest(_this.loginResponse.sessionId, _this.accountData, _this.accountConfig, config)
+            requests_1.getPortfolioRequest(_this.accountData, _this.accountConfig, config)
                 .then(function (portfolio) { return _this.completePortfolioDetails(portfolio, config.getProductDetails || false); })
                 .then(resolve)
                 .catch(reject);
@@ -144,31 +147,31 @@ var DeGiro = /** @class */ (function () {
         });
     };
     DeGiro.prototype.getProductsByIds = function (ids) {
-        if (!this.loginResponse || !this.loginResponse.sessionId || !this.accountConfig || !this.accountData) {
+        if (!this.hasSessionId()) {
             return Promise.reject('You must log in first');
         }
-        return requests_1.getProductsByIdsRequest(ids, this.loginResponse.sessionId, this.accountData, this.accountConfig);
+        return requests_1.getProductsByIdsRequest(ids, this.accountData, this.accountConfig);
     };
     DeGiro.prototype.searchProduct = function (options) {
-        if (!this.accountConfig || !this.accountData) {
+        if (!this.hasSessionId()) {
             return Promise.reject('You must log in first');
         }
-        return requests_1.searchProductRequest(options, this.accountConfig, this.accountData);
+        return requests_1.searchProductRequest(options, this.accountData, this.accountConfig);
     };
     DeGiro.prototype.createOrder = function (order) {
-        if (!this.accountConfig || !this.accountData) {
+        if (!this.hasSessionId()) {
             return Promise.reject('You must log in first');
         }
         return requests_1.createOrderRequest(order, this.accountData, this.accountConfig);
     };
     DeGiro.prototype.executeOrder = function (order, executeId) {
-        if (!this.accountConfig || !this.accountData) {
+        if (!this.hasSessionId()) {
             return Promise.reject('You must log in first');
         }
         return requests_1.executeOrderRequest(order, executeId, this.accountData, this.accountConfig);
     };
     DeGiro.prototype.deleteOrder = function (orderId) {
-        if (!this.accountConfig || !this.accountData) {
+        if (!this.hasSessionId()) {
             return Promise.reject('You must log in first');
         }
         return requests_1.deleteOrderRequest(orderId, this.accountData, this.accountConfig);

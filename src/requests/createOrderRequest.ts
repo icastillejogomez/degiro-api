@@ -4,6 +4,10 @@ import fetch, { RequestInit } from 'node-fetch'
 // Import types
 import { OrderType, AccountDataType, AccountConfigType, CreateOrderResultType } from '../types'
 
+// Import Consts
+import { DEGIRO_API_PATHS } from '../enums'
+const { CREATE_ORDER_PATH } = DEGIRO_API_PATHS
+
 // Import debug console log
 import { debug } from '../utils'
 
@@ -18,7 +22,7 @@ export function createOrderRequest(order: OrderType, accountData: AccountDataTyp
       body: JSON.stringify(order),
     }
 
-    const uri = `${accountConfig.data.tradingUrl}v5/checkOrder;jsessionid=${accountConfig.data.sessionId}?intAccount=${accountData.data.intAccount}&sessionId=${accountConfig.data.sessionId}`
+    const uri = `${accountConfig.data.tradingUrl}${CREATE_ORDER_PATH};jsessionid=${accountConfig.data.sessionId}?intAccount=${accountData.data.intAccount}&sessionId=${accountConfig.data.sessionId}`
     debug(uri, requestOptions)
     fetch(uri, requestOptions)
       .then(res => res.json())

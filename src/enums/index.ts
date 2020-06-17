@@ -1,5 +1,5 @@
 import {
-  MainDeGiroConsts,
+  DEGIRO_API_PATHS,
   DeGiroActions,
   DeGiroMarketOrderTypes,
   DeGiroTimeTypes,
@@ -9,7 +9,7 @@ import {
 } from './DeGiroEnums'
 
 export {
-  MainDeGiroConsts,
+  DEGIRO_API_PATHS,
   DeGiroActions,
   DeGiroMarketOrderTypes,
   DeGiroTimeTypes,

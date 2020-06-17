@@ -25,7 +25,7 @@ var createURLQuery = function (options) {
         res += "&offset=" + encodeURIComponent(offset);
     return res;
 };
-function searchProductRequest(options, accountConfig, accountData) {
+function searchProductRequest(options, accountData, accountConfig) {
     return new Promise(function (resolve, reject) {
         // Preparae de request
         var params = createURLQuery(options);

@@ -7,18 +7,18 @@ import { AccountDataType, AccountConfigType } from '../types'
 // Import debug console log
 import { debug } from '../utils'
 
-export function getAccountDataRequest(sessionId: string, accountConfig: AccountConfigType): Promise<AccountDataType> {
+export function getAccountDataRequest(accountConfig: AccountConfigType): Promise<AccountDataType> {
   return new Promise((resolve, reject) => {
 
     const requestOptions: RequestInit = {
       headers: {
-        Cookie: `JSESSIONID=${sessionId};`,
+        Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
       },
     }
 
     // Do the request to get a account config data
-    debug(`Making request to ${accountConfig.data.paUrl}client?sessionId=${sessionId}`)
-    fetch(`${accountConfig.data.paUrl}client?sessionId=${sessionId}`, requestOptions)
+    debug(`Making request to ${accountConfig.data.paUrl}client?sessionId=${accountConfig.data.sessionId}`)
+    fetch(`${accountConfig.data.paUrl}client?sessionId=${accountConfig.data.sessionId}`, requestOptions)
       .then(res => res.json())
       .then((res: AccountDataType) => {
         debug('Response:\n', JSON.stringify(res, null, 2))

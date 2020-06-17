@@ -1,5 +1,5 @@
 // Import modules
-import fetch, { RequestInit } from 'node-fetch'
+import fetch from 'node-fetch'
 
 // Import types
 import { SearchProductOptionsType, AccountConfigType, AccountDataType } from '../types'
@@ -23,7 +23,7 @@ const createURLQuery = (options: SearchProductOptionsType): string => {
   return res
 }
 
-export function searchProductRequest(options: SearchProductOptionsType, accountConfig: AccountConfigType, accountData: AccountDataType): Promise<any> {
+export function searchProductRequest(options: SearchProductOptionsType, accountData: AccountDataType, accountConfig: AccountConfigType): Promise<any> {
   return new Promise((resolve, reject) => {
     // Preparae de request
     const params = createURLQuery(options)

@@ -1,13 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PORTFOLIO_POSITIONS_TYPE_ENUM = exports.DeGiroSort = exports.DeGiroProducTypes = exports.DeGiroTimeTypes = exports.DeGiroMarketOrderTypes = exports.DeGiroActions = exports.MainDeGiroConsts = void 0;
-var MainDeGiroConsts;
-(function (MainDeGiroConsts) {
-    MainDeGiroConsts["BASE_API_URL"] = "https://trader.degiro.nl/";
-    MainDeGiroConsts["LOGIN_URL_PATH"] = "login/secure/login";
-    MainDeGiroConsts["LOGOUT_URL_PATH"] = "trading/secure/logout";
-    MainDeGiroConsts["GET_ACCOUNT_CONFIG_PATH"] = "login/secure/config";
-})(MainDeGiroConsts = exports.MainDeGiroConsts || (exports.MainDeGiroConsts = {}));
+exports.PORTFOLIO_POSITIONS_TYPE_ENUM = exports.DeGiroSort = exports.DeGiroProducTypes = exports.DeGiroTimeTypes = exports.DeGiroMarketOrderTypes = exports.DeGiroActions = exports.DEGIRO_API_PATHS = void 0;
+var DEGIRO_API_PATHS;
+(function (DEGIRO_API_PATHS) {
+    DEGIRO_API_PATHS["BASE_API_URL"] = "https://trader.degiro.nl/";
+    DEGIRO_API_PATHS["LOGIN_URL_PATH"] = "login/secure/login";
+    DEGIRO_API_PATHS["LOGOUT_URL_PATH"] = "trading/secure/logout";
+    DEGIRO_API_PATHS["GET_ACCOUNT_CONFIG_PATH"] = "login/secure/config";
+    DEGIRO_API_PATHS["CREATE_ORDER_PATH"] = "v5/checkOrder";
+})(DEGIRO_API_PATHS = exports.DEGIRO_API_PATHS || (exports.DEGIRO_API_PATHS = {}));
 var DeGiroActions;
 (function (DeGiroActions) {
     DeGiroActions["BUY"] = "BUY";

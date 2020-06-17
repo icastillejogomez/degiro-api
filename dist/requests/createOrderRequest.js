@@ -6,6 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createOrderRequest = void 0;
 // Import modules
 var node_fetch_1 = __importDefault(require("node-fetch"));
+// Import Consts
+var enums_1 = require("../enums");
+var CREATE_ORDER_PATH = enums_1.DEGIRO_API_PATHS.CREATE_ORDER_PATH;
 // Import debug console log
 var utils_1 = require("../utils");
 function createOrderRequest(order, accountData, accountConfig) {
@@ -17,7 +20,7 @@ function createOrderRequest(order, accountData, accountConfig) {
             },
             body: JSON.stringify(order),
         };
-        var uri = accountConfig.data.tradingUrl + "v5/checkOrder;jsessionid=" + accountConfig.data.sessionId + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;
+        var uri = "" + accountConfig.data.tradingUrl + CREATE_ORDER_PATH + ";jsessionid=" + accountConfig.data.sessionId + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;
         utils_1.debug(uri, requestOptions);
         node_fetch_1.default(uri, requestOptions)
             .then(function (res) { return res.json(); })
