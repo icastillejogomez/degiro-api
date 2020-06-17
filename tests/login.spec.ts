@@ -193,4 +193,63 @@ describe('DeGiro login process', () => {
     })
   })
 
+  it('getJSESSIONID should return a valid jsessionId', async () => {
+    // Creamos la instancia del objecto y comprobamos que se ha creado bien
+    const degiro = new DeGiro()
+    expect(degiro).to.exist
+    expect(degiro).to.be.a('object')
+    expect(degiro).to.be.instanceOf(DeGiro)
+
+    // Hacemos login y esperamos con que no falle
+    const loginPromise = degiro.login()
+    expect(loginPromise).not.be.rejected
+    loginPromise.then(() => {
+      const jsessionId = degiro.getJSESSIONID()
+      expect(jsessionId).to.exist
+      expect(jsessionId).not.to.be.null
+      expect(jsessionId).to.be.a('string')
+      expect(jsessionId).to.have.length
+
+      degiro.logout() // <-- Cerramos sesión pero nos "da igual que falle o no"
+    })
+  })
+
+  it('should login with previous jsessionId', async () => {
+    // Creamos la instancia del objecto y comprobamos que se ha creado bien
+    const degiroAux = new DeGiro()
+    expect(degiroAux).to.exist
+    expect(degiroAux).to.be.a('object')
+    expect(degiroAux).to.be.instanceOf(DeGiro)
+
+    // Hacemos login y esperamos con que no falle para obtener un jsessionId
+    const loginPromiseAux = degiroAux.login()
+    expect(loginPromiseAux).not.be.rejected
+    loginPromiseAux.then(() => {
+      // Obtenemos el jsessionID
+      const jsessionId = degiroAux.getJSESSIONID()
+      expect(jsessionId).exist
+      expect(jsessionId).not.to.be.null
+      expect(jsessionId).to.be.a('string')
+      expect(jsessionId).to.have.length
+
+      // Creamos el degiro a testear y le pasamos el jsession valido del anterior objeto
+      const degiro = new DeGiro({ jsessionId })
+      const loginPromise = degiro.login()
+      expect(loginPromise).not.be.rejected
+      loginPromise
+        .then((accountData) => {
+          expect(accountData).exist
+        })
+        .catch((error) => {
+          console.error(error)
+          expect(error).not.exist
+        })
+        .finally(() => {
+          // Cuando hemos acabado todo cerramos sesion
+          degiroAux.logout() // <-- Cerramos sesión pero nos "da igual que falle o no"
+        })
+
+    })
+  })
+
 })

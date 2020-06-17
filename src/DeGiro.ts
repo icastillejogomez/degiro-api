@@ -40,16 +40,16 @@ export class DeGiro implements DeGiroClassInterface {
 
   private readonly username: string
   private readonly pwd: string
-  private jsessionId: string
+  private jsessionId: string | undefined
   private accountConfig: AccountConfigType | undefined
   private accountData: AccountDataType | undefined
 
   constructor(params: DeGiroSettupType = {}) {
-    let { username, pwd } = params
-    const { jsessionId = '' } = params
+    let { username, pwd, jsessionId } = params
 
     username = username || process.env['DEGIRO_USER']
     pwd = pwd || process.env['DEGIRO_PWD']
+    jsessionId = jsessionId || process.env['DEGIRO_JSESSIONID']
 
     if (!username) throw new Error('DeGiro api needs an username to access')
     if (!pwd) throw new Error('DeGiro api needs an password to access')
@@ -65,6 +65,7 @@ export class DeGiro implements DeGiroClassInterface {
   }
 
   login(): Promise<AccountDataType> {
+    if (this.jsessionId) return this.loginWithJSESSIONID(this.jsessionId)
     return new Promise((resolve, reject) => {
       loginRequest({ username: this.username, pwd: this.pwd })
         .then((loginResponse: LoginResponseType) => {
@@ -73,6 +74,18 @@ export class DeGiro implements DeGiroClassInterface {
         })
         .then(() => this.getAccountData())
         .then(resolve)
+        .catch(reject)
+    })
+  }
+
+  private loginWithJSESSIONID(jsessionId: string): Promise<AccountDataType> {
+    return new Promise((resolve, reject) => {
+      this.getAccountConfig(jsessionId)
+        .then(() => this.getAccountData())
+        .then((accountData) => {
+          this.jsessionId = undefined // Remove the jsessionId to prevent reuse
+          resolve(accountData)
+        })
         .catch(reject)
     })
   }
@@ -93,6 +106,8 @@ export class DeGiro implements DeGiroClassInterface {
   }
 
   private hasSessionId = () => this.accountConfig && this.accountConfig.data && this.accountConfig.data.sessionId
+
+  getJSESSIONID = () => this.hasSessionId() ? (<AccountConfigType>this.accountConfig).data.sessionId : undefined
 
   getAccountConfig(sessionId?: string): Promise<AccountConfigType> {
     return new Promise((resolve, reject) => {

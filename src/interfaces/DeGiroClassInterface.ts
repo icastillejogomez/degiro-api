@@ -20,6 +20,8 @@ export interface DeGiroClassInterface {
 
   isLogin(): boolean
 
+  getJSESSIONID(): string | undefined
+
   getAccountConfig(sessionId: string): Promise<AccountConfigType>
 
   getAccountData(): Promise<AccountDataType>

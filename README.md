@@ -94,17 +94,59 @@ $ mocha -r ts-node/register tests/**/*.spec.ts
     ✓ should create an instance of DeGiro class from constructor params
 
   DeGiro login process
-    ✓ should successfully log in with environment credentials (641ms)
-    ✓ should return a valid account config from server (635ms)
-    ✓ should return a valid account data from server (700ms)
+    ✓ should successfully log in with environment credentials (619ms)
+    ✓ should return a valid account config from server (738ms)
+    ✓ should return a valid account data from server (727ms)
+    ✓ getJSESSIONID should return a valid jsessionId
+    ✓ should login with previous jsessionId
 
   DeGiro logout process
-    ✓ should successfully log out after sign in (724ms)
+    ✓ should successfully log out after sign in (685ms)
 
 
-  8 passing (3s)
+  10 passing (3s)
 
-✨  Done in 4.69s.
+✨  Done in 5.21s.
+```
+
+### Get JSESSIONID and reuse sessions
+
+The JSessionId is the session browser cookie that DeGiro use to authenticate requests. You could prevent masive login/logout requests reusing a valid jsessionid from previous DeGiro instance. The way to do that is:
+
+`getJSESSIONID(): string`
+
+```js
+import DeGiro from 'degiro-api'
+
+(async () => {
+
+  // Create an instance from a previous session
+  const degiro = new DeGiro({
+    username: '<your_username_here>',
+    pwd: '*******',
+    jsessionId: previousJSESSIONID
+  })
+
+  // Hydrate
+  // Re-use sessions need to re-hydrate the account config data and could use as a session expiration checker
+  await degiro.login() // Login also returns accountData
+
+  // Do your stuff here...
+
+})()
+```
+
+```js
+import DeGiro from 'degiro-api'
+
+(async () => {
+  const degiro = new DeGiro({}) // <-- Using ENV variables
+
+  await degiro.login() // Login also returns accountData
+
+  // Get the jsessionId (LOOK, is not a promise)
+  const jsessionId = degiro.getJSESSIONID()
+})()
 ```
 
 ### Get account details explicitly
