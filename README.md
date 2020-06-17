@@ -37,18 +37,18 @@ const degiro = new DeGiro({
 })
 
 degiro.login()
-  .then(() => console.log('Log in success'))
+  .then((accountData) => console.log('Log in success\n', accountData))
   .catch(console.error)
 
 // or creating with the static create method
 
 const degiro = DeGiro.create({ username: '*****', pwd: '*****' })
-await degiro.login()
+const accountData = await degiro.login()
 
 // or create with env credentials
 
 const degiro = new DeGiro() // <-- Use DEGIRO_USER & DEGIRO_PWD
-await degiro.login()
+const accountData = await degiro.login()
 ```
 
 ### Active Debug mode
@@ -107,7 +107,7 @@ $ mocha -r ts-node/register tests/**/*.spec.ts
 ✨  Done in 4.69s.
 ```
 
-### Get account details
+### Get account details explicitly
 
 Get account info using `await`:
 
@@ -120,7 +120,7 @@ import DeGiro from 'degiro-api'
     pwd: '*****'
   })
 
-  await degiro.login()
+  await degiro.login() // Login also returns accountData
 
   const accountData = await degiro.getAccountData()
   // console.log(accountData)
