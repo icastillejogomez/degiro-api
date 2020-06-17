@@ -119,6 +119,19 @@ The JSessionId is the session browser cookie that DeGiro use to authenticate req
 import DeGiro from 'degiro-api'
 
 (async () => {
+  const degiro = new DeGiro({}) // <-- Using ENV variables
+
+  await degiro.login() // Login also returns accountData
+
+  // Get the jsessionId (LOOK, is not a promise)
+  const jsessionId = degiro.getJSESSIONID()
+})()
+```
+
+```js
+import DeGiro from 'degiro-api'
+
+(async () => {
 
   // Create an instance from a previous session
   const degiro = new DeGiro({
@@ -133,19 +146,6 @@ import DeGiro from 'degiro-api'
 
   // Do your stuff here...
 
-})()
-```
-
-```js
-import DeGiro from 'degiro-api'
-
-(async () => {
-  const degiro = new DeGiro({}) // <-- Using ENV variables
-
-  await degiro.login() // Login also returns accountData
-
-  // Get the jsessionId (LOOK, is not a promise)
-  const jsessionId = degiro.getJSESSIONID()
 })()
 ```
 
