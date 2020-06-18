@@ -33,7 +33,10 @@ function searchProductRequest(options, accountData, accountConfig) {
         utils_1.debug("Making a search request to url: " + accountConfig.data.productSearchUrl + "v5/products/lookup?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountData.data.id + "&" + params + "}");
         node_fetch_1.default(accountConfig.data.productSearchUrl + "v5/products/lookup?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId + "&" + params)
             .then(function (res) { return res.json(); })
-            .then(resolve)
+            .then(function (_a) {
+            var products = _a.products;
+            return resolve(products);
+        })
             .catch(reject);
     });
 }
