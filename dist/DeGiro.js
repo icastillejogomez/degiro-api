@@ -32,7 +32,7 @@ var DeGiro = /** @class */ (function () {
     function DeGiro(params) {
         var _this = this;
         if (params === void 0) { params = {}; }
-        this.hasSessionId = function () { return _this.accountConfig && _this.accountConfig.data && _this.accountConfig.data.sessionId; };
+        this.hasSessionId = function () { return !!_this.accountConfig && !!_this.accountConfig.data && !!_this.accountConfig.data.sessionId; };
         this.getJSESSIONID = function () { return _this.hasSessionId() ? _this.accountConfig.data.sessionId : undefined; };
         var username = params.username, pwd = params.pwd, jsessionId = params.jsessionId;
         username = username || process.env['DEGIRO_USER'];
@@ -121,8 +121,15 @@ var DeGiro = /** @class */ (function () {
                 .catch(reject);
         });
     };
-    DeGiro.prototype.isLogin = function () {
-        return this.accountData !== undefined && this.accountConfig !== undefined;
+    DeGiro.prototype.isLogin = function (options) {
+        var _this = this;
+        if (!options || !options.secure)
+            return this.hasSessionId() && !!this.accountData;
+        return new Promise(function (resolve) {
+            _this.getAccountConfig()
+                .then(function () { return resolve(true); })
+                .catch(function () { return resolve(false); });
+        });
     };
     DeGiro.prototype.getCashFunds = function () {
         throw new Error('Method not implemented.');

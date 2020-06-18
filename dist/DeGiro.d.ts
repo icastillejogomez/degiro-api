@@ -1,5 +1,5 @@
 import { DeGiroClassInterface } from './interfaces';
-import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType, CreateOrderResultType } from './types';
+import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType, CreateOrderResultType, IsLoginOptionsType } from './types';
 /**
  * @class DeGiro
  * @description Main class of DeGiro Unofficial API.
@@ -19,7 +19,7 @@ export declare class DeGiro implements DeGiroClassInterface {
     getJSESSIONID: () => string | undefined;
     getAccountConfig(sessionId?: string): Promise<AccountConfigType>;
     getAccountData(): Promise<AccountDataType>;
-    isLogin(): boolean;
+    isLogin(options?: IsLoginOptionsType): boolean | Promise<boolean>;
     getCashFunds(): CashFoundType[];
     getPortfolio(config: GetPorfolioConfigType): Promise<any[]>;
     completePortfolioDetails(portfolio: any[], getProductDetails: boolean): Promise<any[]>;

@@ -1,11 +1,11 @@
-import { CashFoundType, AccountConfigType, GetPorfolioConfigType, AccountDataType, SearchProductOptionsType, SearchProductResultType, OrderType, CreateOrderResultType } from '../types';
+import { CashFoundType, AccountConfigType, GetPorfolioConfigType, AccountDataType, SearchProductOptionsType, SearchProductResultType, OrderType, CreateOrderResultType, IsLoginOptionsType } from '../types';
 /**
  * @interface DeGiroClassInterface
  */
 export interface DeGiroClassInterface {
     login(): Promise<AccountDataType>;
     logout(): Promise<void>;
-    isLogin(): boolean;
+    isLogin(options?: IsLoginOptionsType): boolean | Promise<boolean>;
     getJSESSIONID(): string | undefined;
     getAccountConfig(sessionId: string): Promise<AccountConfigType>;
     getAccountData(): Promise<AccountDataType>;

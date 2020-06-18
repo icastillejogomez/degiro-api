@@ -169,7 +169,7 @@ $ mocha -r ts-node/register tests<span class="hljs-comment">/**/*.spec.ts
 (<span class="hljs-keyword">async</span> () =&gt; {
   <span class="hljs-keyword">const</span> degiro = <span class="hljs-keyword">new</span> DeGiro({}) <span class="hljs-comment">// &lt;-- Using ENV variables</span>
 
-  <span class="hljs-keyword">await</span> degiro.login() <span class="hljs-comment">// Login also returns accountData</span>
+  <span class="hljs-keyword">await</span> degiro.login()
 
   <span class="hljs-comment">// Get the jsessionId (LOOK, is not a promise)</span>
   <span class="hljs-keyword">const</span> jsessionId = degiro.getJSESSIONID()
@@ -187,10 +187,40 @@ $ mocha -r ts-node/register tests<span class="hljs-comment">/**/*.spec.ts
 
   <span class="hljs-comment">// Hydrate</span>
   <span class="hljs-comment">// Re-use sessions need to re-hydrate the account config data and could use as a session expiration checker</span>
-  <span class="hljs-keyword">await</span> degiro.login() <span class="hljs-comment">// Login also returns accountData</span>
+  <span class="hljs-keyword">await</span> degiro.login()
 
   <span class="hljs-comment">// Do your stuff here...</span>
 
+})()</code></pre>
+				<a href="#check-if-we-are-authenticated" id="check-if-we-are-authenticated" style="color: inherit; text-decoration: none;">
+					<h3>Check if we are authenticated</h3>
+				</a>
+				<p><code>isLogin(options): boolean</code></p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-comment">// Create an instance from a previous session</span>
+  <span class="hljs-keyword">const</span> degiro = <span class="hljs-keyword">new</span> DeGiro({}) <span class="hljs-comment">// &lt;-- Using ENV variables</span>
+
+  <span class="hljs-keyword">if</span> (!degiro.isLogin()) {
+    <span class="hljs-keyword">await</span> degiro.login()
+    <span class="hljs-keyword">if</span> (degiro.isLogin()) {
+      <span class="hljs-comment">// AWESOME!! We&#x27;re in</span>
+    }
+  }
+})()</code></pre>
+				<p>The problem with this method is that it only checks if you have the account configuration data set. The only way to verify that the session is still active is make a request.
+				You can force isLogin method passing it a <code>secure</code> field set to true. This way the method will return a promise and below it will call a DeGiro API endpoint (usually getAccountConfig)</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> DeGiro <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;degiro-api&#x27;</span>
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-comment">// Create an instance from a previous session</span>
+  <span class="hljs-keyword">const</span> degiro = <span class="hljs-keyword">new</span> DeGiro({}) <span class="hljs-comment">// &lt;-- Using ENV variables</span>
+
+  <span class="hljs-comment">// Force to make a request and check if session is still alive</span>
+  <span class="hljs-keyword">if</span>(! <span class="hljs-keyword">await</span> degiro.isLogin({ <span class="hljs-attr">secure</span>: <span class="hljs-literal">true</span> })) {
+    <span class="hljs-keyword">await</span> degiro.login()
+  }
 })()</code></pre>
 				<a href="#get-account-details-explicitly" id="get-account-details-explicitly" style="color: inherit; text-decoration: none;">
 					<h3>Get account details explicitly</h3>
@@ -604,6 +634,9 @@ Commands:
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_types_getporfolioconfigtype_.html">&quot;types/<wbr>Get<wbr>Porfolio<wbr>Config<wbr>Type&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_types_isloginoptionstype_.html">&quot;types/<wbr>IsLogin<wbr>Options<wbr>Type&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_types_loginrequestbodytype_.html">&quot;types/<wbr>Login<wbr>Request<wbr>Body<wbr>Type&quot;</a>

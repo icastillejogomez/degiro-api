@@ -7,6 +7,7 @@ import {
   SearchProductResultType,
   OrderType,
   CreateOrderResultType,
+  IsLoginOptionsType,
 } from '../types'
 
 /**
@@ -18,7 +19,7 @@ export interface DeGiroClassInterface {
 
   logout(): Promise<void>
 
-  isLogin(): boolean
+  isLogin(options?: IsLoginOptionsType): boolean | Promise<boolean>
 
   getJSESSIONID(): string | undefined
 

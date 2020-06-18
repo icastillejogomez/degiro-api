@@ -12,6 +12,7 @@ import { SearchProductResultType } from './SearchProductResultType'
 import { OrderType } from './OrderType'
 import { CreateOrderResultType } from './CreateOrderResultType'
 import { TransactionFeeType } from './TransactionFeeType'
+import { IsLoginOptionsType } from './IsLoginOptionsType'
 
 export {
   CashFoundType,
@@ -28,4 +29,5 @@ export {
   OrderType,
   CreateOrderResultType,
   TransactionFeeType,
+  IsLoginOptionsType,
 }

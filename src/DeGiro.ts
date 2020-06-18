@@ -16,6 +16,7 @@ import {
   SearchProductOptionsType,
   OrderType,
   CreateOrderResultType,
+  IsLoginOptionsType,
 } from './types'
 
 // Import requests
@@ -105,7 +106,7 @@ export class DeGiro implements DeGiroClassInterface {
     })
   }
 
-  private hasSessionId = () => this.accountConfig && this.accountConfig.data && this.accountConfig.data.sessionId
+  private hasSessionId = (): boolean => !!this.accountConfig && !!this.accountConfig.data && !!this.accountConfig.data.sessionId
 
   getJSESSIONID = () => this.hasSessionId() ? (<AccountConfigType>this.accountConfig).data.sessionId : undefined
 
@@ -137,8 +138,13 @@ export class DeGiro implements DeGiroClassInterface {
     })
   }
 
-  isLogin(): boolean {
-    return this.accountData !== undefined && this.accountConfig !== undefined
+  isLogin(options?: IsLoginOptionsType): boolean | Promise<boolean> {
+    if (!options || !options.secure) return this.hasSessionId() && !!this.accountData
+    return new Promise((resolve) => {
+      this.getAccountConfig()
+        .then(() => resolve(true))
+        .catch(() => resolve(false))
+    })
   }
 
   getCashFunds(): CashFoundType[] {

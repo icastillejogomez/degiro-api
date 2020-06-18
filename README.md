@@ -121,7 +121,7 @@ import DeGiro from 'degiro-api'
 (async () => {
   const degiro = new DeGiro({}) // <-- Using ENV variables
 
-  await degiro.login() // Login also returns accountData
+  await degiro.login()
 
   // Get the jsessionId (LOOK, is not a promise)
   const jsessionId = degiro.getJSESSIONID()
@@ -142,10 +142,47 @@ import DeGiro from 'degiro-api'
 
   // Hydrate
   // Re-use sessions need to re-hydrate the account config data and could use as a session expiration checker
-  await degiro.login() // Login also returns accountData
+  await degiro.login()
 
   // Do your stuff here...
 
+})()
+```
+
+### Check if we are authenticated
+
+`isLogin(options): boolean`
+
+```js
+import DeGiro from 'degiro-api'
+
+(async () => {
+  // Create an instance from a previous session
+  const degiro = new DeGiro({}) // <-- Using ENV variables
+
+  if (!degiro.isLogin()) {
+    await degiro.login()
+    if (degiro.isLogin()) {
+      // AWESOME!! We're in
+    }
+  }
+})()
+```
+
+The problem with this method is that it only checks if you have the account configuration data set. The only way to verify that the session is still active is make a request.
+You can force isLogin method passing it a `secure` field set to true. This way the method will return a promise and below it will call a DeGiro API endpoint (usually getAccountConfig)
+
+```js
+import DeGiro from 'degiro-api'
+
+(async () => {
+  // Create an instance from a previous session
+  const degiro = new DeGiro({}) // <-- Using ENV variables
+
+  // Force to make a request and check if session is still alive
+  if(! await degiro.isLogin({ secure: true })) {
+    await degiro.login()
+  }
 })()
 ```
 

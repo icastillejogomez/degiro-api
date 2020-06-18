@@ -2,7 +2,7 @@
 import fetch from 'node-fetch'
 
 // Import types
-import { SearchProductOptionsType, AccountConfigType, AccountDataType } from '../types'
+import { SearchProductOptionsType, AccountConfigType, AccountDataType, SearchProductResultType } from '../types'
 
 // Import debug console log
 import { debug } from '../utils'
@@ -23,7 +23,7 @@ const createURLQuery = (options: SearchProductOptionsType): string => {
   return res
 }
 
-export function searchProductRequest(options: SearchProductOptionsType, accountData: AccountDataType, accountConfig: AccountConfigType): Promise<any> {
+export function searchProductRequest(options: SearchProductOptionsType, accountData: AccountDataType, accountConfig: AccountConfigType): Promise<SearchProductResultType[]> {
   return new Promise((resolve, reject) => {
     // Preparae de request
     const params = createURLQuery(options)
@@ -32,7 +32,7 @@ export function searchProductRequest(options: SearchProductOptionsType, accountD
     debug(`Making a search request to url: ${accountConfig.data.productSearchUrl}v5/products/lookup?intAccount=${accountData.data.intAccount}&sessionId=${accountData.data.id}&${params}}`)
     fetch(`${accountConfig.data.productSearchUrl}v5/products/lookup?intAccount=${accountData.data.intAccount}&sessionId=${accountConfig.data.sessionId}&${params}`)
       .then(res => res.json())
-      .then(resolve)
+      .then(({ products }) => resolve(products))
       .catch(reject)
   })
 }
