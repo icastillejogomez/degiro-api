@@ -6,8 +6,10 @@ import { getPortfolioRequest } from './getPortfolioRequest'
 import { getProductsByIdsRequest } from './getProductsByIdsRequest'
 import { searchProductRequest } from './searchProductRequest'
 import { createOrderRequest } from './createOrderRequest'
+import { getOrdersRequest } from './getOrdersRequest'
 import { executeOrderRequest } from './executeOrderRequest'
 import { deleteOrderRequest } from './deleteOrderRequest'
+import { getAccountStateRequest } from './getAccountStateRequest'
 
 export {
   loginRequest,
@@ -20,4 +22,6 @@ export {
   createOrderRequest,
   executeOrderRequest,
   deleteOrderRequest,
+  getOrdersRequest,
+  getAccountStateRequest,
 }

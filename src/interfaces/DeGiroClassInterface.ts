@@ -8,6 +8,9 @@ import {
   OrderType,
   CreateOrderResultType,
   IsLoginOptionsType,
+  GetOrdersConfigType,
+  GetOrdersResultType,
+  GetAccountStateOptionsType,
 } from '../types'
 
 /**
@@ -27,6 +30,8 @@ export interface DeGiroClassInterface {
 
   getAccountData(): Promise<AccountDataType>
 
+  getAccountState(options: GetAccountStateOptionsType): Promise<any[]>
+
   getCashFunds(): CashFoundType[]
 
   getPortfolio(config: GetPorfolioConfigType): Promise<any[]>
@@ -34,6 +39,8 @@ export interface DeGiroClassInterface {
   getProductsByIds (ids: string[]): Promise<any[]>
 
   searchProduct (options: SearchProductOptionsType): Promise<SearchProductResultType[]>
+
+  getOrders (options: GetOrdersConfigType): Promise<GetOrdersResultType>
 
   createOrder (order: OrderType): Promise<CreateOrderResultType>
 

@@ -17,6 +17,9 @@ import {
   OrderType,
   CreateOrderResultType,
   IsLoginOptionsType,
+  GetOrdersConfigType,
+  GetOrdersResultType,
+  GetAccountStateOptionsType,
 } from './types'
 
 // Import requests
@@ -31,6 +34,8 @@ import {
   executeOrderRequest,
   deleteOrderRequest,
   logoutRequest,
+  getOrdersRequest,
+  getAccountStateRequest,
 } from './requests'
 
 /**
@@ -138,6 +143,13 @@ export class DeGiro implements DeGiroClassInterface {
     })
   }
 
+  getAccountState(options: GetAccountStateOptionsType): Promise<any[]> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getAccountStateRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig, options)
+  }
+
   isLogin(options?: IsLoginOptionsType): boolean | Promise<boolean> {
     if (!options || !options.secure) return this.hasSessionId() && !!this.accountData
     return new Promise((resolve) => {
@@ -194,6 +206,13 @@ export class DeGiro implements DeGiroClassInterface {
       return Promise.reject('You must log in first')
     }
     return searchProductRequest(options, <AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
+  }
+
+  getOrders (config: GetOrdersConfigType): Promise<GetOrdersResultType> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getOrdersRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig, config)
   }
 
   createOrder(order: OrderType): Promise<CreateOrderResultType> {

@@ -13,6 +13,9 @@ import { OrderType } from './OrderType'
 import { CreateOrderResultType } from './CreateOrderResultType'
 import { TransactionFeeType } from './TransactionFeeType'
 import { IsLoginOptionsType } from './IsLoginOptionsType'
+import { GetOrdersConfigType } from './GetOrdersConfigType'
+import { GetOrdersResultType } from './GetOrdersResultType'
+import { GetAccountStateOptionsType } from './GetAccountStateOptionsType'
 
 export {
   CashFoundType,
@@ -30,4 +33,7 @@ export {
   CreateOrderResultType,
   TransactionFeeType,
   IsLoginOptionsType,
+  GetOrdersConfigType,
+  GetOrdersResultType,
+  GetAccountStateOptionsType,
 }

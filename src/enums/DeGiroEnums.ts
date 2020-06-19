@@ -4,6 +4,7 @@ export enum DEGIRO_API_PATHS {
   LOGOUT_URL_PATH = 'trading/secure/logout',
   GET_ACCOUNT_CONFIG_PATH = 'login/secure/config',
   CREATE_ORDER_PATH = 'v5/checkOrder',
+  GET_ACCOUNT_STATE_PATH = 'v6/accountoverview',
 }
 
 export enum DeGiroActions {
@@ -41,9 +42,15 @@ export enum DeGiroSort {
   DESC = 'desc',
 }
 
-export enum PORTFOLIO_POSITIONS_TYPE_ENUM  {
+export enum PORTFOLIO_POSITIONS_TYPE_ENUM {
   ALL = 'all',
   ALL_POSITIONS = 'allPositions',
   OPEN = 'open',
   CLOSED = 'closed',
+}
+
+export enum GET_ORDERS_TYPES {
+  ACTIVE = 'orders',
+  HISTORICAL = 'historicalOrders',
+  TRANSACTIONS = 'transactions',
 }
