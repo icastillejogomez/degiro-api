@@ -3,7 +3,8 @@ export declare enum DEGIRO_API_PATHS {
     LOGIN_URL_PATH = "login/secure/login",
     LOGOUT_URL_PATH = "trading/secure/logout",
     GET_ACCOUNT_CONFIG_PATH = "login/secure/config",
-    CREATE_ORDER_PATH = "v5/checkOrder"
+    CREATE_ORDER_PATH = "v5/checkOrder",
+    GET_ACCOUNT_STATE_PATH = "v6/accountoverview"
 }
 export declare enum DeGiroActions {
     BUY = "BUY",
@@ -39,5 +40,10 @@ export declare enum PORTFOLIO_POSITIONS_TYPE_ENUM {
     ALL_POSITIONS = "allPositions",
     OPEN = "open",
     CLOSED = "closed"
+}
+export declare enum GET_ORDERS_TYPES {
+    ACTIVE = "orders",
+    HISTORICAL = "historicalOrders",
+    TRANSACTIONS = "transactions"
 }
 //# sourceMappingURL=DeGiroEnums.d.ts.map

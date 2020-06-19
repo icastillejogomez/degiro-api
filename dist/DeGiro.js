@@ -121,6 +121,12 @@ var DeGiro = /** @class */ (function () {
                 .catch(reject);
         });
     };
+    DeGiro.prototype.getAccountState = function (options) {
+        if (!this.hasSessionId()) {
+            return Promise.reject('You must log in first');
+        }
+        return requests_1.getAccountStateRequest(this.accountData, this.accountConfig, options);
+    };
     DeGiro.prototype.isLogin = function (options) {
         var _this = this;
         if (!options || !options.secure)
@@ -179,6 +185,12 @@ var DeGiro = /** @class */ (function () {
             return Promise.reject('You must log in first');
         }
         return requests_1.searchProductRequest(options, this.accountData, this.accountConfig);
+    };
+    DeGiro.prototype.getOrders = function (config) {
+        if (!this.hasSessionId()) {
+            return Promise.reject('You must log in first');
+        }
+        return requests_1.getOrdersRequest(this.accountData, this.accountConfig, config);
     };
     DeGiro.prototype.createOrder = function (order) {
         if (!this.hasSessionId()) {

@@ -13,5 +13,8 @@ import { OrderType } from './OrderType';
 import { CreateOrderResultType } from './CreateOrderResultType';
 import { TransactionFeeType } from './TransactionFeeType';
 import { IsLoginOptionsType } from './IsLoginOptionsType';
-export { CashFoundType, DeGiroSettupType, PortfolioPositionType, LoginResponseType, LoginRequestParamsType, LoginRequestBodyType, AccountConfigType, AccountDataType, GetPorfolioConfigType, SearchProductOptionsType, SearchProductResultType, OrderType, CreateOrderResultType, TransactionFeeType, IsLoginOptionsType, };
+import { GetOrdersConfigType } from './GetOrdersConfigType';
+import { GetOrdersResultType } from './GetOrdersResultType';
+import { GetAccountStateOptionsType } from './GetAccountStateOptionsType';
+export { CashFoundType, DeGiroSettupType, PortfolioPositionType, LoginResponseType, LoginRequestParamsType, LoginRequestBodyType, AccountConfigType, AccountDataType, GetPorfolioConfigType, SearchProductOptionsType, SearchProductResultType, OrderType, CreateOrderResultType, TransactionFeeType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, };
 //# sourceMappingURL=index.d.ts.map

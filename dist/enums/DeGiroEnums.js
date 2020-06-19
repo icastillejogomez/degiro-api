@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PORTFOLIO_POSITIONS_TYPE_ENUM = exports.DeGiroSort = exports.DeGiroProducTypes = exports.DeGiroTimeTypes = exports.DeGiroMarketOrderTypes = exports.DeGiroActions = exports.DEGIRO_API_PATHS = void 0;
+exports.GET_ORDERS_TYPES = exports.PORTFOLIO_POSITIONS_TYPE_ENUM = exports.DeGiroSort = exports.DeGiroProducTypes = exports.DeGiroTimeTypes = exports.DeGiroMarketOrderTypes = exports.DeGiroActions = exports.DEGIRO_API_PATHS = void 0;
 var DEGIRO_API_PATHS;
 (function (DEGIRO_API_PATHS) {
     DEGIRO_API_PATHS["BASE_API_URL"] = "https://trader.degiro.nl/";
@@ -8,6 +8,7 @@ var DEGIRO_API_PATHS;
     DEGIRO_API_PATHS["LOGOUT_URL_PATH"] = "trading/secure/logout";
     DEGIRO_API_PATHS["GET_ACCOUNT_CONFIG_PATH"] = "login/secure/config";
     DEGIRO_API_PATHS["CREATE_ORDER_PATH"] = "v5/checkOrder";
+    DEGIRO_API_PATHS["GET_ACCOUNT_STATE_PATH"] = "v6/accountoverview";
 })(DEGIRO_API_PATHS = exports.DEGIRO_API_PATHS || (exports.DEGIRO_API_PATHS = {}));
 var DeGiroActions;
 (function (DeGiroActions) {
@@ -51,4 +52,10 @@ var PORTFOLIO_POSITIONS_TYPE_ENUM;
     PORTFOLIO_POSITIONS_TYPE_ENUM["OPEN"] = "open";
     PORTFOLIO_POSITIONS_TYPE_ENUM["CLOSED"] = "closed";
 })(PORTFOLIO_POSITIONS_TYPE_ENUM = exports.PORTFOLIO_POSITIONS_TYPE_ENUM || (exports.PORTFOLIO_POSITIONS_TYPE_ENUM = {}));
+var GET_ORDERS_TYPES;
+(function (GET_ORDERS_TYPES) {
+    GET_ORDERS_TYPES["ACTIVE"] = "orders";
+    GET_ORDERS_TYPES["HISTORICAL"] = "historicalOrders";
+    GET_ORDERS_TYPES["TRANSACTIONS"] = "transactions";
+})(GET_ORDERS_TYPES = exports.GET_ORDERS_TYPES || (exports.GET_ORDERS_TYPES = {}));
 //# sourceMappingURL=DeGiroEnums.js.map

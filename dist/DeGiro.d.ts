@@ -1,5 +1,5 @@
 import { DeGiroClassInterface } from './interfaces';
-import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType, CreateOrderResultType, IsLoginOptionsType } from './types';
+import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType, CreateOrderResultType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType } from './types';
 /**
  * @class DeGiro
  * @description Main class of DeGiro Unofficial API.
@@ -19,12 +19,14 @@ export declare class DeGiro implements DeGiroClassInterface {
     getJSESSIONID: () => string | undefined;
     getAccountConfig(sessionId?: string): Promise<AccountConfigType>;
     getAccountData(): Promise<AccountDataType>;
+    getAccountState(options: GetAccountStateOptionsType): Promise<any[]>;
     isLogin(options?: IsLoginOptionsType): boolean | Promise<boolean>;
     getCashFunds(): CashFoundType[];
     getPortfolio(config: GetPorfolioConfigType): Promise<any[]>;
     completePortfolioDetails(portfolio: any[], getProductDetails: boolean): Promise<any[]>;
     getProductsByIds(ids: string[]): Promise<any[]>;
     searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>;
+    getOrders(config: GetOrdersConfigType): Promise<GetOrdersResultType>;
     createOrder(order: OrderType): Promise<CreateOrderResultType>;
     executeOrder(order: OrderType, executeId: String): Promise<String>;
     deleteOrder(orderId: String): Promise<void>;
