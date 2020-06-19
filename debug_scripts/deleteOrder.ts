@@ -1,6 +1,6 @@
-import DeGiro from './../main'
-import { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } from '../lib/enums/DeGiroEnums'
-import { OrderType } from '../lib/types'
+import DeGiro from '../src/main'
+import { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } from '../src/enums/DeGiroEnums'
+import { OrderType } from '../src/types'
 
 (async () => {
 

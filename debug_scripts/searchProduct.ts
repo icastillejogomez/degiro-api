@@ -1,5 +1,5 @@
-import DeGiro from './../main'
-import { DeGiroProducTypes } from '../lib/enums/DeGiroEnums'
+import DeGiro from '../src/main'
+import { DeGiroProducTypes } from '../src/enums/DeGiroEnums'
 
 (async () => {
 

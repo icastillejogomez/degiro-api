@@ -1,5 +1,5 @@
-import DeGiro from './../main'
-import { PORTFOLIO_POSITIONS_TYPE_ENUM } from '../lib/enums/DeGiroEnums'
+import DeGiro from '../src/main'
+import { PORTFOLIO_POSITIONS_TYPE_ENUM } from '../src/enums/DeGiroEnums'
 
 (async () => {
 
