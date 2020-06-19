@@ -1,6 +1,6 @@
 
 type ObjectDataType = {
-  value: []
+  value: [],
 }
 
 type DataToParseObjectType = {
