@@ -23,7 +23,7 @@ import { StockType } from './StockType'
 import { GetHistoricalOrdersOptionsType } from './GetHistoricalOrdersOptionsType'
 import { HistoricalOrdersType } from './HistoricalOrdersType'
 import { GetNewsOptionsType } from './GetNewsOptionsType'
-import { NewsType } from './NewsType'
+import { NewsType, New } from './NewsType'
 import { WebUserSettingType } from './WebUserSettingType'
 import { i18nMessagesType } from './i18nMessagesType'
 
@@ -70,6 +70,7 @@ export {
   HistoricalOrdersType,
   GetNewsOptionsType,
   NewsType,
+  New,
   WebUserSettingType,
 
   ConfigDictionaryType,

@@ -50,6 +50,7 @@ import {
   getConfigDictionaryRequest,
   getAccountInfoRequest,
   getWebi18nMessagesRequest,
+  getNewsRequest,
 } from './requests'
 
 /**
@@ -302,9 +303,10 @@ export class DeGiro implements DeGiroClassInterface {
   }
 
   getNews(options: GetNewsOptionsType): Promise<NewsType> {
-    return new Promise((resolve, reject) => {
-      reject('Method not implemented')
-    })
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getNewsRequest(options, <AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
   }
 
   getWebi18nMessages(lang: string = 'es_ES'): Promise<i18nMessagesType> {

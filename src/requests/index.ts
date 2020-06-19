@@ -13,6 +13,7 @@ import { getAccountStateRequest } from './getAccountStateRequest'
 import { getConfigDictionaryRequest } from './getConfigDictionaryRequest'
 import { getAccountInfoRequest } from './getAccountInfoRequest'
 import { getWebi18nMessagesRequest } from './getWebi18nMessagesRequest'
+import { getNewsRequest } from './getNewsRequest'
 
 export {
   loginRequest,
@@ -30,4 +31,5 @@ export {
   getConfigDictionaryRequest,
   getAccountInfoRequest,
   getWebi18nMessagesRequest,
+  getNewsRequest,
 }

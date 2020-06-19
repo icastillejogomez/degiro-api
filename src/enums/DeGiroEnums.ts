@@ -6,6 +6,8 @@ export enum DEGIRO_API_PATHS {
   CREATE_ORDER_PATH = 'v5/checkOrder',
   GET_ACCOUNT_STATE_PATH = 'v6/accountoverview',
   GET_ACCOUNT_INFO = 'v5/account/info/',
+  GET_LATESTS_NEWS = 'newsfeed/v2/latest-news',
+  GET_TOP_NEWS = 'newsfeed/v2/top-news-preview',
 }
 
 export enum DeGiroActions {
