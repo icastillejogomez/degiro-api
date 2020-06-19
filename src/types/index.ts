@@ -25,6 +25,7 @@ import { HistoricalOrdersType } from './HistoricalOrdersType'
 import { GetNewsOptionsType } from './GetNewsOptionsType'
 import { NewsType } from './NewsType'
 import { WebUserSettingType } from './WebUserSettingType'
+import { i18nMessagesType } from './i18nMessagesType'
 
 import {
   ConfigDictionaryType,
@@ -85,4 +86,5 @@ export {
   Region,
   Country,
 
+  i18nMessagesType,
 }

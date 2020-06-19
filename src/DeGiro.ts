@@ -30,6 +30,7 @@ import {
   NewsType,
   WebUserSettingType,
   ConfigDictionaryType,
+  i18nMessagesType,
 } from './types'
 
 // Import requests
@@ -48,6 +49,7 @@ import {
   getAccountStateRequest,
   getConfigDictionaryRequest,
   getAccountInfoRequest,
+  getWebi18nMessagesRequest,
 } from './requests'
 
 /**
@@ -305,10 +307,11 @@ export class DeGiro implements DeGiroClassInterface {
     })
   }
 
-  getWebi18nMessages(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      reject('Method not implemented')
-    })
+  getWebi18nMessages(lang: string = 'es_ES'): Promise<i18nMessagesType> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getWebi18nMessagesRequest(lang, <AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
   }
 
   getWebSettings(): Promise<any> {

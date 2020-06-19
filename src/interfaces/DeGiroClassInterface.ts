@@ -21,6 +21,7 @@ import {
   NewsType,
   WebUserSettingType,
   ConfigDictionaryType,
+  i18nMessagesType,
 } from '../types'
 
 /**
@@ -86,7 +87,7 @@ export interface DeGiroClassInterface {
 
   getNews(options: GetNewsOptionsType): Promise<NewsType>
 
-  getWebi18nMessages(): Promise<any>
+  getWebi18nMessages(lang: string): Promise<i18nMessagesType>
 
   getWebSettings(): Promise<any>
 
