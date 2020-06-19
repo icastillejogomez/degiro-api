@@ -28,4 +28,20 @@ describe('DeGiro getJSESSIONID', () => {
     })
   })
 
+  it('should return undefined before log in', async () => {
+    // Creamos la instancia del objecto y comprobamos que se ha creado bien
+    const degiro = new DeGiro()
+    expect(degiro).to.exist
+    expect(degiro).to.be.a('object')
+    expect(degiro).to.be.instanceOf(DeGiro)
+
+    // Hacemos login y esperamos con que no falle
+    const loginPromise = degiro.login()
+    expect(loginPromise).not.be.rejected
+    const jsessionId = degiro.getJSESSIONID()
+    expect(jsessionId).to.not.exist
+    expect(jsessionId).to.be.a('undefined')
+    expect(jsessionId).to.be.eq(undefined)
+  })
+
 })
