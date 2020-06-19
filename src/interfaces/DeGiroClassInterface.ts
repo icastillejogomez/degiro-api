@@ -11,12 +11,24 @@ import {
   GetOrdersConfigType,
   GetOrdersResultType,
   GetAccountStateOptionsType,
+  AccountReportsType,
+  AccountInfoType,
+  FavouriteProductType,
+  StockType,
+  GetHistoricalOrdersOptionsType,
+  HistoricalOrdersType,
+  GetNewsOptionsType,
+  NewsType,
+  WebUserSettingType,
+  ConfigDictionaryType,
 } from '../types'
 
 /**
  * @interface DeGiroClassInterface
  */
 export interface DeGiroClassInterface {
+
+  /* Session methods */
 
   login(): Promise<AccountDataType>
 
@@ -26,26 +38,60 @@ export interface DeGiroClassInterface {
 
   getJSESSIONID(): string | undefined
 
+  /* Account methods */
+
   getAccountConfig(sessionId: string): Promise<AccountConfigType>
 
   getAccountData(): Promise<AccountDataType>
 
   getAccountState(options: GetAccountStateOptionsType): Promise<any[]>
 
+  getAccountReports(): Promise<AccountReportsType>
+
+  getAccountInfo(): Promise<AccountInfoType>
+
+  /* Search methods */
+
+  searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>
+
+  /* Cash Funds methods */
+
   getCashFunds(): CashFoundType[]
+
+  /* Porfolio methods */
 
   getPortfolio(config: GetPorfolioConfigType): Promise<any[]>
 
-  getProductsByIds (ids: string[]): Promise<any[]>
+  /* Stocks methods */
 
-  searchProduct (options: SearchProductOptionsType): Promise<SearchProductResultType[]>
+  getFavouriteProducts(): Promise<FavouriteProductType[]>
 
-  getOrders (options: GetOrdersConfigType): Promise<GetOrdersResultType>
+  getPopularStocks(): Promise<StockType[]>
 
-  createOrder (order: OrderType): Promise<CreateOrderResultType>
+  /* Orders methods */
 
-  executeOrder (order: OrderType, executeId: string): Promise<String>
+  getOrders(options: GetOrdersConfigType): Promise<GetOrdersResultType>
+
+  getHistoricalOrders(options: GetHistoricalOrdersOptionsType): Promise<HistoricalOrdersType>
+
+  createOrder(order: OrderType): Promise<CreateOrderResultType>
+
+  executeOrder(order: OrderType, executeId: string): Promise<String>
 
   deleteOrder(orderId: String): Promise<void>
+
+  /* Miscellaneous methods */
+
+  getProductsByIds(ids: string[]): Promise<any[]>
+
+  getNews(options: GetNewsOptionsType): Promise<NewsType>
+
+  getWebi18nMessages(): Promise<any>
+
+  getWebSettings(): Promise<any>
+
+  getWebUserSettings(): Promise<WebUserSettingType>
+
+  getConfigDictionary(): Promise<ConfigDictionaryType>
 
 }

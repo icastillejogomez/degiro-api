@@ -20,6 +20,16 @@ import {
   GetOrdersConfigType,
   GetOrdersResultType,
   GetAccountStateOptionsType,
+  AccountReportsType,
+  AccountInfoType,
+  GetHistoricalOrdersOptionsType,
+  HistoricalOrdersType,
+  FavouriteProductType,
+  StockType,
+  GetNewsOptionsType,
+  NewsType,
+  WebUserSettingType,
+  ConfigDictionaryType,
 } from './types'
 
 // Import requests
@@ -36,6 +46,8 @@ import {
   logoutRequest,
   getOrdersRequest,
   getAccountStateRequest,
+  getConfigDictionaryRequest,
+  getAccountInfoRequest,
 } from './requests'
 
 /**
@@ -44,11 +56,15 @@ import {
  */
 export class DeGiro implements DeGiroClassInterface {
 
+  /* Properties */
+
   private readonly username: string
   private readonly pwd: string
   private jsessionId: string | undefined
   private accountConfig: AccountConfigType | undefined
   private accountData: AccountDataType | undefined
+
+  /* Constructor and generator function */
 
   constructor(params: DeGiroSettupType = {}) {
     let { username, pwd, jsessionId } = params
@@ -70,6 +86,8 @@ export class DeGiro implements DeGiroClassInterface {
     return new DeGiro(params)
   }
 
+  /* Session methods */
+
   login(): Promise<AccountDataType> {
     if (this.jsessionId) return this.loginWithJSESSIONID(this.jsessionId)
     return new Promise((resolve, reject) => {
@@ -80,18 +98,6 @@ export class DeGiro implements DeGiroClassInterface {
         })
         .then(() => this.getAccountData())
         .then(resolve)
-        .catch(reject)
-    })
-  }
-
-  private loginWithJSESSIONID(jsessionId: string): Promise<AccountDataType> {
-    return new Promise((resolve, reject) => {
-      this.getAccountConfig(jsessionId)
-        .then(() => this.getAccountData())
-        .then((accountData) => {
-          this.jsessionId = undefined // Remove the jsessionId to prevent reuse
-          resolve(accountData)
-        })
         .catch(reject)
     })
   }
@@ -111,9 +117,32 @@ export class DeGiro implements DeGiroClassInterface {
     })
   }
 
+  isLogin(options?: IsLoginOptionsType): boolean | Promise<boolean> {
+    if (!options || !options.secure) return this.hasSessionId() && !!this.accountData
+    return new Promise((resolve) => {
+      this.getAccountConfig()
+        .then(() => resolve(true))
+        .catch(() => resolve(false))
+    })
+  }
+
   private hasSessionId = (): boolean => !!this.accountConfig && !!this.accountConfig.data && !!this.accountConfig.data.sessionId
 
+  private loginWithJSESSIONID(jsessionId: string): Promise<AccountDataType> {
+    return new Promise((resolve, reject) => {
+      this.getAccountConfig(jsessionId)
+        .then(() => this.getAccountData())
+        .then((accountData) => {
+          this.jsessionId = undefined // Remove the jsessionId to prevent reuse
+          resolve(accountData)
+        })
+        .catch(reject)
+    })
+  }
+
   getJSESSIONID = () => this.hasSessionId() ? (<AccountConfigType>this.accountConfig).data.sessionId : undefined
+
+  /* Account methods */
 
   getAccountConfig(sessionId?: string): Promise<AccountConfigType> {
     return new Promise((resolve, reject) => {
@@ -150,18 +179,35 @@ export class DeGiro implements DeGiroClassInterface {
     return getAccountStateRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig, options)
   }
 
-  isLogin(options?: IsLoginOptionsType): boolean | Promise<boolean> {
-    if (!options || !options.secure) return this.hasSessionId() && !!this.accountData
-    return new Promise((resolve) => {
-      this.getAccountConfig()
-        .then(() => resolve(true))
-        .catch(() => resolve(false))
+  getAccountReports(): Promise<AccountReportsType> {
+    return new Promise((resolve, reject) => {
+      reject('Method not implemented')
     })
   }
+
+  getAccountInfo(): Promise<AccountInfoType> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getAccountInfoRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
+  }
+
+  /* Search methods */
+
+  searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return searchProductRequest(options, <AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
+  }
+
+  /* Cash Funds methods */
 
   getCashFunds(): CashFoundType[] {
     throw new Error('Method not implemented.')
   }
+
+  /* Porfolio methods */
 
   getPortfolio(config: GetPorfolioConfigType): Promise<any[]> {
     return new Promise((resolve, reject) => {
@@ -175,7 +221,7 @@ export class DeGiro implements DeGiroClassInterface {
     })
   }
 
-  completePortfolioDetails(portfolio: any[], getProductDetails: boolean): Promise<any[]> {
+  private completePortfolioDetails(portfolio: any[], getProductDetails: boolean): Promise<any[]> {
     if (!getProductDetails) return Promise.resolve(portfolio)
     return new Promise((resolve, reject) => {
       async.map(portfolio, (position, next) => {
@@ -194,25 +240,33 @@ export class DeGiro implements DeGiroClassInterface {
     })
   }
 
-  getProductsByIds(ids: string[]): Promise<any[]> {
-    if (!this.hasSessionId()) {
-      return Promise.reject('You must log in first')
-    }
-    return getProductsByIdsRequest(ids, <AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
+  /* Stocks methods */
+
+  getFavouriteProducts(): Promise<FavouriteProductType[]> {
+    return new Promise((resolve, reject) => {
+      reject('Method not implemented')
+    })
   }
 
-  searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]> {
-    if (!this.hasSessionId()) {
-      return Promise.reject('You must log in first')
-    }
-    return searchProductRequest(options, <AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
+  getPopularStocks(): Promise<StockType[]> {
+    return new Promise((resolve, reject) => {
+      reject('Method not implemented')
+    })
   }
+
+  /* Orders methods */
 
   getOrders (config: GetOrdersConfigType): Promise<GetOrdersResultType> {
     if (!this.hasSessionId()) {
       return Promise.reject('You must log in first')
     }
     return getOrdersRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig, config)
+  }
+
+  getHistoricalOrders(options: GetHistoricalOrdersOptionsType): Promise<HistoricalOrdersType> {
+    return new Promise((resolve, reject) => {
+      reject('Method not implemented')
+    })
   }
 
   createOrder(order: OrderType): Promise<CreateOrderResultType> {
@@ -234,6 +288,46 @@ export class DeGiro implements DeGiroClassInterface {
       return Promise.reject('You must log in first')
     }
     return deleteOrderRequest(orderId, <AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
+  }
+
+  /* Miscellaneous methods */
+
+  getProductsByIds(ids: string[]): Promise<any[]> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getProductsByIdsRequest(ids, <AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
+  }
+
+  getNews(options: GetNewsOptionsType): Promise<NewsType> {
+    return new Promise((resolve, reject) => {
+      reject('Method not implemented')
+    })
+  }
+
+  getWebi18nMessages(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      reject('Method not implemented')
+    })
+  }
+
+  getWebSettings(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      reject('Method not implemented')
+    })
+  }
+
+  getWebUserSettings(): Promise<WebUserSettingType> {
+    return new Promise((resolve, reject) => {
+      reject('Method not implemented')
+    })
+  }
+
+  getConfigDictionary(): Promise<ConfigDictionaryType> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getConfigDictionaryRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
   }
 
 }

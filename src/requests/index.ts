@@ -10,6 +10,8 @@ import { getOrdersRequest } from './getOrdersRequest'
 import { executeOrderRequest } from './executeOrderRequest'
 import { deleteOrderRequest } from './deleteOrderRequest'
 import { getAccountStateRequest } from './getAccountStateRequest'
+import { getConfigDictionaryRequest } from './getConfigDictionaryRequest'
+import { getAccountInfoRequest } from './getAccountInfoRequest'
 
 export {
   loginRequest,
@@ -24,4 +26,6 @@ export {
   deleteOrderRequest,
   getOrdersRequest,
   getAccountStateRequest,
+  getConfigDictionaryRequest,
+  getAccountInfoRequest,
 }

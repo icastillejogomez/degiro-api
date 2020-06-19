@@ -5,6 +5,7 @@ export enum DEGIRO_API_PATHS {
   GET_ACCOUNT_CONFIG_PATH = 'login/secure/config',
   CREATE_ORDER_PATH = 'v5/checkOrder',
   GET_ACCOUNT_STATE_PATH = 'v6/accountoverview',
+  GET_ACCOUNT_INFO = 'v5/account/info/',
 }
 
 export enum DeGiroActions {

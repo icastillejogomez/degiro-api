@@ -16,6 +16,31 @@ import { IsLoginOptionsType } from './IsLoginOptionsType'
 import { GetOrdersConfigType } from './GetOrdersConfigType'
 import { GetOrdersResultType } from './GetOrdersResultType'
 import { GetAccountStateOptionsType } from './GetAccountStateOptionsType'
+import { AccountReportsType } from './AccountReportsType'
+import { AccountInfoType } from './AccountInfoType'
+import { FavouriteProductType } from './FavouriteProductType'
+import { StockType } from './StockType'
+import { GetHistoricalOrdersOptionsType } from './GetHistoricalOrdersOptionsType'
+import { HistoricalOrdersType } from './HistoricalOrdersType'
+import { GetNewsOptionsType } from './GetNewsOptionsType'
+import { NewsType } from './NewsType'
+import { WebUserSettingType } from './WebUserSettingType'
+
+import {
+  ConfigDictionaryType,
+  StockCountry,
+  BondExchange,
+  BondIssuerType,
+  EurexCountry,
+  FutureExchange,
+  OptionExchange,
+  CombinationExchange,
+  CFDExchange,
+  Exchange,
+  Index,
+  Region,
+  Country,
+} from './ConfigDictionaryType'
 
 export {
   CashFoundType,
@@ -36,4 +61,28 @@ export {
   GetOrdersConfigType,
   GetOrdersResultType,
   GetAccountStateOptionsType,
+  AccountReportsType,
+  AccountInfoType,
+  FavouriteProductType,
+  StockType,
+  GetHistoricalOrdersOptionsType,
+  HistoricalOrdersType,
+  GetNewsOptionsType,
+  NewsType,
+  WebUserSettingType,
+
+  ConfigDictionaryType,
+  StockCountry,
+  BondExchange,
+  BondIssuerType,
+  EurexCountry,
+  FutureExchange,
+  OptionExchange,
+  CombinationExchange,
+  CFDExchange,
+  Exchange,
+  Index,
+  Region,
+  Country,
+
 }
