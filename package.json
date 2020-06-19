@@ -7,14 +7,14 @@
   "types": "dist/main.d.ts",
   "scripts": {
     "start": "node dist/main",
-    "compile": "rm -fr dist && tsc",
+    "build": "rm -fr dist && tsc",
     "lint": "tslint --project tsconfig.json 'src/**/*.ts'",
     "test": "mocha -r ts-node/register tests/**/*.spec.ts",
     "coverage": "nyc yarn test && nyc report --reporter=text-lcov > coverage.lcov",
-    "npm:publish": "yarn lint && yarn compile && yarn publish",
-    "push": "yarn lint && yarn compile && git push",
+    "npm:publish": "yarn lint && yarn build && yarn publish",
+    "push": "yarn lint && yarn build && git push",
     "doc": "typedoc --out docs src",
-    "pre-commit": "yarn lint && yarn coverage && yarn compile && yarn doc"
+    "pre-commit": "yarn lint && yarn coverage && yarn build && yarn doc"
   },
   "keywords": [
     "degiro",
