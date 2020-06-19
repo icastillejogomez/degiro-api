@@ -29,6 +29,7 @@ var requests_1 = require("./requests");
  * @description Main class of DeGiro Unofficial API.
  */
 var DeGiro = /** @class */ (function () {
+    /* Constructor and generator function */
     function DeGiro(params) {
         var _this = this;
         if (params === void 0) { params = {}; }
@@ -49,6 +50,7 @@ var DeGiro = /** @class */ (function () {
     DeGiro.create = function (params) {
         return new DeGiro(params);
     };
+    /* Session methods */
     DeGiro.prototype.login = function () {
         var _this = this;
         if (this.jsessionId)
@@ -63,18 +65,6 @@ var DeGiro = /** @class */ (function () {
             })
                 .then(function () { return _this.getAccountData(); })
                 .then(resolve)
-                .catch(reject);
-        });
-    };
-    DeGiro.prototype.loginWithJSESSIONID = function (jsessionId) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.getAccountConfig(jsessionId)
-                .then(function () { return _this.getAccountData(); })
-                .then(function (accountData) {
-                _this.jsessionId = undefined; // Remove the jsessionId to prevent reuse
-                resolve(accountData);
-            })
                 .catch(reject);
         });
     };
@@ -93,6 +83,29 @@ var DeGiro = /** @class */ (function () {
                 .catch(reject);
         });
     };
+    DeGiro.prototype.isLogin = function (options) {
+        var _this = this;
+        if (!options || !options.secure)
+            return this.hasSessionId() && !!this.accountData;
+        return new Promise(function (resolve) {
+            _this.getAccountConfig()
+                .then(function () { return resolve(true); })
+                .catch(function () { return resolve(false); });
+        });
+    };
+    DeGiro.prototype.loginWithJSESSIONID = function (jsessionId) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.getAccountConfig(jsessionId)
+                .then(function () { return _this.getAccountData(); })
+                .then(function (accountData) {
+                _this.jsessionId = undefined; // Remove the jsessionId to prevent reuse
+                resolve(accountData);
+            })
+                .catch(reject);
+        });
+    };
+    /* Account methods */
     DeGiro.prototype.getAccountConfig = function (sessionId) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -127,19 +140,29 @@ var DeGiro = /** @class */ (function () {
         }
         return requests_1.getAccountStateRequest(this.accountData, this.accountConfig, options);
     };
-    DeGiro.prototype.isLogin = function (options) {
-        var _this = this;
-        if (!options || !options.secure)
-            return this.hasSessionId() && !!this.accountData;
-        return new Promise(function (resolve) {
-            _this.getAccountConfig()
-                .then(function () { return resolve(true); })
-                .catch(function () { return resolve(false); });
+    DeGiro.prototype.getAccountReports = function () {
+        return new Promise(function (resolve, reject) {
+            reject('Method not implemented');
         });
     };
+    DeGiro.prototype.getAccountInfo = function () {
+        if (!this.hasSessionId()) {
+            return Promise.reject('You must log in first');
+        }
+        return requests_1.getAccountInfoRequest(this.accountData, this.accountConfig);
+    };
+    /* Search methods */
+    DeGiro.prototype.searchProduct = function (options) {
+        if (!this.hasSessionId()) {
+            return Promise.reject('You must log in first');
+        }
+        return requests_1.searchProductRequest(options, this.accountData, this.accountConfig);
+    };
+    /* Cash Funds methods */
     DeGiro.prototype.getCashFunds = function () {
         throw new Error('Method not implemented.');
     };
+    /* Porfolio methods */
     DeGiro.prototype.getPortfolio = function (config) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -174,23 +197,28 @@ var DeGiro = /** @class */ (function () {
             });
         });
     };
-    DeGiro.prototype.getProductsByIds = function (ids) {
-        if (!this.hasSessionId()) {
-            return Promise.reject('You must log in first');
-        }
-        return requests_1.getProductsByIdsRequest(ids, this.accountData, this.accountConfig);
+    /* Stocks methods */
+    DeGiro.prototype.getFavouriteProducts = function () {
+        return new Promise(function (resolve, reject) {
+            reject('Method not implemented');
+        });
     };
-    DeGiro.prototype.searchProduct = function (options) {
-        if (!this.hasSessionId()) {
-            return Promise.reject('You must log in first');
-        }
-        return requests_1.searchProductRequest(options, this.accountData, this.accountConfig);
+    DeGiro.prototype.getPopularStocks = function () {
+        return new Promise(function (resolve, reject) {
+            reject('Method not implemented');
+        });
     };
+    /* Orders methods */
     DeGiro.prototype.getOrders = function (config) {
         if (!this.hasSessionId()) {
             return Promise.reject('You must log in first');
         }
         return requests_1.getOrdersRequest(this.accountData, this.accountConfig, config);
+    };
+    DeGiro.prototype.getHistoricalOrders = function (options) {
+        return new Promise(function (resolve, reject) {
+            reject('Method not implemented');
+        });
     };
     DeGiro.prototype.createOrder = function (order) {
         if (!this.hasSessionId()) {
@@ -209,6 +237,42 @@ var DeGiro = /** @class */ (function () {
             return Promise.reject('You must log in first');
         }
         return requests_1.deleteOrderRequest(orderId, this.accountData, this.accountConfig);
+    };
+    /* Miscellaneous methods */
+    DeGiro.prototype.getProductsByIds = function (ids) {
+        if (!this.hasSessionId()) {
+            return Promise.reject('You must log in first');
+        }
+        return requests_1.getProductsByIdsRequest(ids, this.accountData, this.accountConfig);
+    };
+    DeGiro.prototype.getNews = function (options) {
+        if (!this.hasSessionId()) {
+            return Promise.reject('You must log in first');
+        }
+        return requests_1.getNewsRequest(options, this.accountData, this.accountConfig);
+    };
+    DeGiro.prototype.getWebi18nMessages = function (lang) {
+        if (lang === void 0) { lang = 'es_ES'; }
+        if (!this.hasSessionId()) {
+            return Promise.reject('You must log in first');
+        }
+        return requests_1.getWebi18nMessagesRequest(lang, this.accountData, this.accountConfig);
+    };
+    DeGiro.prototype.getWebSettings = function () {
+        return new Promise(function (resolve, reject) {
+            reject('Method not implemented');
+        });
+    };
+    DeGiro.prototype.getWebUserSettings = function () {
+        return new Promise(function (resolve, reject) {
+            reject('Method not implemented');
+        });
+    };
+    DeGiro.prototype.getConfigDictionary = function () {
+        if (!this.hasSessionId()) {
+            return Promise.reject('You must log in first');
+        }
+        return requests_1.getConfigDictionaryRequest(this.accountData, this.accountConfig);
     };
     return DeGiro;
 }());

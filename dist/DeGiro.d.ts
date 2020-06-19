@@ -1,5 +1,5 @@
 import { DeGiroClassInterface } from './interfaces';
-import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType, CreateOrderResultType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType } from './types';
+import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType, CreateOrderResultType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, AccountReportsType, AccountInfoType, GetHistoricalOrdersOptionsType, HistoricalOrdersType, FavouriteProductType, StockType, GetNewsOptionsType, NewsType, WebUserSettingType, ConfigDictionaryType, i18nMessagesType } from './types';
 /**
  * @class DeGiro
  * @description Main class of DeGiro Unofficial API.
@@ -13,22 +13,32 @@ export declare class DeGiro implements DeGiroClassInterface {
     constructor(params?: DeGiroSettupType);
     static create(params: DeGiroSettupType): DeGiro;
     login(): Promise<AccountDataType>;
-    private loginWithJSESSIONID;
     logout(): Promise<void>;
+    isLogin(options?: IsLoginOptionsType): boolean | Promise<boolean>;
     private hasSessionId;
+    private loginWithJSESSIONID;
     getJSESSIONID: () => string | undefined;
     getAccountConfig(sessionId?: string): Promise<AccountConfigType>;
     getAccountData(): Promise<AccountDataType>;
     getAccountState(options: GetAccountStateOptionsType): Promise<any[]>;
-    isLogin(options?: IsLoginOptionsType): boolean | Promise<boolean>;
+    getAccountReports(): Promise<AccountReportsType>;
+    getAccountInfo(): Promise<AccountInfoType>;
+    searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>;
     getCashFunds(): CashFoundType[];
     getPortfolio(config: GetPorfolioConfigType): Promise<any[]>;
-    completePortfolioDetails(portfolio: any[], getProductDetails: boolean): Promise<any[]>;
-    getProductsByIds(ids: string[]): Promise<any[]>;
-    searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>;
+    private completePortfolioDetails;
+    getFavouriteProducts(): Promise<FavouriteProductType[]>;
+    getPopularStocks(): Promise<StockType[]>;
     getOrders(config: GetOrdersConfigType): Promise<GetOrdersResultType>;
+    getHistoricalOrders(options: GetHistoricalOrdersOptionsType): Promise<HistoricalOrdersType>;
     createOrder(order: OrderType): Promise<CreateOrderResultType>;
     executeOrder(order: OrderType, executeId: String): Promise<String>;
     deleteOrder(orderId: String): Promise<void>;
+    getProductsByIds(ids: string[]): Promise<any[]>;
+    getNews(options: GetNewsOptionsType): Promise<NewsType>;
+    getWebi18nMessages(lang?: string): Promise<i18nMessagesType>;
+    getWebSettings(): Promise<any>;
+    getWebUserSettings(): Promise<WebUserSettingType>;
+    getConfigDictionary(): Promise<ConfigDictionaryType>;
 }
 //# sourceMappingURL=DeGiro.d.ts.map

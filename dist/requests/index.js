@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAccountStateRequest = exports.getOrdersRequest = exports.deleteOrderRequest = exports.executeOrderRequest = exports.createOrderRequest = exports.searchProductRequest = exports.getProductsByIdsRequest = exports.getPortfolioRequest = exports.getAccountDataRequest = exports.getAccountConfigRequest = exports.logoutRequest = exports.loginRequest = void 0;
+exports.getNewsRequest = exports.getWebi18nMessagesRequest = exports.getAccountInfoRequest = exports.getConfigDictionaryRequest = exports.getAccountStateRequest = exports.getOrdersRequest = exports.deleteOrderRequest = exports.executeOrderRequest = exports.createOrderRequest = exports.searchProductRequest = exports.getProductsByIdsRequest = exports.getPortfolioRequest = exports.getAccountDataRequest = exports.getAccountConfigRequest = exports.logoutRequest = exports.loginRequest = void 0;
 var login_1 = require("./login");
 Object.defineProperty(exports, "loginRequest", { enumerable: true, get: function () { return login_1.loginRequest; } });
 var logout_1 = require("./logout");
@@ -25,4 +25,12 @@ var deleteOrderRequest_1 = require("./deleteOrderRequest");
 Object.defineProperty(exports, "deleteOrderRequest", { enumerable: true, get: function () { return deleteOrderRequest_1.deleteOrderRequest; } });
 var getAccountStateRequest_1 = require("./getAccountStateRequest");
 Object.defineProperty(exports, "getAccountStateRequest", { enumerable: true, get: function () { return getAccountStateRequest_1.getAccountStateRequest; } });
+var getConfigDictionaryRequest_1 = require("./getConfigDictionaryRequest");
+Object.defineProperty(exports, "getConfigDictionaryRequest", { enumerable: true, get: function () { return getConfigDictionaryRequest_1.getConfigDictionaryRequest; } });
+var getAccountInfoRequest_1 = require("./getAccountInfoRequest");
+Object.defineProperty(exports, "getAccountInfoRequest", { enumerable: true, get: function () { return getAccountInfoRequest_1.getAccountInfoRequest; } });
+var getWebi18nMessagesRequest_1 = require("./getWebi18nMessagesRequest");
+Object.defineProperty(exports, "getWebi18nMessagesRequest", { enumerable: true, get: function () { return getWebi18nMessagesRequest_1.getWebi18nMessagesRequest; } });
+var getNewsRequest_1 = require("./getNewsRequest");
+Object.defineProperty(exports, "getNewsRequest", { enumerable: true, get: function () { return getNewsRequest_1.getNewsRequest; } });
 //# sourceMappingURL=index.js.map

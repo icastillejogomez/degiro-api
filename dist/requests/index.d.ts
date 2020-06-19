@@ -10,5 +10,9 @@ import { getOrdersRequest } from './getOrdersRequest';
 import { executeOrderRequest } from './executeOrderRequest';
 import { deleteOrderRequest } from './deleteOrderRequest';
 import { getAccountStateRequest } from './getAccountStateRequest';
-export { loginRequest, logoutRequest, getAccountConfigRequest, getAccountDataRequest, getPortfolioRequest, getProductsByIdsRequest, searchProductRequest, createOrderRequest, executeOrderRequest, deleteOrderRequest, getOrdersRequest, getAccountStateRequest, };
+import { getConfigDictionaryRequest } from './getConfigDictionaryRequest';
+import { getAccountInfoRequest } from './getAccountInfoRequest';
+import { getWebi18nMessagesRequest } from './getWebi18nMessagesRequest';
+import { getNewsRequest } from './getNewsRequest';
+export { loginRequest, logoutRequest, getAccountConfigRequest, getAccountDataRequest, getPortfolioRequest, getProductsByIdsRequest, searchProductRequest, createOrderRequest, executeOrderRequest, deleteOrderRequest, getOrdersRequest, getAccountStateRequest, getConfigDictionaryRequest, getAccountInfoRequest, getWebi18nMessagesRequest, getNewsRequest, };
 //# sourceMappingURL=index.d.ts.map

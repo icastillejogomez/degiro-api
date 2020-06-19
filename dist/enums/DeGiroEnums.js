@@ -9,6 +9,9 @@ var DEGIRO_API_PATHS;
     DEGIRO_API_PATHS["GET_ACCOUNT_CONFIG_PATH"] = "login/secure/config";
     DEGIRO_API_PATHS["CREATE_ORDER_PATH"] = "v5/checkOrder";
     DEGIRO_API_PATHS["GET_ACCOUNT_STATE_PATH"] = "v6/accountoverview";
+    DEGIRO_API_PATHS["GET_ACCOUNT_INFO"] = "v5/account/info/";
+    DEGIRO_API_PATHS["GET_LATESTS_NEWS"] = "newsfeed/v2/latest-news";
+    DEGIRO_API_PATHS["GET_TOP_NEWS"] = "newsfeed/v2/top-news-preview";
 })(DEGIRO_API_PATHS = exports.DEGIRO_API_PATHS || (exports.DEGIRO_API_PATHS = {}));
 var DeGiroActions;
 (function (DeGiroActions) {
