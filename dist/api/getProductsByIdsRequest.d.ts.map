@@ -1,0 +1,1 @@
+{"version":3,"file":"getProductsByIdsRequest.d.ts","sourceRoot":"","sources":["../../src/api/getProductsByIdsRequest.ts"],"names":[],"mappings":"AAIA,OAAO,EAAE,iBAAiB,EAAE,eAAe,EAAE,MAAM,UAAU,CAAA;AAM7D,wBAAgB,uBAAuB,CAAC,GAAG,EAAE,MAAM,EAAE,EAAE,WAAW,EAAE,eAAe,EAAE,aAAa,EAAE,iBAAiB,GAAG,OAAO,CAAC,GAAG,EAAE,CAAC,CAgBrI"}

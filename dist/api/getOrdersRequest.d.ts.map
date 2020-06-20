@@ -1,0 +1,1 @@
+{"version":3,"file":"getOrdersRequest.d.ts","sourceRoot":"","sources":["../../src/api/getOrdersRequest.ts"],"names":[],"mappings":"AAIA,OAAO,EAAE,iBAAiB,EAAE,eAAe,EAAE,mBAAmB,EAAE,mBAAmB,EAAE,MAAM,UAAU,CAAA;AAQvG,wBAAgB,gBAAgB,CAAC,WAAW,EAAE,eAAe,EAAE,aAAa,EAAE,iBAAiB,EAAE,MAAM,EAAE,mBAAmB,GAAG,OAAO,CAAC,mBAAmB,CAAC,CAsB1J"}

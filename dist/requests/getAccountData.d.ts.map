@@ -1,1 +1,0 @@
-{"version":3,"file":"getAccountData.d.ts","sourceRoot":"","sources":["../../src/requests/getAccountData.ts"],"names":[],"mappings":"AAIA,OAAO,EAAE,eAAe,EAAE,iBAAiB,EAAE,MAAM,UAAU,CAAA;AAK7D,wBAAgB,qBAAqB,CAAC,aAAa,EAAE,iBAAiB,GAAG,OAAO,CAAC,eAAe,CAAC,CAmBhG"}

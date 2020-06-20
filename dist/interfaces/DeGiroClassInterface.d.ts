@@ -1,4 +1,4 @@
-import { CashFoundType, AccountConfigType, GetPorfolioConfigType, AccountDataType, SearchProductOptionsType, SearchProductResultType, OrderType, CreateOrderResultType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, AccountReportsType, AccountInfoType, FavouriteProductType, StockType, GetHistoricalOrdersOptionsType, HistoricalOrdersType, GetNewsOptionsType, NewsType, WebUserSettingType, ConfigDictionaryType, i18nMessagesType } from '../types';
+import { CashFoundType, AccountConfigType, GetPorfolioConfigType, AccountDataType, SearchProductOptionsType, SearchProductResultType, OrderType, CreateOrderResultType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, AccountReportsType, AccountInfoType, FavouriteProductType, StockType, GetHistoricalOrdersOptionsType, HistoricalOrdersType, GetNewsOptionsType, NewsType, WebSettingsType, WebUserSettingType, ConfigDictionaryType, i18nMessagesType } from '../types';
 /**
  * @interface DeGiroClassInterface
  */
@@ -25,7 +25,7 @@ export interface DeGiroClassInterface {
     getProductsByIds(ids: string[]): Promise<any[]>;
     getNews(options: GetNewsOptionsType): Promise<NewsType>;
     getWebi18nMessages(lang: string): Promise<i18nMessagesType>;
-    getWebSettings(): Promise<any>;
+    getWebSettings(): Promise<WebSettingsType>;
     getWebUserSettings(): Promise<WebUserSettingType>;
     getConfigDictionary(): Promise<ConfigDictionaryType>;
 }

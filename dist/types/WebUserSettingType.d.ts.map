@@ -1,1 +1,1 @@
-{"version":3,"file":"WebUserSettingType.d.ts","sourceRoot":"","sources":["../../src/types/WebUserSettingType.ts"],"names":[],"mappings":"AAAA,oBAAY,kBAAkB,GAAG,EAEhC,CAAA"}
+{"version":3,"file":"WebUserSettingType.d.ts","sourceRoot":"","sources":["../../src/types/WebUserSettingType.ts"],"names":[],"mappings":"AAAA,oBAAY,kBAAkB,GAAG;IAC/B,OAAO,EAAE;QACP,0BAA0B,EAAE,OAAO,CAAC;QACpC,kBAAkB,EAAE,OAAO,CAAC;QAC5B,sBAAsB,EAAE,OAAO,CAAC;QAChC,4BAA4B,EAAE,OAAO,CAAC;QACtC,sBAAsB,EAAE,MAAM,CAAC;KAChC,CAAC;IACF,MAAM,EAAE;QACN,kBAAkB,EAAE,OAAO,CAAC;KAC7B,CAAC;CACH,CAAA"}
