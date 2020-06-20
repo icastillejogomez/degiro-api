@@ -14,7 +14,7 @@ All responses and objects are typed to develop faster and secure.
 ## Table of content
 
 <!--ts-->
-   * [gh-md-toc](#gh-md-toc)
+   * [DeGiro Trading Broker API](#degiro-trading-broker-api)
    * [Table of contents](#table-of-contents)
    * [Installation](#Installation)
    * [How to use](#how-to-use)
