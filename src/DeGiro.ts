@@ -54,6 +54,7 @@ import {
   getNewsRequest,
   getWebSettingsRequest,
   getWebUserSettingsRequest,
+  getAccountReportsRequest,
 } from './api'
 
 /**
@@ -186,9 +187,10 @@ export class DeGiro implements DeGiroClassInterface {
   }
 
   getAccountReports(): Promise<AccountReportsType> {
-    return new Promise((resolve, reject) => {
-      reject('Method not implemented')
-    })
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getAccountReportsRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
   }
 
   getAccountInfo(): Promise<AccountInfoType> {

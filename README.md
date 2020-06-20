@@ -58,7 +58,9 @@ All responses and objects are typed to develop faster and secure.
         * [getWebSettings](#foo)
         * [getWebUserSettings](#foo)
         * [getConfigDictionary](#foo)
-   * [Dependency](#dependency)
+   * [Degiro Command Line Interface](#degiro-command-line-interface)
+   * [License](#dependency)
+   * [TO DO List](#to-do-list)
 <!--te-->
 
 ## Installation 
@@ -551,7 +553,7 @@ const { OrderType } = DeGiroTypes
 })()
 ```
 
-## Degiro Command Line Interface (CLI)
+## Degiro Command Line Interface
 
 [degiro-cli](https://github.com/icastillejogomez/degiro-cli) is an usefull command line interface that help us dealing with DeGiro platform through the terminal. You can see your portfolio status, create and execute orders and much more (may in the future)
 

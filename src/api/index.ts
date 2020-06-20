@@ -16,6 +16,7 @@ import { getWebi18nMessagesRequest } from './getWebi18nMessagesRequest'
 import { getNewsRequest } from './getNewsRequest'
 import { getWebSettingsRequest } from './getWebSettingsRequest'
 import { getWebUserSettingsRequest } from './getWebUserSettingsRequest'
+import { getAccountReportsRequest } from './getAccountReportsRequest'
 
 export {
   loginRequest,
@@ -36,4 +37,5 @@ export {
   getNewsRequest,
   getWebSettingsRequest,
   getWebUserSettingsRequest,
+  getAccountReportsRequest,
 }

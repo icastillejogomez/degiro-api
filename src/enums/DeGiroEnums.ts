@@ -1,5 +1,6 @@
 export enum DEGIRO_API_PATHS {
   BASE_API_URL = 'https://trader.degiro.nl/',
+  BASE_REPORT_DOWNLOAD_URI = 'document/download/',
   LOGIN_URL_PATH = 'login/secure/login',
   LOGOUT_URL_PATH = 'trading/secure/logout',
   GET_ACCOUNT_CONFIG_PATH = 'login/secure/config',
@@ -10,6 +11,7 @@ export enum DEGIRO_API_PATHS {
   GET_TOP_NEWS_PATH = 'newsfeed/v2/top-news-preview',
   GET_WEB_SETTINGS_PATH = 'settings/web',
   GET_WEB_USER_SETTINGS_PATH = 'settings/user',
+  GET_ACCOUNT_REPORTS_PATH = 'document/list/report',
 }
 
 export enum DeGiroActions {

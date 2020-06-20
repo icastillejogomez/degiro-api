@@ -16,7 +16,7 @@ import { IsLoginOptionsType } from './IsLoginOptionsType'
 import { GetOrdersConfigType } from './GetOrdersConfigType'
 import { GetOrdersResultType } from './GetOrdersResultType'
 import { GetAccountStateOptionsType } from './GetAccountStateOptionsType'
-import { AccountReportsType } from './AccountReportsType'
+import { AccountReportsType, ReportType } from './AccountReportsType'
 import { AccountInfoType } from './AccountInfoType'
 import { FavouriteProductType } from './FavouriteProductType'
 import { StockType } from './StockType'
@@ -64,6 +64,7 @@ export {
   GetOrdersResultType,
   GetAccountStateOptionsType,
   AccountReportsType,
+  ReportType,
   AccountInfoType,
   FavouriteProductType,
   StockType,
