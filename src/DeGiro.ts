@@ -54,7 +54,7 @@ import {
   getNewsRequest,
   getWebSettingsRequest,
   getWebUserSettingsRequest,
-} from './requests'
+} from './api'
 
 /**
  * @class DeGiro
