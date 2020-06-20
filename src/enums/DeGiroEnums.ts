@@ -4,6 +4,7 @@ export enum DEGIRO_API_PATHS {
   LOGIN_URL_PATH = 'login/secure/login',
   LOGOUT_URL_PATH = 'trading/secure/logout',
   GET_ACCOUNT_CONFIG_PATH = 'login/secure/config',
+  GET_GENERIC_DATA_PATH = 'v5/update/',
   CREATE_ORDER_PATH = 'v5/checkOrder',
   GET_ACCOUNT_STATE_PATH = 'v6/accountoverview',
   GET_ACCOUNT_INFO_PATH = 'v5/account/info/',

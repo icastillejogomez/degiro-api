@@ -58,7 +58,7 @@ export interface DeGiroClassInterface {
 
   /* Cash Funds methods */
 
-  getCashFunds(): CashFoundType[]
+  getCashFunds(): Promise<CashFoundType[]>
 
   /* Porfolio methods */
 

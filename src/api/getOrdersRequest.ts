@@ -7,7 +7,7 @@ import { AccountConfigType, AccountDataType, GetOrdersConfigType, GetOrdersResul
 // Import debug console log
 import { debug } from '../utils'
 import { GET_ORDERS_TYPES } from '../enums/DeGiroEnums'
-import { processGetOrdersResultListObject } from '../utils/processGetOrdersResultListObject'
+import { processGetOrdersResultListObject } from '../utils/'
 
 // tslint:disable-next-line: max-line-length
 export function getOrdersRequest(accountData: AccountDataType, accountConfig: AccountConfigType, config: GetOrdersConfigType): Promise<GetOrdersResultType> {

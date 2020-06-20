@@ -55,6 +55,7 @@ import {
   getWebSettingsRequest,
   getWebUserSettingsRequest,
   getAccountReportsRequest,
+  getCashFundstRequest,
 } from './api'
 
 /**
@@ -211,8 +212,11 @@ export class DeGiro implements DeGiroClassInterface {
 
   /* Cash Funds methods */
 
-  getCashFunds(): CashFoundType[] {
-    throw new Error('Method not implemented.')
+  getCashFunds(): Promise<CashFoundType[]> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getCashFundstRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
   }
 
   /* Porfolio methods */

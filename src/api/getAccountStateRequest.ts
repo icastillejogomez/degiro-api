@@ -29,7 +29,7 @@ export function getAccountStateRequest(accountData: AccountDataType, accountConf
     // Do the request to get a account config data
     const uri = `${accountConfig.data.reportingUrl}${GET_ACCOUNT_STATE_PATH}?${params}`
     debug(`Making request to ${uri}`)
-    fetch(uri)
+    fetch(uri, requestOptions)
       .then(res => res.json())
       .then((res) => {
         if (!res.data || !res.data.cashMovements || !Array.isArray(res.data.cashMovements)) return reject('DeGiro response does not match with know scheme')

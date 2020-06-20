@@ -17,6 +17,7 @@ import { getNewsRequest } from './getNewsRequest'
 import { getWebSettingsRequest } from './getWebSettingsRequest'
 import { getWebUserSettingsRequest } from './getWebUserSettingsRequest'
 import { getAccountReportsRequest } from './getAccountReportsRequest'
+import { getCashFundstRequest } from './getCashFundstRequest'
 
 export {
   loginRequest,
@@ -38,4 +39,5 @@ export {
   getWebSettingsRequest,
   getWebUserSettingsRequest,
   getAccountReportsRequest,
+  getCashFundstRequest,
 }
