@@ -17,15 +17,44 @@ All responses and objects are typed to develop faster and secure.
    * [gh-md-toc](#gh-md-toc)
    * [Table of contents](#table-of-contents)
    * [Installation](#Installation)
-   * [Usage](#usage)
-      * [STDIN](#stdin)
-      * [Local files](#local-files)
-      * [Remote files](#remote-files)
-      * [Multiple files](#multiple-files)
-      * [Combo](#combo)
-      * [Auto insert and update TOC](#auto-insert-and-update-toc)
-      * [GitHub token](#github-token)
-   * [Tests](#tests)
+   * [How to use](#how-to-use)
+      * [Create an instance of DeGiro](#create-an-instance-of-degiro)
+      * [Active Debug mode](#local-files)
+      * [Documentation](#remote-files)
+      * [Running tests set](#multiple-files)
+      * [Get JSESSIONID and reuse sessions](#combo)
+      * [Check if we are authenticated](#auto-insert-and-update-toc)
+   * [API](#tests)
+      * [Session](#foo)
+        * [login](#foo)
+        * [logout](#foo)
+        * [isLogin](#foo)
+        * [getJSESSIONID](#foo)
+      * [Account](#foo)
+        * [getAccountConfig](#foo)
+        * [getAccountData](#foo)
+        * [getAccountState](#foo)
+        * [getAccountReports](#foo)
+        * [getAccountInfo](#foo)
+      * [Search products](#foo)
+      * [Cash Funds](#foo)
+      * [Porfolio](#foo)
+      * [Stocks](#foo)
+        * [getFavouriteProducts](#foo)
+        * [getPopularStocks](#foo)
+      * [Orders](#foo)
+        * [getOrders](#foo)
+        * [getHistoricalOrders](#foo)
+        * [createOrder](#foo)
+        * [executeOrder](#foo)
+        * [deleteOrder](#foo)
+      * [Miscellaneous](#foo)
+        * [getProductsByIds](#foo)
+        * [getNews](#foo)
+        * [getWebi18nMessages](#foo)
+        * [getWebSettings](#foo)
+        * [getWebUserSettings](#foo)
+        * [getConfigDictionary](#foo)
    * [Dependency](#dependency)
 <!--te-->
 
@@ -39,7 +68,7 @@ npm install --save degiro-api
 yarn add degiro-api
 ```
 
-## How to use?
+## How to use
 
 ### Create an instance of DeGiro
 
@@ -75,7 +104,7 @@ $ export DEGIRO_DEBUG=1
 $ yarn start
 ```
 
-### Generating docs
+### Documentation
 
 Run the next command and open index.html file inside doc folder.
 
