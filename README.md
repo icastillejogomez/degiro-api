@@ -9,6 +9,9 @@ All responses and objects are typed to develop faster and secure.
 ![stars](https://badgen.net/github/stars/icastillejogomez/degiro-api)
 ![stars](https://badgen.net/github/open-issues/icastillejogomez/degiro-api)
 ![stars](https://badgen.net/github/license/icastillejogomez/degiro-api)
+
+<br />
+
 <a href="https://www.buymeacoffee.com/nachoogoomez" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 ## Table of content
