@@ -4,9 +4,11 @@ exports.GET_ORDERS_TYPES = exports.PORTFOLIO_POSITIONS_TYPE_ENUM = exports.DeGir
 var DEGIRO_API_PATHS;
 (function (DEGIRO_API_PATHS) {
     DEGIRO_API_PATHS["BASE_API_URL"] = "https://trader.degiro.nl/";
+    DEGIRO_API_PATHS["BASE_REPORT_DOWNLOAD_URI"] = "document/download/";
     DEGIRO_API_PATHS["LOGIN_URL_PATH"] = "login/secure/login";
     DEGIRO_API_PATHS["LOGOUT_URL_PATH"] = "trading/secure/logout";
     DEGIRO_API_PATHS["GET_ACCOUNT_CONFIG_PATH"] = "login/secure/config";
+    DEGIRO_API_PATHS["GET_GENERIC_DATA_PATH"] = "v5/update/";
     DEGIRO_API_PATHS["CREATE_ORDER_PATH"] = "v5/checkOrder";
     DEGIRO_API_PATHS["GET_ACCOUNT_STATE_PATH"] = "v6/accountoverview";
     DEGIRO_API_PATHS["GET_ACCOUNT_INFO_PATH"] = "v5/account/info/";
@@ -14,6 +16,7 @@ var DEGIRO_API_PATHS;
     DEGIRO_API_PATHS["GET_TOP_NEWS_PATH"] = "newsfeed/v2/top-news-preview";
     DEGIRO_API_PATHS["GET_WEB_SETTINGS_PATH"] = "settings/web";
     DEGIRO_API_PATHS["GET_WEB_USER_SETTINGS_PATH"] = "settings/user";
+    DEGIRO_API_PATHS["GET_ACCOUNT_REPORTS_PATH"] = "document/list/report";
 })(DEGIRO_API_PATHS = exports.DEGIRO_API_PATHS || (exports.DEGIRO_API_PATHS = {}));
 var DeGiroActions;
 (function (DeGiroActions) {

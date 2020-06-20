@@ -24,7 +24,7 @@ export declare class DeGiro implements DeGiroClassInterface {
     getAccountReports(): Promise<AccountReportsType>;
     getAccountInfo(): Promise<AccountInfoType>;
     searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>;
-    getCashFunds(): CashFoundType[];
+    getCashFunds(): Promise<CashFoundType[]>;
     getPortfolio(config: GetPorfolioConfigType): Promise<any[]>;
     private completePortfolioDetails;
     getFavouriteProducts(): Promise<FavouriteProductType[]>;

@@ -141,9 +141,10 @@ var DeGiro = /** @class */ (function () {
         return api_1.getAccountStateRequest(this.accountData, this.accountConfig, options);
     };
     DeGiro.prototype.getAccountReports = function () {
-        return new Promise(function (resolve, reject) {
-            reject('Method not implemented');
-        });
+        if (!this.hasSessionId()) {
+            return Promise.reject('You must log in first');
+        }
+        return api_1.getAccountReportsRequest(this.accountData, this.accountConfig);
     };
     DeGiro.prototype.getAccountInfo = function () {
         if (!this.hasSessionId()) {
@@ -160,7 +161,10 @@ var DeGiro = /** @class */ (function () {
     };
     /* Cash Funds methods */
     DeGiro.prototype.getCashFunds = function () {
-        throw new Error('Method not implemented.');
+        if (!this.hasSessionId()) {
+            return Promise.reject('You must log in first');
+        }
+        return api_1.getCashFundstRequest(this.accountData, this.accountConfig);
     };
     /* Porfolio methods */
     DeGiro.prototype.getPortfolio = function (config) {

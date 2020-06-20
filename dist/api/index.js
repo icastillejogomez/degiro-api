@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getWebUserSettingsRequest = exports.getWebSettingsRequest = exports.getNewsRequest = exports.getWebi18nMessagesRequest = exports.getAccountInfoRequest = exports.getConfigDictionaryRequest = exports.getAccountStateRequest = exports.getOrdersRequest = exports.deleteOrderRequest = exports.executeOrderRequest = exports.createOrderRequest = exports.searchProductRequest = exports.getProductsByIdsRequest = exports.getPortfolioRequest = exports.getAccountDataRequest = exports.getAccountConfigRequest = exports.logoutRequest = exports.loginRequest = void 0;
+exports.getCashFundstRequest = exports.getAccountReportsRequest = exports.getWebUserSettingsRequest = exports.getWebSettingsRequest = exports.getNewsRequest = exports.getWebi18nMessagesRequest = exports.getAccountInfoRequest = exports.getConfigDictionaryRequest = exports.getAccountStateRequest = exports.getOrdersRequest = exports.deleteOrderRequest = exports.executeOrderRequest = exports.createOrderRequest = exports.searchProductRequest = exports.getProductsByIdsRequest = exports.getPortfolioRequest = exports.getAccountDataRequest = exports.getAccountConfigRequest = exports.logoutRequest = exports.loginRequest = void 0;
 var login_1 = require("./login");
 Object.defineProperty(exports, "loginRequest", { enumerable: true, get: function () { return login_1.loginRequest; } });
 var logout_1 = require("./logout");
@@ -37,4 +37,8 @@ var getWebSettingsRequest_1 = require("./getWebSettingsRequest");
 Object.defineProperty(exports, "getWebSettingsRequest", { enumerable: true, get: function () { return getWebSettingsRequest_1.getWebSettingsRequest; } });
 var getWebUserSettingsRequest_1 = require("./getWebUserSettingsRequest");
 Object.defineProperty(exports, "getWebUserSettingsRequest", { enumerable: true, get: function () { return getWebUserSettingsRequest_1.getWebUserSettingsRequest; } });
+var getAccountReportsRequest_1 = require("./getAccountReportsRequest");
+Object.defineProperty(exports, "getAccountReportsRequest", { enumerable: true, get: function () { return getAccountReportsRequest_1.getAccountReportsRequest; } });
+var getCashFundstRequest_1 = require("./getCashFundstRequest");
+Object.defineProperty(exports, "getCashFundstRequest", { enumerable: true, get: function () { return getCashFundstRequest_1.getCashFundstRequest; } });
 //# sourceMappingURL=index.js.map

@@ -1,1 +1,1 @@
-{"version":3,"file":"AccountReportsType.d.ts","sourceRoot":"","sources":["../../src/types/AccountReportsType.ts"],"names":[],"mappings":"AAAA,oBAAY,kBAAkB,GAAG,EAEhC,CAAA"}
+{"version":3,"file":"AccountReportsType.d.ts","sourceRoot":"","sources":["../../src/types/AccountReportsType.ts"],"names":[],"mappings":"AAAA,oBAAY,UAAU,GAAG;IACvB,EAAE,EAAE,MAAM,CAAC;IACX,IAAI,EAAE,MAAM,CAAC;IACb,WAAW,EAAE,MAAM,CAAC;IACpB,YAAY,EAAE,MAAM,CAAC;IACrB,GAAG,EAAE,MAAM,CAAC;CACb,CAAA;AAED,oBAAY,kBAAkB,GAAG,UAAU,EAAE,CAAA"}

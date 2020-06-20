@@ -16,5 +16,7 @@ import { getWebi18nMessagesRequest } from './getWebi18nMessagesRequest';
 import { getNewsRequest } from './getNewsRequest';
 import { getWebSettingsRequest } from './getWebSettingsRequest';
 import { getWebUserSettingsRequest } from './getWebUserSettingsRequest';
-export { loginRequest, logoutRequest, getAccountConfigRequest, getAccountDataRequest, getPortfolioRequest, getProductsByIdsRequest, searchProductRequest, createOrderRequest, executeOrderRequest, deleteOrderRequest, getOrdersRequest, getAccountStateRequest, getConfigDictionaryRequest, getAccountInfoRequest, getWebi18nMessagesRequest, getNewsRequest, getWebSettingsRequest, getWebUserSettingsRequest, };
+import { getAccountReportsRequest } from './getAccountReportsRequest';
+import { getCashFundstRequest } from './getCashFundstRequest';
+export { loginRequest, logoutRequest, getAccountConfigRequest, getAccountDataRequest, getPortfolioRequest, getProductsByIdsRequest, searchProductRequest, createOrderRequest, executeOrderRequest, deleteOrderRequest, getOrdersRequest, getAccountStateRequest, getConfigDictionaryRequest, getAccountInfoRequest, getWebi18nMessagesRequest, getNewsRequest, getWebSettingsRequest, getWebUserSettingsRequest, getAccountReportsRequest, getCashFundstRequest, };
 //# sourceMappingURL=index.d.ts.map

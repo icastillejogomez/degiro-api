@@ -9,7 +9,7 @@ var node_fetch_1 = __importDefault(require("node-fetch"));
 // Import debug console log
 var utils_1 = require("../utils");
 var DeGiroEnums_1 = require("../enums/DeGiroEnums");
-var processGetOrdersResultListObject_1 = require("../utils/processGetOrdersResultListObject");
+var utils_2 = require("../utils/");
 // tslint:disable-next-line: max-line-length
 function getOrdersRequest(accountData, accountConfig, config) {
     return new Promise(function (resolve, reject) {
@@ -27,8 +27,8 @@ function getOrdersRequest(accountData, accountConfig, config) {
             .then(function (res) { return res.json(); })
             .then(function (res) {
             var result = {
-                orders: res.orders ? res.orders.value.map(processGetOrdersResultListObject_1.processGetOrdersResultListObject) : [],
-                lastTransactions: res.transactions ? res.transactions.value.map(processGetOrdersResultListObject_1.processGetOrdersResultListObject) : [],
+                orders: res.orders ? res.orders.value.map(utils_2.processGetOrdersResultListObject) : [],
+                lastTransactions: res.transactions ? res.transactions.value.map(utils_2.processGetOrdersResultListObject) : [],
             };
             resolve(result);
         })

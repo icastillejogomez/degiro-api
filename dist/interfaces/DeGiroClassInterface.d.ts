@@ -13,7 +13,7 @@ export interface DeGiroClassInterface {
     getAccountReports(): Promise<AccountReportsType>;
     getAccountInfo(): Promise<AccountInfoType>;
     searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>;
-    getCashFunds(): CashFoundType[];
+    getCashFunds(): Promise<CashFoundType[]>;
     getPortfolio(config: GetPorfolioConfigType): Promise<any[]>;
     getFavouriteProducts(): Promise<FavouriteProductType[]>;
     getPopularStocks(): Promise<StockType[]>;

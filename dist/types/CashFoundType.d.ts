@@ -1,8 +1,7 @@
 export declare type CashFoundType = {
     id: string;
-    name: string;
+    currencyCode: string;
     value: number;
-    valueBaseCurr: number;
-    rate: number;
+    handling: string;
 };
 //# sourceMappingURL=CashFoundType.d.ts.map

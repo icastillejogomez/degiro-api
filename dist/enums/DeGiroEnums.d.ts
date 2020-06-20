@@ -1,15 +1,18 @@
 export declare enum DEGIRO_API_PATHS {
     BASE_API_URL = "https://trader.degiro.nl/",
+    BASE_REPORT_DOWNLOAD_URI = "document/download/",
     LOGIN_URL_PATH = "login/secure/login",
     LOGOUT_URL_PATH = "trading/secure/logout",
     GET_ACCOUNT_CONFIG_PATH = "login/secure/config",
+    GET_GENERIC_DATA_PATH = "v5/update/",
     CREATE_ORDER_PATH = "v5/checkOrder",
     GET_ACCOUNT_STATE_PATH = "v6/accountoverview",
     GET_ACCOUNT_INFO_PATH = "v5/account/info/",
     GET_LATESTS_NEWS_PATH = "newsfeed/v2/latest-news",
     GET_TOP_NEWS_PATH = "newsfeed/v2/top-news-preview",
     GET_WEB_SETTINGS_PATH = "settings/web",
-    GET_WEB_USER_SETTINGS_PATH = "settings/user"
+    GET_WEB_USER_SETTINGS_PATH = "settings/user",
+    GET_ACCOUNT_REPORTS_PATH = "document/list/report"
 }
 export declare enum DeGiroActions {
     BUY = "BUY",
