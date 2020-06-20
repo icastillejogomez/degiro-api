@@ -67,15 +67,81 @@
 				<a href="#degiro-trading-broker-api" id="degiro-trading-broker-api" style="color: inherit; text-decoration: none;">
 					<h1>DeGiro Trading Broker API</h1>
 				</a>
+				<p>This is an unofficial TypeScript API client (Backend &amp; Frontend) for DeGiro&#39;s trading platform. Using this module you can easily automate your orders (buy and sell) and get information about orders, funds or products.</p>
+				<p>All responses and objects are typed to develop faster and secure.</p>
+				<p><img src="https://raw.githubusercontent.com/icastillejogomez/degiro-api/master/.assets/degiro.png" alt="DeGiro Logo"></p>
 				<p><img src="https://badgen.net/github/stars/icastillejogomez/degiro-api" alt="stars">
 					<img src="https://badgen.net/github/open-issues/icastillejogomez/degiro-api" alt="stars">
 				<img src="https://badgen.net/github/license/icastillejogomez/degiro-api" alt="stars"></p>
-				<p><img src="https://raw.githubusercontent.com/icastillejogomez/degiro-api/master/.assets/degiro.png" alt="DeGiro Logo"></p>
-				<p>This is an unofficial Node.js API client for DeGiro&#39;s trading platform. Using this module you can easily automate your orders (buy and sell) and get information about orders, funds or products.</p>
-				<p>DeGiro is Europe&#39;s fastest growing online stockbroker. DeGiro distinguishes itself by offering institutional fees to retail investors.</p>
-				<p>⚠️  DeGiro could change their API at any moment, if something is not working, please open an issue.</p>
-				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
-					<h2>Install</h2>
+				<br />
+				<p><a href="https://www.buymeacoffee.com/nachoogoomez" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a></p>
+				<a href="#table-of-content" id="table-of-content" style="color: inherit; text-decoration: none;">
+					<h2>Table of content</h2>
+				</a>
+				<!--ts-->
+				<ul>
+					<li><a href="#degiro-trading-broker-api">DeGiro Trading Broker API</a></li>
+					<li><a href="#table-of-contents">Table of contents</a></li>
+					<li><a href="#Installation">Installation</a></li>
+					<li><a href="#how-to-use">How to use</a><ul>
+							<li><a href="#create-an-instance-of-degiro">Create an instance of DeGiro</a></li>
+							<li><a href="#local-files">Active Debug mode</a></li>
+							<li><a href="#remote-files">Documentation</a></li>
+							<li><a href="#multiple-files">Running tests set</a></li>
+							<li><a href="#combo">Get JSESSIONID and reuse sessions</a></li>
+							<li><a href="#auto-insert-and-update-toc">Check if we are authenticated</a></li>
+						</ul>
+					</li>
+					<li><a href="#tests">API</a><ul>
+							<li><a href="#foo">Session</a><ul>
+									<li><a href="#foo">login</a></li>
+									<li><a href="#foo">logout</a></li>
+									<li><a href="#foo">isLogin</a></li>
+									<li><a href="#foo">getJSESSIONID</a></li>
+								</ul>
+							</li>
+							<li><a href="#foo">Account</a><ul>
+									<li><a href="#foo">getAccountConfig</a></li>
+									<li><a href="#foo">getAccountData</a></li>
+									<li><a href="#foo">getAccountState</a></li>
+									<li><a href="#foo">getAccountReports</a></li>
+									<li><a href="#foo">getAccountInfo</a></li>
+								</ul>
+							</li>
+							<li><a href="#foo">Search products</a></li>
+							<li><a href="#foo">Cash Funds</a></li>
+							<li><a href="#foo">Porfolio</a></li>
+							<li><a href="#foo">Stocks</a><ul>
+									<li><a href="#foo">getFavouriteProducts</a></li>
+									<li><a href="#foo">getPopularStocks</a></li>
+								</ul>
+							</li>
+							<li><a href="#foo">Orders</a><ul>
+									<li><a href="#foo">getOrders</a></li>
+									<li><a href="#foo">getHistoricalOrders</a></li>
+									<li><a href="#foo">createOrder</a></li>
+									<li><a href="#foo">executeOrder</a></li>
+									<li><a href="#foo">deleteOrder</a></li>
+								</ul>
+							</li>
+							<li><a href="#foo">Miscellaneous</a><ul>
+									<li><a href="#foo">getProductsByIds</a></li>
+									<li><a href="#foo">getNews</a></li>
+									<li><a href="#foo">getWebi18nMessages</a></li>
+									<li><a href="#foo">getWebSettings</a></li>
+									<li><a href="#foo">getWebUserSettings</a></li>
+									<li><a href="#foo">getConfigDictionary</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><a href="#degiro-command-line-interface">Degiro Command Line Interface</a></li>
+					<li><a href="#dependency">License</a></li>
+					<li><a href="#to-do-list">TO DO List</a><!--te-->
+					</li>
+				</ul>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
 				</a>
 				<pre><code class="language-sh"><span class="hljs-comment"># using npm</span>
 npm install --save degiro-api
@@ -83,7 +149,7 @@ npm install --save degiro-api
 <span class="hljs-comment"># using yarn</span>
 yarn add degiro-api</code></pre>
 				<a href="#how-to-use" id="how-to-use" style="color: inherit; text-decoration: none;">
-					<h2>How to use?</h2>
+					<h2>How to use</h2>
 				</a>
 				<a href="#create-an-instance-of-degiro" id="create-an-instance-of-degiro" style="color: inherit; text-decoration: none;">
 					<h3>Create an instance of DeGiro</h3>
@@ -114,8 +180,8 @@ degiro.login()
 				</a>
 				<pre><code class="language-js">$ <span class="hljs-keyword">export</span> DEGIRO_DEBUG=<span class="hljs-number">1</span>
 $ yarn start</code></pre>
-				<a href="#generating-docs" id="generating-docs" style="color: inherit; text-decoration: none;">
-					<h3>Generating docs</h3>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h3>Documentation</h3>
 				</a>
 				<p>Run the next command and open index.html file inside doc folder.</p>
 				<pre><code class="language-sh">$ yarn doc
@@ -529,8 +595,8 @@ $ mocha -r ts-node/register tests<span class="hljs-comment">/**/*.spec.ts
   }
   setTimeout(deleteOrderFunction, TIMEOUT_SECONDS)
 })()</span></code></pre>
-				<a href="#degiro-command-line-interface-cli" id="degiro-command-line-interface-cli" style="color: inherit; text-decoration: none;">
-					<h2>Degiro Command Line Interface (CLI)</h2>
+				<a href="#degiro-command-line-interface" id="degiro-command-line-interface" style="color: inherit; text-decoration: none;">
+					<h2>Degiro Command Line Interface</h2>
 				</a>
 				<p><a href="https://github.com/icastillejogomez/degiro-cli">degiro-cli</a> is an usefull command line interface that help us dealing with DeGiro platform through the terminal. You can see your portfolio status, create and execute orders and much more (may in the future)</p>
 				<pre><code class="language-sh">$ degiro
@@ -588,7 +654,13 @@ Commands:
 						<a href="modules/_api_getaccountinforequest_.html">&quot;api/get<wbr>Account<wbr>Info<wbr>Request&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/_api_getaccountreportsrequest_.html">&quot;api/get<wbr>Account<wbr>Reports<wbr>Request&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/_api_getaccountstaterequest_.html">&quot;api/get<wbr>Account<wbr>State<wbr>Request&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_api_getcashfundstrequest_.html">&quot;api/get<wbr>Cash<wbr>Fundst<wbr>Request&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_api_getconfigdictionaryrequest_.html">&quot;api/get<wbr>Config<wbr>Dictionary<wbr>Request&quot;</a>
@@ -738,7 +810,13 @@ Commands:
 						<a href="modules/_utils_debug_.html">&quot;utils/debug&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/_utils_generatereporturifromid_.html">&quot;utils/generate<wbr>ReportURIFromID&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/_utils_index_.html">&quot;utils/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_utils_processgetcashfundsresultlistobject_.html">&quot;utils/process<wbr>Get<wbr>Cash<wbr>Funds<wbr>Result<wbr>List<wbr>Object&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_utils_processgetordersresultlistobject_.html">&quot;utils/process<wbr>Get<wbr>Orders<wbr>Result<wbr>List<wbr>Object&quot;</a>

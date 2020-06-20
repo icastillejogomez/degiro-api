@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;api/getOrdersRequest&quot; | degiro-api</title>
+	<title>&quot;utils/generateReportURIFromID&quot; | degiro-api</title>
 	<meta name="description" content="Documentation for degiro-api">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_api_getordersrequest_.html">&quot;api/getOrdersRequest&quot;</a>
+					<a href="_utils_generatereporturifromid_.html">&quot;utils/generateReportURIFromID&quot;</a>
 				</li>
 			</ul>
-			<h1>Module &quot;api/getOrdersRequest&quot;</h1>
+			<h1>Module &quot;utils/generateReportURIFromID&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -70,43 +70,67 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_utils_generatereporturifromid_.html#base_report_download_uri" class="tsd-kind-icon">BASE_<wbr>REPORT_<wbr>DOWNLOAD_<wbr>URI</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_api_getordersrequest_.html#getordersrequest" class="tsd-kind-icon">get<wbr>Orders<wbr>Request</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_generatereporturifromid_.html#generatereporturifromid" class="tsd-kind-icon">generate<wbr>ReportURIFromID</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+					<a name="base_report_download_uri" class="tsd-anchor"></a>
+					<h3>BASE_<wbr>REPORT_<wbr>DOWNLOAD_<wbr>URI</h3>
+					<div class="tsd-signature tsd-kind-icon">BASE_<wbr>REPORT_<wbr>DOWNLOAD_<wbr>URI<span class="tsd-signature-symbol">:</span> <a href="../enums/_enums_degiroenums_.degiro_api_paths.html#base_report_download_uri" class="tsd-signature-type">BASE_REPORT_DOWNLOAD_URI</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/icastillejogomez/degiro-api/blob/a3f56b0/src/utils/generateReportURIFromID.ts#L6">utils/generateReportURIFromID.ts:6</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="getordersrequest" class="tsd-anchor"></a>
-					<h3>get<wbr>Orders<wbr>Request</h3>
+					<a name="generatereporturifromid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> generate<wbr>ReportURIFromID</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Orders<wbr>Request<span class="tsd-signature-symbol">(</span>accountData<span class="tsd-signature-symbol">: </span><a href="_types_accountdatatype_.html#accountdatatype" class="tsd-signature-type">AccountDataType</a>, accountConfig<span class="tsd-signature-symbol">: </span><a href="_types_accountconfigtype_.html#accountconfigtype" class="tsd-signature-type">AccountConfigType</a>, config<span class="tsd-signature-symbol">: </span><a href="_types_getordersconfigtype_.html#getordersconfigtype" class="tsd-signature-type">GetOrdersConfigType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_types_getordersresulttype_.html#getordersresulttype" class="tsd-signature-type">GetOrdersResultType</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">generate<wbr>ReportURIFromID<span class="tsd-signature-symbol">(</span>reportId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, accountData<span class="tsd-signature-symbol">: </span><a href="_types_accountdatatype_.html#accountdatatype" class="tsd-signature-type">AccountDataType</a>, accountConfig<span class="tsd-signature-symbol">: </span><a href="_types_accountconfigtype_.html#accountconfigtype" class="tsd-signature-type">AccountConfigType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/icastillejogomez/degiro-api/blob/a3f56b0/src/api/getOrdersRequest.ts#L13">api/getOrdersRequest.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/icastillejogomez/degiro-api/blob/a3f56b0/src/utils/generateReportURIFromID.ts#L12">utils/generateReportURIFromID.ts:12</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Generate a download URL to the report with the <code>id</code> identifier</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
+								<li>
+									<h5>reportId: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								</li>
 								<li>
 									<h5>accountData: <a href="_types_accountdatatype_.html#accountdatatype" class="tsd-signature-type">AccountDataType</a></h5>
 								</li>
 								<li>
 									<h5>accountConfig: <a href="_types_accountconfigtype_.html#accountconfigtype" class="tsd-signature-type">AccountConfigType</a></h5>
 								</li>
-								<li>
-									<h5>config: <a href="_types_getordersconfigtype_.html#getordersconfigtype" class="tsd-signature-type">GetOrdersConfigType</a></h5>
-								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_types_getordersresulttype_.html#getordersresulttype" class="tsd-signature-type">GetOrdersResultType</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -119,14 +143,17 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="_api_getordersrequest_.html">&quot;api/get<wbr>Orders<wbr>Request&quot;</a>
+						<a href="_utils_generatereporturifromid_.html">&quot;utils/generate<wbr>ReportURIFromID&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_utils_generatereporturifromid_.html#base_report_download_uri" class="tsd-kind-icon">BASE_<wbr>REPORT_<wbr>DOWNLOAD_<wbr>URI</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_api_getordersrequest_.html#getordersrequest" class="tsd-kind-icon">get<wbr>Orders<wbr>Request</a>
+						<a href="_utils_generatereporturifromid_.html#generatereporturifromid" class="tsd-kind-icon">generate<wbr>ReportURIFromID</a>
 					</li>
 				</ul>
 			</nav>
