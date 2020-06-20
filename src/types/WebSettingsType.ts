@@ -27,7 +27,7 @@ type MarketPageChartIndex = {
   name: string,
   vwdId: string,
   id: number,
-},
+}
 
 export type WebSettingsType = {
   defaultMarketMoversIndexId: number,
