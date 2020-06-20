@@ -24,6 +24,7 @@ import { GetHistoricalOrdersOptionsType } from './GetHistoricalOrdersOptionsType
 import { HistoricalOrdersType } from './HistoricalOrdersType'
 import { GetNewsOptionsType } from './GetNewsOptionsType'
 import { NewsType, New } from './NewsType'
+import { WebSettingsType } from './WebSettingsType'
 import { WebUserSettingType } from './WebUserSettingType'
 import { i18nMessagesType } from './i18nMessagesType'
 
@@ -71,6 +72,7 @@ export {
   GetNewsOptionsType,
   NewsType,
   New,
+  WebSettingsType,
   WebUserSettingType,
 
   ConfigDictionaryType,

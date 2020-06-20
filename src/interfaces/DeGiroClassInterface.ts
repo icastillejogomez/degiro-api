@@ -19,6 +19,7 @@ import {
   HistoricalOrdersType,
   GetNewsOptionsType,
   NewsType,
+  WebSettingsType,
   WebUserSettingType,
   ConfigDictionaryType,
   i18nMessagesType,
@@ -89,7 +90,7 @@ export interface DeGiroClassInterface {
 
   getWebi18nMessages(lang: string): Promise<i18nMessagesType>
 
-  getWebSettings(): Promise<any>
+  getWebSettings(): Promise<WebSettingsType>
 
   getWebUserSettings(): Promise<WebUserSettingType>
 

@@ -14,6 +14,8 @@ import { getConfigDictionaryRequest } from './getConfigDictionaryRequest'
 import { getAccountInfoRequest } from './getAccountInfoRequest'
 import { getWebi18nMessagesRequest } from './getWebi18nMessagesRequest'
 import { getNewsRequest } from './getNewsRequest'
+import { getWebSettingsRequest } from './getWebSettingsRequest'
+import { getWebUserSettingsRequest } from './getWebUserSettingsRequest'
 
 export {
   loginRequest,
@@ -32,4 +34,6 @@ export {
   getAccountInfoRequest,
   getWebi18nMessagesRequest,
   getNewsRequest,
+  getWebSettingsRequest,
+  getWebUserSettingsRequest,
 }

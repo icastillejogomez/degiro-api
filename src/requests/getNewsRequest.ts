@@ -9,7 +9,7 @@ import { debug } from '../utils'
 
 // Import paths
 import { DEGIRO_API_PATHS } from '../enums'
-const { GET_LATESTS_NEWS, GET_TOP_NEWS } = DEGIRO_API_PATHS
+const { GET_LATESTS_NEWS_PATH, GET_TOP_NEWS_PATH } = DEGIRO_API_PATHS
 
 export function getNewsRequest(options: GetNewsOptionsType, accountData: AccountDataType, accountConfig: AccountConfigType): Promise<NewsType> {
   return new Promise(async (resolve, reject) => {
@@ -31,8 +31,8 @@ export function getNewsRequest(options: GetNewsOptionsType, accountData: Account
     }
 
     // Generate de request URIs
-    const latestNewsURI = `${accountConfig.data.companiesServiceUrl}${GET_LATESTS_NEWS}?${params}`
-    const topNewsURI = `${accountConfig.data.companiesServiceUrl}${GET_TOP_NEWS}?${params}`
+    const latestNewsURI = `${accountConfig.data.companiesServiceUrl}${GET_LATESTS_NEWS_PATH}?${params}`
+    const topNewsURI = `${accountConfig.data.companiesServiceUrl}${GET_TOP_NEWS_PATH}?${params}`
 
     // Create de default value
     const result: NewsType = {

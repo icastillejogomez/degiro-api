@@ -2,16 +2,16 @@
 import fetch, { RequestInit } from 'node-fetch'
 
 // Import types
-import { AccountConfigType, AccountDataType, AccountInfoType } from '../types'
+import { AccountConfigType, AccountDataType, WebSettingsType } from '../types'
 
 // Import debug console log
 import { debug } from '../utils'
 
 // Importamos constantes
 import { DEGIRO_API_PATHS } from '../enums'
-const { GET_ACCOUNT_INFO_PATH } = DEGIRO_API_PATHS
+const { GET_WEB_SETTINGS_PATH } = DEGIRO_API_PATHS
 
-export function getAccountInfoRequest(accountData: AccountDataType, accountConfig: AccountConfigType): Promise<AccountInfoType> {
+export function getWebSettingsRequest(accountData: AccountDataType, accountConfig: AccountConfigType): Promise<WebSettingsType> {
   return new Promise((resolve, reject) => {
 
     const requestOptions: RequestInit = {
@@ -21,13 +21,13 @@ export function getAccountInfoRequest(accountData: AccountDataType, accountConfi
     }
 
     // Do the request to get a account config data
-    const uri = `${accountConfig.data.tradingUrl}${GET_ACCOUNT_INFO_PATH}${accountData.data.intAccount};jsessionid=${accountConfig.data.sessionId}`
+    const uri = `${accountConfig.data.paUrl}${GET_WEB_SETTINGS_PATH}?intAccount=${accountData.data.intAccount}&sessionId=${accountConfig.data.sessionId}`
     debug(`Making request to ${uri}`)
     fetch(uri, requestOptions)
       .then(res => res.json())
       .then((res) => {
         debug('Response:\n', JSON.stringify(res, null, 2))
-        const data: AccountInfoType = res.data
+        const data: WebSettingsType = res.data
         resolve(data)
       })
       .catch(reject)

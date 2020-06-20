@@ -31,6 +31,7 @@ import {
   WebUserSettingType,
   ConfigDictionaryType,
   i18nMessagesType,
+  WebSettingsType,
 } from './types'
 
 // Import requests
@@ -51,6 +52,8 @@ import {
   getAccountInfoRequest,
   getWebi18nMessagesRequest,
   getNewsRequest,
+  getWebSettingsRequest,
+  getWebUserSettingsRequest,
 } from './requests'
 
 /**
@@ -316,16 +319,18 @@ export class DeGiro implements DeGiroClassInterface {
     return getWebi18nMessagesRequest(lang, <AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
   }
 
-  getWebSettings(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      reject('Method not implemented')
-    })
+  getWebSettings(): Promise<WebSettingsType> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getWebSettingsRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
   }
 
   getWebUserSettings(): Promise<WebUserSettingType> {
-    return new Promise((resolve, reject) => {
-      reject('Method not implemented')
-    })
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getWebUserSettingsRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
   }
 
   getConfigDictionary(): Promise<ConfigDictionaryType> {
