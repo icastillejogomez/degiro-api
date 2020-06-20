@@ -1,21 +1,35 @@
 # DeGiro Trading Broker API
 
-![stars](https://badgen.net/github/stars/icastillejogomez/degiro-api)
-![stars](https://badgen.net/github/open-issues/icastillejogomez/degiro-api)
-![stars](https://badgen.net/github/license/icastillejogomez/degiro-api)
+This is an unofficial TypeScript API client (Backend & Frontend) for DeGiro's trading platform. Using this module you can easily automate your orders (buy and sell) and get information about orders, funds or products.
+
+All responses and objects are typed to develop faster and secure.
 
 ![DeGiro Logo](https://raw.githubusercontent.com/icastillejogomez/degiro-api/master/.assets/degiro.png)
 
+![stars](https://badgen.net/github/stars/icastillejogomez/degiro-api)
+![stars](https://badgen.net/github/open-issues/icastillejogomez/degiro-api)
+![stars](https://badgen.net/github/license/icastillejogomez/degiro-api)
 <a href="https://www.buymeacoffee.com/nachoogoomez" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
+## Table of content
 
-This is an unofficial Node.js API client for DeGiro's trading platform. Using this module you can easily automate your orders (buy and sell) and get information about orders, funds or products.
+<!--ts-->
+   * [gh-md-toc](#gh-md-toc)
+   * [Table of contents](#table-of-contents)
+   * [Installation](#Installation)
+   * [Usage](#usage)
+      * [STDIN](#stdin)
+      * [Local files](#local-files)
+      * [Remote files](#remote-files)
+      * [Multiple files](#multiple-files)
+      * [Combo](#combo)
+      * [Auto insert and update TOC](#auto-insert-and-update-toc)
+      * [GitHub token](#github-token)
+   * [Tests](#tests)
+   * [Dependency](#dependency)
+<!--te-->
 
-DeGiro is Europe's fastest growing online stockbroker. DeGiro distinguishes itself by offering institutional fees to retail investors.
-
-⚠️  DeGiro could change their API at any moment, if something is not working, please open an issue.
-
-## Install 
+## Installation 
 
 ```sh
 # using npm
