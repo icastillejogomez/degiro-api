@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;requests/login&quot; | degiro-api</title>
+	<title>&quot;api/logout&quot; | degiro-api</title>
 	<meta name="description" content="Documentation for degiro-api">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_requests_login_.html">&quot;requests/login&quot;</a>
+					<a href="_api_logout_.html">&quot;api/logout&quot;</a>
 				</li>
 			</ul>
-			<h1>Module &quot;requests/login&quot;</h1>
+			<h1>Module &quot;api/logout&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -73,14 +73,14 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_requests_login_.html#base_api_url" class="tsd-kind-icon">BASE_<wbr>API_<wbr>URL</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_requests_login_.html#login_url_path" class="tsd-kind-icon">LOGIN_<wbr>URL_<wbr>PATH</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_api_logout_.html#base_api_url" class="tsd-kind-icon">BASE_<wbr>API_<wbr>URL</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_api_logout_.html#logout_url_path" class="tsd-kind-icon">LOGOUT_<wbr>URL_<wbr>PATH</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_requests_login_.html#loginrequest" class="tsd-kind-icon">login<wbr>Request</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_api_logout_.html#logoutrequest" class="tsd-kind-icon">logout<wbr>Request</a></li>
 							</ul>
 						</section>
 					</div>
@@ -94,17 +94,17 @@
 					<div class="tsd-signature tsd-kind-icon">BASE_<wbr>API_<wbr>URL<span class="tsd-signature-symbol">:</span> <a href="../enums/_enums_degiroenums_.degiro_api_paths.html#base_api_url" class="tsd-signature-type">BASE_API_URL</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/icastillejogomez/degiro-api/blob/83b252f/src/requests/login.ts#L9">requests/login.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/icastillejogomez/degiro-api/blob/0e7aac2/src/api/logout.ts#L9">api/logout.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
-					<a name="login_url_path" class="tsd-anchor"></a>
-					<h3>LOGIN_<wbr>URL_<wbr>PATH</h3>
-					<div class="tsd-signature tsd-kind-icon">LOGIN_<wbr>URL_<wbr>PATH<span class="tsd-signature-symbol">:</span> <a href="../enums/_enums_degiroenums_.degiro_api_paths.html#login_url_path" class="tsd-signature-type">LOGIN_URL_PATH</a></div>
+					<a name="logout_url_path" class="tsd-anchor"></a>
+					<h3>LOGOUT_<wbr>URL_<wbr>PATH</h3>
+					<div class="tsd-signature tsd-kind-icon">LOGOUT_<wbr>URL_<wbr>PATH<span class="tsd-signature-symbol">:</span> <a href="../enums/_enums_degiroenums_.degiro_api_paths.html#logout_url_path" class="tsd-signature-type">LOGOUT_URL_PATH</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/icastillejogomez/degiro-api/blob/83b252f/src/requests/login.ts#L9">requests/login.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/icastillejogomez/degiro-api/blob/0e7aac2/src/api/logout.ts#L9">api/logout.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -112,25 +112,28 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="loginrequest" class="tsd-anchor"></a>
-					<h3>login<wbr>Request</h3>
+					<a name="logoutrequest" class="tsd-anchor"></a>
+					<h3>logout<wbr>Request</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">login<wbr>Request<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="_types_loginrequestparamstype_.html#loginrequestparamstype" class="tsd-signature-type">LoginRequestParamsType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_types_loginresponsetype_.html#loginresponsetype" class="tsd-signature-type">LoginResponseType</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">logout<wbr>Request<span class="tsd-signature-symbol">(</span>accountData<span class="tsd-signature-symbol">: </span><a href="_types_accountdatatype_.html#accountdatatype" class="tsd-signature-type">AccountDataType</a>, accountConfig<span class="tsd-signature-symbol">: </span><a href="_types_accountconfigtype_.html#accountconfigtype" class="tsd-signature-type">AccountConfigType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/icastillejogomez/degiro-api/blob/83b252f/src/requests/login.ts#L14">requests/login.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/icastillejogomez/degiro-api/blob/0e7aac2/src/api/logout.ts#L14">api/logout.ts:14</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>params: <a href="_types_loginrequestparamstype_.html#loginrequestparamstype" class="tsd-signature-type">LoginRequestParamsType</a></h5>
+									<h5>accountData: <a href="_types_accountdatatype_.html#accountdatatype" class="tsd-signature-type">AccountDataType</a></h5>
+								</li>
+								<li>
+									<h5>accountConfig: <a href="_types_accountconfigtype_.html#accountconfigtype" class="tsd-signature-type">AccountConfigType</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_types_loginresponsetype_.html#loginresponsetype" class="tsd-signature-type">LoginResponseType</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -143,20 +146,20 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="_requests_login_.html">&quot;requests/login&quot;</a>
+						<a href="_api_logout_.html">&quot;api/logout&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_requests_login_.html#base_api_url" class="tsd-kind-icon">BASE_<wbr>API_<wbr>URL</a>
+						<a href="_api_logout_.html#base_api_url" class="tsd-kind-icon">BASE_<wbr>API_<wbr>URL</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_requests_login_.html#login_url_path" class="tsd-kind-icon">LOGIN_<wbr>URL_<wbr>PATH</a>
+						<a href="_api_logout_.html#logout_url_path" class="tsd-kind-icon">LOGOUT_<wbr>URL_<wbr>PATH</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_requests_login_.html#loginrequest" class="tsd-kind-icon">login<wbr>Request</a>
+						<a href="_api_logout_.html#logoutrequest" class="tsd-kind-icon">logout<wbr>Request</a>
 					</li>
 				</ul>
 			</nav>
