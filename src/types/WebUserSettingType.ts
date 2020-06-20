@@ -8,5 +8,5 @@ export type WebUserSettingType = {
   },
   mobile: {
     hasSeenProductTour: boolean,
-  }
+  },
 }
