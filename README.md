@@ -44,6 +44,7 @@ Don't use in production build, this project is under development. In the next fe
       * [getAccountReports](#foo)
       * [getAccountInfo](#foo)
     * [Search products endpoints](#foo)
+      * [searchProduct](#searchProduct(options:-SearchProductOptionsType): Promise<SearchProductResultType[]>)
     * [Cash Funds endpoints](#foo)
     * [Porfolio endpoints](#foo)
     * [Stocks endpoints](#foo)
@@ -303,10 +304,17 @@ degiro.getJSESSIONID() // string
 #### getAccountState(options: GetAccountStateOptionsType): Promise<any[]>
 
 
-#### getAccountReports()
-#### getAccountInfo()
+#### getAccountReports(): Promise<AccountReportsType>
+
+
+#### getAccountInfo(): Promise<AccountInfoType>
 
 ### Search products endpoints
+  ### Search products endpoints
+
+#### searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>
+
+
 ### Cash Funds endpoints
 ### Porfolio endpoints
 ### Stocks endpoints
