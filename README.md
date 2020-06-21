@@ -248,16 +248,61 @@ import DeGiro from 'degiro-api'
 
 ### Sessión endpoints
 
-#### login()
-#### logout()
-#### isLogin()
-#### getJSESSIONID()
+#### login(): Promise<AccountDataType>
+
+```js
+import DeGiro from 'degiro-api'
+
+const degiro = new DeGiro({})
+const accountData = await degiro.login()
+```
+
+#### logout(): Promise<void>
+
+```js
+import DeGiro from 'degiro-api'
+
+const degiro = new DeGiro({})
+const accountData = await degiro.login()
+await degiro.logout()
+```
+
+#### isLogin() (options?: IsLoginOptionsType): boolean | Promise<boolean>
+
+```js
+import DeGiro from 'degiro-api'
+
+const degiro = new DeGiro({})
+await degiro.login()
+
+const isLogin = degiro.isLogin()
+
+if (! await degiro.isLogin({ secure: true })) {
+  // Do your magic
+}
+```
+
+#### getJSESSIONID(): string | undefined
+
+```js
+import DeGiro from 'degiro-api'
+
+const degiro = new DeGiro({})
+degiro.getJSESSIONID() // undefined
+await degiro.login()
+degiro.getJSESSIONID() // string
+```
 
 ### Account endpoints
 
-#### getAccountConfig()
-#### getAccountData()
-#### getAccountState()
+#### getAccountConfig(sessionId: string): Promise<AccountConfigType>
+
+#### getAccountData(): Promise<AccountDataType>
+
+
+#### getAccountState(options: GetAccountStateOptionsType): Promise<any[]>
+
+
 #### getAccountReports()
 #### getAccountInfo()
 
