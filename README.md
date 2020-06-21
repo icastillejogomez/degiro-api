@@ -247,7 +247,7 @@ import DeGiro from 'degiro-api'
 
 ## API
 
-### Sessión endpoints
+### Session endpoints
 
 #### login
 
