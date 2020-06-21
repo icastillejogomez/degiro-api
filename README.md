@@ -91,24 +91,17 @@ Basic log into DeGiro Platform. All endpoint needs a session key before those ca
 ```js
 const DeGiro = require('degiro-api')
 
+// Basic degiro init
 const degiro = new DeGiro({
-  username: 'username',
+  username: '<your_username_here>',
   pwd: '*****'
 })
 
-degiro.login()
-  .then((accountData) => console.log('Log in success\n', accountData))
-  .catch(console.error)
-
 // or creating with the static create method
-
 const degiro = DeGiro.create({ username: '*****', pwd: '*****' })
-const accountData = await degiro.login()
 
 // or create with env credentials
-
 const degiro = new DeGiro() // <-- Use DEGIRO_USER & DEGIRO_PWD
-const accountData = await degiro.login()
 ```
 
 ### Active Debug mode
