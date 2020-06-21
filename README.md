@@ -14,11 +14,15 @@ All responses and objects are typed to develop faster and secure.
 
 <a href="https://www.buymeacoffee.com/nachoogoomez" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
+<br />
+
+Don't use in production build, this project is under development. In the next few weeks we're going to have the first stable release version.
+
 ## Table of content
 
 <!--ts-->
   * [DeGiro Trading Broker API](#degiro-trading-broker-api)
-  * [Table of contents](#table-of-contents)
+  * [Table of content](#table-of-content)
   * [Installation](#installation)
   * [How to use](#how-to-use)
     * [Create an instance of DeGiro](#create-an-instance-of-degiro)
