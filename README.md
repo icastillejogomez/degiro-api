@@ -45,7 +45,8 @@ Don't use in production build, this project is under development. In the next fe
       * [getAccountInfo](#getAccountInfo)
     * [Search products endpoints](#foo)
       * [searchProduct](#searchProduct)
-    * [Cash Funds endpoints](#foo)
+    * [Cash Funds endpoints](#cash-funds-endpoints)
+      * [getCashFunds](#getCashFunds)
     * [Porfolio endpoints](#foo)
     * [Stocks endpoints](#foo)
       * [getFavouriteProducts](#foo)
@@ -330,6 +331,11 @@ degiro.getJSESSIONID() // string
 `searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>`
 
 ### Cash Funds endpoints
+
+#### getCashFunds
+
+`getCashFunds(): Promise<CashFoundType[]>`
+
 ### Porfolio endpoints
 ### Stocks endpoints
 
