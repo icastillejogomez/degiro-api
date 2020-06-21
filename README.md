@@ -113,6 +113,8 @@ const accountData = await degiro.login()
 
 ### Active Debug mode
 
+Inside all module are call to one debug function that listen the `DEGIRO_DEBUG` env variable. Setting it with any truthy value you can enable all logs to debug the code. 
+
 ```js
 $ export DEGIRO_DEBUG=1
 $ yarn start
@@ -120,7 +122,9 @@ $ yarn start
 
 ### Documentation
 
-Run the next command and open index.html file inside doc folder.
+Run the next command and open index.html file inside doc folder to see a fresh documentation of the module. You can also visit the documentation web (here)[https://degiro-api.github.io].
+
+Generate the documentation is easy, only run the next command:
 
 ```sh
 $ yarn doc
@@ -139,35 +143,15 @@ Documentation generated at ....../degiro-api/docs
 
 Before run the test set you must set DEGIRO_USER & DEGIRO_PWD env export variables to attach an account to the test sets.
 
-```js
-$ yarn install && yarn test
-yarn run v1.22.4
-$ mocha -r ts-node/register tests/**/*.spec.ts
+Be careful, the test set are going to make many request to degiro and are going to generate many session. DeGiro can track this events and ban your account (I don't know, read all contract before sign up 🤷‍♂️)
 
+Now, I'm developing a feature that can bring you the ability of reuse only one session across all the entire test set. (The login and logout tests always are going to create differents sessions)
 
-  Environment variables
-    ✓ DEGIRO_USER env var should exists
-    ✓ DEGIRO_PWD env var should exists
+To run this experimental feature set the `DEGIRO_TESTS_REUSE_SESSION` env variable to any truthy value.
 
-  Create DeGiro instance
-    ✓ should create an instance of DeGiro class from env vars
-    ✓ should create an instance of DeGiro class from constructor params
+Keep in mind: the tests can fail, if the deleteOrder test crash, you could have one new order in your account that you didn't create yourself. In those cases, the test process print this information in console. Read always all tests results. 
 
-  DeGiro login process
-    ✓ should successfully log in with environment credentials (619ms)
-    ✓ should return a valid account config from server (738ms)
-    ✓ should return a valid account data from server (727ms)
-    ✓ getJSESSIONID should return a valid jsessionId
-    ✓ should login with previous jsessionId
-
-  DeGiro logout process
-    ✓ should successfully log out after sign in (685ms)
-
-
-  10 passing (3s)
-
-✨  Done in 5.21s.
-```
+To run all tests set run the command: `yarn test` or `npm run test`
 
 ### Get JSESSIONID and reuse sessions
 
@@ -337,29 +321,75 @@ degiro.getJSESSIONID() // string
 `getCashFunds(): Promise<CashFoundType[]>`
 
 ### Porfolio endpoints
+
+#### getPortfolio
+
+`getPortfolio(config: GetPorfolioConfigType): Promise<any[]>`
+
 ### Stocks endpoints
 
 #### getFavouriteProducts()
+
+`getFavouriteProducts(): Promise<FavouriteProductType[]>`
+
 #### getPopularStocks()
+
+`getPopularStocks(): Promise<StockType[]>`
 
 ### Orders endpoints
 
 ### getOrders()
+
+`getOrders(options: GetOrdersConfigType): Promise<GetOrdersResultType>`
+
 ### getHistoricalOrders()
+
+`getHistoricalOrders(options: GetHistoricalOrdersOptionsType): Promise<HistoricalOrdersType>`
+
 ### createOrder()
+
+`createOrder(order: OrderType): Promise<CreateOrderResultType>`
+
 ### executeOrder()
+
+`executeOrder(order: OrderType, executeId: string): Promise<String>`
+
 ### deleteOrder()
+
+`deleteOrder(orderId: String): Promise<void>`
 
 ### Miscellaneous endpoints
 
 #### getProductsByIds()
+
+`getProductsByIds(ids: string[]): Promise<any[]>`
+
 #### getNews()
+
+`getNews(options: GetNewsOptionsType): Promise<NewsType>`
+
 #### getWebi18nMessages()
+
+`getWebi18nMessages(lang: string): Promise<i18nMessagesType>`
+
 #### getWebSettings()
+
+`getWebSettings(): Promise<WebSettingsType>`
+
 #### getWebUserSettings()
+
+`getWebUserSettings(): Promise<WebUserSettingType>`
+
 #### getConfigDictionary()
 
+`getConfigDictionary(): Promise<ConfigDictionaryType>`
+
+
 ## All project Types
+
+If you code with typescript and use (IntelliSense)[https://code.visualstudio.com/docs/editor/intellisense] you are going to get access to all objects properties and all stuff...
+
+If you not, in the docs section could find all methods, functions, types, whatever you want. Don't waste more time and click here to see the (documentation)[https://degiro-api.github.io].
 
 ### SomeType
 
