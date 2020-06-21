@@ -17,50 +17,53 @@ All responses and objects are typed to develop faster and secure.
 ## Table of content
 
 <!--ts-->
-   * [DeGiro Trading Broker API](#degiro-trading-broker-api)
-   * [Table of contents](#table-of-contents)
-   * [Installation](#installation)
-   * [How to use](#how-to-use)
-      * [Create an instance of DeGiro](#create-an-instance-of-degiro)
-      * [Active Debug mode](#local-files)
-      * [Documentation](#remote-files)
-      * [Running tests set](#multiple-files)
-      * [Get JSESSIONID and reuse sessions](#combo)
-      * [Check if we are authenticated](#auto-insert-and-update-toc)
-   * [API](#tests)
-      * [Session](#foo)
-        * [login](#foo)
-        * [logout](#foo)
-        * [isLogin](#foo)
-        * [getJSESSIONID](#foo)
-      * [Account](#foo)
-        * [getAccountConfig](#foo)
-        * [getAccountData](#foo)
-        * [getAccountState](#foo)
-        * [getAccountReports](#foo)
-        * [getAccountInfo](#foo)
-      * [Search products](#foo)
-      * [Cash Funds](#foo)
-      * [Porfolio](#foo)
-      * [Stocks](#foo)
-        * [getFavouriteProducts](#foo)
-        * [getPopularStocks](#foo)
-      * [Orders](#foo)
-        * [getOrders](#foo)
-        * [getHistoricalOrders](#foo)
-        * [createOrder](#foo)
-        * [executeOrder](#foo)
-        * [deleteOrder](#foo)
-      * [Miscellaneous](#foo)
-        * [getProductsByIds](#foo)
-        * [getNews](#foo)
-        * [getWebi18nMessages](#foo)
-        * [getWebSettings](#foo)
-        * [getWebUserSettings](#foo)
-        * [getConfigDictionary](#foo)
-   * [Degiro Command Line Interface](#degiro-command-line-interface)
-   * [License](#dependency)
-   * [TO DO List](#to-do-list)
+  * [DeGiro Trading Broker API](#degiro-trading-broker-api)
+  * [Table of contents](#table-of-contents)
+  * [Installation](#installation)
+  * [How to use](#how-to-use)
+    * [Create an instance of DeGiro](#create-an-instance-of-degiro)
+    * [Active Debug mode](#local-files)
+    * [Documentation](#remote-files)
+    * [Running tests set](#multiple-files)
+    * [Get JSESSIONID and reuse sessions](#combo)
+    * [Check if we are authenticated](#auto-insert-and-update-toc)
+  * [API](#tests)
+    * [Session endpoints](#foo)
+      * [login](#foo)
+      * [logout](#foo)
+      * [isLogin](#foo)
+      * [getJSESSIONID](#foo)
+    * [Account endpoints](#foo)
+      * [getAccountConfig](#foo)
+      * [getAccountData](#foo)
+      * [getAccountState](#foo)
+      * [getAccountReports](#foo)
+      * [getAccountInfo](#foo)
+    * [Search products endpoints](#foo)
+    * [Cash Funds endpoints](#foo)
+    * [Porfolio endpoints](#foo)
+    * [Stocks endpoints](#foo)
+      * [getFavouriteProducts](#foo)
+      * [getPopularStocks](#foo)
+    * [Orders endpoints](#foo)
+      * [getOrders](#foo)
+      * [getHistoricalOrders](#foo)
+      * [createOrder](#foo)
+      * [executeOrder](#foo)
+      * [deleteOrder](#foo)
+    * [Miscellaneous endpoints](#foo)
+      * [getProductsByIds](#foo)
+      * [getNews](#foo)
+      * [getWebi18nMessages](#foo)
+      * [getWebSettings](#foo)
+      * [getWebUserSettings](#foo)
+      * [getConfigDictionary](#foo)
+  * [All project Types](#all-project-types)
+    * [SomeType](#sometype)
+  * [Need help endpoints](#need-help-endpoints)
+  * [Degiro Command Line Interface](#degiro-command-line-interface)
+  * [License](#dependency)
+  * [TO DO List](#to-do-list)
 <!--te-->
 
 ## Installation 
@@ -239,14 +242,14 @@ import DeGiro from 'degiro-api'
 
 ## API
 
-### Sessión
+### Sessión endpoints
 
 #### login()
 #### logout()
 #### isLogin()
 #### getJSESSIONID()
 
-### Account
+### Account endpoints
 
 #### getAccountConfig()
 #### getAccountData()
@@ -254,34 +257,66 @@ import DeGiro from 'degiro-api'
 #### getAccountReports()
 #### getAccountInfo()
 
-   * [API](#tests)
-      * [Session](#foo)
-        * [login](#foo)
-        * [logout](#foo)
-        * [isLogin](#foo)
-        * [getJSESSIONID](#foo)
-      * [Account](#foo)
-        * [getAccountConfig](#foo)
-        * [getAccountData](#foo)
-        * [getAccountState](#foo)
-        * [getAccountReports](#foo)
-        * [getAccountInfo](#foo)
-      * [Search products](#foo)
-      * [Cash Funds](#foo)
-      * [Porfolio](#foo)
-      * [Stocks](#foo)
-        * [getFavouriteProducts](#foo)
-        * [getPopularStocks](#foo)
-      * [Orders](#foo)
-        * [getOrders](#foo)
-        * [getHistoricalOrders](#foo)
-        * [createOrder](#foo)
-        * [executeOrder](#foo)
-        * [deleteOrder](#foo)
-      * [Miscellaneous](#foo)
-        * [getProductsByIds](#foo)
-        * [getNews](#foo)
-        * [getWebi18nMessages](#foo)
-        * [getWebSettings](#foo)
-        * [getWebUserSettings](#foo)
-        * [getConfigDictionary](#foo)
+### Search products endpoints
+### Cash Funds endpoints
+### Porfolio endpoints
+### Stocks endpoints
+
+#### getFavouriteProducts()
+#### getPopularStocks()
+
+### Orders endpoints
+
+### getOrders()
+### getHistoricalOrders()
+### createOrder()
+### executeOrder()
+### deleteOrder()
+
+### Miscellaneous endpoints
+
+#### getProductsByIds()
+#### getNews()
+#### getWebi18nMessages()
+#### getWebSettings()
+#### getWebUserSettings()
+#### getConfigDictionary()
+
+## All project Types
+
+### SomeType
+
+## Need help endpoints
+
+We need help with the next endpoint:...
+
+## Degiro Command Line Interface
+
+[degiro-cli](https://github.com/icastillejogomez/degiro-cli) is an usefull command line interface that help us dealing with DeGiro platform through the terminal. You can see your portfolio status, create and execute orders and much more (may in the future)
+
+```sh
+$ degiro
+Usage: DeGiro Command Line Interface [options] [command]
+
+DeGiro CLI provide you access to DeGiro Broker across the terminal
+
+Options:
+  -V, --version   output the version number
+  -h, --help      display help for command
+
+Commands:
+  login           validate credentials with DeGiro platform
+  search          Search products in DeGiro
+  portfolio       show account portfolio in real-time
+  help [command]  display help for command
+```
+## License
+
+MIT
+
+
+## TO DO List
+
+1. Two factor
+2. Get prices
+
