@@ -172,8 +172,6 @@ $ mocha -r ts-node/register tests/**/*.spec.ts
 
 The JSessionId is the session browser cookie that DeGiro use to authenticate requests. You could prevent masive login/logout requests reusing a valid jsessionid from previous DeGiro instance. The way to do that is:
 
-`getJSESSIONID(): string`
-
 ```js
 import DeGiro from 'degiro-api'
 
@@ -209,8 +207,6 @@ import DeGiro from 'degiro-api'
 ```
 
 ### Check if we are authenticated
-
-`isLogin(options): boolean`
 
 ```js
 import DeGiro from 'degiro-api'
@@ -272,7 +268,9 @@ const accountData = await degiro.login()
 await degiro.logout()
 ```
 
-#### isLogin() (options?: IsLoginOptionsType): boolean | Promise<boolean>
+#### isLogin
+
+`isLogin() (options?: IsLoginOptionsType): boolean | Promise<boolean>`
 
 ```js
 import DeGiro from 'degiro-api'
@@ -287,7 +285,9 @@ if (! await degiro.isLogin({ secure: true })) {
 }
 ```
 
-#### getJSESSIONID(): string | undefined
+#### getJSESSIONID
+
+`getJSESSIONID(): string | undefined`
 
 ```js
 import DeGiro from 'degiro-api'
@@ -300,21 +300,30 @@ degiro.getJSESSIONID() // string
 
 ### Account endpoints
 
-#### getAccountConfig(sessionId: string): Promise<AccountConfigType>
+#### getAccountConfig
 
-#### getAccountData(): Promise<AccountDataType>
+`getAccountConfig(sessionId: string): Promise<AccountConfigType>`
 
+#### getAccountData
 
-#### getAccountState(options: GetAccountStateOptionsType): Promise<any[]>
-
-
-#### getAccountReports(): Promise<AccountReportsType>
+`getAccountData(): Promise<AccountDataType>`
 
 
-#### getAccountInfo(): Promise<AccountInfoType>
+#### getAccountState
+
+`getAccountState(options: GetAccountStateOptionsType): Promise<any[]>`
+
+
+#### getAccountReports
+
+`getAccountReports(): Promise<AccountReportsType>`
+
+
+#### getAccountInfo
+
+`getAccountInfo(): Promise<AccountInfoType>`
 
 ### Search products endpoints
-  ### Search products endpoints
 
 #### searchProduct
 
