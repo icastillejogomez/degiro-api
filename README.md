@@ -275,30 +275,138 @@ degiro.getJSESSIONID() // string
 
 `getAccountConfig(sessionId: string): Promise<AccountConfigType>`
 
+```js
+import DeGiro from 'degiro-api'
+
+const degiro = new DeGiro({})
+await degiro.login()
+
+const accountConfig = await degiro.getAccountConfig()
+console.log(accountConfig)
+```
+
 #### getAccountData
 
 `getAccountData(): Promise<AccountDataType>`
 
+```js
+import DeGiro from 'degiro-api'
+
+const degiro = new DeGiro({})
+await degiro.login() // Login also returns accountData
+
+const accountData = await degiro.getAccountData()
+console.log(accountData)
+```
 
 #### getAccountState
 
 `getAccountState(options: GetAccountStateOptionsType): Promise<any[]>`
 
+```js
+import DeGiro from 'degiro-api'
+
+const degiro = new DeGiro({})
+await degiro.login()
+
+const accountState = await degiro.getAccountState()
+console.log(accountState)
+```
 
 #### getAccountReports
 
 `getAccountReports(): Promise<AccountReportsType>`
 
+```js
+import DeGiro from 'degiro-api'
+
+const degiro = new DeGiro({})
+await degiro.login()
+
+const reports = await degiro.getAccountReports()
+console.log(reports)
+```
 
 #### getAccountInfo
 
 `getAccountInfo(): Promise<AccountInfoType>`
+
+```js
+import DeGiro from 'degiro-api'
+
+const degiro = new DeGiro({})
+await degiro.login()
+
+const accountInfo = await degiro.getAccountInfo()
+console.log(accountInfo)
+```
 
 ### Search products endpoints
 
 #### searchProduct
 
 `searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>`
+
+* **options**: 
+  * **text**: *required* string,
+  * **type**: *optional* DeGiroProducTypes
+  * **limit**: *optional* number default=10,
+  * **offset**: *optional* number default=0,
+
+`DeGiroProducTypes`
+
+* *shares*: 1
+* *bonds*: 2
+* *futures*: 7
+* *options*: 8
+* *investmendFunds*: 13
+* *leveragedProducts*: 14
+* *etfs*: 131
+* *cfds*: 535
+* *warrants*: 536
+
+Search the text "AAPL" without any limitation
+
+```js
+import DeGiro from 'degiro-api'
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '***********',
+  })
+
+  await degiro.login()
+
+  const result = await degiro.searchProduct({ text: 'AAPL' })
+  console.log(JSON.stringify(result, null, 2))
+})()
+```
+
+Search TSLA stock
+
+```js
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { DeGiroProducTypes } = DeGiroEnums
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '***********',
+  })
+
+  await degiro.login()
+
+  const result = await degiro.searchProduct({
+    text: 'TSLA',
+    type: DeGiroProducTypes.shares,
+    limit: 1,
+  })
+  console.log(JSON.stringify(result, null, 2))
+})()
+```
 
 ### Cash Funds endpoints
 
@@ -311,6 +419,81 @@ degiro.getJSESSIONID() // string
 #### getPortfolio
 
 `getPortfolio(config: GetPorfolioConfigType): Promise<any[]>`
+
+`getPortfolio` config parameter could have:
+* **type**: set the types or positions you want to fetch. Could be:
+  * ALL: Gets the response without filter it
+  * ALL_POSITIONS: Gets only positions in products. Exclude positions like 'CASH', etc.
+  * OPEN: Gets only opened positions. 
+  * CLOSED: Gets only the closed positions in your portfolio.
+
+* **getProductDetails**: if is set to true the positions results will have a `productData` field with all the product details.
+
+Get all **open** positions:
+
+```js
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { PORTFOLIO_POSITIONS_TYPE_ENUM } = DeGiroEnums
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '**********',
+  })
+
+  await degiro.login()
+
+  const portfolio = await degiro.getPortfolio({ 
+    type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL, 
+    getProductDetails: true,
+  })
+  console.log(JSON.stringify(portfolio, null, 2))
+})()
+```
+
+Also you can fetch your portfolio data this way:
+
+```js
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { PORTFOLIO_POSITIONS_TYPE_ENUM } = DeGiroEnums
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '**********',
+  })
+
+  await degiro.login()
+
+  const portfolio = await degiro.getPortfolio({ type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL })
+  console.log(JSON.stringify(portfolio, null, 2))
+})()
+```
+
+And getting product details too
+
+```js
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { PORTFOLIO_POSITIONS_TYPE_ENUM } = DeGiroEnums
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '**********',
+  })
+
+  await degiro.login()
+
+  const portfolio = await degiro.getPortfolio({ 
+    type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL, 
+    getProductDetails: true,
+  })
+  console.log(JSON.stringify(portfolio, null, 2))
+})()
+```
 
 ### Stocks endpoints
 
@@ -336,13 +519,155 @@ degiro.getJSESSIONID() // string
 
 `createOrder(order: OrderType): Promise<CreateOrderResultType>`
 
+* **OrderType**
+  * **buySell**: DeGiroActions,
+  * **orderType**: DeGiroMarketOrderTypes,
+  * **price**: *optional* Number,
+  * **productId**: string,
+  * **size**: number,
+  * **stopPrice**: *optional* number,
+  * **timeType**: DeGiroTimeTypes,
+
+
+* **DeGiroActions**
+  * **BUY**: 'BUY',
+  * **SELL**: 'SELL',
+
+
+* **DeGiroMarketOrderTypes**
+  * **LIMITED**: 0,
+  * **MARKET**: 2,
+  * **STOP_LOSS**: 3,
+  * **STOP_LOSS_LIMIT**: 1,
+
+* **DeGiroTimeTypes**
+  * **DAY**: 1,
+  * **PERMANENT**: 3,
+
+* **CreateOrderResultType**
+  * **confirmationId**: String,
+  * **freeSpaceNew**: Number,
+  * **transactionFees**: [TransactionFeeType],
+
+
+* **TransactionFeeType**
+  * **amount**: Number,
+  * **currency**: String,
+  * **id**: Number,
+
+
+```js
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } = DeGiroEnums
+const { OrderType } = DeGiroTypes
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'your_username_here',
+    pwd: '************'
+  })
+
+  await degiro.login()
+
+  const order: OrderType = {
+    buySell: DeGiroActions.BUY,
+    orderType: DeGiroMarketOrderTypes.LIMITED,
+    productId: '331868', // $AAPL - Apple Inc
+    size: 1,
+    timeType: DeGiroTimeTypes.DAY,
+    price: 272, // limit price [Degiro could reject this value]
+    // stopPrice: 2,
+  }
+
+  const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
+  console.log(JSON.stringify({ confirmationId, freeSpaceNew, transactionFees }, null, 2))
+})()
+```
+
 ### executeOrder()
 
 `executeOrder(order: OrderType, executeId: string): Promise<String>`
 
+```js
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } = DeGiroEnums
+const { OrderType } = DeGiroTypes
+
+(async () => {
+
+  try {
+    const degiro: DeGiro = new DeGiro({
+      username: 'nachoogoomezomg',
+      pwd: <string>process.env.DEGIRO_PWD,
+    })
+
+    await degiro.login()
+
+    const order: OrderType = {
+      buySell: DeGiroActions.BUY,
+      orderType: DeGiroMarketOrderTypes.LIMITED,
+      productId: '331868', // $AAPL - Apple Inc
+      size: 1,
+      timeType: DeGiroTimeTypes.DAY,
+      price: 270, // limit price
+      // stopPrice: 2,
+    }
+
+    const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
+    const orderId = await degiro.executeOrder(order, confirmationId)
+    console.log(`Order executed with id: ${orderId}`)
+  } catch (error) {
+    console.error(error)
+  }
+})()
+```
+
 ### deleteOrder()
 
 `deleteOrder(orderId: String): Promise<void>`
+
+```js
+import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
+const { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } = DeGiroEnums
+const { OrderType } = DeGiroTypes
+
+(async () => {
+
+  const degiro: DeGiro = new DeGiro({
+    username: 'nachoogoomezomg',
+    pwd: <string>process.env.DEGIRO_PWD,
+  })
+
+  await degiro.login()
+
+  const order: OrderType = {
+    buySell: DeGiroActions.BUY,
+    orderType: DeGiroMarketOrderTypes.LIMITED,
+    productId: '331868', // $AAPL - Apple Inc
+    size: 1,
+    timeType: DeGiroTimeTypes.DAY,
+    price: 272, // limit price
+    // stopPrice: 2,
+  }
+
+  const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
+  const orderId = await degiro.executeOrder(order, confirmationId)
+  console.log(`Order executed with id: ${orderId}`)
+
+  // Wait few seconds to avoid "Rate limit for the given request exceeded" error
+  const TIMEOUT_SECONDS = 2 * 1000
+  const deleteOrderFunction = async () => {
+    try {
+      await degiro.deleteOrder(orderId)
+      console.log('Order removed')
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  setTimeout(deleteOrderFunction, TIMEOUT_SECONDS)
+})()
+```
 
 ### Miscellaneous endpoints
 
