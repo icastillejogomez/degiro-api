@@ -122,7 +122,7 @@ $ yarn start
 
 ### Documentation
 
-Run the next command and open index.html file inside doc folder to see a fresh documentation of the module. You can also visit the documentation web (here)[https://degiro-api.github.io].
+Run the next command and open index.html file inside doc folder to see a fresh documentation of the module. You can also visit the documentation web [here](https://degiro-api.github.io).
 
 Generate the documentation is easy, only run the next command:
 
@@ -387,9 +387,9 @@ degiro.getJSESSIONID() // string
 
 ## All project Types
 
-If you code with typescript and use (IntelliSense)[https://code.visualstudio.com/docs/editor/intellisense] you are going to get access to all objects properties and all stuff...
+If you code with typescript and use [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) you are going to get access to all objects properties and all stuff...
 
-If you not, in the docs section could find all methods, functions, types, whatever you want. Don't waste more time and click here to see the (documentation)[https://degiro-api.github.io].
+If you not, in the docs section could find all methods, functions, types, whatever you want. Don't waste more time and click here to see the [documentation](https://degiro-api.github.io).
 
 ### SomeType
 
