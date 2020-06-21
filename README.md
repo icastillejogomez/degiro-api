@@ -249,7 +249,9 @@ import DeGiro from 'degiro-api'
 
 ### Sessión endpoints
 
-#### login(): Promise<AccountDataType>
+#### login
+
+`login(): Promise<AccountDataType>`
 
 ```js
 import DeGiro from 'degiro-api'
@@ -258,7 +260,9 @@ const degiro = new DeGiro({})
 const accountData = await degiro.login()
 ```
 
-#### logout(): Promise<void>
+#### logout
+
+`logout(): Promise<void>`
 
 ```js
 import DeGiro from 'degiro-api'
