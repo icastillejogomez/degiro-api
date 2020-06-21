@@ -128,15 +128,8 @@ Generate the documentation is easy, only run the next command:
 
 ```sh
 $ yarn doc
-yarn run v1.22.4
-$ typedoc --out docs src
-
-Using TypeScript 3.9.2 from ....../degiro-api/node_modules/typescript/lib
-Rendering [========================================] 100%
-
-Documentation generated at ....../degiro-api/docs
-
-✨  Done in 3.94s.
+or
+$ npm run test
 ```
 
 ### Running tests set
