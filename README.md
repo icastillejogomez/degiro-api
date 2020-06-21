@@ -37,14 +37,14 @@ Don't use in production build, this project is under development. In the next fe
       * [logout](#logout)
       * [isLogin](#isLogin)
       * [getJSESSIONID](#getJSESSIONID)
-    * [Account endpoints](#foo)
-      * [getAccountConfig](#foo)
-      * [getAccountData](#foo)
-      * [getAccountState](#foo)
-      * [getAccountReports](#foo)
-      * [getAccountInfo](#foo)
+    * [Account endpoints](#account-endpoints)
+      * [getAccountConfig](#getAccountConfig)
+      * [getAccountData](#getAccountData)
+      * [getAccountState](#getAccountState)
+      * [getAccountReports](#getAccountReports)
+      * [getAccountInfo](#getAccountInfo)
     * [Search products endpoints](#foo)
-      * [searchProduct](#searchProduct(options:-SearchProductOptionsType): Promise<SearchProductResultType[]>)
+      * [searchProduct](#searchProduct)
     * [Cash Funds endpoints](#foo)
     * [Porfolio endpoints](#foo)
     * [Stocks endpoints](#foo)
@@ -316,8 +316,9 @@ degiro.getJSESSIONID() // string
 ### Search products endpoints
   ### Search products endpoints
 
-#### searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>
+#### searchProduct
 
+`searchProduct(options: SearchProductOptionsType): Promise<SearchProductResultType[]>`
 
 ### Cash Funds endpoints
 ### Porfolio endpoints
