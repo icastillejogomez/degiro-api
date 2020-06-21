@@ -115,7 +115,7 @@ $ yarn start
 
 ### Documentation
 
-Run the next command and open index.html file inside doc folder to see a fresh documentation of the module. You can also visit the documentation web [here](https://icastillejogomez.github.io/degiro-api/).
+Run the next command and open index.html file inside doc folder to see a fresh documentation of the module.
 
 Generate the documentation is easy, only run the next command:
 
