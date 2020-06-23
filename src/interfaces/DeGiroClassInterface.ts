@@ -23,6 +23,7 @@ import {
   WebUserSettingType,
   ConfigDictionaryType,
   i18nMessagesType,
+  VwdSessionType,
 } from '../types'
 
 /**
@@ -95,5 +96,11 @@ export interface DeGiroClassInterface {
   getWebUserSettings(): Promise<WebUserSettingType>
 
   getConfigDictionary(): Promise<ConfigDictionaryType>
+
+  /* VWD */
+
+  createVwdSession(): Promise<VwdSessionType>
+
+  getAskBidPrice(productId: string | number): Promise<any>
 
 }

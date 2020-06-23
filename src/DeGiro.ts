@@ -32,6 +32,7 @@ import {
   ConfigDictionaryType,
   i18nMessagesType,
   WebSettingsType,
+  VwdSessionType,
 } from './types'
 
 // Import requests
@@ -58,6 +59,10 @@ import {
   getCashFundstRequest,
 } from './api'
 
+import {
+  createVwdSessionRequest, getAskBidPriceRequest ,
+} from './vwd'
+
 /**
  * @class DeGiro
  * @description Main class of DeGiro Unofficial API.
@@ -71,6 +76,7 @@ export class DeGiro implements DeGiroClassInterface {
   private jsessionId: string | undefined
   private accountConfig: AccountConfigType | undefined
   private accountData: AccountDataType | undefined
+  private vwdSession: VwdSessionType | undefined
 
   /* Constructor and generator function */
 
@@ -346,4 +352,37 @@ export class DeGiro implements DeGiroClassInterface {
     return getConfigDictionaryRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
   }
 
+  /* VWD */
+
+  createVwdSession(): Promise<VwdSessionType> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return new Promise((resolve, reject) => {
+      createVwdSessionRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
+        .then((vwdSession) => {
+          this.vwdSession = vwdSession
+          resolve(vwdSession)
+        })
+        .catch(reject)
+    })
+  }
+
+  getAskBidPrice(productId: string | number): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        // If vwd session not exists, lets create it
+        if (!this.vwdSession || !this.vwdSession.sessionId) {
+          await this.createVwdSession()
+        }
+        if (!this.hasSessionId() || !productId || !this.vwdSession) {
+          return reject('You must log in first and create a VWD session')
+        }
+        const result = await getAskBidPriceRequest(productId, this.vwdSession)
+        resolve(result)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
 }

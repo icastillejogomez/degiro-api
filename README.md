@@ -65,7 +65,6 @@ Don't use in production build, this project is under development. In the next fe
       * [getWebUserSettings](#foo)
       * [getConfigDictionary](#foo)
   * [All project Types](#all-project-types)
-    * [SomeType](#sometype)
   * [Need help endpoints](#need-help-endpoints)
   * [Degiro Command Line Interface](#degiro-command-line-interface)
   * [License](#dependency)
@@ -370,18 +369,11 @@ Search the text "AAPL" without any limitation
 ```js
 import DeGiro from 'degiro-api'
 
-(async () => {
+const degiro: DeGiro = new DeGiro({})
+await degiro.login()
 
-  const degiro: DeGiro = new DeGiro({
-    username: 'your_username_here',
-    pwd: '***********',
-  })
-
-  await degiro.login()
-
-  const result = await degiro.searchProduct({ text: 'AAPL' })
-  console.log(JSON.stringify(result, null, 2))
-})()
+const result = await degiro.searchProduct({ text: 'AAPL' })
+console.log(JSON.stringify(result, null, 2))
 ```
 
 Search TSLA stock
@@ -390,22 +382,15 @@ Search TSLA stock
 import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
 const { DeGiroProducTypes } = DeGiroEnums
 
-(async () => {
+const degiro: DeGiro = new DeGiro({})
+await degiro.login()
 
-  const degiro: DeGiro = new DeGiro({
-    username: 'your_username_here',
-    pwd: '***********',
-  })
-
-  await degiro.login()
-
-  const result = await degiro.searchProduct({
-    text: 'TSLA',
-    type: DeGiroProducTypes.shares,
-    limit: 1,
-  })
-  console.log(JSON.stringify(result, null, 2))
-})()
+const result = await degiro.searchProduct({
+  text: 'TSLA',
+  type: DeGiroProducTypes.shares,
+  limit: 1,
+})
+console.log(JSON.stringify(result, null, 2))
 ```
 
 ### Cash Funds endpoints
@@ -435,21 +420,14 @@ Get all **open** positions:
 import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
 const { PORTFOLIO_POSITIONS_TYPE_ENUM } = DeGiroEnums
 
-(async () => {
+const degiro: DeGiro = new DeGiro({})
+await degiro.login()
 
-  const degiro: DeGiro = new DeGiro({
-    username: 'your_username_here',
-    pwd: '**********',
-  })
-
-  await degiro.login()
-
-  const portfolio = await degiro.getPortfolio({ 
-    type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL, 
-    getProductDetails: true,
-  })
-  console.log(JSON.stringify(portfolio, null, 2))
-})()
+const portfolio = await degiro.getPortfolio({ 
+  type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL, 
+  getProductDetails: true,
+})
+console.log(JSON.stringify(portfolio, null, 2))
 ```
 
 Also you can fetch your portfolio data this way:
@@ -458,18 +436,11 @@ Also you can fetch your portfolio data this way:
 import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
 const { PORTFOLIO_POSITIONS_TYPE_ENUM } = DeGiroEnums
 
-(async () => {
+const degiro: DeGiro = new DeGiro({})
+await degiro.login()
 
-  const degiro: DeGiro = new DeGiro({
-    username: 'your_username_here',
-    pwd: '**********',
-  })
-
-  await degiro.login()
-
-  const portfolio = await degiro.getPortfolio({ type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL })
-  console.log(JSON.stringify(portfolio, null, 2))
-})()
+const portfolio = await degiro.getPortfolio({ type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL })
+console.log(JSON.stringify(portfolio, null, 2))
 ```
 
 And getting product details too
@@ -478,21 +449,14 @@ And getting product details too
 import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
 const { PORTFOLIO_POSITIONS_TYPE_ENUM } = DeGiroEnums
 
-(async () => {
+const degiro: DeGiro = new DeGiro({})
+await degiro.login()
 
-  const degiro: DeGiro = new DeGiro({
-    username: 'your_username_here',
-    pwd: '**********',
-  })
-
-  await degiro.login()
-
-  const portfolio = await degiro.getPortfolio({ 
-    type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL, 
-    getProductDetails: true,
-  })
-  console.log(JSON.stringify(portfolio, null, 2))
-})()
+const portfolio = await degiro.getPortfolio({ 
+  type: PORTFOLIO_POSITIONS_TYPE_ENUM.ALL, 
+  getProductDetails: true,
+})
+console.log(JSON.stringify(portfolio, null, 2))
 ```
 
 ### Stocks endpoints
@@ -561,28 +525,21 @@ import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
 const { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } = DeGiroEnums
 const { OrderType } = DeGiroTypes
 
-(async () => {
+const degiro: DeGiro = new DeGiro({})
+await degiro.login()
 
-  const degiro: DeGiro = new DeGiro({
-    username: 'your_username_here',
-    pwd: '************'
-  })
+const order: OrderType = {
+  buySell: DeGiroActions.BUY,
+  orderType: DeGiroMarketOrderTypes.LIMITED,
+  productId: '331868', // $AAPL - Apple Inc
+  size: 1,
+  timeType: DeGiroTimeTypes.DAY,
+  price: 272, // limit price [Degiro could reject this value]
+  // stopPrice: 2,
+}
 
-  await degiro.login()
-
-  const order: OrderType = {
-    buySell: DeGiroActions.BUY,
-    orderType: DeGiroMarketOrderTypes.LIMITED,
-    productId: '331868', // $AAPL - Apple Inc
-    size: 1,
-    timeType: DeGiroTimeTypes.DAY,
-    price: 272, // limit price [Degiro could reject this value]
-    // stopPrice: 2,
-  }
-
-  const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
-  console.log(JSON.stringify({ confirmationId, freeSpaceNew, transactionFees }, null, 2))
-})()
+const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
+console.log(JSON.stringify({ confirmationId, freeSpaceNew, transactionFees }, null, 2))
 ```
 
 ### executeOrder()
@@ -594,33 +551,26 @@ import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
 const { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } = DeGiroEnums
 const { OrderType } = DeGiroTypes
 
-(async () => {
+try {
+  const degiro: DeGiro = new DeGiro({})
+  await degiro.login()
 
-  try {
-    const degiro: DeGiro = new DeGiro({
-      username: 'nachoogoomezomg',
-      pwd: <string>process.env.DEGIRO_PWD,
-    })
-
-    await degiro.login()
-
-    const order: OrderType = {
-      buySell: DeGiroActions.BUY,
-      orderType: DeGiroMarketOrderTypes.LIMITED,
-      productId: '331868', // $AAPL - Apple Inc
-      size: 1,
-      timeType: DeGiroTimeTypes.DAY,
-      price: 270, // limit price
-      // stopPrice: 2,
-    }
-
-    const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
-    const orderId = await degiro.executeOrder(order, confirmationId)
-    console.log(`Order executed with id: ${orderId}`)
-  } catch (error) {
-    console.error(error)
+  const order: OrderType = {
+    buySell: DeGiroActions.BUY,
+    orderType: DeGiroMarketOrderTypes.LIMITED,
+    productId: '331868', // $AAPL - Apple Inc
+    size: 1,
+    timeType: DeGiroTimeTypes.DAY,
+    price: 270, // limit price
+    // stopPrice: 2,
   }
-})()
+
+  const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
+  const orderId = await degiro.executeOrder(order, confirmationId)
+  console.log(`Order executed with id: ${orderId}`)
+} catch (error) {
+  console.error(error)
+}
 ```
 
 ### deleteOrder()
@@ -632,41 +582,34 @@ import DeGiro, { DeGiroEnums, DeGiroTypes } from 'degiro-api'
 const { DeGiroActions, DeGiroMarketOrderTypes, DeGiroTimeTypes } = DeGiroEnums
 const { OrderType } = DeGiroTypes
 
-(async () => {
+const degiro: DeGiro = new DeGiro({})
+await degiro.login()
 
-  const degiro: DeGiro = new DeGiro({
-    username: 'nachoogoomezomg',
-    pwd: <string>process.env.DEGIRO_PWD,
-  })
+const order: OrderType = {
+  buySell: DeGiroActions.BUY,
+  orderType: DeGiroMarketOrderTypes.LIMITED,
+  productId: '331868', // $AAPL - Apple Inc
+  size: 1,
+  timeType: DeGiroTimeTypes.DAY,
+  price: 272, // limit price
+  // stopPrice: 2,
+}
 
-  await degiro.login()
+const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
+const orderId = await degiro.executeOrder(order, confirmationId)
+console.log(`Order executed with id: ${orderId}`)
 
-  const order: OrderType = {
-    buySell: DeGiroActions.BUY,
-    orderType: DeGiroMarketOrderTypes.LIMITED,
-    productId: '331868', // $AAPL - Apple Inc
-    size: 1,
-    timeType: DeGiroTimeTypes.DAY,
-    price: 272, // limit price
-    // stopPrice: 2,
+// Wait few seconds to avoid "Rate limit for the given request exceeded" error
+const TIMEOUT_SECONDS = 2 * 1000
+const deleteOrderFunction = async () => {
+  try {
+    await degiro.deleteOrder(orderId)
+    console.log('Order removed')
+  } catch (error) {
+    console.error(error)
   }
-
-  const { confirmationId, freeSpaceNew, transactionFees } = await degiro.createOrder(order)
-  const orderId = await degiro.executeOrder(order, confirmationId)
-  console.log(`Order executed with id: ${orderId}`)
-
-  // Wait few seconds to avoid "Rate limit for the given request exceeded" error
-  const TIMEOUT_SECONDS = 2 * 1000
-  const deleteOrderFunction = async () => {
-    try {
-      await degiro.deleteOrder(orderId)
-      console.log('Order removed')
-    } catch (error) {
-      console.error(error)
-    }
-  }
-  setTimeout(deleteOrderFunction, TIMEOUT_SECONDS)
-})()
+}
+setTimeout(deleteOrderFunction, TIMEOUT_SECONDS)
 ```
 
 ### Miscellaneous endpoints
@@ -702,11 +645,13 @@ If you code with typescript and use [IntelliSense](https://code.visualstudio.com
 
 If you not, in the docs section could find all methods, functions, types, whatever you want. Don't waste more time and click here to see the [documentation](https://icastillejogomez.github.io/degiro-api/).
 
-### SomeType
-
 ## Need help endpoints
 
-We need help with the next endpoint:...
+I can't find any way to fetch the freeMargin (Buy Power) or the total account amount, borrowed money, etc...
+
+Seeing is dev-tools I don't see any request to any endpoint that bring us this information. 
+
+If you find any solution, code and pull request or create an issue explaining how to do.
 
 ## Degiro Command Line Interface
 
@@ -732,9 +677,14 @@ Commands:
 
 MIT
 
-
 ## TO DO List
 
 1. Two factor
 2. Get prices
-
+3. Get popular stocks
+4. Get historical orders
+5. Get favourite products
+6. Re-use session in test set
+7. Find any way to fetch the free margin, borrowed money, total account amount...
+8. Create a cache with account endpoints, and some miscellaneous endpoints too
+9. Create common fetch with middleware capabilities
