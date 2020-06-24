@@ -30,7 +30,7 @@ export function getAskBidPriceRequest(
     const uri = `https://degiro.quotecast.vwdservices.com/CORS/${vwdSession.sessionId}`
     debug(uri, requestOptions)
     fetch(uri, requestOptions)
-      .then(res => {
+      .then((res) => {
         return res.text()
       })
       .then((res) => {
