@@ -27,6 +27,7 @@ import { NewsType, New } from './NewsType'
 import { WebSettingsType } from './WebSettingsType'
 import { WebUserSettingType } from './WebUserSettingType'
 import { i18nMessagesType } from './i18nMessagesType'
+import { GetPopularStocksConfigType } from './GetPopularStocksConfigType'
 
 import {
   ConfigDictionaryType,
@@ -91,4 +92,5 @@ export {
   Country,
 
   i18nMessagesType,
+  GetPopularStocksConfigType,
 }

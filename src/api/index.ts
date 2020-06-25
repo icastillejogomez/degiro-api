@@ -18,6 +18,7 @@ import { getWebSettingsRequest } from './getWebSettingsRequest'
 import { getWebUserSettingsRequest } from './getWebUserSettingsRequest'
 import { getAccountReportsRequest } from './getAccountReportsRequest'
 import { getCashFundstRequest } from './getCashFundstRequest'
+import { getPopularStocksRequest } from './getPopularStocksRequest'
 
 export {
   loginRequest,
@@ -40,4 +41,5 @@ export {
   getWebUserSettingsRequest,
   getAccountReportsRequest,
   getCashFundstRequest,
+  getPopularStocksRequest,
 }
