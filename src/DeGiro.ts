@@ -32,6 +32,7 @@ import {
   ConfigDictionaryType,
   i18nMessagesType,
   WebSettingsType,
+  GetPopularStocksConfigType,
 } from './types'
 
 // Import requests
@@ -56,6 +57,7 @@ import {
   getWebUserSettingsRequest,
   getAccountReportsRequest,
   getCashFundstRequest,
+  getPopularStocksRequest,
 } from './api'
 
 /**
@@ -260,10 +262,11 @@ export class DeGiro implements DeGiroClassInterface {
     })
   }
 
-  getPopularStocks(): Promise<StockType[]> {
-    return new Promise((resolve, reject) => {
-      reject('Method not implemented')
-    })
+  getPopularStocks(config: GetPopularStocksConfigType = {}): Promise<StockType[]> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getPopularStocksRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig, config)
   }
 
   /* Orders methods */

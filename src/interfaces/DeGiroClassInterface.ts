@@ -23,6 +23,7 @@ import {
   WebUserSettingType,
   ConfigDictionaryType,
   i18nMessagesType,
+  GetPopularStocksConfigType,
 } from '../types'
 
 /**
@@ -68,7 +69,7 @@ export interface DeGiroClassInterface {
 
   getFavouriteProducts(): Promise<FavouriteProductType[]>
 
-  getPopularStocks(): Promise<StockType[]>
+  getPopularStocks(config: GetPopularStocksConfigType): Promise<StockType[]>
 
   /* Orders methods */
 
