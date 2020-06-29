@@ -12,7 +12,8 @@ export declare enum DEGIRO_API_PATHS {
     GET_TOP_NEWS_PATH = "newsfeed/v2/top-news-preview",
     GET_WEB_SETTINGS_PATH = "settings/web",
     GET_WEB_USER_SETTINGS_PATH = "settings/user",
-    GET_ACCOUNT_REPORTS_PATH = "document/list/report"
+    GET_ACCOUNT_REPORTS_PATH = "document/list/report",
+    STOCKS_SEARCH_PATH = "v5/stocks"
 }
 export declare enum DeGiroActions {
     BUY = "BUY",

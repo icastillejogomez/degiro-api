@@ -17,6 +17,7 @@ var DEGIRO_API_PATHS;
     DEGIRO_API_PATHS["GET_WEB_SETTINGS_PATH"] = "settings/web";
     DEGIRO_API_PATHS["GET_WEB_USER_SETTINGS_PATH"] = "settings/user";
     DEGIRO_API_PATHS["GET_ACCOUNT_REPORTS_PATH"] = "document/list/report";
+    DEGIRO_API_PATHS["STOCKS_SEARCH_PATH"] = "v5/stocks";
 })(DEGIRO_API_PATHS = exports.DEGIRO_API_PATHS || (exports.DEGIRO_API_PATHS = {}));
 var DeGiroActions;
 (function (DeGiroActions) {
