@@ -116,7 +116,7 @@ describe('DeGiro login process', () => {
         console.error(error)
         expect(error).not.exist
       }
-    })
+    }).timeout(10000)
 
   })
 
