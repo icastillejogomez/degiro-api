@@ -48,7 +48,7 @@
     "tslint": "^6.1.2",
     "tslint-config-airbnb": "^5.11.2",
     "typedoc": "^0.17.7",
-    "typescript": "^3.8.3"
+    "typescript": "^4.0.0-beta"
   },
   "dependencies": {
     "async": "^3.2.0",
