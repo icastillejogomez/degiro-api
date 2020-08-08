@@ -11,6 +11,8 @@ function deleteOrderRequest(orderId, accountData, accountConfig) {
                 'Content-Type': 'application/json;charset=UTF-8',
             },
             body: '',
+            credentials: "include",
+            referer: "https://trader.degiro.nl/trader/",
         };
         // tslint:disable-next-line: max-line-length
         var uri = "https://trader.degiro.nl/trading/secure/v5/order/" + orderId + ";jsessionid=" + accountConfig.data.sessionId + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;

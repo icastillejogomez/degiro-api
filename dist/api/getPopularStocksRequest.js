@@ -14,6 +14,8 @@ function getPopularStocksRequest(accountData, accountConfig, config) {
             headers: {
                 Cookie: "JSESSIONID=" + accountConfig.data.sessionId + ";",
             },
+            credentials: "include",
+            referer: "https://trader.degiro.nl/trader/",
         };
         // Create params to reach popular stocks
         var _a = config.popularOnly, popularOnly = _a === void 0 ? true : _a, _b = config.requireTotal, requireTotal = _b === void 0 ? false : _b, _c = config.limit, limit = _c === void 0 ? 9 : _c, _d = config.offset, offset = _d === void 0 ? 0 : _d;

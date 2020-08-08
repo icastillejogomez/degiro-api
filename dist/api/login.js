@@ -24,6 +24,8 @@ function loginRequest(params) {
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: "include",
+            referer: "https://trader.degiro.nl/trader/",
         };
         // Do the request to get a session
         utils_1.debug("Making request to " + (BASE_API_URL + LOGIN_URL_PATH) + " with options:");
