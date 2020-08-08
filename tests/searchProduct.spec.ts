@@ -106,7 +106,7 @@ describe('DeGiro searchProduct', () => {
     }
   })
 
-  it('should return 10 items', async () => {
+  it('should return more than 5 items searching \'ibex\'', async () => {
     try {
       const degiro = new DeGiro()
       await degiro.login()
@@ -116,7 +116,7 @@ describe('DeGiro searchProduct', () => {
 
       // Check if result is an array with one result
       expect(products).to.be.a('array')
-      expect(products.length).to.be.eq(10)
+      expect(products.length).to.be.gt(5)
 
       await degiro.logout()
     } catch (error) {
