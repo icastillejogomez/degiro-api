@@ -1,6 +1,3 @@
-// Import modules
-import fetch from 'node-fetch'
-
 // Import types
 import { SearchProductOptionsType, AccountConfigType, AccountDataType, SearchProductResultType } from '../types'
 

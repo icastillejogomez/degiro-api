@@ -1,6 +1,3 @@
-// Import modules
-import fetch, { RequestInit } from 'node-fetch'
-
 // Import types
 import { AccountConfigType } from '../types'
 
@@ -14,7 +11,7 @@ import { debug } from '../utils'
 export function getAccountConfigRequest(sessionId: string): Promise<AccountConfigType> {
   return new Promise((resolve, reject) => {
 
-    const requestOptions: RequestInit = {
+    const requestOptions = {
       headers: {
         Cookie: `JSESSIONID=${sessionId};`,
       },

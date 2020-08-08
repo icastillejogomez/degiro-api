@@ -1,6 +1,3 @@
-// Import modules
-import fetch, { RequestInit } from 'node-fetch'
-
 // Import types
 import { AccountConfigType, AccountDataType, AccountInfoType } from '../types'
 
