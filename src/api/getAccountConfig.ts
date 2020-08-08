@@ -11,10 +11,14 @@ import { debug } from '../utils'
 export function getAccountConfigRequest(sessionId: string): Promise<AccountConfigType> {
   return new Promise((resolve, reject) => {
 
-    const requestOptions = {
+    const requestOptions: {
+      headers: any,
+      credentials: "include",
+    } = {
       headers: {
         Cookie: `JSESSIONID=${sessionId};`,
       },
+      credentials: "include",
     }
 
     // Do the request to get a account config data
