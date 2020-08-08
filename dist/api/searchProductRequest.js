@@ -1,11 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.searchProductRequest = void 0;
-// Import modules
-var node_fetch_1 = __importDefault(require("node-fetch"));
 // Import debug console log
 var utils_1 = require("../utils");
 var createURLQuery = function (options) {
@@ -31,7 +26,7 @@ function searchProductRequest(options, accountData, accountConfig) {
         var params = createURLQuery(options);
         // Do de request
         utils_1.debug("Making a search request to url: " + accountConfig.data.productSearchUrl + "v5/products/lookup?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountData.data.id + "&" + params + "}");
-        node_fetch_1.default(accountConfig.data.productSearchUrl + "v5/products/lookup?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId + "&" + params)
+        fetch(accountConfig.data.productSearchUrl + "v5/products/lookup?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId + "&" + params)
             .then(function (res) { return res.json(); })
             .then(function (_a) {
             var products = _a.products;

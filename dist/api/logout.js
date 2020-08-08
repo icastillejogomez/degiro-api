@@ -1,11 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.logoutRequest = void 0;
-// Import modules
-var node_fetch_1 = __importDefault(require("node-fetch"));
 // Import enums
 var enums_1 = require("../enums");
 var BASE_API_URL = enums_1.DEGIRO_API_PATHS.BASE_API_URL, LOGOUT_URL_PATH = enums_1.DEGIRO_API_PATHS.LOGOUT_URL_PATH;
@@ -16,7 +11,7 @@ function logoutRequest(accountData, accountConfig) {
         // Do the request to get a session
         var url = "" + BASE_API_URL + LOGOUT_URL_PATH + ";jsessionid=" + accountConfig.data.sessionId + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;
         utils_1.debug("Making request to " + url);
-        node_fetch_1.default(url)
+        fetch(url)
             .then(function (res) {
             if (res.status === 200)
                 resolve();
