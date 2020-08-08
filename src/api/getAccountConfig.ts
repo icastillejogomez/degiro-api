@@ -12,7 +12,11 @@ export function getAccountConfigRequest(sessionId: string): Promise<AccountConfi
   return new Promise((resolve, reject) => {
 
     const requestOptions: {
-      headers: any,
+      method?: string,
+      body?: string,
+      headers: {
+        [key: string]: string,
+      },
       credentials: "include",
       referer: string,
     } = {

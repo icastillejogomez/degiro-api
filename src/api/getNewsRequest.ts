@@ -21,10 +21,20 @@ export function getNewsRequest(options: GetNewsOptionsType, accountData: Account
     params += `sessionId=${accountConfig.data.sessionId}`
 
     // Generate Request options
-    const requestOptions: RequestInit = {
+    const requestOptions: {
+      method?: string,
+      body?: string,
+      headers: {
+        [key: string]: string,
+      },
+      credentials: "include",
+      referer: string,
+    } = {
       headers: {
         Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
       },
+      credentials: "include",
+      referer: "https://trader.degiro.nl/trader/",
     }
 
     // Generate de request URIs
