@@ -14,11 +14,13 @@ export function getAccountConfigRequest(sessionId: string): Promise<AccountConfi
     const requestOptions: {
       headers: any,
       credentials: "include",
+      referer: string,
     } = {
       headers: {
         Cookie: `JSESSIONID=${sessionId};`,
       },
       credentials: "include",
+      referer: "https://trader.degiro.nl/trader/",
     }
 
     // Do the request to get a account config data
