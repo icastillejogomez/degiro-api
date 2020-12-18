@@ -70,6 +70,7 @@ export class DeGiro implements DeGiroClassInterface {
 
   private readonly username: string
   private readonly pwd: string
+  private readonly oneTimePassword: string | undefined
   private jsessionId: string | undefined
   private accountConfig: AccountConfigType | undefined
   private accountData: AccountDataType | undefined
@@ -77,10 +78,11 @@ export class DeGiro implements DeGiroClassInterface {
   /* Constructor and generator function */
 
   constructor(params: DeGiroSettupType = {}) {
-    let { username, pwd, jsessionId } = params
+    let { username, pwd, oneTimePassword, jsessionId } = params
 
     username = username || process.env['DEGIRO_USER']
     pwd = pwd || process.env['DEGIRO_PWD']
+    oneTimePassword = oneTimePassword || process.env['DEGIRO_OTP']
     jsessionId = jsessionId || process.env['DEGIRO_JSESSIONID']
 
     if (!username) throw new Error('DeGiro api needs an username to access')
@@ -88,6 +90,7 @@ export class DeGiro implements DeGiroClassInterface {
 
     this.username = username
     this.pwd = pwd
+    this.oneTimePassword = oneTimePassword
 
     this.jsessionId = jsessionId
   }
@@ -101,7 +104,7 @@ export class DeGiro implements DeGiroClassInterface {
   login(): Promise<AccountDataType> {
     if (this.jsessionId) return this.loginWithJSESSIONID(this.jsessionId)
     return new Promise((resolve, reject) => {
-      loginRequest({ username: this.username, pwd: this.pwd })
+      loginRequest({ username: this.username, pwd: this.pwd, oneTimePassword: this.oneTimePassword })
         .then((loginResponse: LoginResponseType) => {
           if (!loginResponse.sessionId) reject('Login response have not a sessionId field')
           else return this.getAccountConfig(loginResponse.sessionId)
