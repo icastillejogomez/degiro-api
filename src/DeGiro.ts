@@ -104,7 +104,11 @@ export class DeGiro implements DeGiroClassInterface {
   login(): Promise<AccountDataType> {
     if (this.jsessionId) return this.loginWithJSESSIONID(this.jsessionId)
     return new Promise((resolve, reject) => {
-      loginRequest({ username: this.username, pwd: this.pwd, oneTimePassword: this.oneTimePassword })
+      loginRequest({ 
+        username: this.username, 
+        pwd: this.pwd, 
+        oneTimePassword: this.oneTimePassword 
+      })
         .then((loginResponse: LoginResponseType) => {
           if (!loginResponse.sessionId) reject('Login response have not a sessionId field')
           else return this.getAccountConfig(loginResponse.sessionId)

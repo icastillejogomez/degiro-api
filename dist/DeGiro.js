@@ -58,7 +58,11 @@ var DeGiro = /** @class */ (function () {
         if (this.jsessionId)
             return this.loginWithJSESSIONID(this.jsessionId);
         return new Promise(function (resolve, reject) {
-            api_1.loginRequest({ username: _this.username, pwd: _this.pwd, oneTimePassword: _this.oneTimePassword })
+            api_1.loginRequest({
+                username: _this.username,
+                pwd: _this.pwd,
+                oneTimePassword: _this.oneTimePassword
+            })
                 .then(function (loginResponse) {
                 if (!loginResponse.sessionId)
                     reject('Login response have not a sessionId field');
