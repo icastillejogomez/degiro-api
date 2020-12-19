@@ -56,7 +56,7 @@ describe('DeGiro searchProduct', () => {
       console.error(error)
       expect(error).not.exist
     }
-  })
+  }).timeout(10000)
 
   it('should return Apple Inc ($AAPL) stock', async () => {
     try {
@@ -104,19 +104,19 @@ describe('DeGiro searchProduct', () => {
       console.error(error)
       expect(error).not.exist
     }
-  })
+  }).timeout(10000)
 
-  it('should return 10 items', async () => {
+  it('should return more that 5 items when search "a"', async () => {
     try {
       const degiro = new DeGiro()
       await degiro.login()
 
-      // Search text "ibex"
-      const products: SearchProductResultType[] = await degiro.searchProduct({ text: 'ibex', limit: 10 })
+      // Search text "A"
+      const products: SearchProductResultType[] = await degiro.searchProduct({ text: 'a', limit: 10 })
 
       // Check if result is an array with one result
       expect(products).to.be.a('array')
-      expect(products.length).to.be.eq(10)
+      expect(products.length).to.be.gt(5)
 
       await degiro.logout()
     } catch (error) {

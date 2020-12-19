@@ -80,7 +80,7 @@ describe('DeGiro login process', () => {
         console.error(error)
         expect(error).not.exist
       }
-    })
+    }).timeout(10000)
 
     it('should return false after log out', async () =>{
       const degiro = new DeGiro()
@@ -92,7 +92,7 @@ describe('DeGiro login process', () => {
         console.error(error)
         expect(error).not.exist
       }
-    })
+    }).timeout(10000)
 
     it('should return false when jsessionid is not valid yet and isLogin with secure = false response true yet (secure nice-to-have case)', async () => {
       try {
