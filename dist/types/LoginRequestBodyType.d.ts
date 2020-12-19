@@ -3,6 +3,7 @@ export declare type LoginRequestBodyType = {
     isRedirectToMobile: boolean;
     password: string;
     username: string;
+    oneTimePassword: string | undefined;
     queryParams: {
         reason: string;
     };

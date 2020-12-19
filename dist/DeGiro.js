@@ -35,9 +35,10 @@ var DeGiro = /** @class */ (function () {
         if (params === void 0) { params = {}; }
         this.hasSessionId = function () { return !!_this.accountConfig && !!_this.accountConfig.data && !!_this.accountConfig.data.sessionId; };
         this.getJSESSIONID = function () { return _this.hasSessionId() ? _this.accountConfig.data.sessionId : undefined; };
-        var username = params.username, pwd = params.pwd, jsessionId = params.jsessionId;
+        var username = params.username, pwd = params.pwd, oneTimePassword = params.oneTimePassword, jsessionId = params.jsessionId;
         username = username || process.env['DEGIRO_USER'];
         pwd = pwd || process.env['DEGIRO_PWD'];
+        oneTimePassword = oneTimePassword || process.env['DEGIRO_OTP'];
         jsessionId = jsessionId || process.env['DEGIRO_JSESSIONID'];
         if (!username)
             throw new Error('DeGiro api needs an username to access');
@@ -45,6 +46,7 @@ var DeGiro = /** @class */ (function () {
             throw new Error('DeGiro api needs an password to access');
         this.username = username;
         this.pwd = pwd;
+        this.oneTimePassword = oneTimePassword;
         this.jsessionId = jsessionId;
     }
     DeGiro.create = function (params) {
@@ -56,7 +58,11 @@ var DeGiro = /** @class */ (function () {
         if (this.jsessionId)
             return this.loginWithJSESSIONID(this.jsessionId);
         return new Promise(function (resolve, reject) {
-            api_1.loginRequest({ username: _this.username, pwd: _this.pwd })
+            api_1.loginRequest({
+                username: _this.username,
+                pwd: _this.pwd,
+                oneTimePassword: _this.oneTimePassword
+            })
                 .then(function (loginResponse) {
                 if (!loginResponse.sessionId)
                     reject('Login response have not a sessionId field');

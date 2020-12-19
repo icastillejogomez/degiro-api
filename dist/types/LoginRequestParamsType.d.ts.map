@@ -1,1 +1,1 @@
-{"version":3,"file":"LoginRequestParamsType.d.ts","sourceRoot":"","sources":["../../src/types/LoginRequestParamsType.ts"],"names":[],"mappings":"AAAA,oBAAY,sBAAsB,GAAG;IACnC,QAAQ,EAAE,MAAM,CAAC;IACjB,GAAG,EAAE,MAAM,CAAC;CACb,CAAA"}
+{"version":3,"file":"LoginRequestParamsType.d.ts","sourceRoot":"","sources":["../../src/types/LoginRequestParamsType.ts"],"names":[],"mappings":"AAAA,oBAAY,sBAAsB,GAAG;IACnC,QAAQ,EAAE,MAAM,CAAC;IACjB,GAAG,EAAE,MAAM,CAAC;IACZ,eAAe,EAAE,MAAM,GAAG,SAAS,CAAA;CACpC,CAAA"}

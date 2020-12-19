@@ -7,6 +7,7 @@ import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, Se
 export declare class DeGiro implements DeGiroClassInterface {
     private readonly username;
     private readonly pwd;
+    private readonly oneTimePassword;
     private jsessionId;
     private accountConfig;
     private accountData;
