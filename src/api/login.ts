@@ -48,7 +48,7 @@ export function loginRequest(params: LoginRequestParamsType): Promise<LoginRespo
       .then((res) => {
         if (!payload.oneTimePassword) return res
         debug('Sending OTP')
-        return fetch(BASE_API_URL + LOGIN_URL_PATH + "/totp", requestOptions) : res;
+        return fetch(BASE_API_URL + LOGIN_URL_PATH + "/totp", requestOptions);
       })
       .then(res => res.json())
       .then((res) => {
