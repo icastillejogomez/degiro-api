@@ -600,7 +600,7 @@ const { OrderType } = DeGiroTypes
 
   try {
     const degiro: DeGiro = new DeGiro({
-      username: 'nachoogoomezomg',
+      username: '<your_username_here>',
       pwd: <string>process.env.DEGIRO_PWD,
     })
 
@@ -637,7 +637,7 @@ const { OrderType } = DeGiroTypes
 (async () => {
 
   const degiro: DeGiro = new DeGiro({
-    username: 'nachoogoomezomg',
+    username: '<your_username_here>',
     pwd: <string>process.env.DEGIRO_PWD,
   })
 
