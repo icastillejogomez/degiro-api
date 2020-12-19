@@ -1,6 +1,3 @@
-// Import modules
-import fetch, { RequestInit } from 'node-fetch'
-
 // Import types
 import { LoginRequestParamsType, LoginRequestBodyType, LoginResponseType } from '../types'
 
@@ -25,12 +22,22 @@ export function loginRequest(params: LoginRequestParamsType): Promise<LoginRespo
       },
     }
 
-    const requestOptions: RequestInit = {
+    const requestOptions: {
+      method?: string,
+      body?: string,
+      headers: {
+        [key: string]: string,
+      },
+      credentials: "include",
+      referer: string,
+    } = {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: "include",
+      referer: "https://trader.degiro.nl/trader/",
     }
 
     // Do the request to get a session

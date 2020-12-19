@@ -1,0 +1,1 @@
+{"version":3,"file":"getPopularStocksRequest.d.ts","sourceRoot":"","sources":["../../src/api/getPopularStocksRequest.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,iBAAiB,EAAE,eAAe,EAAE,SAAS,EAAE,0BAA0B,EAAE,MAAM,UAAU,CAAA;AAUpG,wBAAgB,uBAAuB,CAAC,WAAW,EAAE,eAAe,EAAE,aAAa,EAAE,iBAAiB,EAAE,MAAM,EAAE,0BAA0B,GAAG,OAAO,CAAC,SAAS,EAAE,CAAC,CAwChK"}

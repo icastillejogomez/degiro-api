@@ -35,13 +35,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getNewsRequest = void 0;
-// Import modules
-var node_fetch_1 = __importDefault(require("node-fetch"));
 // Import paths
 var enums_1 = require("../enums");
 var GET_LATESTS_NEWS_PATH = enums_1.DEGIRO_API_PATHS.GET_LATESTS_NEWS_PATH, GET_TOP_NEWS_PATH = enums_1.DEGIRO_API_PATHS.GET_TOP_NEWS_PATH;
@@ -63,6 +58,8 @@ function getNewsRequest(options, accountData, accountConfig) {
                         headers: {
                             Cookie: "JSESSIONID=" + accountConfig.data.sessionId + ";",
                         },
+                        credentials: "include",
+                        referer: "https://trader.degiro.nl/trader/",
                     };
                     latestNewsURI = "" + accountConfig.data.companiesServiceUrl + GET_LATESTS_NEWS_PATH + "?" + params;
                     topNewsURI = "" + accountConfig.data.companiesServiceUrl + GET_TOP_NEWS_PATH + "?" + params;
@@ -78,7 +75,7 @@ function getNewsRequest(options, accountData, accountConfig) {
                 case 1:
                     _d.trys.push([1, 8, , 9]);
                     if (!latest) return [3 /*break*/, 4];
-                    return [4 /*yield*/, node_fetch_1.default(latestNewsURI, requestOptions)];
+                    return [4 /*yield*/, fetch(latestNewsURI, requestOptions)];
                 case 2:
                     latestFetch = _d.sent();
                     return [4 /*yield*/, latestFetch.json()];
@@ -88,7 +85,7 @@ function getNewsRequest(options, accountData, accountConfig) {
                     _d.label = 4;
                 case 4:
                     if (!top) return [3 /*break*/, 7];
-                    return [4 /*yield*/, node_fetch_1.default(topNewsURI, requestOptions)];
+                    return [4 /*yield*/, fetch(topNewsURI, requestOptions)];
                 case 5:
                     latestFetch = _d.sent();
                     return [4 /*yield*/, latestFetch.json()];

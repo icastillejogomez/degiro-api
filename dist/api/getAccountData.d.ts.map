@@ -1,1 +1,1 @@
-{"version":3,"file":"getAccountData.d.ts","sourceRoot":"","sources":["../../src/api/getAccountData.ts"],"names":[],"mappings":"AAIA,OAAO,EAAE,eAAe,EAAE,iBAAiB,EAAE,MAAM,UAAU,CAAA;AAK7D,wBAAgB,qBAAqB,CAAC,aAAa,EAAE,iBAAiB,GAAG,OAAO,CAAC,eAAe,CAAC,CAmBhG"}
+{"version":3,"file":"getAccountData.d.ts","sourceRoot":"","sources":["../../src/api/getAccountData.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,eAAe,EAAE,iBAAiB,EAAE,MAAM,UAAU,CAAA;AAK7D,wBAAgB,qBAAqB,CAAC,aAAa,EAAE,iBAAiB,GAAG,OAAO,CAAC,eAAe,CAAC,CA6BhG"}

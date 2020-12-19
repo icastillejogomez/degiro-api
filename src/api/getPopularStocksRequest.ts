@@ -1,6 +1,3 @@
-// Import modules
-import fetch, { RequestInit } from 'node-fetch'
-
 // Import types
 import { AccountConfigType, AccountDataType, StockType, GetPopularStocksConfigType } from '../types'
 
@@ -16,10 +13,20 @@ export function getPopularStocksRequest(accountData: AccountDataType, accountCon
   return new Promise((resolve, reject) => {
 
     // Create fetch request options
-    const requestOptions: RequestInit = {
+    const requestOptions: {
+      method?: string,
+      body?: string,
+      headers: {
+        [key: string]: string,
+      },
+      credentials: "include",
+      referer: string,
+    } = {
       headers: {
         Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
       },
+      credentials: "include",
+      referer: "https://trader.degiro.nl/trader/",
     }
 
     // Create params to reach popular stocks

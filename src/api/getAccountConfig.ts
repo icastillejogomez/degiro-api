@@ -1,6 +1,3 @@
-// Import modules
-import fetch, { RequestInit } from 'node-fetch'
-
 // Import types
 import { AccountConfigType } from '../types'
 
@@ -14,10 +11,20 @@ import { debug } from '../utils'
 export function getAccountConfigRequest(sessionId: string): Promise<AccountConfigType> {
   return new Promise((resolve, reject) => {
 
-    const requestOptions: RequestInit = {
+    const requestOptions: {
+      method?: string,
+      body?: string,
+      headers: {
+        [key: string]: string,
+      },
+      credentials: "include",
+      referer: string,
+    } = {
       headers: {
         Cookie: `JSESSIONID=${sessionId};`,
       },
+      credentials: "include",
+      referer: "https://trader.degiro.nl/trader/",
     }
 
     // Do the request to get a account config data

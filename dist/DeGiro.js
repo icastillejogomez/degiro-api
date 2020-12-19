@@ -14,7 +14,7 @@ var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
 };
@@ -207,10 +207,12 @@ var DeGiro = /** @class */ (function () {
             reject('Method not implemented');
         });
     };
-    DeGiro.prototype.getPopularStocks = function () {
-        return new Promise(function (resolve, reject) {
-            reject('Method not implemented');
-        });
+    DeGiro.prototype.getPopularStocks = function (config) {
+        if (config === void 0) { config = {}; }
+        if (!this.hasSessionId()) {
+            return Promise.reject('You must log in first');
+        }
+        return api_1.getPopularStocksRequest(this.accountData, this.accountConfig, config);
     };
     /* Orders methods */
     DeGiro.prototype.getOrders = function (config) {

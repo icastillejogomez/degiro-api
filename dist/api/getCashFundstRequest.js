@@ -1,11 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCashFundstRequest = void 0;
-// Import modules
-var node_fetch_1 = __importDefault(require("node-fetch"));
 // Import debug console log
 var utils_1 = require("../utils");
 var DeGiroEnums_1 = require("../enums/DeGiroEnums");
@@ -20,11 +15,13 @@ function getCashFundstRequest(accountData, accountConfig) {
             headers: {
                 Cookie: "JSESSIONID=" + accountConfig.data.sessionId + ";",
             },
+            credentials: "include",
+            referer: "https://trader.degiro.nl/trader/",
         };
         // Do the request to get a account config data
         var uri = "" + accountConfig.data.tradingUrl + GET_GENERIC_DATA_PATH + accountData.data.intAccount + ";jsessionid=" + accountConfig.data.sessionId + "?" + params;
         utils_1.debug("Making request to " + uri);
-        node_fetch_1.default(uri, requestOptions)
+        fetch(uri, requestOptions)
             .then(function (res) { return res.json(); })
             .then(function (res) {
             if (!res.cashFunds || !res.cashFunds.value || !Array.isArray(res.cashFunds.value)) {

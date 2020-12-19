@@ -1,6 +1,3 @@
-// Import modules
-import fetch, { RequestInit } from 'node-fetch'
-
 // Import types
 import { OrderType, AccountDataType, AccountConfigType, CreateOrderResultType } from '../types'
 
@@ -10,12 +7,22 @@ import { debug } from '../utils'
 export function executeOrderRequest(order: OrderType, executeId: String, accountData: AccountDataType, accountConfig: AccountConfigType): Promise<String> {
   return new Promise((resolve, reject) => {
 
-    const requestOptions: RequestInit = {
+    const requestOptions: {
+      method?: string,
+      body?: string,
+      headers: {
+        [key: string]: string,
+      },
+      credentials: "include",
+      referer: string,
+    } = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
       },
       body: JSON.stringify(order),
+      credentials: "include",
+      referer: "https://trader.degiro.nl/trader/",
     }
 
     // tslint:disable-next-line: max-line-length

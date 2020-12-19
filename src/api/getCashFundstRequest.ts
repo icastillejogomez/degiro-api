@@ -1,6 +1,3 @@
-// Import modules
-import fetch, { RequestInit } from 'node-fetch'
-
 // Import types
 import { AccountConfigType, AccountDataType, CashFoundType } from '../types'
 
@@ -17,10 +14,20 @@ export function getCashFundstRequest(accountData: AccountDataType, accountConfig
     params += 'cashFunds=0&'
     params += 'limit=100'
 
-    const requestOptions: RequestInit = {
+    const requestOptions: {
+      method?: string,
+      body?: string,
+      headers: {
+        [key: string]: string,
+      },
+      credentials: "include",
+      referer: string,
+    } = {
       headers: {
         Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
       },
+      credentials: "include",
+      referer: "https://trader.degiro.nl/trader/",
     }
 
     // Do the request to get a account config data

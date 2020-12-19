@@ -1,11 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getConfigDictionaryRequest = void 0;
-// Import modules
-var node_fetch_1 = __importDefault(require("node-fetch"));
 // Import debug console log
 var utils_1 = require("../utils");
 function getConfigDictionaryRequest(accountData, accountConfig) {
@@ -14,11 +9,13 @@ function getConfigDictionaryRequest(accountData, accountConfig) {
             headers: {
                 Cookie: "JSESSIONID=" + accountConfig.data.sessionId + ";",
             },
+            credentials: "include",
+            referer: "https://trader.degiro.nl/trader/",
         };
         // Do the request to get a account config data
         var uri = accountConfig.data.dictionaryUrl + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;
         utils_1.debug("Making request to " + uri);
-        node_fetch_1.default(uri, requestOptions)
+        fetch(uri, requestOptions)
             .then(function (res) { return res.json(); })
             .then(function (res) {
             utils_1.debug('Response:\n', JSON.stringify(res, null, 2));
