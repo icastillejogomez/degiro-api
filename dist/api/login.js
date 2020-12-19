@@ -14,6 +14,7 @@ function loginRequest(params) {
             isRedirectToMobile: false,
             password: params.pwd,
             username: params.username.toLowerCase().trim(),
+            oneTimePassword: params.oneTimePassword,
             queryParams: {
                 reason: 'session_expired',
             },
@@ -31,6 +32,12 @@ function loginRequest(params) {
         utils_1.debug("Making request to " + (BASE_API_URL + LOGIN_URL_PATH) + " with options:");
         utils_1.debug(JSON.stringify(requestOptions, null, 2));
         fetch(BASE_API_URL + LOGIN_URL_PATH, requestOptions)
+            .then(function (res) {
+            if (!payload.oneTimePassword)
+                return res;
+            utils_1.debug('Sending OTP');
+            return fetch(BASE_API_URL + LOGIN_URL_PATH + "/totp", requestOptions);
+        })
             .then(function (res) { return res.json(); })
             .then(function (res) {
             if (!res.sessionId)

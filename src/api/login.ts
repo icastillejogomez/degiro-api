@@ -17,6 +17,7 @@ export function loginRequest(params: LoginRequestParamsType): Promise<LoginRespo
       isRedirectToMobile: false,
       password: params.pwd,
       username: params.username.toLowerCase().trim(),
+      oneTimePassword: params.oneTimePassword,
       queryParams: {
         reason: 'session_expired',
       },
@@ -44,12 +45,17 @@ export function loginRequest(params: LoginRequestParamsType): Promise<LoginRespo
     debug(`Making request to ${BASE_API_URL + LOGIN_URL_PATH} with options:`)
     debug(JSON.stringify(requestOptions, null, 2))
     fetch(BASE_API_URL + LOGIN_URL_PATH, requestOptions)
+      .then((res) => {
+        if (!payload.oneTimePassword) return res
+        debug('Sending OTP')
+        return fetch(BASE_API_URL + LOGIN_URL_PATH + "/totp", requestOptions);
+      })
       .then(res => res.json())
       .then((res) => {
         if (!res.sessionId) return reject(res.statusText)
         debug('Login response: ', JSON.stringify(res, null, 2))
         resolve(res)
       })
-      .catch(reject)
+      .catch(reject);
   })
 }
