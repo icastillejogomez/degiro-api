@@ -16,7 +16,7 @@ All responses and objects are typed to develop faster and secure.
 
 <br />
 
-Don't use in production build, this project is under development. In the next few weeks we're going to have the first stable release version.
+Be careful, DeGiro could block your account if they catch you using automation scripts
 
 ## Table of content
 
@@ -124,7 +124,7 @@ Generate the documentation is easy, only run the next command:
 ```sh
 $ yarn doc
 or
-$ npm run test
+$ npm run doc
 ```
 
 ### Running tests set
