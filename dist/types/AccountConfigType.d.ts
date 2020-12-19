@@ -1,11 +1,11 @@
 export declare type AccountConfigType = {
     data: {
         betaLandingPath: string;
-        cashSolutionsUrl: string;
+        cashSolutionsUrl?: string;
         clientId: number;
         companiesServiceUrl: string;
         dictionaryUrl: string;
-        firstLoginWizardUrl: string;
+        firstLoginWizardUrl?: string;
         i18nUrl: string;
         landingPath: string;
         loginUrl: string;
