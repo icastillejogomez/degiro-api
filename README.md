@@ -1,6 +1,6 @@
 # DeGiro Trading Broker API
 
-This is an unofficial TypeScript API client (Backend & Frontend) for DeGiro's trading platform. Using this module you can easily automate your orders (buy and sell) and get information about orders, funds or products.
+This is an unofficial TypeScript API client (Backend & Frontend) for DeGiro's trading platform. Using this module you can easily automate your orders (buy and sell) and get information about orders, funds or products. From now on we have one time password (OTP) support.
 
 All responses and objects are typed to develop faster and secure.
 
@@ -165,9 +165,10 @@ import DeGiro from 'degiro-api'
 
   // Create an instance from a previous session
   const degiro = new DeGiro({
-    username: '<your_username_here>',
-    pwd: '*******',
-    jsessionId: previousJSESSIONID
+    username: '<your_username_here>', // process.env['DEGIRO_USER]
+    pwd: '<your_password_here>', // process.env['DEGIRO_PWD]
+    oneTimePassword: '<your_one_time_password_here>', // process.env['DEGIRO_OTP]
+    jsessionId: '<your_jsessionId_here>', // process.env['DEGIRO_JSESSIONID]
   })
 
   // Hydrate
