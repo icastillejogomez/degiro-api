@@ -256,7 +256,7 @@ export class DeGiro implements DeGiroClassInterface {
       // tslint:disable-next-line: align
       }, (error, portfolio) => {
         if (error) return reject(error)
-        resolve(portfolio)
+        resolve(<any[]>portfolio)
       })
     })
   }
