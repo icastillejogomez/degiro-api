@@ -10,7 +10,7 @@
     "build": "rm -fr dist && tsc",
     "lint": "tslint --project tsconfig.json 'src/**/*.ts'",
     "test": "mocha -r ts-node/register tests/**/*.spec.ts",
-    "coverage": "nyc yarn test && nyc report --reporter=text-lcov > coverage.lcov",
+    "coverage": "nyc yarn test || true; nyc report --reporter=text-lcov > coverage.lcov",
     "npm:publish": "yarn lint && yarn build && yarn publish",
     "push": "yarn lint && yarn build && git push",
     "doc": "typedoc --out docs src",
