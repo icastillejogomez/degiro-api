@@ -58,8 +58,8 @@ function getNewsRequest(options, accountData, accountConfig) {
                         headers: {
                             Cookie: "JSESSIONID=" + accountConfig.data.sessionId + ";",
                         },
-                        credentials: "include",
-                        referer: "https://trader.degiro.nl/trader/",
+                        credentials: 'include',
+                        referer: 'https://trader.degiro.nl/trader/',
                     };
                     latestNewsURI = "" + accountConfig.data.companiesServiceUrl + GET_LATESTS_NEWS_PATH + "?" + params;
                     topNewsURI = "" + accountConfig.data.companiesServiceUrl + GET_TOP_NEWS_PATH + "?" + params;

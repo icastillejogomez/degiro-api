@@ -14,8 +14,8 @@ function createOrderRequest(order, accountData, accountConfig) {
                 'Content-Type': 'application/json;charset=UTF-8',
             },
             body: JSON.stringify(order),
-            credentials: "include",
-            referer: "https://trader.degiro.nl/trader/",
+            credentials: 'include',
+            referer: 'https://trader.degiro.nl/trader/',
         };
         var uri = "" + accountConfig.data.tradingUrl + CREATE_ORDER_PATH + ";jsessionid=" + accountConfig.data.sessionId + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;
         utils_1.debug(uri, requestOptions);

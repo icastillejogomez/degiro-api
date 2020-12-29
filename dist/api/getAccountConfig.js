@@ -12,8 +12,8 @@ function getAccountConfigRequest(sessionId) {
             headers: {
                 Cookie: "JSESSIONID=" + sessionId + ";",
             },
-            credentials: "include",
-            referer: "https://trader.degiro.nl/trader/",
+            credentials: 'include',
+            referer: 'https://trader.degiro.nl/trader/',
         };
         // Do the request to get a account config data
         utils_1.debug("Making request to " + BASE_API_URL + GET_ACCOUNT_CONFIG_PATH + " with JSESSIONID: " + sessionId);

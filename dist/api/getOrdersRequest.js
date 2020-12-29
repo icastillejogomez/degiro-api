@@ -16,8 +16,8 @@ function getOrdersRequest(accountData, accountConfig, config) {
         if (lastTransactions)
             params += DeGiroEnums_1.GET_ORDERS_TYPES.TRANSACTIONS + "=0&";
         var requestOptions = {
-            credentials: "include",
-            referer: "https://trader.degiro.nl/trader/",
+            credentials: 'include',
+            referer: 'https://trader.degiro.nl/trader/',
         };
         // Do the request to get a account config data
         var uri = accountConfig.data.tradingUrl + "v5/update/" + accountData.data.intAccount + ";jsessionid=" + accountConfig.data.sessionId + "?" + params;

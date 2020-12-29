@@ -19,8 +19,8 @@ function getAccountStateRequest(accountData, accountConfig, config) {
             headers: {
                 Cookie: "JSESSIONID=" + accountConfig.data.sessionId + ";",
             },
-            credentials: "include",
-            referer: "https://trader.degiro.nl/trader/",
+            credentials: 'include',
+            referer: 'https://trader.degiro.nl/trader/',
         };
         // Do the request to get a account config data
         var uri = "" + accountConfig.data.reportingUrl + GET_ACCOUNT_STATE_PATH + "?" + params;

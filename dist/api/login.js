@@ -25,18 +25,18 @@ function loginRequest(params) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: "include",
-            referer: "https://trader.degiro.nl/trader/",
+            credentials: 'include',
+            referer: 'https://trader.degiro.nl/trader/',
         };
         // Do the request to get a session
-        utils_1.debug("Making request to " + (BASE_API_URL + LOGIN_URL_PATH) + " with options:");
+        utils_1.debug("Making request to " + BASE_API_URL + LOGIN_URL_PATH + " with options:");
         utils_1.debug(JSON.stringify(requestOptions, null, 2));
-        fetch(BASE_API_URL + LOGIN_URL_PATH, requestOptions)
+        fetch("" + BASE_API_URL + LOGIN_URL_PATH, requestOptions)
             .then(function (res) {
             if (!payload.oneTimePassword)
                 return res;
             utils_1.debug('Sending OTP');
-            return fetch(BASE_API_URL + LOGIN_URL_PATH + "/totp", requestOptions);
+            return fetch("" + BASE_API_URL + LOGIN_URL_PATH + "/totp", requestOptions);
         })
             .then(function (res) { return res.json(); })
             .then(function (res) {

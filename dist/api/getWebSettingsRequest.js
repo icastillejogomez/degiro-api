@@ -12,8 +12,8 @@ function getWebSettingsRequest(accountData, accountConfig) {
             headers: {
                 Cookie: "JSESSIONID=" + accountConfig.data.sessionId + ";",
             },
-            credentials: "include",
-            referer: "https://trader.degiro.nl/trader/",
+            credentials: 'include',
+            referer: 'https://trader.degiro.nl/trader/',
         };
         // Do the request to get a account config data
         var uri = "" + accountConfig.data.paUrl + GET_WEB_SETTINGS_PATH + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;

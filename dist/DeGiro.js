@@ -61,7 +61,7 @@ var DeGiro = /** @class */ (function () {
             api_1.loginRequest({
                 username: _this.username,
                 pwd: _this.pwd,
-                oneTimePassword: _this.oneTimePassword
+                oneTimePassword: _this.oneTimePassword,
             })
                 .then(function (loginResponse) {
                 if (!loginResponse.sessionId)

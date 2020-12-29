@@ -9,8 +9,8 @@ function getWebi18nMessagesRequest(lang, accountData, accountConfig) {
             headers: {
                 Cookie: "JSESSIONID=" + accountConfig.data.sessionId + ";",
             },
-            credentials: "include",
-            referer: "https://trader.degiro.nl/trader/",
+            credentials: 'include',
+            referer: 'https://trader.degiro.nl/trader/',
         };
         // Do the request to get a account config data
         var uri = accountConfig.data.i18nUrl + "messages_" + lang;

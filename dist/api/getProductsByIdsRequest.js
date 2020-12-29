@@ -10,8 +10,8 @@ function getProductsByIdsRequest(ids, accountData, accountConfig) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: "include",
-            referer: "https://trader.degiro.nl/trader/",
+            credentials: 'include',
+            referer: 'https://trader.degiro.nl/trader/',
         };
         fetch(accountConfig.data.productSearchUrl + "v5/products/info?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId, requestOptions)
             .then(function (res) { return res.json(); })
