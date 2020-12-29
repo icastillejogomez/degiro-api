@@ -17,7 +17,7 @@ export function createOrderRequest(order: OrderType, accountData: AccountDataTyp
       headers: {
         [key: string]: string,
       },
-      credentials: "include",
+      credentials: 'include',
       referer: string,
     } = {
       method: 'POST',
@@ -25,8 +25,8 @@ export function createOrderRequest(order: OrderType, accountData: AccountDataTyp
         'Content-Type': 'application/json;charset=UTF-8',
       },
       body: JSON.stringify(order),
-      credentials: "include",
-      referer: "https://trader.degiro.nl/trader/",
+      credentials: 'include',
+      referer: 'https://trader.degiro.nl/trader/',
     }
 
     const uri = `${accountConfig.data.tradingUrl}${CREATE_ORDER_PATH};jsessionid=${accountConfig.data.sessionId}?intAccount=${accountData.data.intAccount}&sessionId=${accountConfig.data.sessionId}`

@@ -13,7 +13,7 @@ export function deleteOrderRequest(orderId: String, accountData: AccountDataType
       headers: {
         [key: string]: string,
       },
-      credentials: "include",
+      credentials: 'include',
       referer: string,
     } = {
       method: 'DELETE',
@@ -21,8 +21,8 @@ export function deleteOrderRequest(orderId: String, accountData: AccountDataType
         'Content-Type': 'application/json;charset=UTF-8',
       },
       body: '',
-      credentials: "include",
-      referer: "https://trader.degiro.nl/trader/",
+      credentials: 'include',
+      referer: 'https://trader.degiro.nl/trader/',
     }
 
     // tslint:disable-next-line: max-line-length

@@ -14,7 +14,7 @@ export function getProductsByIdsRequest(ids: string[], accountData: AccountDataT
       headers: {
         [key: string]: string,
       },
-      credentials: "include",
+      credentials: 'include',
       referer: string,
     } = {
       method: 'POST',
@@ -22,8 +22,8 @@ export function getProductsByIdsRequest(ids: string[], accountData: AccountDataT
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: "include",
-      referer: "https://trader.degiro.nl/trader/",
+      credentials: 'include',
+      referer: 'https://trader.degiro.nl/trader/',
     }
 
     fetch(`${accountConfig.data.productSearchUrl}v5/products/info?intAccount=${accountData.data.intAccount}&sessionId=${accountConfig.data.sessionId}`, requestOptions)

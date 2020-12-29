@@ -13,7 +13,7 @@ export function executeOrderRequest(order: OrderType, executeId: String, account
       headers: {
         [key: string]: string,
       },
-      credentials: "include",
+      credentials: 'include',
       referer: string,
     } = {
       method: 'POST',
@@ -21,8 +21,8 @@ export function executeOrderRequest(order: OrderType, executeId: String, account
         'Content-Type': 'application/json;charset=UTF-8',
       },
       body: JSON.stringify(order),
-      credentials: "include",
-      referer: "https://trader.degiro.nl/trader/",
+      credentials: 'include',
+      referer: 'https://trader.degiro.nl/trader/',
     }
 
     // tslint:disable-next-line: max-line-length

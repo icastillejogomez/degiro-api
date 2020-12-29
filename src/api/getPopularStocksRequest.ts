@@ -19,14 +19,14 @@ export function getPopularStocksRequest(accountData: AccountDataType, accountCon
       headers: {
         [key: string]: string,
       },
-      credentials: "include",
+      credentials: 'include',
       referer: string,
     } = {
       headers: {
         Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
       },
-      credentials: "include",
-      referer: "https://trader.degiro.nl/trader/",
+      credentials: 'include',
+      referer: 'https://trader.degiro.nl/trader/',
     }
 
     // Create params to reach popular stocks
