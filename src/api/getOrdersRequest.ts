@@ -19,11 +19,11 @@ export function getOrdersRequest(accountData: AccountDataType, accountConfig: Ac
       method?: string,
       body?: string,
       headers?: any,
-      credentials: "include",
+      credentials: 'include',
       referer: string,
     } = {
-      credentials: "include",
-      referer: "https://trader.degiro.nl/trader/",
+      credentials: 'include',
+      referer: 'https://trader.degiro.nl/trader/',
     }
 
     // Do the request to get a account config data

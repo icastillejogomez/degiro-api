@@ -27,14 +27,14 @@ export function getNewsRequest(options: GetNewsOptionsType, accountData: Account
       headers: {
         [key: string]: string,
       },
-      credentials: "include",
+      credentials: 'include',
       referer: string,
     } = {
       headers: {
         Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
       },
-      credentials: "include",
-      referer: "https://trader.degiro.nl/trader/",
+      credentials: 'include',
+      referer: 'https://trader.degiro.nl/trader/',
     }
 
     // Generate de request URIs

@@ -29,7 +29,7 @@ export function loginRequest(params: LoginRequestParamsType): Promise<LoginRespo
       headers: {
         [key: string]: string,
       },
-      credentials: "include",
+      credentials: 'include',
       referer: string,
     } = {
       method: 'POST',
@@ -37,18 +37,18 @@ export function loginRequest(params: LoginRequestParamsType): Promise<LoginRespo
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: "include",
-      referer: "https://trader.degiro.nl/trader/",
+      credentials: 'include',
+      referer: 'https://trader.degiro.nl/trader/',
     }
 
     // Do the request to get a session
-    debug(`Making request to ${BASE_API_URL + LOGIN_URL_PATH} with options:`)
+    debug(`Making request to ${BASE_API_URL}${LOGIN_URL_PATH} with options:`)
     debug(JSON.stringify(requestOptions, null, 2))
-    fetch(BASE_API_URL + LOGIN_URL_PATH, requestOptions)
+    fetch(`${BASE_API_URL}${LOGIN_URL_PATH}`, requestOptions)
       .then((res) => {
         if (!payload.oneTimePassword) return res
         debug('Sending OTP')
-        return fetch(BASE_API_URL + LOGIN_URL_PATH + "/totp", requestOptions);
+        return fetch(`${BASE_API_URL}${LOGIN_URL_PATH}/totp`, requestOptions);
       })
       .then(res => res.json())
       .then((res) => {

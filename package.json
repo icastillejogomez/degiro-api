@@ -9,6 +9,7 @@
     "start": "node dist/main",
     "build": "rm -fr dist && tsc",
     "lint": "tslint -c tslint.json --project tsconfig.json",
+    "lint-fix": "tslint -c tslint.json --project tsconfig.json --fix",
     "test": "mocha -r ts-node/register tests/**/*.spec.ts",
     "coverage": "nyc yarn test || exit 0; nyc report --reporter=text-lcov > coverage.lcov",
     "npm:publish": "yarn lint && yarn build && yarn publish",

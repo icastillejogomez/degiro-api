@@ -23,14 +23,14 @@ export function getAccountStateRequest(accountData: AccountDataType, accountConf
       headers: {
         [key: string]: string,
       },
-      credentials: "include",
+      credentials: 'include',
       referer: string,
     } = {
       headers: {
         Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
       },
-      credentials: "include",
-      referer: "https://trader.degiro.nl/trader/",
+      credentials: 'include',
+      referer: 'https://trader.degiro.nl/trader/',
     }
 
     // Do the request to get a account config data
