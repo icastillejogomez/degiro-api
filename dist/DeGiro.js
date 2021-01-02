@@ -288,6 +288,9 @@ var DeGiro = /** @class */ (function () {
         }
         return api_1.getConfigDictionaryRequest(this.accountData, this.accountConfig);
     };
+    DeGiro.prototype.getPrice = function (options) {
+        return api_1.getPriceRequest(options);
+    };
     return DeGiro;
 }());
 exports.DeGiro = DeGiro;

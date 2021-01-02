@@ -10,6 +10,7 @@ import { GetPorfolioConfigType } from './GetPorfolioConfigType';
 import { SearchProductOptionsType } from './SearchProductOptionsType';
 import { SearchProductResultType } from './SearchProductResultType';
 import { OrderType } from './OrderType';
+import { PriceType } from './PriceType';
 import { CreateOrderResultType } from './CreateOrderResultType';
 import { TransactionFeeType } from './TransactionFeeType';
 import { IsLoginOptionsType } from './IsLoginOptionsType';
@@ -28,6 +29,7 @@ import { WebSettingsType } from './WebSettingsType';
 import { WebUserSettingType } from './WebUserSettingType';
 import { i18nMessagesType } from './i18nMessagesType';
 import { GetPopularStocksConfigType } from './GetPopularStocksConfigType';
+import { GetPriceOptionsType } from './GetPriceOptionsType';
 import { ConfigDictionaryType, StockCountry, BondExchange, BondIssuerType, EurexCountry, FutureExchange, OptionExchange, CombinationExchange, CFDExchange, Exchange, Index, Region, Country } from './ConfigDictionaryType';
-export { CashFoundType, DeGiroSettupType, PortfolioPositionType, LoginResponseType, LoginRequestParamsType, LoginRequestBodyType, AccountConfigType, AccountDataType, GetPorfolioConfigType, SearchProductOptionsType, SearchProductResultType, OrderType, CreateOrderResultType, TransactionFeeType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, AccountReportsType, ReportType, AccountInfoType, FavouriteProductType, StockType, GetHistoricalOrdersOptionsType, HistoricalOrdersType, GetNewsOptionsType, NewsType, New, WebSettingsType, WebUserSettingType, ConfigDictionaryType, StockCountry, BondExchange, BondIssuerType, EurexCountry, FutureExchange, OptionExchange, CombinationExchange, CFDExchange, Exchange, Index, Region, Country, i18nMessagesType, GetPopularStocksConfigType, };
+export { CashFoundType, DeGiroSettupType, PortfolioPositionType, LoginResponseType, LoginRequestParamsType, LoginRequestBodyType, AccountConfigType, AccountDataType, GetPorfolioConfigType, SearchProductOptionsType, SearchProductResultType, OrderType, PriceType, CreateOrderResultType, TransactionFeeType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, AccountReportsType, ReportType, AccountInfoType, FavouriteProductType, StockType, GetHistoricalOrdersOptionsType, HistoricalOrdersType, GetNewsOptionsType, NewsType, New, WebSettingsType, WebUserSettingType, ConfigDictionaryType, StockCountry, BondExchange, BondIssuerType, EurexCountry, FutureExchange, OptionExchange, CombinationExchange, CFDExchange, Exchange, Index, Region, Country, i18nMessagesType, GetPopularStocksConfigType, GetPriceOptionsType, };
 //# sourceMappingURL=index.d.ts.map

@@ -1,0 +1,60 @@
+export type VWDObject = {
+  issueId: number,
+  companyId: number,
+  name: string,
+  identifier: string,
+  isin: string,
+  alfa: string,
+  market: string,
+  currency: string,
+  type: string,
+  quality: string,
+  lastPrice: number,
+  lastTime: string,
+  absDiff: number,
+  relDiff: number,
+  highPrice: number,
+  highTime: string,
+  lowPrice: number,
+  lowTime: string,
+  openPrice: number,
+  openTime: string,
+  closePrice: number,
+  closeTime: string,
+  cumulativeVolume: number,
+  previousClosePrice: number,
+  previousCloseTime: string,
+  tradingStartTime: string,
+  tradingEndTime: string,
+  tradingAddedTime: string,
+  lowPriceP1Y: number,
+  highPriceP1Y: number,
+  windowStart: string,
+  windowEnd: string,
+  windowFirst: string,
+  windowLast: string,
+  windowHighTime: string,
+  windowHighPrice: number,
+  windowLowTime: string,
+  windowLowPrice: number,
+  windowOpenTime: string,
+  windowOpenPrice: number,
+  windowPreviousCloseTime: string,
+  windowPreviousClosePrice: number,
+  windowTrend: number
+}
+
+export type Series = {
+  expires: String,
+  data: VWDObject|Array<Array<number>>,
+  id: string,
+  type: "object" | "time"
+}
+
+export type PriceType = {
+  requestid: string,
+  start: Date,
+  end: Date,
+  resolution: string,
+  series: Array<Series>
+}
