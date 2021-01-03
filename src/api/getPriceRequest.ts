@@ -39,7 +39,7 @@ export function getPriceRequest(accountData: AccountDataType, accountConfig: Acc
     // Fetch the requested price data.
     try {
       const latestFetch = await fetch(URI, requestOptions)
-      let result:PriceType = await latestFetch.json();
+      const result:PriceType = await latestFetch.json();
       result.start = new Date(result.start);
       result.end = new Date(result.end);
       resolve(result)

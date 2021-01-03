@@ -41,14 +41,14 @@ export type VWDObject = {
   windowOpenPrice: number,
   windowPreviousCloseTime: string,
   windowPreviousClosePrice: number,
-  windowTrend: number
+  windowTrend: number,
 }
 
 export type Series = {
   expires: String,
-  data: VWDObject|Array<Array<number>>,
+  data: VWDObject|number[][],
   id: string,
-  type: "object" | "time"
+  type: 'object' | 'time',
 }
 
 export type PriceType = {
@@ -56,5 +56,5 @@ export type PriceType = {
   start: Date,
   end: Date,
   resolution: string,
-  series: Array<Series>
+  series: Series[],
 }
