@@ -11,12 +11,12 @@ export function getFetchRequestOptions(sessionId?: string, method?: string, body
     credentials: 'include',
     referer: string,
   } = {
-    ...(method && {method}),
+    ...(method && { method }),
     headers: {
-      ...(sessionId && {Cookie: `JSESSIONID=${sessionId};`}),
-      ...(contentType && {'Content-Type': contentType}),
+      ...(sessionId && { Cookie: `JSESSIONID=${sessionId};` }),
+      ...(contentType && { 'Content-Type': contentType }),
     },
-    ...(body && {body}),
+    ...(body && { body }),
     credentials: 'include',
     referer: BASE_API_URL + REFERER_ENDPOINT,
   }
