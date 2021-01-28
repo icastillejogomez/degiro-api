@@ -68,8 +68,8 @@ export class DeGiro implements DeGiroClassInterface {
 
   /* Properties */
 
-  private readonly username: string
-  private readonly pwd: string
+  private readonly username: string | undefined
+  private readonly pwd: string | undefined
   private readonly oneTimePassword: string | undefined
   private jsessionId: string | undefined
   private accountConfig: AccountConfigType | undefined
@@ -85,8 +85,8 @@ export class DeGiro implements DeGiroClassInterface {
     oneTimePassword = oneTimePassword || process.env['DEGIRO_OTP']
     jsessionId = jsessionId || process.env['DEGIRO_JSESSIONID']
 
-    if (!username) throw new Error('DeGiro api needs an username to access')
-    if (!pwd) throw new Error('DeGiro api needs an password to access')
+    if (!username && !jsessionId) throw new Error('DeGiro api needs an username to access')
+    if (!pwd && !jsessionId) throw new Error('DeGiro api needs an password to access')
 
     this.username = username
     this.pwd = pwd
@@ -105,8 +105,8 @@ export class DeGiro implements DeGiroClassInterface {
     if (this.jsessionId) return this.loginWithJSESSIONID(this.jsessionId)
     return new Promise((resolve, reject) => {
       loginRequest({
-        username: this.username,
-        pwd: this.pwd,
+        username: this.username as string,
+        pwd: this.pwd as string,
         oneTimePassword: this.oneTimePassword,
       })
         .then((loginResponse: LoginResponseType) => {
