@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, GetAccountStateOptionsType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, getFetchRequestOptions } from '../utils'
 import { DEGIRO_API_PATHS } from '../enums/DeGiroEnums'
 const { GET_ACCOUNT_STATE_PATH } = DEGIRO_API_PATHS
 
@@ -17,21 +17,7 @@ export function getAccountStateRequest(accountData: AccountDataType, accountConf
     params += `intAccount=${accountData.data.intAccount}&`
     params += `sessionId=${accountConfig.data.sessionId}`
 
-    const requestOptions: {
-      method?: string,
-      body?: string,
-      headers: {
-        [key: string]: string,
-      },
-      credentials: 'include',
-      referer: string,
-    } = {
-      headers: {
-        Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
-      },
-      credentials: 'include',
-      referer: 'https://trader.degiro.nl/trader/',
-    }
+    const requestOptions = getFetchRequestOptions(accountConfig.data.sessionId)
 
     // Do the request to get a account config data
     const uri = `${accountConfig.data.reportingUrl}${GET_ACCOUNT_STATE_PATH}?${params}`

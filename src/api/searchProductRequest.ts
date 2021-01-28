@@ -2,7 +2,7 @@
 import { SearchProductOptionsType, AccountConfigType, AccountDataType, SearchProductResultType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, getFetchRequestOptions } from '../utils'
 
 const createURLQuery = (options: SearchProductOptionsType): string => {
   // Destructure the options parameter
@@ -25,9 +25,12 @@ export function searchProductRequest(options: SearchProductOptionsType, accountD
     // Preparae de request
     const params = createURLQuery(options)
 
+    const requestOptions = getFetchRequestOptions()
+
     // Do de request
-    debug(`Making a search request to url: ${accountConfig.data.productSearchUrl}v5/products/lookup?intAccount=${accountData.data.intAccount}&sessionId=${accountData.data.id}&${params}}`)
-    fetch(`${accountConfig.data.productSearchUrl}v5/products/lookup?intAccount=${accountData.data.intAccount}&sessionId=${accountConfig.data.sessionId}&${params}`)
+    const uri = `${accountConfig.data.productSearchUrl}v5/products/lookup?intAccount=${accountData.data.intAccount}&sessionId=${accountData.data.id}&${params}`
+    debug(`Making a search request to url: ${uri}`)
+    fetch(uri, requestOptions)
       .then(res => res.json())
       .then(({ products }) => resolve(products))
       .catch(reject)

@@ -6,7 +6,7 @@ import { DEGIRO_API_PATHS } from '../enums'
 const { BASE_API_URL, LOGIN_URL_PATH } = DEGIRO_API_PATHS
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, getFetchRequestOptions } from '../utils'
 
 export function loginRequest(params: LoginRequestParamsType): Promise<LoginResponseType> {
   return new Promise((resolve, reject) => {
@@ -23,28 +23,13 @@ export function loginRequest(params: LoginRequestParamsType): Promise<LoginRespo
       },
     }
 
-    const requestOptions: {
-      method?: string,
-      body?: string,
-      headers: {
-        [key: string]: string,
-      },
-      credentials: 'include',
-      referer: string,
-    } = {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      referer: 'https://trader.degiro.nl/trader/',
-    }
+    const requestOptions = getFetchRequestOptions(undefined, 'POST', JSON.stringify(payload), 'application/json')
 
     // Do the request to get a session
-    debug(`Making request to ${BASE_API_URL}${LOGIN_URL_PATH} with options:`)
+    const uri = `${BASE_API_URL}${LOGIN_URL_PATH}`
+    debug(`Making request to ${uri} with options:`)
     debug(JSON.stringify(requestOptions, null, 2))
-    fetch(`${BASE_API_URL}${LOGIN_URL_PATH}`, requestOptions)
+    fetch(uri, requestOptions)
       .then((res) => {
         if (!payload.oneTimePassword) return res
         debug('Sending OTP')

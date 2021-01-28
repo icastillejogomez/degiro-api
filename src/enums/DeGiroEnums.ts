@@ -14,6 +14,7 @@ export enum DEGIRO_API_PATHS {
   GET_WEB_USER_SETTINGS_PATH = 'settings/user',
   GET_ACCOUNT_REPORTS_PATH = 'document/list/report',
   STOCKS_SEARCH_PATH = 'v5/stocks',
+  REFERER_ENDPOINT = 'trader/',
 }
 
 export enum DeGiroActions {

@@ -2,26 +2,12 @@
 import { AccountConfigType, AccountDataType, ConfigDictionaryType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, getFetchRequestOptions } from '../utils'
 
 export function getConfigDictionaryRequest(accountData: AccountDataType, accountConfig: AccountConfigType): Promise<ConfigDictionaryType> {
   return new Promise((resolve, reject) => {
 
-    const requestOptions: {
-      method?: string,
-      body?: string,
-      headers: {
-        [key: string]: string,
-      },
-      credentials: 'include',
-      referer: string,
-    } = {
-      headers: {
-        Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
-      },
-      credentials: 'include',
-      referer: 'https://trader.degiro.nl/trader/',
-    }
+    const requestOptions = getFetchRequestOptions(accountConfig.data.sessionId)
 
     // Do the request to get a account config data
     const uri = `${accountConfig.data.dictionaryUrl}?intAccount=${accountData.data.intAccount}&sessionId=${accountConfig.data.sessionId}`

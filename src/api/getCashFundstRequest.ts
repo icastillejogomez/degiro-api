@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, CashFoundType } from '../types'
 
 // Import debug console log
-import { debug, processGetCashFundsResultListObject } from '../utils'
+import { debug, processGetCashFundsResultListObject, getFetchRequestOptions } from '../utils'
 import { DEGIRO_API_PATHS } from '../enums/DeGiroEnums'
 const { GET_GENERIC_DATA_PATH } = DEGIRO_API_PATHS
 
@@ -14,21 +14,7 @@ export function getCashFundstRequest(accountData: AccountDataType, accountConfig
     params += 'cashFunds=0&'
     params += 'limit=100'
 
-    const requestOptions: {
-      method?: string,
-      body?: string,
-      headers: {
-        [key: string]: string,
-      },
-      credentials: 'include',
-      referer: string,
-    } = {
-      headers: {
-        Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
-      },
-      credentials: 'include',
-      referer: 'https://trader.degiro.nl/trader/',
-    }
+    const requestOptions = getFetchRequestOptions(accountConfig.data.sessionId)
 
     // Do the request to get a account config data
     const uri = `${accountConfig.data.tradingUrl}${GET_GENERIC_DATA_PATH}${accountData.data.intAccount};jsessionid=${accountConfig.data.sessionId}?${params}`

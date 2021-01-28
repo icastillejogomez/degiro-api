@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, i18nMessagesType, GetNewsOptionsType, NewsType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, getFetchRequestOptions } from '../utils'
 
 // Import paths
 import { DEGIRO_API_PATHS } from '../enums'
@@ -21,21 +21,7 @@ export function getNewsRequest(options: GetNewsOptionsType, accountData: Account
     params += `sessionId=${accountConfig.data.sessionId}`
 
     // Generate Request options
-    const requestOptions: {
-      method?: string,
-      body?: string,
-      headers: {
-        [key: string]: string,
-      },
-      credentials: 'include',
-      referer: string,
-    } = {
-      headers: {
-        Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
-      },
-      credentials: 'include',
-      referer: 'https://trader.degiro.nl/trader/',
-    }
+    const requestOptions = getFetchRequestOptions(accountConfig.data.sessionId)
 
     // Generate de request URIs
     const latestNewsURI = `${accountConfig.data.companiesServiceUrl}${GET_LATESTS_NEWS_PATH}?${params}`
