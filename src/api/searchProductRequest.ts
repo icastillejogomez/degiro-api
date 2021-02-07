@@ -29,7 +29,7 @@ export function searchProductRequest(options: SearchProductOptionsType, accountD
     debug(`Making a search request to url: ${accountConfig.data.productSearchUrl}v5/products/lookup?intAccount=${accountData.data.intAccount}&sessionId=${accountData.data.id}&${params}}`)
     fetch(`${accountConfig.data.productSearchUrl}v5/products/lookup?intAccount=${accountData.data.intAccount}&sessionId=${accountConfig.data.sessionId}&${params}`)
       .then(res => res.json())
-      .then(({ products }) => resolve(products))
+      .then(({ products }) => resolve(products || []))
       .catch(reject)
   })
 }
