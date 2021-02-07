@@ -1,8 +1,10 @@
 # DeGiro Trading Broker API
 
-This is an unofficial TypeScript API client (Backend & Frontend) for DeGiro's trading platform. Using this module you can easily automate your orders (buy and sell) and get information about orders, funds or products. From now on we have one time password (OTP) support.
+This is an unofficial TypeScript API client (Backend only) for DeGiro's trading platform. Using this module you can easily automate your orders (buy and sell) and get information about orders, funds or products. From now on we have one time password (OTP) support.
 
 All responses and objects are typed to develop faster and secure.
+
+Unfortunately this library can not be used as frontend library, as DeGiro does not allow external requests through their CORS policy.
 
 ![DeGiro Logo](https://raw.githubusercontent.com/icastillejogomez/degiro-api/master/.assets/degiro.png)
 
