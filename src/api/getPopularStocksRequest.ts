@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, StockType, GetPopularStocksConfigType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, getFetchRequestOptions } from '../utils'
 
 // Importamos constantes
 import { DEGIRO_API_PATHS } from '../enums'
@@ -13,21 +13,7 @@ export function getPopularStocksRequest(accountData: AccountDataType, accountCon
   return new Promise((resolve, reject) => {
 
     // Create fetch request options
-    const requestOptions: {
-      method?: string,
-      body?: string,
-      headers: {
-        [key: string]: string,
-      },
-      credentials: 'include',
-      referer: string,
-    } = {
-      headers: {
-        Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
-      },
-      credentials: 'include',
-      referer: 'https://trader.degiro.nl/trader/',
-    }
+    const requestOptions = getFetchRequestOptions(accountConfig.data.sessionId)
 
     // Create params to reach popular stocks
     const { popularOnly = true, requireTotal = false, limit = 9, offset = 0 } = config

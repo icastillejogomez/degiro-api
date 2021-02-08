@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, GetPorfolioConfigType } from '../types'
 
 // Import debug console log
-import { debug, processPortfolio } from '../utils'
+import { debug, processPortfolio, getFetchRequestOptions } from '../utils'
 
 // tslint:disable-next-line: max-line-length
 export function getPortfolioRequest(accountData: AccountDataType, accountConfig: AccountConfigType, config: GetPorfolioConfigType): Promise<any[]> {
@@ -11,8 +11,10 @@ export function getPortfolioRequest(accountData: AccountDataType, accountConfig:
     const params = '&portfolio=0'
 
     // Do the request to get a account config data
-    debug(`Making request to ${accountConfig.data.tradingUrl}v5/update/${accountData.data.intAccount};jsessionid=${accountConfig.data.sessionId}?${params}}`)
-    fetch(`${accountConfig.data.tradingUrl}v5/update/${accountData.data.intAccount};jsessionid=${accountConfig.data.sessionId}?${params}`)
+    const requestOptions = getFetchRequestOptions(accountConfig.data.sessionId)
+    const uri = `${accountConfig.data.tradingUrl}v5/update/${accountData.data.intAccount};jsessionid=${accountConfig.data.sessionId}?${params}`
+    debug(`Making request to ${uri}`)
+    fetch(uri, requestOptions)
       .then(res => res.json())
       .then((res) => {
         const portfolio: any[] = res.portfolio.value

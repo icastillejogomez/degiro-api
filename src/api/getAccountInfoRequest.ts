@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, AccountInfoType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, getFetchRequestOptions } from '../utils'
 
 // Importamos constantes
 import { DEGIRO_API_PATHS } from '../enums'
@@ -11,21 +11,7 @@ const { GET_ACCOUNT_INFO_PATH } = DEGIRO_API_PATHS
 export function getAccountInfoRequest(accountData: AccountDataType, accountConfig: AccountConfigType): Promise<AccountInfoType> {
   return new Promise((resolve, reject) => {
 
-    const requestOptions: {
-      method?: string,
-      body?: string,
-      headers: {
-        [key: string]: string,
-      },
-      credentials: 'include',
-      referer: string,
-    } = {
-      headers: {
-        Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
-      },
-      credentials: 'include',
-      referer: 'https://trader.degiro.nl/trader/',
-    }
+    const requestOptions = getFetchRequestOptions(accountConfig.data.sessionId)
 
     // Do the request to get a account config data
     const uri = `${accountConfig.data.tradingUrl}${GET_ACCOUNT_INFO_PATH}${accountData.data.intAccount};jsessionid=${accountConfig.data.sessionId}`

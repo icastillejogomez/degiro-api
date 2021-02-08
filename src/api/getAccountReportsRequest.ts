@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, AccountReportsType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, getFetchRequestOptions } from '../utils'
 
 // Import utils functions
 import { generateReportURIFromID } from '../utils/generateReportURIFromID'
@@ -14,21 +14,7 @@ const { GET_ACCOUNT_REPORTS_PATH } = DEGIRO_API_PATHS
 export function getAccountReportsRequest(accountData: AccountDataType, accountConfig: AccountConfigType): Promise<AccountReportsType> {
   return new Promise((resolve, reject) => {
 
-    const requestOptions: {
-      method?: string,
-      body?: string,
-      headers: {
-        [key: string]: string,
-      },
-      credentials: 'include',
-      referer: string,
-    } = {
-      headers: {
-        Cookie: `JSESSIONID=${accountConfig.data.sessionId};`,
-      },
-      credentials: 'include',
-      referer: 'https://trader.degiro.nl/trader/',
-    }
+    const requestOptions = getFetchRequestOptions(accountConfig.data.sessionId)
 
     // Do the request to get a account config data
     const uri = `${accountConfig.data.paUrl}${GET_ACCOUNT_REPORTS_PATH}?intAccount=${accountData.data.intAccount}&sessionId=${accountConfig.data.sessionId}`
