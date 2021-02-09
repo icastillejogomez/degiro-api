@@ -1,5 +1,5 @@
 import { DeGiroClassInterface } from './interfaces';
-import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType, CreateOrderResultType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, AccountReportsType, AccountInfoType, GetHistoricalOrdersOptionsType, HistoricalOrdersType, FavouriteProductType, StockType, GetNewsOptionsType, NewsType, WebUserSettingType, ConfigDictionaryType, i18nMessagesType, WebSettingsType, GetPopularStocksConfigType } from './types';
+import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType, PriceType, CreateOrderResultType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, AccountReportsType, AccountInfoType, GetHistoricalOrdersOptionsType, HistoricalOrdersType, FavouriteProductType, StockType, GetNewsOptionsType, NewsType, WebUserSettingType, ConfigDictionaryType, i18nMessagesType, WebSettingsType, GetPopularStocksConfigType, GetPriceOptionsType } from './types';
 /**
  * @class DeGiro
  * @description Main class of DeGiro Unofficial API.
@@ -41,5 +41,6 @@ export declare class DeGiro implements DeGiroClassInterface {
     getWebSettings(): Promise<WebSettingsType>;
     getWebUserSettings(): Promise<WebUserSettingType>;
     getConfigDictionary(): Promise<ConfigDictionaryType>;
+    getPrice(options: GetPriceOptionsType): Promise<PriceType>;
 }
 //# sourceMappingURL=DeGiro.d.ts.map

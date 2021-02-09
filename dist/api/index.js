@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPopularStocksRequest = exports.getCashFundstRequest = exports.getAccountReportsRequest = exports.getWebUserSettingsRequest = exports.getWebSettingsRequest = exports.getNewsRequest = exports.getWebi18nMessagesRequest = exports.getAccountInfoRequest = exports.getConfigDictionaryRequest = exports.getAccountStateRequest = exports.getOrdersRequest = exports.deleteOrderRequest = exports.executeOrderRequest = exports.createOrderRequest = exports.searchProductRequest = exports.getProductsByIdsRequest = exports.getPortfolioRequest = exports.getAccountDataRequest = exports.getAccountConfigRequest = exports.logoutRequest = exports.loginRequest = void 0;
+exports.getPriceRequest = exports.getPopularStocksRequest = exports.getCashFundstRequest = exports.getAccountReportsRequest = exports.getWebUserSettingsRequest = exports.getWebSettingsRequest = exports.getNewsRequest = exports.getWebi18nMessagesRequest = exports.getAccountInfoRequest = exports.getConfigDictionaryRequest = exports.getAccountStateRequest = exports.getOrdersRequest = exports.deleteOrderRequest = exports.executeOrderRequest = exports.createOrderRequest = exports.searchProductRequest = exports.getProductsByIdsRequest = exports.getPortfolioRequest = exports.getAccountDataRequest = exports.getAccountConfigRequest = exports.logoutRequest = exports.loginRequest = void 0;
 var login_1 = require("./login");
 Object.defineProperty(exports, "loginRequest", { enumerable: true, get: function () { return login_1.loginRequest; } });
 var logout_1 = require("./logout");
@@ -43,4 +43,6 @@ var getCashFundstRequest_1 = require("./getCashFundstRequest");
 Object.defineProperty(exports, "getCashFundstRequest", { enumerable: true, get: function () { return getCashFundstRequest_1.getCashFundstRequest; } });
 var getPopularStocksRequest_1 = require("./getPopularStocksRequest");
 Object.defineProperty(exports, "getPopularStocksRequest", { enumerable: true, get: function () { return getPopularStocksRequest_1.getPopularStocksRequest; } });
+var getPriceRequest_1 = require("./getPriceRequest");
+Object.defineProperty(exports, "getPriceRequest", { enumerable: true, get: function () { return getPriceRequest_1.getPriceRequest; } });
 //# sourceMappingURL=index.js.map

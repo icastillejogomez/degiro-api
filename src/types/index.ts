@@ -10,6 +10,7 @@ import { GetPorfolioConfigType } from './GetPorfolioConfigType'
 import { SearchProductOptionsType } from './SearchProductOptionsType'
 import { SearchProductResultType } from './SearchProductResultType'
 import { OrderType } from './OrderType'
+import { PriceType } from './PriceType'
 import { CreateOrderResultType } from './CreateOrderResultType'
 import { TransactionFeeType } from './TransactionFeeType'
 import { IsLoginOptionsType } from './IsLoginOptionsType'
@@ -28,6 +29,7 @@ import { WebSettingsType } from './WebSettingsType'
 import { WebUserSettingType } from './WebUserSettingType'
 import { i18nMessagesType } from './i18nMessagesType'
 import { GetPopularStocksConfigType } from './GetPopularStocksConfigType'
+import { GetPriceOptionsType } from './GetPriceOptionsType'
 
 import {
   ConfigDictionaryType,
@@ -58,6 +60,7 @@ export {
   SearchProductOptionsType,
   SearchProductResultType,
   OrderType,
+  PriceType,
   CreateOrderResultType,
   TransactionFeeType,
   IsLoginOptionsType,
@@ -93,4 +96,5 @@ export {
 
   i18nMessagesType,
   GetPopularStocksConfigType,
+  GetPriceOptionsType,
 }

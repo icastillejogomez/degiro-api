@@ -15,6 +15,7 @@ import {
   GetPorfolioConfigType,
   SearchProductOptionsType,
   OrderType,
+  PriceType,
   CreateOrderResultType,
   IsLoginOptionsType,
   GetOrdersConfigType,
@@ -33,6 +34,7 @@ import {
   i18nMessagesType,
   WebSettingsType,
   GetPopularStocksConfigType,
+  GetPriceOptionsType,
 } from './types'
 
 // Import requests
@@ -58,6 +60,7 @@ import {
   getAccountReportsRequest,
   getCashFundstRequest,
   getPopularStocksRequest,
+  getPriceRequest,
 } from './api'
 
 /**
@@ -356,4 +359,10 @@ export class DeGiro implements DeGiroClassInterface {
     return getConfigDictionaryRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
   }
 
+  getPrice(options: GetPriceOptionsType): Promise<PriceType> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first')
+    }
+    return getPriceRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig, options);
+  }
 }

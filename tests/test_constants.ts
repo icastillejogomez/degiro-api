@@ -5,6 +5,7 @@ export enum TESLA_STOCK {
   EXCHANGE_ID = '663',
   NAME = 'Tesla',
   SYMBOL = 'TSLA',
+  VWDID = '350000520',
 }
 
 /* Apple ($AAPL) stock inmutable data */
@@ -14,4 +15,5 @@ export enum APPLE_STOCK {
   EXCHANGE_ID = '663',
   NAME = 'Apple Inc',
   SYMBOL = 'AAPL',
+  VWDID = '350015372',
 }

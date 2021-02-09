@@ -27,5 +27,6 @@ jobs:
     - run: yarn install --frozen-lockfile
     - run: yarn run build
 #    - run: yarn test #dont enable this, the CI pipeline won't and shouldn't have credentials.
+    - run: yarn run test-ci
     - run: yarn coverage
     - run: yarn lint
