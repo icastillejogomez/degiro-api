@@ -8,4 +8,3 @@ export declare type LoginRequestBodyType = {
         reason: string;
     };
 };
-//# sourceMappingURL=LoginRequestBodyType.d.ts.map

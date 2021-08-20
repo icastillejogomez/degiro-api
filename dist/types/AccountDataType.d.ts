@@ -44,4 +44,3 @@ export declare type AccountDataType = {
         username: string;
     };
 };
-//# sourceMappingURL=AccountDataType.d.ts.map

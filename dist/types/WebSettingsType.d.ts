@@ -61,4 +61,3 @@ export declare type WebSettingsType = {
     thousandDelimiter: string;
 };
 export {};
-//# sourceMappingURL=WebSettingsType.d.ts.map

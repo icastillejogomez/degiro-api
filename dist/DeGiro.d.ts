@@ -1,9 +1,5 @@
 import { DeGiroClassInterface } from './interfaces';
-import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType, CreateOrderResultType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, AccountReportsType, AccountInfoType, GetHistoricalOrdersOptionsType, HistoricalOrdersType, FavouriteProductType, StockType, GetNewsOptionsType, NewsType, WebUserSettingType, ConfigDictionaryType, i18nMessagesType, WebSettingsType, GetPopularStocksConfigType } from './types';
-/**
- * @class DeGiro
- * @description Main class of DeGiro Unofficial API.
- */
+import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType, CreateOrderResultType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, AccountReportsType, AccountInfoType, GetHistoricalOrdersOptionsType, HistoricalOrdersType, FavouriteProductType, StockType, GetNewsOptionsType, NewsType, WebUserSettingType, ConfigDictionaryType, i18nMessagesType, WebSettingsType, GetPopularStocksConfigType, GetTransactionsOptionsType, TransactionType } from './types';
 export declare class DeGiro implements DeGiroClassInterface {
     private readonly username;
     private readonly pwd;
@@ -18,7 +14,7 @@ export declare class DeGiro implements DeGiroClassInterface {
     isLogin(options?: IsLoginOptionsType): boolean | Promise<boolean>;
     private hasSessionId;
     private loginWithJSESSIONID;
-    getJSESSIONID: () => string | undefined;
+    getJSESSIONID: () => string;
     getAccountConfig(sessionId?: string): Promise<AccountConfigType>;
     getAccountData(): Promise<AccountDataType>;
     getAccountState(options: GetAccountStateOptionsType): Promise<any[]>;
@@ -35,6 +31,7 @@ export declare class DeGiro implements DeGiroClassInterface {
     createOrder(order: OrderType): Promise<CreateOrderResultType>;
     executeOrder(order: OrderType, executeId: String): Promise<String>;
     deleteOrder(orderId: String): Promise<void>;
+    getTransactions(options: GetTransactionsOptionsType): Promise<TransactionType[]>;
     getProductsByIds(ids: string[]): Promise<any[]>;
     getNews(options: GetNewsOptionsType): Promise<NewsType>;
     getWebi18nMessages(lang?: string): Promise<i18nMessagesType>;
@@ -42,4 +39,3 @@ export declare class DeGiro implements DeGiroClassInterface {
     getWebUserSettings(): Promise<WebUserSettingType>;
     getConfigDictionary(): Promise<ConfigDictionaryType>;
 }
-//# sourceMappingURL=DeGiro.d.ts.map

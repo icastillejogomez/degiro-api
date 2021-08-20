@@ -4,4 +4,3 @@ export declare type CreateOrderResultType = {
     freeSpaceNew: Number;
     transactionFees: [TransactionFeeType];
 };
-//# sourceMappingURL=CreateOrderResultType.d.ts.map

@@ -6,4 +6,3 @@ export declare type ReportType = {
     uri: string;
 };
 export declare type AccountReportsType = ReportType[];
-//# sourceMappingURL=AccountReportsType.d.ts.map

@@ -3,4 +3,3 @@ export declare type LoginRequestParamsType = {
     pwd: string;
     oneTimePassword: string | undefined;
 };
-//# sourceMappingURL=LoginRequestParamsType.d.ts.map

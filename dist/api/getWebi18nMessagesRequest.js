@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getWebi18nMessagesRequest = void 0;
-// Import debug console log
 var utils_1 = require("../utils");
 function getWebi18nMessagesRequest(lang, accountData, accountConfig) {
     return new Promise(function (resolve, reject) {
@@ -12,7 +11,6 @@ function getWebi18nMessagesRequest(lang, accountData, accountConfig) {
             credentials: 'include',
             referer: 'https://trader.degiro.nl/trader/',
         };
-        // Do the request to get a account config data
         var uri = accountConfig.data.i18nUrl + "messages_" + lang;
         utils_1.debug("Making request to " + uri);
         fetch(uri, requestOptions)

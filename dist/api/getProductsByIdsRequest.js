@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getProductsByIdsRequest = void 0;
-// tslint:disable-next-line: max-line-length
 function getProductsByIdsRequest(ids, accountData, accountConfig) {
     return new Promise(function (resolve, reject) {
         var requestOptions = {

@@ -8,4 +8,3 @@ export declare type OrderType = {
     stopPrice?: number;
     timeType: DeGiroTimeTypes;
 };
-//# sourceMappingURL=OrderType.d.ts.map

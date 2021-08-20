@@ -42,4 +42,3 @@ export declare type StockType = {
     qualitySwitchFreeSecondary: boolean;
     vwdModuleIdSecondary: number;
 };
-//# sourceMappingURL=StockType.d.ts.map

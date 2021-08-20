@@ -28,6 +28,8 @@ import { WebSettingsType } from './WebSettingsType'
 import { WebUserSettingType } from './WebUserSettingType'
 import { i18nMessagesType } from './i18nMessagesType'
 import { GetPopularStocksConfigType } from './GetPopularStocksConfigType'
+import { GetTransactionsOptionsType } from './GetTransactionsOptionsType'
+import { TransactionType } from './TransactionType'
 
 import {
   ConfigDictionaryType,
@@ -44,6 +46,7 @@ import {
   Region,
   Country,
 } from './ConfigDictionaryType'
+
 
 export {
   CashFoundType,
@@ -63,12 +66,14 @@ export {
   IsLoginOptionsType,
   GetOrdersConfigType,
   GetOrdersResultType,
+  GetTransactionsOptionsType,
   GetAccountStateOptionsType,
   AccountReportsType,
   ReportType,
   AccountInfoType,
   FavouriteProductType,
   StockType,
+  TransactionType,
   GetHistoricalOrdersOptionsType,
   HistoricalOrdersType,
   GetNewsOptionsType,

@@ -1,31 +1,12 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeGiroTypes = exports.DeGiroEnums = void 0;
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 var DeGiro_1 = require("./DeGiro");
-var DeGiroEnums = __importStar(require("./enums/"));
+var DeGiroEnums = require("./enums/");
 exports.DeGiroEnums = DeGiroEnums;
-var DeGiroTypes = __importStar(require("./types/"));
+var DeGiroTypes = require("./types/");
 exports.DeGiroTypes = DeGiroTypes;
 exports.default = DeGiro_1.DeGiro;
 //# sourceMappingURL=main.js.map

@@ -10,6 +10,7 @@ var DEGIRO_API_PATHS;
     DEGIRO_API_PATHS["GET_ACCOUNT_CONFIG_PATH"] = "login/secure/config";
     DEGIRO_API_PATHS["GET_GENERIC_DATA_PATH"] = "v5/update/";
     DEGIRO_API_PATHS["CREATE_ORDER_PATH"] = "v5/checkOrder";
+    DEGIRO_API_PATHS["GET_TRANSACTIONS_PATH"] = "v4/transactions";
     DEGIRO_API_PATHS["GET_ACCOUNT_STATE_PATH"] = "v6/accountoverview";
     DEGIRO_API_PATHS["GET_ACCOUNT_INFO_PATH"] = "v5/account/info/";
     DEGIRO_API_PATHS["GET_LATESTS_NEWS_PATH"] = "newsfeed/v2/latest-news";
@@ -38,7 +39,6 @@ var DeGiroTimeTypes;
 })(DeGiroTimeTypes = exports.DeGiroTimeTypes || (exports.DeGiroTimeTypes = {}));
 var DeGiroProducTypes;
 (function (DeGiroProducTypes) {
-    // all = undefined, undefined is not allowed to set on enum
     DeGiroProducTypes[DeGiroProducTypes["shares"] = 1] = "shares";
     DeGiroProducTypes[DeGiroProducTypes["bonds"] = 2] = "bonds";
     DeGiroProducTypes[DeGiroProducTypes["futures"] = 7] = "futures";

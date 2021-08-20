@@ -5,4 +5,3 @@ export declare type GetNewsOptionsType = {
     latestLimit?: number;
     languages?: string;
 };
-//# sourceMappingURL=GetNewsOptionsType.d.ts.map

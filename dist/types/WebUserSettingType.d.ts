@@ -10,4 +10,3 @@ export declare type WebUserSettingType = {
         hasSeenProductTour: boolean;
     };
 };
-//# sourceMappingURL=WebUserSettingType.d.ts.map

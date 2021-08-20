@@ -119,4 +119,3 @@ export declare type ConfigDictionaryType = {
     warrantSortColumns: SortListItem[];
 };
 export {};
-//# sourceMappingURL=ConfigDictionaryType.d.ts.map

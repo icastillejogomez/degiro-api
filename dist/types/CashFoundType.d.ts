@@ -4,4 +4,3 @@ export declare type CashFoundType = {
     value: number;
     handling: string;
 };
-//# sourceMappingURL=CashFoundType.d.ts.map

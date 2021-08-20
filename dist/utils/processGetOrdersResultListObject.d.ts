@@ -3,4 +3,3 @@ declare type ObjectDataType = {
 };
 export declare const processGetOrdersResultListObject: (objectData: ObjectDataType) => {};
 export {};
-//# sourceMappingURL=processGetOrdersResultListObject.d.ts.map

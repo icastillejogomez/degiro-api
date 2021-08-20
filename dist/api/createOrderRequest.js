@@ -1,10 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createOrderRequest = void 0;
-// Import Consts
 var enums_1 = require("../enums");
 var CREATE_ORDER_PATH = enums_1.DEGIRO_API_PATHS.CREATE_ORDER_PATH;
-// Import debug console log
 var utils_1 = require("../utils");
 function createOrderRequest(order, accountData, accountConfig) {
     return new Promise(function (resolve, reject) {

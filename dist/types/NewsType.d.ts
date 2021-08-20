@@ -21,4 +21,3 @@ export declare type NewsType = {
     top: NewsResponse;
 };
 export {};
-//# sourceMappingURL=NewsType.d.ts.map

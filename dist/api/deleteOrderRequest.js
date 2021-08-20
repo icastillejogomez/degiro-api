@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteOrderRequest = void 0;
-// Import debug console log
 var utils_1 = require("../utils");
 function deleteOrderRequest(orderId, accountData, accountConfig) {
     return new Promise(function (resolve, reject) {
@@ -14,7 +13,6 @@ function deleteOrderRequest(orderId, accountData, accountConfig) {
             credentials: 'include',
             referer: 'https://trader.degiro.nl/trader/',
         };
-        // tslint:disable-next-line: max-line-length
         var uri = "https://trader.degiro.nl/trading/secure/v5/order/" + orderId + ";jsessionid=" + accountConfig.data.sessionId + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;
         utils_1.debug(uri, requestOptions);
         fetch(uri, requestOptions)

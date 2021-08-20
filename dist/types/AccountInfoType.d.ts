@@ -21,4 +21,3 @@ declare type AccountInfoCurrencyPairs = {
     };
 };
 export {};
-//# sourceMappingURL=AccountInfoType.d.ts.map

@@ -37,7 +37,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getNewsRequest = void 0;
-// Import paths
 var enums_1 = require("../enums");
 var GET_LATESTS_NEWS_PATH = enums_1.DEGIRO_API_PATHS.GET_LATESTS_NEWS_PATH, GET_TOP_NEWS_PATH = enums_1.DEGIRO_API_PATHS.GET_TOP_NEWS_PATH;
 function getNewsRequest(options, accountData, accountConfig) {
@@ -74,33 +73,32 @@ function getNewsRequest(options, accountData, accountConfig) {
                     _d.label = 1;
                 case 1:
                     _d.trys.push([1, 8, , 9]);
-                    if (!latest) return [3 /*break*/, 4];
-                    return [4 /*yield*/, fetch(latestNewsURI, requestOptions)];
+                    if (!latest) return [3, 4];
+                    return [4, fetch(latestNewsURI, requestOptions)];
                 case 2:
                     latestFetch = _d.sent();
-                    return [4 /*yield*/, latestFetch.json()];
+                    return [4, latestFetch.json()];
                 case 3:
                     data = (_d.sent()).data;
                     result.latest = data;
                     _d.label = 4;
                 case 4:
-                    if (!top) return [3 /*break*/, 7];
-                    return [4 /*yield*/, fetch(topNewsURI, requestOptions)];
+                    if (!top) return [3, 7];
+                    return [4, fetch(topNewsURI, requestOptions)];
                 case 5:
                     latestFetch = _d.sent();
-                    return [4 /*yield*/, latestFetch.json()];
+                    return [4, latestFetch.json()];
                 case 6:
                     data = (_d.sent()).data;
                     result.top = data;
                     _d.label = 7;
-                case 7: return [3 /*break*/, 9];
+                case 7: return [3, 9];
                 case 8:
                     error_1 = _d.sent();
-                    return [2 /*return*/, reject(error_1)];
+                    return [2, reject(error_1)];
                 case 9:
-                    // Return te result
                     resolve(result);
-                    return [2 /*return*/];
+                    return [2];
             }
         });
     }); });
