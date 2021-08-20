@@ -3,3 +3,4 @@ export declare type TransactionFeeType = {
     currency: String;
     id: Number;
 };
+//# sourceMappingURL=TransactionFeeType.d.ts.map

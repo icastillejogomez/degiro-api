@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getConfigDictionaryRequest = void 0;
+// Import debug console log
 var utils_1 = require("../utils");
 function getConfigDictionaryRequest(accountData, accountConfig) {
     return new Promise(function (resolve, reject) {
@@ -11,6 +12,7 @@ function getConfigDictionaryRequest(accountData, accountConfig) {
             credentials: 'include',
             referer: 'https://trader.degiro.nl/trader/',
         };
+        // Do the request to get a account config data
         var uri = accountConfig.data.dictionaryUrl + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;
         utils_1.debug("Making request to " + uri);
         fetch(uri, requestOptions)

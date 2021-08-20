@@ -40,3 +40,4 @@ export declare type SearchProductResultType = {
     qualitySwitchFreeSecondary: boolean;
     vwdModuleIdSecondary: number;
 };
+//# sourceMappingURL=SearchProductResultType.d.ts.map

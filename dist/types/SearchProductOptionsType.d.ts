@@ -7,3 +7,4 @@ export declare type SearchProductOptionsType = {
     limit?: number;
     offset?: number;
 };
+//# sourceMappingURL=SearchProductOptionsType.d.ts.map

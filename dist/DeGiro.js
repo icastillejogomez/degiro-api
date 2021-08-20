@@ -1,9 +1,35 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeGiro = void 0;
-var async = require("async");
+// Import modules
+var async = __importStar(require("async"));
+// Import requests
 var api_1 = require("./api");
-var DeGiro = (function () {
+/**
+ * @class DeGiro
+ * @description Main class of DeGiro Unofficial API.
+ */
+var DeGiro = /** @class */ (function () {
+    /* Constructor and generator function */
     function DeGiro(params) {
         var _this = this;
         if (params === void 0) { params = {}; }
@@ -14,9 +40,9 @@ var DeGiro = (function () {
         pwd = pwd || process.env['DEGIRO_PWD'];
         oneTimePassword = oneTimePassword || process.env['DEGIRO_OTP'];
         jsessionId = jsessionId || process.env['DEGIRO_JSESSIONID'];
-        if (!username && !jsessionId)
+        if (!username)
             throw new Error('DeGiro api needs an username to access');
-        if (!pwd && !jsessionId)
+        if (!pwd)
             throw new Error('DeGiro api needs an password to access');
         this.username = username;
         this.pwd = pwd;
@@ -26,6 +52,7 @@ var DeGiro = (function () {
     DeGiro.create = function (params) {
         return new DeGiro(params);
     };
+    /* Session methods */
     DeGiro.prototype.login = function () {
         var _this = this;
         if (this.jsessionId)
@@ -78,12 +105,13 @@ var DeGiro = (function () {
             _this.getAccountConfig(jsessionId)
                 .then(function () { return _this.getAccountData(); })
                 .then(function (accountData) {
-                _this.jsessionId = undefined;
+                _this.jsessionId = undefined; // Remove the jsessionId to prevent reuse
                 resolve(accountData);
             })
                 .catch(reject);
         });
     };
+    /* Account methods */
     DeGiro.prototype.getAccountConfig = function (sessionId) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -130,18 +158,21 @@ var DeGiro = (function () {
         }
         return api_1.getAccountInfoRequest(this.accountData, this.accountConfig);
     };
+    /* Search methods */
     DeGiro.prototype.searchProduct = function (options) {
         if (!this.hasSessionId()) {
             return Promise.reject('You must log in first');
         }
         return api_1.searchProductRequest(options, this.accountData, this.accountConfig);
     };
+    /* Cash Funds methods */
     DeGiro.prototype.getCashFunds = function () {
         if (!this.hasSessionId()) {
             return Promise.reject('You must log in first');
         }
         return api_1.getCashFundstRequest(this.accountData, this.accountConfig);
     };
+    /* Porfolio methods */
     DeGiro.prototype.getPortfolio = function (config) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -168,6 +199,7 @@ var DeGiro = (function () {
                     next(null, position);
                 })
                     .catch(function (error) { return next(error); });
+                // tslint:disable-next-line: align
             }, function (error, portfolio) {
                 if (error)
                     return reject(error);
@@ -175,6 +207,7 @@ var DeGiro = (function () {
             });
         });
     };
+    /* Stocks methods */
     DeGiro.prototype.getFavouriteProducts = function () {
         return new Promise(function (resolve, reject) {
             reject('Method not implemented');
@@ -187,6 +220,7 @@ var DeGiro = (function () {
         }
         return api_1.getPopularStocksRequest(this.accountData, this.accountConfig, config);
     };
+    /* Orders methods */
     DeGiro.prototype.getOrders = function (config) {
         if (!this.hasSessionId()) {
             return Promise.reject('You must log in first');
@@ -216,12 +250,7 @@ var DeGiro = (function () {
         }
         return api_1.deleteOrderRequest(orderId, this.accountData, this.accountConfig);
     };
-    DeGiro.prototype.getTransactions = function (options) {
-        if (!this.hasSessionId()) {
-            return Promise.reject('You must log in first');
-        }
-        return api_1.getTransactionsRequest(this.accountData, this.accountConfig, options);
-    };
+    /* Miscellaneous methods */
     DeGiro.prototype.getProductsByIds = function (ids) {
         if (!this.hasSessionId()) {
             return Promise.reject('You must log in first');

@@ -1,4 +1,7 @@
 import { CashFoundType, AccountConfigType, GetPorfolioConfigType, AccountDataType, SearchProductOptionsType, SearchProductResultType, OrderType, CreateOrderResultType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, AccountReportsType, AccountInfoType, FavouriteProductType, StockType, GetHistoricalOrdersOptionsType, HistoricalOrdersType, GetNewsOptionsType, NewsType, WebSettingsType, WebUserSettingType, ConfigDictionaryType, i18nMessagesType, GetPopularStocksConfigType } from '../types';
+/**
+ * @interface DeGiroClassInterface
+ */
 export interface DeGiroClassInterface {
     login(): Promise<AccountDataType>;
     logout(): Promise<void>;
@@ -26,3 +29,4 @@ export interface DeGiroClassInterface {
     getWebUserSettings(): Promise<WebUserSettingType>;
     getConfigDictionary(): Promise<ConfigDictionaryType>;
 }
+//# sourceMappingURL=DeGiroClassInterface.d.ts.map

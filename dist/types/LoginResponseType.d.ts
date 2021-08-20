@@ -6,3 +6,4 @@ export declare type LoginResponseType = {
     status: number;
     statusText: string;
 };
+//# sourceMappingURL=LoginResponseType.d.ts.map

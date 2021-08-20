@@ -23,3 +23,4 @@ export declare type AccountConfigType = {
         vwdQuotecastServiceUrl: string;
     };
 };
+//# sourceMappingURL=AccountConfigType.d.ts.map

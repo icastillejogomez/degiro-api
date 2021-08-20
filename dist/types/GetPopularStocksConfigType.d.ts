@@ -4,3 +4,4 @@ export declare type GetPopularStocksConfigType = {
     offset?: number;
     limit?: number;
 };
+//# sourceMappingURL=GetPopularStocksConfigType.d.ts.map

@@ -4,3 +4,4 @@ export declare type DeGiroSettupType = {
     oneTimePassword?: string;
     jsessionId?: string;
 };
+//# sourceMappingURL=DeGiroSettupType.d.ts.map
