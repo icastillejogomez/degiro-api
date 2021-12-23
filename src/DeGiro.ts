@@ -33,6 +33,8 @@ import {
   i18nMessagesType,
   WebSettingsType,
   GetPopularStocksConfigType,
+  GetTransactionsOptionsType,
+  TransactionType,
 } from './types'
 
 // Import requests
@@ -58,7 +60,9 @@ import {
   getAccountReportsRequest,
   getCashFundstRequest,
   getPopularStocksRequest,
+  getTransactionsRequest,
 } from './api'
+import { runInThisContext } from 'vm'
 
 /**
  * @class DeGiro
@@ -236,7 +240,7 @@ export class DeGiro implements DeGiroClassInterface {
         return reject('You must log in first')
       }
       getPortfolioRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig, config)
-        .then(portfolio => this.completePortfolioDetails(portfolio, config.getProductDetails || false))
+        .then(portfolio => this.completePortfolioDetails(portfolio, config.getProductDetails || false))
         .then(resolve)
         .catch(reject)
     })
@@ -253,7 +257,7 @@ export class DeGiro implements DeGiroClassInterface {
             next(null, position)
           })
           .catch(error => next(error))
-      // tslint:disable-next-line: align
+        // tslint:disable-next-line: align
       }, (error, portfolio) => {
         if (error) return reject(error)
         resolve(<any[]>portfolio)
@@ -278,7 +282,7 @@ export class DeGiro implements DeGiroClassInterface {
 
   /* Orders methods */
 
-  getOrders (config: GetOrdersConfigType): Promise<GetOrdersResultType> {
+  getOrders(config: GetOrdersConfigType): Promise<GetOrdersResultType> {
     if (!this.hasSessionId()) {
       return Promise.reject('You must log in first')
     }
@@ -310,6 +314,13 @@ export class DeGiro implements DeGiroClassInterface {
       return Promise.reject('You must log in first')
     }
     return deleteOrderRequest(orderId, <AccountDataType>this.accountData, <AccountConfigType>this.accountConfig)
+  }
+
+  getTransactions(options: GetTransactionsOptionsType): Promise<TransactionType[]> {
+    if (!this.hasSessionId()) {
+      return Promise.reject('You must log in first');
+    }
+    return getTransactionsRequest(<AccountDataType>this.accountData, <AccountConfigType>this.accountConfig, options);
   }
 
   /* Miscellaneous methods */
