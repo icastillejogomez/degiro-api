@@ -1,5 +1,5 @@
 import { DeGiroClassInterface } from './interfaces';
-import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType, CreateOrderResultType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, AccountReportsType, AccountInfoType, GetHistoricalOrdersOptionsType, HistoricalOrdersType, FavouriteProductType, StockType, GetNewsOptionsType, NewsType, WebUserSettingType, ConfigDictionaryType, i18nMessagesType, WebSettingsType, GetPopularStocksConfigType } from './types';
+import { DeGiroSettupType, AccountConfigType, AccountDataType, CashFoundType, SearchProductResultType, GetPorfolioConfigType, SearchProductOptionsType, OrderType, CreateOrderResultType, IsLoginOptionsType, GetOrdersConfigType, GetOrdersResultType, GetAccountStateOptionsType, AccountReportsType, AccountInfoType, GetHistoricalOrdersOptionsType, HistoricalOrdersType, FavouriteProductType, StockType, GetNewsOptionsType, NewsType, WebUserSettingType, ConfigDictionaryType, i18nMessagesType, WebSettingsType, GetPopularStocksConfigType, GetTransactionsOptionsType, TransactionType } from './types';
 /**
  * @class DeGiro
  * @description Main class of DeGiro Unofficial API.
@@ -35,6 +35,7 @@ export declare class DeGiro implements DeGiroClassInterface {
     createOrder(order: OrderType): Promise<CreateOrderResultType>;
     executeOrder(order: OrderType, executeId: String): Promise<String>;
     deleteOrder(orderId: String): Promise<void>;
+    getTransactions(options: GetTransactionsOptionsType): Promise<TransactionType[]>;
     getProductsByIds(ids: string[]): Promise<any[]>;
     getNews(options: GetNewsOptionsType): Promise<NewsType>;
     getWebi18nMessages(lang?: string): Promise<i18nMessagesType>;

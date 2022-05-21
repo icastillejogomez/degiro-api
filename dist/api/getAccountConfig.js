@@ -18,7 +18,12 @@ function getAccountConfigRequest(sessionId) {
         // Do the request to get a account config data
         utils_1.debug("Making request to " + BASE_API_URL + GET_ACCOUNT_CONFIG_PATH + " with JSESSIONID: " + sessionId);
         fetch(BASE_API_URL + GET_ACCOUNT_CONFIG_PATH, requestOptions)
-            .then(function (res) { return res.json(); })
+            .then(function (res) {
+            if (!res.ok) {
+                reject(res.statusText);
+            }
+            return res.json();
+        })
             .then(function (res) {
             utils_1.debug('Response:\n', JSON.stringify(res, null, 2));
             resolve(res);

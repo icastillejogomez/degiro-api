@@ -30,7 +30,7 @@ function searchProductRequest(options, accountData, accountConfig) {
             .then(function (res) { return res.json(); })
             .then(function (_a) {
             var products = _a.products;
-            return resolve(products);
+            return resolve(products || []);
         })
             .catch(reject);
     });

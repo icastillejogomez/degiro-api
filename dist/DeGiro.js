@@ -40,9 +40,9 @@ var DeGiro = /** @class */ (function () {
         pwd = pwd || process.env['DEGIRO_PWD'];
         oneTimePassword = oneTimePassword || process.env['DEGIRO_OTP'];
         jsessionId = jsessionId || process.env['DEGIRO_JSESSIONID'];
-        if (!username)
+        if (!username && !jsessionId)
             throw new Error('DeGiro api needs an username to access');
-        if (!pwd)
+        if (!pwd && !jsessionId)
             throw new Error('DeGiro api needs an password to access');
         this.username = username;
         this.pwd = pwd;
@@ -249,6 +249,12 @@ var DeGiro = /** @class */ (function () {
             return Promise.reject('You must log in first');
         }
         return api_1.deleteOrderRequest(orderId, this.accountData, this.accountConfig);
+    };
+    DeGiro.prototype.getTransactions = function (options) {
+        if (!this.hasSessionId()) {
+            return Promise.reject('You must log in first');
+        }
+        return api_1.getTransactionsRequest(this.accountData, this.accountConfig, options);
     };
     /* Miscellaneous methods */
     DeGiro.prototype.getProductsByIds = function (ids) {
