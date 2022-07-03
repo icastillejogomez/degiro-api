@@ -15,7 +15,8 @@
               "check-strings": true,
               "check-regex": true
             }
-          ]
+          ],
+          "quotemark":["true", "tick", "backtick"]
     },
     "rulesDirectory": []
 }
