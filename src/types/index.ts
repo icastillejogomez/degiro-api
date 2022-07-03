@@ -47,7 +47,6 @@ import {
   Country,
 } from './ConfigDictionaryType'
 
-
 export {
   CashFoundType,
   DeGiroSettupType,
