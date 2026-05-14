@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, AccountReportsType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, fetch } from '../utils'
 
 // Import utils functions
 import { generateReportURIFromID } from '../utils/generateReportURIFromID'

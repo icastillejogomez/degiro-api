@@ -1,1 +1,1 @@
-{"version":3,"file":"GetTransactionsOptionsType.d.ts","sourceRoot":"","sources":["../../src/types/GetTransactionsOptionsType.ts"],"names":[],"mappings":"AAAA,oBAAY,0BAA0B,GAAG;IACrC,QAAQ,EAAE,MAAM,CAAC;IACjB,MAAM,EAAE,MAAM,CAAC;IACf,wBAAwB,EAAE,OAAO,CAAA;CACpC,CAAA"}
+{"version":3,"file":"GetTransactionsOptionsType.d.ts","sourceRoot":"","sources":["../../src/types/GetTransactionsOptionsType.ts"],"names":[],"mappings":"AAAA,oBAAY,0BAA0B,GAAG;IACvC,QAAQ,EAAE,MAAM,CAAC;IACjB,MAAM,EAAE,MAAM,CAAC;IACf,wBAAwB,EAAE,OAAO,CAAC;CACnC,CAAA"}

@@ -6,7 +6,7 @@ import { DEGIRO_API_PATHS } from '../enums'
 const { BASE_API_URL, LOGIN_URL_PATH } = DEGIRO_API_PATHS
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, fetch } from '../utils'
 
 export function loginRequest(params: LoginRequestParamsType): Promise<LoginResponseType> {
   return new Promise((resolve, reject) => {

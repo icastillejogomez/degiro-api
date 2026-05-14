@@ -15,7 +15,7 @@ function getWebi18nMessagesRequest(lang, accountData, accountConfig) {
         // Do the request to get a account config data
         var uri = accountConfig.data.i18nUrl + "messages_" + lang;
         utils_1.debug("Making request to " + uri);
-        fetch(uri, requestOptions)
+        utils_1.fetch(uri, requestOptions)
             .then(function (res) { return res.json(); })
             .then(function (res) {
             utils_1.debug('Response:\n', JSON.stringify(res, null, 2));

@@ -2,7 +2,7 @@
 import { SearchProductOptionsType, AccountConfigType, AccountDataType, SearchProductResultType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, fetch } from '../utils'
 
 const createURLQuery = (options: SearchProductOptionsType): string => {
   // Destructure the options parameter

@@ -1,6 +1,6 @@
 import { DEGIRO_API_PATHS } from '../enums';
 import { AccountConfigType, AccountDataType, GetTransactionsOptionsType, TransactionType } from '../types'
-import { debug } from '../utils';
+import { debug, fetch } from '../utils';
 const { GET_TRANSACTIONS_PATH } = DEGIRO_API_PATHS;
 
 export function getTransactionsRequest(accountData: AccountDataType, accountConfig: AccountConfigType, config: GetTransactionsOptionsType): Promise<TransactionType[]> {

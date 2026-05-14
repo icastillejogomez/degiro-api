@@ -19,7 +19,7 @@ function createOrderRequest(order, accountData, accountConfig) {
         };
         var uri = "" + accountConfig.data.tradingUrl + CREATE_ORDER_PATH + ";jsessionid=" + accountConfig.data.sessionId + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;
         utils_1.debug(uri, requestOptions);
-        fetch(uri, requestOptions)
+        utils_1.fetch(uri, requestOptions)
             .then(function (res) { return res.json(); })
             .then(function (res) {
             if (res.errors)

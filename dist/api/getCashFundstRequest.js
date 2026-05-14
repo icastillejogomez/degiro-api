@@ -21,7 +21,7 @@ function getCashFundstRequest(accountData, accountConfig) {
         // Do the request to get a account config data
         var uri = "" + accountConfig.data.tradingUrl + GET_GENERIC_DATA_PATH + accountData.data.intAccount + ";jsessionid=" + accountConfig.data.sessionId + "?" + params;
         utils_1.debug("Making request to " + uri);
-        fetch(uri, requestOptions)
+        utils_1.fetch(uri, requestOptions)
             .then(function (res) { return res.json(); })
             .then(function (res) {
             if (!res.cashFunds || !res.cashFunds.value || !Array.isArray(res.cashFunds.value)) {

@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, i18nMessagesType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, fetch } from '../utils'
 
 export function getWebi18nMessagesRequest(lang: string, accountData: AccountDataType, accountConfig: AccountConfigType): Promise<i18nMessagesType> {
   return new Promise((resolve, reject) => {

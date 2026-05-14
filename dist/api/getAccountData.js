@@ -14,7 +14,7 @@ function getAccountDataRequest(accountConfig) {
         };
         // Do the request to get a account config data
         utils_1.debug("Making request to " + accountConfig.data.paUrl + "client?sessionId=" + accountConfig.data.sessionId);
-        fetch(accountConfig.data.paUrl + "client?sessionId=" + accountConfig.data.sessionId, requestOptions)
+        utils_1.fetch(accountConfig.data.paUrl + "client?sessionId=" + accountConfig.data.sessionId, requestOptions)
             .then(function (res) { return res.json(); })
             .then(function (res) {
             utils_1.debug('Response:\n', JSON.stringify(res, null, 2));

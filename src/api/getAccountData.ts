@@ -2,7 +2,7 @@
 import { AccountDataType, AccountConfigType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, fetch } from '../utils'
 
 export function getAccountDataRequest(accountConfig: AccountConfigType): Promise<AccountDataType> {
   return new Promise((resolve, reject) => {

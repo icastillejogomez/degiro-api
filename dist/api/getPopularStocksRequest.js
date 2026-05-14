@@ -29,7 +29,7 @@ function getPopularStocksRequest(accountData, accountConfig, config) {
         // Do the request to get a account config data
         var url = "" + accountConfig.data.productSearchUrl + STOCKS_SEARCH_PATH + "?" + params;
         utils_1.debug("Making request to " + url + " with params: \n" + requestOptions);
-        fetch(url, requestOptions)
+        utils_1.fetch(url, requestOptions)
             .then(function (res) { return res.json(); })
             .then(function (res) {
             resolve(res.products);

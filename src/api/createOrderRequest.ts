@@ -6,7 +6,7 @@ import { DEGIRO_API_PATHS } from '../enums'
 const { CREATE_ORDER_PATH } = DEGIRO_API_PATHS
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, fetch } from '../utils'
 
 export function createOrderRequest(order: OrderType, accountData: AccountDataType, accountConfig: AccountConfigType): Promise<CreateOrderResultType> {
   return new Promise((resolve, reject) => {

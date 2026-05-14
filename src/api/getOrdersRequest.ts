@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, GetOrdersConfigType, GetOrdersResultType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, fetch } from '../utils'
 import { GET_ORDERS_TYPES } from '../enums/DeGiroEnums'
 import { processGetOrdersResultListObject } from '../utils/'
 

@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, CashFoundType } from '../types'
 
 // Import debug console log
-import { debug, processGetCashFundsResultListObject } from '../utils'
+import { debug, processGetCashFundsResultListObject, fetch } from '../utils'
 import { DEGIRO_API_PATHS } from '../enums/DeGiroEnums'
 const { GET_GENERIC_DATA_PATH } = DEGIRO_API_PATHS
 

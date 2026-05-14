@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, WebSettingsType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, fetch } from '../utils'
 
 // Importamos constantes
 import { DEGIRO_API_PATHS } from '../enums'

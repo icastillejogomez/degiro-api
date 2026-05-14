@@ -17,7 +17,7 @@ function deleteOrderRequest(orderId, accountData, accountConfig) {
         // tslint:disable-next-line: max-line-length
         var uri = "https://trader.degiro.nl/trading/secure/v5/order/" + orderId + ";jsessionid=" + accountConfig.data.sessionId + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;
         utils_1.debug(uri, requestOptions);
-        fetch(uri, requestOptions)
+        utils_1.fetch(uri, requestOptions)
             .then(function (res) { return res.json(); })
             .then(function (res) {
             utils_1.debug(res);

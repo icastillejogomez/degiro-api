@@ -22,7 +22,7 @@ function getOrdersRequest(accountData, accountConfig, config) {
         // Do the request to get a account config data
         var uri = accountConfig.data.tradingUrl + "v5/update/" + accountData.data.intAccount + ";jsessionid=" + accountConfig.data.sessionId + "?" + params;
         utils_1.debug("Making request to " + uri);
-        fetch(uri, requestOptions)
+        utils_1.fetch(uri, requestOptions)
             .then(function (res) { return res.json(); })
             .then(function (res) {
             var result = {

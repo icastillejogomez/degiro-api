@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, GetAccountStateOptionsType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, fetch } from '../utils'
 import { DEGIRO_API_PATHS } from '../enums/DeGiroEnums'
 const { GET_ACCOUNT_STATE_PATH } = DEGIRO_API_PATHS
 

@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, ConfigDictionaryType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, fetch } from '../utils'
 
 export function getConfigDictionaryRequest(accountData: AccountDataType, accountConfig: AccountConfigType): Promise<ConfigDictionaryType> {
   return new Promise((resolve, reject) => {

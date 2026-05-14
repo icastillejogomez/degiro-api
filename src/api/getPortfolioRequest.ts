@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType, GetPorfolioConfigType } from '../types'
 
 // Import debug console log
-import { debug, processPortfolio } from '../utils'
+import { debug, processPortfolio, fetch } from '../utils'
 
 // tslint:disable-next-line: max-line-length
 export function getPortfolioRequest(accountData: AccountDataType, accountConfig: AccountConfigType, config: GetPorfolioConfigType): Promise<any[]> {

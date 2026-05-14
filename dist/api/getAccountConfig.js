@@ -17,7 +17,7 @@ function getAccountConfigRequest(sessionId) {
         };
         // Do the request to get a account config data
         utils_1.debug("Making request to " + BASE_API_URL + GET_ACCOUNT_CONFIG_PATH + " with JSESSIONID: " + sessionId);
-        fetch(BASE_API_URL + GET_ACCOUNT_CONFIG_PATH, requestOptions)
+        utils_1.fetch(BASE_API_URL + GET_ACCOUNT_CONFIG_PATH, requestOptions)
             .then(function (res) {
             if (!res.ok) {
                 reject(res.statusText);

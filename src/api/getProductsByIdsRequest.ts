@@ -2,7 +2,7 @@
 import { AccountConfigType, AccountDataType } from '../types'
 
 // Import debug console log
-import { debug } from '../utils'
+import { debug, fetch } from '../utils'
 
 // tslint:disable-next-line: max-line-length
 export function getProductsByIdsRequest(ids: string[], accountData: AccountDataType, accountConfig: AccountConfigType): Promise<any[]> {

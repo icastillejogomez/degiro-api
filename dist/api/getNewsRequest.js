@@ -37,6 +37,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getNewsRequest = void 0;
+// Import debug console log
+var utils_1 = require("../utils");
 // Import paths
 var enums_1 = require("../enums");
 var GET_LATESTS_NEWS_PATH = enums_1.DEGIRO_API_PATHS.GET_LATESTS_NEWS_PATH, GET_TOP_NEWS_PATH = enums_1.DEGIRO_API_PATHS.GET_TOP_NEWS_PATH;
@@ -75,7 +77,7 @@ function getNewsRequest(options, accountData, accountConfig) {
                 case 1:
                     _d.trys.push([1, 8, , 9]);
                     if (!latest) return [3 /*break*/, 4];
-                    return [4 /*yield*/, fetch(latestNewsURI, requestOptions)];
+                    return [4 /*yield*/, utils_1.fetch(latestNewsURI, requestOptions)];
                 case 2:
                     latestFetch = _d.sent();
                     return [4 /*yield*/, latestFetch.json()];
@@ -85,7 +87,7 @@ function getNewsRequest(options, accountData, accountConfig) {
                     _d.label = 4;
                 case 4:
                     if (!top) return [3 /*break*/, 7];
-                    return [4 /*yield*/, fetch(topNewsURI, requestOptions)];
+                    return [4 /*yield*/, utils_1.fetch(topNewsURI, requestOptions)];
                 case 5:
                     latestFetch = _d.sent();
                     return [4 /*yield*/, latestFetch.json()];

@@ -25,7 +25,7 @@ function getAccountStateRequest(accountData, accountConfig, config) {
         // Do the request to get a account config data
         var uri = "" + accountConfig.data.reportingUrl + GET_ACCOUNT_STATE_PATH + "?" + params;
         utils_1.debug("Making request to " + uri);
-        fetch(uri, requestOptions)
+        utils_1.fetch(uri, requestOptions)
             .then(function (res) { return res.json(); })
             .then(function (res) {
             if (!res.data || !res.data.cashMovements || !Array.isArray(res.data.cashMovements))

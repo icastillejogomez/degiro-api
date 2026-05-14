@@ -11,7 +11,7 @@ function logoutRequest(accountData, accountConfig) {
         // Do the request to get a session
         var url = "" + BASE_API_URL + LOGOUT_URL_PATH + ";jsessionid=" + accountConfig.data.sessionId + "?intAccount=" + accountData.data.intAccount + "&sessionId=" + accountConfig.data.sessionId;
         utils_1.debug("Making request to " + url);
-        fetch(url)
+        utils_1.fetch(url)
             .then(function (res) {
             if (res.status === 200)
                 resolve();
