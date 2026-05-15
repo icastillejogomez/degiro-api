@@ -104,3 +104,6 @@ typings/
 
 # Package-lock.json
 package-lock.json
+
+# Compiled JS
+dist
